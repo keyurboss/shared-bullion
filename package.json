@@ -2,9 +2,7 @@
   "name": "shared-bullion",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "15.6.3",
