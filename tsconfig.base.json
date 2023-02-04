@@ -14,7 +14,18 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
+      "@rps/bullion-rate-tables/table1": [
+        "libs/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
+      ],
+      "@rps/bullion-rate-tables/table2": [
+        "libs/rate-tables/src/lib/rate-tables-2/rate-tables-2.component.ts"
+      ],
+      "@rps/bullion-rate-tables/table3": [
+        "libs/rate-tables/src/lib/rate-tables-3/rate-tables-3.component.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
