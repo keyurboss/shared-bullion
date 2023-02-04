@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Feature Building Test
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - 'feat/**'
+      - 'feature/**'
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: set-shas
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
+
+      - name: Yarn Affected Lint
+        run: yarn nx affected --target=lint --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+
+      - name: Test All Projects
+        run: yarn nx affected --target=test --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+
+      - name: Yarn Affected Build
+        run: yarn nx affected --target=build --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+
+      - name: Yarn Affected Pack Server
+        run: yarn nx affected --target=pack --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
