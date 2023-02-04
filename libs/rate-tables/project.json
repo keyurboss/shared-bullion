@@ -33,7 +33,8 @@
           "ci": true,
           "codeCoverage": true
         }
-      }
+      },
+      "defaultConfiguration": "ci"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",

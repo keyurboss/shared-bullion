@@ -41,5 +41,5 @@ jobs:
       - name: Yarn Affected Build
         run: yarn nx affected --target=build --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
 
-      - name: Yarn Affected Pack Server
-        run: yarn nx affected --target=pack --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+      # - name: Yarn Affected Pack Server
+      #   run: yarn nx affected --target=pack --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
