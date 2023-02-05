@@ -1,0 +1,85 @@
+{
+  "name": "component-testing-bed",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/component-testing-bed/src",
+  "prefix": "shared-bullion",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/component-testing-bed",
+        "index": "apps/component-testing-bed/src/index.html",
+        "main": "apps/component-testing-bed/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/component-testing-bed/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/component-testing-bed/src/favicon.ico",
+          "apps/component-testing-bed/src/assets"
+        ],
+        "styles": ["apps/component-testing-bed/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "component-testing-bed:build:production"
+        },
+        "development": {
+          "browserTarget": "component-testing-bed:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 3453
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "component-testing-bed:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/component-testing-bed/**/*.ts",
+          "apps/component-testing-bed/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
