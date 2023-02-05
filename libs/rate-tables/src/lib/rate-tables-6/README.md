@@ -3,9 +3,10 @@ Refrance For The Epic
 
 Component File Location
 
-```libs/rate-tables/src/lib/rate-tables-3/rate-tables-3.component.ts```
+```libs/rate-tables/src/lib/rate-tables-6/rate-tables-6.component.ts```
 
-![alt text](https://github.com/rpsoftech/SharedBullion/blob/main/designs/table3.png?raw=true)
+![alt text](https://github.com/rpsoftech/SharedBullion/blob/main/designs/table6.1.png?raw=true)
+![alt text](https://github.com/rpsoftech/SharedBullion/blob/main/designs/table6.2.png?raw=true)
 
 
 The design is as above.

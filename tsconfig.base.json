@@ -24,6 +24,15 @@
       ],
       "@rps/bullion-rate-tables/table3": [
         "libs/rate-tables/src/lib/rate-tables-3/rate-tables-3.component.ts"
+      ],
+      "@rps/bullion-rate-tables/table4": [
+        "libs/rate-tables/src/lib/rate-tables-4/rate-tables-4.component.ts"
+      ],
+      "@rps/bullion-rate-tables/table5": [
+        "libs/rate-tables/src/lib/rate-tables-5/rate-tables-5.component.ts"
+      ],
+      "@rps/bullion-rate-tables/table6": [
+        "libs/rate-tables/src/lib/rate-tables-6/rate-tables-6.component.ts"
       ]
     }
   },
