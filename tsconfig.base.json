@@ -16,6 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@rps/buillion-frontend-core": ["libs/frontend-core/src/index.ts"],
+      "@rps/buillion-frontend-core/core": [
+        "libs/frontend-core/src/core/index.ts"
+      ],
+      "@rps/buillion-frontend-core/services": [
+        "libs/frontend-core/src/services/index.ts"
+      ],
       "@rps/bullion-interfaces": ["libs/interfaces/src/index.ts"],
       "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
       "@rps/bullion-rate-tables/table1": [
