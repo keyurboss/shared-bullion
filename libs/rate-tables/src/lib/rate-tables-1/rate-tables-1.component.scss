@@ -1,8 +1,8 @@
 :host {
-  --header-back-color: #000;
+  --header-back-color: #ffd007;
   --header-font-color: #000;
   --header-border-color: #000;
-  --data-back-color: #000;
+  --data-back-color: white;
   --data-font-color: #000;
   --rate-high-back-color: #000;
   --rate-high-font-color: #000;
@@ -23,7 +23,7 @@
   width: 50rem;
   margin: 10px;
   padding: 10px;
-  background-color: #ffd007;
+  background-color:  var(--header-back-color);
   margin-right: 40px;
 
   &_left {
@@ -36,7 +36,8 @@
   margin: 10px;
   padding: 10px;
   margin-right: 40px;
-
+  background-color: var(--data-back-color);
+  
   &_left {
     width: 40%;
   }
