@@ -1,0 +1,79 @@
+:host {
+    --header-back-color: #bc9039;
+    --header-font-color: #f9f8f6;
+    --header-border-color: #bc9039;
+    --data-back-color: #ffffff;
+    --data-font-color: #000000;
+    --rate-high-back-color:  #ffffff;
+    --rate-high-font-color: #ff0000;
+    --rate-low-font-color:  #ff0000;
+    --rate-low-back-color:  #ffffff;
+    --data-border-color: #e0bc29;
+     }
+   
+     %flex-row{
+         display: flex;
+         flex-direction: row;
+     }
+     %flex-column{
+         display: flex;
+         flex-direction: column;
+     }
+.main-div{
+    @extend %flex-column;
+    margin-left: 15px;
+    width: 300px;
+    font-family: Open Sans,Arial,Helvetica,sans-serif;
+}
+.header{
+    @extend %flex-row;
+    height: 35px;
+    width: 295px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--header-border-color);
+    background-color: var(--header-back-color);
+    border-radius: 6px;
+}
+.Data{
+    @extend %flex-column;
+    margin-top: 10px;
+    border: 1px solid var(--data-border-color);
+    border-radius: 12px;
+}
+.GOLD{
+    color: var(--data-back-color);
+    font-weight: bold;
+    font-size: 17px;
+    
+}
+.product_data{
+    @extend %flex-row;
+    
+}
+.product_data_column{
+    @extend %flex-row;
+    margin-left: 18px;
+    align-items: center;
+    justify-content: center;   
+}
+.column2{
+    position: relative;
+    margin-top: -10px;
+}
+.X{
+    margin-left: 15px;
+    font-weight: bold;
+}
+.rate-high{
+    color: var(--rate-high-font-color);
+}
+.rate-low{
+    color: var(--rate-low-font-color);
+}
+.Ask{
+    position: relative;
+    margin-left: 50px;
+}
+
