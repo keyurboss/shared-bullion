@@ -2957,6 +2957,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nrwl/node@npm:^15.6.3":
+  version: 15.6.3
+  resolution: "@nrwl/node@npm:15.6.3"
+  dependencies:
+    "@nrwl/devkit": 15.6.3
+    "@nrwl/jest": 15.6.3
+    "@nrwl/js": 15.6.3
+    "@nrwl/linter": 15.6.3
+    "@nrwl/webpack": 15.6.3
+    "@nrwl/workspace": 15.6.3
+    tslib: ^2.3.0
+  checksum: 43ceb72df42de7e7ac4cb8727b829df0f0851947b54cc322d9099d9771e18e3d5b06958f2c784a5c9c673c587468a732efffadd363dc3d5bc720d0f064d7ff44
+  languageName: node
+  linkType: hard
+
 "@nrwl/nx-cloud@npm:latest":
   version: 15.0.3
   resolution: "@nrwl/nx-cloud@npm:15.0.3"
@@ -11989,6 +12004,7 @@ __metadata:
     "@nrwl/eslint-plugin-nx": 15.6.3
     "@nrwl/jest": 15.6.3
     "@nrwl/linter": 15.6.3
+    "@nrwl/node": ^15.6.3
     "@nrwl/nx-cloud": latest
     "@nrwl/workspace": 15.6.3
     "@types/jest": 28.1.1
