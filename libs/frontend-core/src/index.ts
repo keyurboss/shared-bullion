@@ -1,1 +1,3 @@
-export * from './lib/frontend-core';
+export * from './core';
+export * from './lib';
+export * from './services';
