@@ -9,6 +9,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { Env, JsonToItrable } from '../core';
 import { RateTypeKeys } from '@rps/bullion-interfaces';
+import { RatesFixture } from '../fixtures';
 
 type RateObserDataType = Record<
   RateTypeKeys,
@@ -23,13 +24,13 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
   'Insert Current Price'
 );
 export abstract class LiveRateService {
-  RateObser$!: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>>;
-  protected LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> =
+  RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>>={} as never;
+  LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> =
     {} as never;
   protected RatesReadyBehaviourSubject = new BehaviorSubject(false);
   RatesReady$ = this.RatesReadyBehaviourSubject.asObservable();
   private _RatesReady = false;
-  protected get RatesReady() {
+  get RatesReady() {
     return this._RatesReady;
   }
   protected set RatesReady(value) {
@@ -131,4 +132,12 @@ export abstract class LiveRateService {
   abstract getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   >;
+}
+
+export class DemoLiveRateService extends LiveRateService {
+  async getLastRates(): Promise<
+    Record<RateBaseSymboles, BaseSymbolePriceInterface>
+  > {
+    return RatesFixture.GenerateForAllSymboles();
+  }
 }

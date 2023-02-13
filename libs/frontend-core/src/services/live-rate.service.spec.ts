@@ -1,36 +1,16 @@
-import {
-  BaseSymbolePriceInterface,
-  RateBaseSymboles,
-  RateBaseSymbolesArray,
-} from '@rps/bullion-interfaces';
-import { LiveRateService } from './live-rate.service';
-import faker from '@faker-js/faker';
-class LiveRateServiceTests extends LiveRateService {
-  async getLastRates(): Promise<
-    Record<RateBaseSymboles, BaseSymbolePriceInterface>
-  > {
-    return {
-      GOLD: {
-        
-      },
-      GOLD_MCX: {},
-      GOLD_SPOT: {},
-      INR: {},
-      SILVER: {},
-      SILVER_MCX: {},
-      SILVER_SPOT: {},
-    };
-  }
-}
+import { DemoLiveRateService, LiveRateService } from './live-rate.service';
+// import faker from '@faker-js/faker';
+import { RatesFixture } from '../fixtures';
+import { firstValueFrom } from 'rxjs';
 
 describe('ABS LiveRateService', () => {
   let service: LiveRateService;
 
-  beforeEach(() => {
-    // service=new LiveRateService()
-  });
-
-  it('should be created', () => {
-    expect(service).toBeDefined();
+  it('should be created with last Rate It is Injected and Rates Should be ready', () => {
+    const rates = RatesFixture.GenerateForAllSymboles();
+    service = new DemoLiveRateService(rates, null as never);
+    expect(service.LastRate).toStrictEqual(rates);
+    expect(service.RatesReady).toStrictEqual(true);
+    expect(firstValueFrom(service.RatesReady$)).resolves.toStrictEqual(true);
   });
 });
