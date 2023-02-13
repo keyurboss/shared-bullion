@@ -44,7 +44,7 @@ export abstract class LiveRateService {
     @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
     @Optional() @Inject(Env) envvariable: EnvInterface
   ) {
-    if (lastRate !== null) {
+    if (lastRate !== null && typeof lastRate !== 'undefined' ) {
       this.LastRate = lastRate;
       this.RatesReady = true;
     }
