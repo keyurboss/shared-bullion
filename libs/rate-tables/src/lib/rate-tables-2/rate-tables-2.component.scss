@@ -4,13 +4,18 @@
     --header-border-color: #bc9039;
     --data-back-color: #ffffff;
     --data-font-color: #000000;
-    --rate-high-back-color:  #ffffff;
-    --rate-high-font-color: #ff0000;
-    --rate-low-font-color:  #ff0000;
-    --rate-low-back-color:  #ffffff;
+    --rate-high-back-color:  #06d239;
+    --rate-high-font-color: #ffffff;
+    --data-high-font-color: #ff0000;
+    --data-low-font-color: #ff0000;
+    --rate-low-font-color:  #ffffff;
+    --rate-low-back-color:  #ff0000;
     --data-border-color: #e0bc29;
      }
-   
+    //  *{
+    //     margin: 0;
+    //     padding: 0;
+    //  }
      %flex-row{
          display: flex;
          flex-direction: row;
@@ -22,13 +27,14 @@
 .main-div{
     @extend %flex-column;
     margin-left: 15px;
-    width: 300px;
+    width: 268px;
     font-family: Open Sans,Arial,Helvetica,sans-serif;
+    font-size: 18px !important;
 }
 .header{
     @extend %flex-row;
     height: 35px;
-    width: 295px;
+    width: 268px;
     margin-top: 10px;
     justify-content: center;
     align-items: center;
@@ -43,10 +49,14 @@
     border-radius: 12px;
 }
 .GOLD{
-    color: var(--data-back-color);
+    color: var(--header-font-color);
     font-weight: bold;
-    font-size: 17px;
+   
     
+}
+.backcolor{
+    background-color: var(--data-back-color);
+    color: var(--data-font-color);
 }
 .product_data{
     @extend %flex-row;
@@ -63,17 +73,31 @@
     margin-top: -10px;
 }
 .X{
-    margin-left: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     font-weight: bold;
 }
-.rate-high{
-    color: var(--rate-high-font-color);
+.rate_high{
+    color: var(--rate-high-font-color) !important;
+    background-color: var(--rate-high-back-color) !important;
+    border-radius: 5px;
+    
 }
-.rate-low{
-    color: var(--rate-low-font-color);
+.rate_low{
+    color: var(--rate-low-font-color) !important;
+    background-color: var(--rate-low-back-color) !important;
+    border-radius: 5px;
 }
 .Ask{
     position: relative;
-    margin-left: 50px;
+    margin-left: 20px;
 }
-
+.high{
+    color: var(--data-high-font-color);
+}
+.low{
+    color:var(--data-low-font-color);
+}
+.none{
+    background-color: var(--data-back-color) !important;
+}

@@ -1,26 +1,43 @@
 <div class="main-div">
   <div class="header">
-    <div class="GOLD"> GOLD </div>
+    <div class="GOLD">GOLD</div>
   </div>
-  <div class="Data">
+  <div class="Data" *ngIf="rate | async; let rate">
     <div class="product_data column1">
-      <div class="product_data_column ">
-        <h3>Bid</h3>
-        <p class="X"> 1865.55 </p>
+      <div class="product_data_column">
+        <h3 class="backcolor">Bid</h3>
+        <p
+          class="backcolor X"
+          [class.rate_high]="rate['bid'].color === 'Green'"
+          [class.rate_low]="rate['bid'].color === 'Red'"
+        >
+          {{ rate['bid'].rate }}
+        </p>
       </div>
       <div class="product_data_column Ask">
-        <h3>Ask</h3>
-        <p class="X"> 1865.93 </p>
+        <h3 class="backcolor">Ask</h3>
+        <p
+          class="backcolor X"
+          [class.rate_high]="rate['ask'].color === 'Green'"
+          [class.rate_low]="rate['ask'].color === 'Red'"
+        >
+          {{ rate['ask'].rate}}
+        </p>
       </div>
     </div>
     <div class="product_data column2">
       <div class="product_data_column">
-        <h3 class="rate-high">High</h3>
-        <p class="X"> / 1918.49 </p>
+        <h3 class="backcolor high">High</h3>
+        <p class="backcolor X"  [class.rate_high]="rate['last-high'].color === 'Green'"
+        [class.rate_low]="rate['last-high'].color === 'Red'"><span class="none">/</span>{{rate['last-high'].rate }}
+      </p>
+        <!-- <p class="backcolor X">/ 1918.49</p> -->
       </div>
       <div class="product_data_column">
-        <h3 class="rate-low">Low</h3>
-        <p class="X"> / 1861.26 </p>
+        <h3 class="backcolor low">Low</h3>
+        <p class="backcolor X"  [class.rate_high]="rate['last-low'].color === 'Green'"
+        [class.rate_low]="rate['last-low'].color === 'Red'"><span class="none">/</span>{{rate['last-low'].rate }}
+        </p>
       </div>
     </div>
   </div>
