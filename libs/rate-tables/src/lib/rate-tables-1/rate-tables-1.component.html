@@ -1,27 +1,19 @@
 <section class="main-div">
   <section class="justify_content border parent flex">
-    <div class="parent_left white">GOLD PRODUCTS</div>
-    <div class="parent_right white" style="margin-right: 40px;">SELL</div>
+    <h3 class="parent_left white">GOLD PRODUCTS</h3>
+    <p class="parent_right white">SELL</p>
   </section>
 
-  <section class="justify_content border child flex">
-    <div class="child_left">GOLD 999 IMP WITH TDS</div>
-    <div class="child_right" style="margin-right: 40px;">58860</div>
-  </section>
-
-  <section class="justify_content border child flex">
-    <div class="child_left">GOLD 999 IMP WITH TCS</div>
-    <div class="child_right" style="margin-right: 40px;">58915</div>
-  
-  </section>
-
-  <section class="justify_content border child flex">
-    <div class="child_left">GOLD 999 LOCAL WITH TDS</div>
-    <div class="child_right" style="margin-right: 40px;">58790</div>
-  </section>
-
-  <section class="justify_content border child flex">
-    <div class="child_left">GOLD 999 LOCAL WITH TCS</div>
-    <div class="child_right"style="margin-right: 40px;">58845</div>
+  <section *ngFor="let item of data" class="justify_content border child flex">
+    <h3 class="child_left">{{ item.name }}</h3>
+    <p
+      class="child_right"
+      *ngIf="rate | async; let rate"
+      style="padding: 5px"
+      [class.rate_high]="rate['ask'].color === 'Green'"
+      [class.rate_low]="rate['ask'].color === 'Red'"
+    >
+      {{ rate['ask'].rate }}
+    </p>
   </section>
 </section>

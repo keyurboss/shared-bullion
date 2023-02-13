@@ -1,7 +1,7 @@
 :host {
-  --header-back-color: #d8b207;
+  --header-back-color: #bc9039;
   --header-font-color: #ffffff;
-  --header-border-color: #d8b207;
+  --header-border-color: #bc9039;
   --data-back-color: #ffffff;
   --data-font-color: #ffffff;
   --rate-high-back-color: #00ff40;
@@ -11,66 +11,86 @@
   --data-border-color: #000;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.border {
+  border: 1px solid black;
+}
+
 .main-div {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
-.white{
-color: var(--data-font-color);
-
+.white {
+  color: var(--data-font-color);
 }
 
 .red {
- color: var(--rate-low-back-color);
-
+  color: #ffffff;
+  background-color: var(--rate-low-back-color);
+  border-radius: 5px;
 }
 
 .green {
-color: var(--rate-high-back-color);
-
+  color: #ffffff;
+  background-color: var(--rate-high-back-color);
+  border-radius: 5px;
 }
-
+.parent_right {
+  position: relative;
+  margin-right: 56px;
+  align-items: center;
+}
+.child_right {
+  position: relative;
+  margin-right: 42px;
+}
+.child_left {
+  align-items: center;
+}
 
 .parent {
   border: 1px solid var(--header-border-color) !important;
-  font-family: Open Sans,Arial,Helvetica,sans-serif,17px;
-  font-weight: 530;
+  font-weight: 100;
   width: 50rem;
   margin: 10px;
-  padding: 10px;
-  background-color:  var(--header-back-color);
-  margin-right: 40px;
-
-  &_left {
-    width: 40%;
-  }
+  padding: 10px 20px;
+  background-color: var(--header-back-color);
 }
 .child {
-  border: 1px solid var(--data-border-color);
-  font-family: Open Sans,Arial,Helvetica,sans-serif,17px;
-  font-weight: 530;
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
+  font-size: 20px;
   width: 50rem;
-  margin: 10px;
-  padding: 10px;
-  margin-right: 40px;
+  margin: 8px;
+  padding: 10px 20px;
   background-color: var(--data-back-color);
-  
-  &_left {
-    width: 40%;
-  }
 }
 .border {
-  border: 1px solid var(--data-border-color);
-  border-radius: 4px;
+  border-radius: 6px;
+}
+.rate_high {
+  color: var(--rate-high-font-color) !important;
+  background-color: var(--rate-high-back-color) !important;
+  border-radius: 5px;
+}
+.rate_low {
+  color: var(--rate-low-font-color) !important;
+  background-color: var(--rate-low-back-color) !important;
+  border-radius: 5px;
 }
 
 .flex {
   display: flex;
 }
-
 .justify_content {
+  align-items: center;
+  justify-content: center;
   justify-content: space-between;
 }
