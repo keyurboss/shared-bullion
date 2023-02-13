@@ -2,7 +2,11 @@ import { faker } from "@faker-js/faker";
 import { LiveRateService } from "../services/live-rate.service";
 import { RatesFixture } from "../fixtures";
 import { BaseSymbolePriceInterface, RateBaseSymboles } from "@rps/bullion-interfaces";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+  providedIn:'root'
+})
 export class DemoLiveRateService extends LiveRateService {
     InitRemoteConnection(): void {
       this.Gold();
@@ -26,7 +30,7 @@ export class DemoLiveRateService extends LiveRateService {
           top: 15,
           bottom: 0,
         },
-        this.LastRate[RateBaseSymboles.SILVER]
+        this._LastRate[RateBaseSymboles.SILVER]
       );
       this.setRate({
         SILVER,
@@ -51,7 +55,7 @@ export class DemoLiveRateService extends LiveRateService {
           top: 15,
           bottom: 0,
         },
-        this.LastRate[RateBaseSymboles.GOLD]
+        this._LastRate[RateBaseSymboles.GOLD]
       );
       this.setRate({
         GOLD,
@@ -78,7 +82,7 @@ export class DemoLiveRateService extends LiveRateService {
           bottom: 0,
           points: 0.01,
         },
-        this.LastRate[RateBaseSymboles.SILVER_SPOT]
+        this._LastRate[RateBaseSymboles.SILVER_SPOT]
       );
       this.setRate({
         SILVER_SPOT,
@@ -105,7 +109,7 @@ export class DemoLiveRateService extends LiveRateService {
           bottom: 1,
           points: 0.01,
         },
-        this.LastRate[RateBaseSymboles.GOLD_SPOT]
+        this._LastRate[RateBaseSymboles.GOLD_SPOT]
       );
       this.setRate({
         GOLD_SPOT,
@@ -132,7 +136,7 @@ export class DemoLiveRateService extends LiveRateService {
           bottom: 0,
           points: 0.0001,
         },
-        this.LastRate[RateBaseSymboles.INR]
+        this._LastRate[RateBaseSymboles.INR]
       );
       this.setRate({
         INR,
