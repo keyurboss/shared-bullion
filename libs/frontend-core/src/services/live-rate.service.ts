@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Env, JsonToItrable } from '../core';
 import { RateTypeKeys } from '@rps/bullion-interfaces';
 import { RatesFixture } from '../fixtures';
+import { faker } from '@faker-js/faker';
 
 type RateObserDataType = Record<
   RateTypeKeys,
@@ -24,9 +25,9 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
   'Insert Current Price'
 );
 export abstract class LiveRateService {
-  RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>>={} as never;
-  LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> =
+  RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
+  LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> = {} as never;
   protected RatesReadyBehaviourSubject = new BehaviorSubject(false);
   RatesReady$ = this.RatesReadyBehaviourSubject.asObservable();
   private _RatesReady = false;
@@ -55,7 +56,7 @@ export abstract class LiveRateService {
     this.init();
   }
   setRate(
-    Rate: Record<Partial<RateBaseSymboles>, Partial<BaseSymbolePriceInterface>>
+    Rate: Partial<Record<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>>
   ) {
     for (const [symb, current_rate] of JsonToItrable<
       BaseSymbolePriceInterface,
@@ -105,7 +106,7 @@ export abstract class LiveRateService {
   }
   private async init() {
     if (this.RatesReady === false) {
-      this.getLastRates().then((rate) => {
+      await this.getLastRates().then((rate) => {
         this.LastRate = rate;
         this.RatesReady = true;
       });
@@ -132,9 +133,148 @@ export abstract class LiveRateService {
   abstract getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   >;
+
+  abstract InitRemoteConnection(): void;
 }
 
 export class DemoLiveRateService extends LiveRateService {
+  InitRemoteConnection(): void {
+    this.Gold();
+    this.Silver();
+    this.SilverSpot();
+    this.GoldSpot();
+    this.INR();
+  }
+  private Silver() {
+    const timeout = faker.datatype.number({
+      max: 0.15,
+      min: 0.05,
+      precision: 0.01,
+    });
+    const SILVER = RatesFixture.Generate(
+      {
+        bottom: 65000,
+        top: 68000,
+      },
+      {
+        top: 15,
+        bottom: 0,
+      },
+      this.LastRate[RateBaseSymboles.SILVER]
+    );
+    this.setRate({
+      SILVER,
+      SILVER_MCX: SILVER,
+    });
+    setTimeout(() => {
+      this.Silver();
+    }, timeout);
+  }
+  private Gold() {
+    const timeout = faker.datatype.number({
+      max: 0.15,
+      min: 0.05,
+      precision: 0.01,
+    });
+    const GOLD = RatesFixture.Generate(
+      {
+        bottom: 56000,
+        top: 57000,
+      },
+      {
+        top: 15,
+        bottom: 0,
+      },
+      this.LastRate[RateBaseSymboles.GOLD]
+    );
+    this.setRate({
+      GOLD,
+      GOLD_MCX: GOLD,
+    });
+    setTimeout(() => {
+      this.Gold();
+    }, timeout);
+  }
+  private SilverSpot() {
+    const timeout = faker.datatype.number({
+      max: 0.15,
+      min: 0.05,
+      precision: 0.01,
+    });
+    const SILVER_SPOT = RatesFixture.Generate(
+      {
+        top: 25,
+        bottom: 23,
+        points: 0.01,
+      },
+      {
+        top: 2,
+        bottom: 0,
+        points: 0.01,
+      },
+      this.LastRate[RateBaseSymboles.SILVER_SPOT]
+    );
+    this.setRate({
+      SILVER_SPOT,
+    });
+    setTimeout(() => {
+      this.SilverSpot();
+    }, timeout);
+  }
+
+  private GoldSpot() {
+    const timeout = faker.datatype.number({
+      max: 0.15,
+      min: 0.05,
+      precision: 0.01,
+    });
+    const GOLD_SPOT = RatesFixture.Generate(
+      {
+        bottom: 1800,
+        top: 1900,
+        points: 0.01,
+      },
+      {
+        top: 2,
+        bottom: 1,
+        points: 0.01,
+      },
+      this.LastRate[RateBaseSymboles.GOLD_SPOT]
+    );
+    this.setRate({
+      GOLD_SPOT,
+    });
+    setTimeout(() => {
+      this.GoldSpot();
+    }, timeout);
+  }
+
+  private INR() {
+    const timeout = faker.datatype.number({
+      max: 0.15,
+      min: 0.05,
+      precision: 0.01,
+    });
+    const INR = RatesFixture.Generate(
+      {
+        top: 82,
+        bottom: 81,
+        points: 0.0001,
+      },
+      {
+        top: 1,
+        bottom: 0,
+        points: 0.0001,
+      },
+      this.LastRate[RateBaseSymboles.INR]
+    );
+    this.setRate({
+      INR,
+    });
+    setTimeout(() => {
+      this.INR();
+    }, timeout);
+  }
   async getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   > {
