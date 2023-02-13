@@ -31,7 +31,8 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
-  protected _LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> = {} as never;
+  protected _LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> =
+    {} as never;
   get LastRate(): Record<RateBaseSymboles, BaseSymbolePriceInterface> {
     return this._LastRate;
   }
@@ -108,6 +109,7 @@ export abstract class LiveRateService {
           clearTimeout(cro[rateType].timeOutRef);
           cro[rateType].timeOutRef = null;
         }
+        cro[rateType].rate = current_rate[rateType];
         cro[rateType].timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
           cro1[rateType].color = HighLowColorType.Default;
