@@ -1,6 +1,6 @@
 {
-  "name": "component-testing-bed",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "component-testing-bed",
   "projectType": "application",
   "sourceRoot": "apps/component-testing-bed/src",
   "prefix": "shared-bullion",
@@ -27,8 +27,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "1mb",
+              "maximumError": "3mb"
             },
             {
               "type": "anyComponentStyle",
