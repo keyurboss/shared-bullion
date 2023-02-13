@@ -1,10 +1,12 @@
-import { Inject, InjectionToken, Optional } from '@angular/core';
+import { Inject, InjectionToken, Optional, Injectable } from '@angular/core';
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
   HighLowColorType,
   RateBaseSymboles,
+  RateBaseSymbolesArray,
   RateTypeKeys,
+  RateTypeKeysArray,
   SymboleWiseRate,
 } from '@rps/bullion-interfaces';
 import { BehaviorSubject } from 'rxjs';
@@ -22,10 +24,23 @@ type RateObserDataType = Record<
 export const InjectableRate = new InjectionToken<SymboleWiseRate>(
   'Insert Current Price'
 );
+
+@Injectable({
+  providedIn: 'root',
+})
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
-  LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> = {} as never;
+  protected _LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> = {} as never;
+  get LastRate(): Record<RateBaseSymboles, BaseSymbolePriceInterface> {
+    return this._LastRate;
+  }
+  protected set LastRate(
+    value: Record<RateBaseSymboles, BaseSymbolePriceInterface>
+  ) {
+    this._LastRate = value;
+    this.setRate(value);
+  }
   protected RatesReadyBehaviourSubject = new BehaviorSubject(false);
   RatesReady$ = this.RatesReadyBehaviourSubject.asObservable();
   private _RatesReady = false;
@@ -34,9 +49,6 @@ export abstract class LiveRateService {
   }
   protected set RatesReady(value) {
     this._RatesReady = value;
-    if (value) {
-      this.CretaeSubjects();
-    }
     this.RatesReadyBehaviourSubject.next(value);
   }
 
@@ -44,11 +56,15 @@ export abstract class LiveRateService {
     @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
     @Optional() @Inject(Env) envvariable: EnvInterface
   ) {
-    if (lastRate !== null) {
+    if (lastRate !== null && typeof lastRate !== 'undefined') {
       this.LastRate = lastRate;
       this.RatesReady = true;
     }
-    if (envvariable !== null && envvariable.is_server) {
+    if (
+      envvariable !== null &&
+      typeof lastRate !== 'undefined' &&
+      envvariable.is_server
+    ) {
       return;
     }
     this.init();
@@ -60,8 +76,8 @@ export abstract class LiveRateService {
       BaseSymbolePriceInterface,
       RateBaseSymboles
     >(Rate)) {
-      if (typeof this.LastRate[symb] === 'undefined') {
-        this.LastRate[symb] = current_rate;
+      if (typeof this._LastRate[symb] === 'undefined') {
+        this._LastRate[symb] = current_rate;
         continue;
       }
       let cro = this.RateObser$[symb]?.value;
@@ -85,7 +101,7 @@ export abstract class LiveRateService {
         }
         if (cro[rateType].rate < current_rate[rateType]) {
           cro[rateType].color = HighLowColorType.Green;
-        } else if (this.LastRate[symb][rateType] > current_rate[rateType]) {
+        } else if (this._LastRate[symb][rateType] > current_rate[rateType]) {
           cro[rateType].color = HighLowColorType.Red;
         }
         if (cro[rateType].timeOutRef !== null) {
@@ -99,27 +115,26 @@ export abstract class LiveRateService {
         }, 900);
       }
       this.RateObser$[symb]?.next(cro);
-      Object.assign(this.LastRate[symb], current_rate);
+      Object.assign(this._LastRate[symb], current_rate);
     }
   }
   private async init() {
+    this.CreatSubjects();
     if (this.RatesReady === false) {
       await this.getLastRates().then((rate) => {
         this.LastRate = rate;
         this.RatesReady = true;
       });
     }
+    this.InitRemoteConnection();
   }
 
-  private CretaeSubjects() {
-    for (const [symb, current_rate] of JsonToItrable<
-      BaseSymbolePriceInterface,
-      RateBaseSymboles
-    >(this.LastRate)) {
+  private CreatSubjects() {
+    for (const symb of RateBaseSymbolesArray) {
       const a: RateObserDataType = {} as never;
-      JsonToItrable<number, RateTypeKeys>(current_rate).forEach(([k, v]) => {
+      RateTypeKeysArray.forEach((k) => {
         a[k] = {
-          rate: v,
+          rate: 0,
           timeOutRef: null,
           color: HighLowColorType.Default,
         };
@@ -134,5 +149,3 @@ export abstract class LiveRateService {
 
   abstract InitRemoteConnection(): void;
 }
-
-
