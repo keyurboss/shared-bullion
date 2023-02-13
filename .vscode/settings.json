@@ -1,0 +1,14 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.yarn/cache": true,
+    "**/.git": true,
+    "**/.idea": true,
+    "**/.vscode": true,
+    "**/dist": true
+  },
+"eslint.validate": [
+    "json"
+],
+"angular.enable-strict-mode-prompt": false
+}
