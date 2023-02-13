@@ -14,4 +14,6 @@ describe('ABS LiveRateService', () => {
     expect(service.RatesReady).toStrictEqual(true);
     expect(firstValueFrom(service.RatesReady$)).resolves.toStrictEqual(true);
   });
+  it.todo('Write Tests For Subject Value And HIGH Low')
+  it.todo('Auto Connect to Server')
 });
