@@ -1,6 +1,4 @@
 import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
-
-import { NgClass } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Component, ViewEncapsulation,Inject } from '@angular/core';
 import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
@@ -9,7 +7,7 @@ import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core'
 @Component({
   selector: 'rps-bull-rate-tables-2',
   standalone: true,
-  imports: [NgClass,NgFor,AsyncPipe,NgIf,JsonPipe],
+  imports: [NgFor,AsyncPipe,NgIf,JsonPipe],
   encapsulation:ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-2.component.html',
   styleUrls: ['./rate-tables-2.component.scss'],

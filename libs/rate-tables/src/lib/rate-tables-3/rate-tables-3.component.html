@@ -1,1 +1,17 @@
-<p>rate-tables works!</p>
+<div class="main_div">
+    <div class="table">
+        <div class="header">
+            <h3 class="product_header_left">GOLD PRODUCTS</h3>
+            
+            <p class="product_header_right">SELL</p>
+        </div>
+        <div class="header_lower_line"></div>
+        <div *ngFor="let item of data" class="product">
+            <h3 class="product_name">{{ item.name }}</h3>
+            <p class="product_price upper_margin" *ngIf="rate | async; let rate" style="padding: 5px"
+                [class.rate_high]="rate['ask'].color === 'Green'" [class.rate_low]="rate['ask'].color === 'Red'">
+                {{ rate['ask'].rate }}
+            </p>
+        </div>
+    </div>
+</div>
