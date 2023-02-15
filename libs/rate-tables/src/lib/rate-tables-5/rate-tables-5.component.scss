@@ -1,0 +1,70 @@
+:host{
+    --header-back-color: #6e5115;
+    --header-font-color:#ffffff;
+    --rate-high-font-color:#ffffff;
+    --rate-high-back-color:#ff0000;
+    --rate-low-font-color:#ffffff;
+    --rate-low-back-color:#008000;
+    --box-border-color:#7c6533;
+    --box-back-color: #fef8e8;   
+    }
+
+    
+*{
+    margin: 0;
+    padding: 0;
+}
+.main_div{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+}
+.box{
+    margin: 10px 4px;
+    height: 60px;
+    width: 110px;
+    background-color: #fef8e8;
+    border: 1.8px solid #7c6533;
+}
+.box_header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--header-back-color);
+    height: 30%;
+    font-size: 11px;
+    color: var(--header-font-color);
+    letter-spacing: 0.01px;
+}
+.box_footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70%;  
+}
+.box_footer_uperitem{
+    height: 75%;
+    width: 60px !important;
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.box_footer_loewritem{
+    font-size: 9px;
+    height: 25%;   
+    font-weight: bold; 
+}
+.rate_high {
+    color: var(--rate-high-font-color) !important;
+    background-color: var(--rate-high-back-color) !important;   
+}
+.rate_low {
+    color: var(--rate-low-font-color) !important;
+    background-color: var(--rate-low-back-color) !important;    
+}
+
