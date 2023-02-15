@@ -1,0 +1,96 @@
+:host{    
+    --table-border-color:#30160b;
+    --header-font-color:#ffffff;
+    --header-back-color: #30160b;
+    --data-font-color:#30160b;
+    --data-border-color:#30160b;
+    --rate-high-back-color: #06d239;
+    --rate-high-font-color: #ffffff;
+    --rate-low-font-color: #ffffff;
+    --rate-low-back-color: #ff0000;
+    --table-header-font-size:13px;
+    --table-data-font-size:12px;
+    }
+*{
+    margin: 0;
+    padding: 0;
+}
+%flex-row{
+    display: flex;
+    flex-direction: row;
+}
+%flex-column{
+    display: flex;
+    flex-direction: column;
+}
+%flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table{
+    width: 400px;      
+    border: 1px solid var(--table-border-color) ;
+    border-radius: 10px;
+    margin: 10px 10px;   
+    font-family: Open Sans, Arial, Helvetica, sans-serif;
+}
+.header{
+    @extend %flex-row;
+    width: auto;
+    font-size: var(--table-header-font-size);
+    border-radius: 8px 8px 0 0;
+    background-color: var(--header-back-color);
+    color: var(--header-font-color);
+}
+.product_header_left{
+    width: 70%;
+    font-size: var(--table-header-font-size);
+    padding: 8px 0 8px 7px;
+    border-top-left-radius: 10px;
+    font-weight: 500;
+}
+.product_header_right{
+    @extend %flex-center;
+    width: 30%;
+    font-size: var(--table-header-font-size);
+    border-top-right-radius: 10px;
+    font-weight: 500;
+}
+.product{
+    position: relative;
+    width: 100%;
+    font-size: var(--table-data-font-size);
+    color: var(--data-font-color);
+
+}
+.Items{
+    @extend %flex-row;
+    border-top: 1px solid var(--data-border-color);
+}
+.product_name{
+    width: 70%;
+    padding: 8px 0 8px 7px;
+    font-size: var(--table-data-font-size);
+    font-weight: 550;
+    border-right: 1px solid var(--data-border-color);
+    font-family: Roboto,Helvetica Neue,sans-serif;
+}
+.product_price{
+    @extend %flex-center;
+    width: 30%;
+    text-align: center;
+    font-weight:550;
+
+}
+.rate_high {
+    color: var(--rate-high-font-color) !important;
+    background-color: var(--rate-high-back-color) !important;
+    border-radius: 5px;
+    
+}
+.rate_low {
+    color: var(--rate-low-font-color) !important;
+    background-color: var(--rate-low-back-color) !important;
+    border-radius: 5px;
+}
