@@ -55,7 +55,8 @@ export abstract class LiveRateService {
 
   constructor(
     @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
-    @Optional() @Inject(Env) envvariable: EnvInterface
+    @Optional() @Inject(Env) envvariable: EnvInterface,
+    protected initialiseRemoteConnection = true
   ) {
     if (lastRate !== null && typeof lastRate !== 'undefined') {
       this.LastRate = lastRate;
@@ -128,7 +129,9 @@ export abstract class LiveRateService {
         this.RatesReady = true;
       });
     }
-    this.InitRemoteConnection();
+    if(this.initialiseRemoteConnection){
+      this.InitRemoteConnection();
+    }
   }
 
   private CreatSubjects() {
