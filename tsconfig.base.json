@@ -19,16 +19,20 @@
       "@rps/buillion-frontend-core/core": [
         "libs/frontend-core/src/core/index.ts"
       ],
-      "@rps/buillion-frontend-core/mock": [
-        "libs/frontend-core/src/mock/index.ts"
-      ],
       "@rps/buillion-frontend-core/fixtures": [
         "libs/frontend-core/src/fixtures/index.ts"
+      ],
+      "@rps/buillion-frontend-core/mock": [
+        "libs/frontend-core/src/mock/index.ts"
       ],
       "@rps/buillion-frontend-core/services": [
         "libs/frontend-core/src/services/index.ts"
       ],
+      "@rps/bullion-functions": ["libs/functions/src/index.ts"],
+      "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
       "@rps/bullion-interfaces": ["libs/interfaces/src/index.ts"],
+      "@rps/bullion-interfaces/calc": ["libs/interfaces/src/calc/index.ts"],
+      "@rps/bullion-interfaces/core": ["libs/interfaces/src/core/index.ts"],
       "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
       "@rps/bullion-rate-tables/table1": [
         "libs/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
