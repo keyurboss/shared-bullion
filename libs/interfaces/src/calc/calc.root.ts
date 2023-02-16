@@ -1,3 +1,7 @@
+import {
+  GenerateExchangeBackwordCalcString,
+  GenerateExchangeForwordCalcString,
+} from '@rps/bullion-functions/core';
 import { Expose, Type, instanceToPlain } from 'class-transformer';
 import {
   IsEnum,
@@ -6,17 +10,13 @@ import {
   IsUUID,
   ValidateNested,
 } from 'class-validator';
+import { groupDbToPlain, groupToPlain } from '../core';
 import {
   CshGenStrings,
   CshID,
   CshPremiumBuySellSnapshot,
-  CshType,
+  CshType
 } from './calc.interface';
-import { groupDbToPlain, groupToPlain } from '../core';
-import {
-  GenerateExchangeBackwordCalcString,
-  GenerateExchangeForwordCalcString,
-} from '@rps/bullion-functions/core';
 
 export class CshPremiumBuySellEntity {
   @Expose()
@@ -33,7 +33,7 @@ export class CshPremiumBuySellEntity {
   premium!: number;
 }
 
-export class CshVariableSnapshot {
+export class CshVariableSnapshotEntity {
   @Expose()
   @IsNotEmptyObject()
   @ValidateNested()
@@ -58,8 +58,8 @@ export class CalcEntity {
   @Expose()
   @IsNotEmptyObject()
   @ValidateNested()
-  @Type(() => CshVariableSnapshot)
-  CshVariableSnapshot!: CshVariableSnapshot;
+  @Type(() => CshVariableSnapshotEntity)
+  CshVariableSnapshot!: CshVariableSnapshotEntity;
 
   @Expose({
     groups: [groupDbToPlain, groupToPlain],
