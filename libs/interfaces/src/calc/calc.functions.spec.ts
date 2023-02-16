@@ -1,7 +1,7 @@
 import {
   GenerateExchangeBackwordCalcString,
   GenerateExchangeForwordCalcString,
-} from './functions';
+} from './calc.functions';
 describe('Tests GenerateExchangeForwordCalcString GenerateExchangeBackwordCalcString', () => {
   const params = {
     premium: 200,

@@ -1,7 +1,7 @@
 import {
   GenerateExchangeBackwordCalcString,
   GenerateExchangeForwordCalcString,
-} from '@rps/bullion-functions/core';
+} from './calc.functions';
 import { Expose, Type, instanceToPlain } from 'class-transformer';
 import {
   IsEnum,

@@ -1,4 +1,4 @@
-import { Inject, InjectionToken, Optional, Injectable } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
@@ -10,7 +10,7 @@ import {
   SymboleWiseRate,
 } from '@rps/bullion-interfaces';
 import { BehaviorSubject } from 'rxjs';
-import { Env, JsonToItrable } from '../core';
+import { JsonToItrable } from '../core';
 
 type RateObserDataType = Record<
   RateTypeKeys,
@@ -25,9 +25,6 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
   'Insert Current Price'
 );
 
-@Injectable({
-  providedIn: 'root',
-})
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
@@ -54,8 +51,8 @@ export abstract class LiveRateService {
   }
 
   constructor(
-    @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
-    @Optional() @Inject(Env) envvariable: EnvInterface,
+    lastRate: SymboleWiseRate,
+    envvariable: EnvInterface,
     protected initialiseRemoteConnection = true
   ) {
     if (lastRate !== null && typeof lastRate !== 'undefined') {
