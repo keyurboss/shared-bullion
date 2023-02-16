@@ -9,7 +9,7 @@ describe('ABS LiveRateService', () => {
 
   it('should be created with last Rate It is Injected and Rates Should be ready', () => {
     const rates = RatesFixture.GenerateForAllSymboles();
-    service = new DemoLiveRateService(rates, null as never);
+    service = new DemoLiveRateService(rates, null as never,false);
     service.InitRemoteConnection();
     expect(service.LastRate).toStrictEqual(rates);
     expect(service.RatesReady).toStrictEqual(true);
