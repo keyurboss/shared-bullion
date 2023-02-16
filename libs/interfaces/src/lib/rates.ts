@@ -11,6 +11,7 @@ export enum RateTypeKeys {
   close = 'close',
 }
 export type BaseSymbolePriceInterface = Record<RateTypeKeys, number>;
+export const RateTypeKeysArray = Object.values(RateTypeKeys);
 
 export enum RateBaseSymboles {
   GOLD = 'GOLD',

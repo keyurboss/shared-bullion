@@ -19,6 +19,9 @@
       "@rps/buillion-frontend-core/core": [
         "libs/frontend-core/src/core/index.ts"
       ],
+      "@rps/buillion-frontend-core/mock": [
+        "libs/frontend-core/src/mock/index.ts"
+      ],
       "@rps/buillion-frontend-core/fixtures": [
         "libs/frontend-core/src/fixtures/index.ts"
       ],

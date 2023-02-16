@@ -1,7 +1,8 @@
-import { DemoLiveRateService, LiveRateService } from './live-rate.service';
+import { LiveRateService } from './live-rate.service';
 // import faker from '@faker-js/faker';
 import { RatesFixture } from '../fixtures';
 import { firstValueFrom } from 'rxjs';
+import { DemoLiveRateService } from '../mock';
 
 describe('ABS LiveRateService', () => {
   let service: LiveRateService;
