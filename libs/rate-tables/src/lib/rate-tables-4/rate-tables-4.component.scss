@@ -1,0 +1,64 @@
+:host {
+  --header-back-color: #3b2f2f;
+  --header-font-color: #000000;
+  --header-border-color: #3b2f2f;
+  --data-back-color: #000000;
+  --data-font-color: #000000;
+  --rate-high-back-color: #000000;
+  --rate-high-font-color: #000000;
+  --rate-low-font-color: #000000;
+  --data-border-color: #000000;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table {
+  margin: 10px 10px;
+  color: var(--header-back-color);
+  width: 600px;
+  height: 90px;
+  border-radius: 8px 8px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid var(--header-border-color);
+}
+.header {
+  height: 40%;
+  text-align: right;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  font-size: 15px;
+  border-radius: 8px 8px 0 0;
+  font-weight: 700;
+  background-color: var(--header-back-color);
+  color: white;
+}
+.footer {
+  height: 60%;
+}
+.product {
+  display: flex;
+  height: 50%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  font-size: 12px;
+  font-weight: 700;
+}
+.top_border {
+  border-top: 1px solid var(--header-border-color);
+}
+.right_border {
+  border-right: 1px solid var(--header-border-color);
+}
+.rate_high {
+  color: green !important;
+}
+.rate_low {
+  color: red !important;
+}

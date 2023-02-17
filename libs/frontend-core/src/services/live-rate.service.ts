@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { JsonToItrable } from '../core';
 
-type RateObserDataType = Record<
+export type RateObserDataType = Record<
   RateTypeKeys,
   {
     rate: number;
@@ -126,7 +126,7 @@ export abstract class LiveRateService {
         this.RatesReady = true;
       });
     }
-    if(this.initialiseRemoteConnection){
+    if (this.initialiseRemoteConnection) {
       this.InitRemoteConnection();
     }
   }
