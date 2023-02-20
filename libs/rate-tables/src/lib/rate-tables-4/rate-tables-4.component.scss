@@ -1,24 +1,45 @@
 :host {
   --header-back-color: #3b2f2f;
-  --header-font-color: #000000;
+  --header-font-color: #ffffff;
   --header-border-color: #3b2f2f;
-  --data-back-color: #000000;
-  --data-font-color: #000000;
-  --rate-high-back-color: #000000;
-  --rate-high-font-color: #000000;
-  --rate-low-font-color: #000000;
-  --data-border-color: #000000;
+  --data-back-color: #ffffff;
+  --data-font-color: #ffffff;
+  --rate-high-back-color: #008000;
+  --rate-high-font-color: #ffffff;
+  --rate-low-back-color: #ff0000;
+  --rate-low-font-color: #ffffff;
+  // --data-border-color: #000000;
 }
-.center {
+.product_group_header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 10px 0px 10px 7px;
+}
+.product_group_name {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+.product_price {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.hii{
+  // margin: 4px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 4px ;
+}
 .table {
   margin: 10px 10px;
   color: var(--header-back-color);
-  width: 600px;
+  width: 700px;
   height: 90px;
   border-radius: 8px 8px 0 0;
   font-size: 12px;
@@ -28,6 +49,7 @@
 }
 .header {
   height: 40%;
+  color: var(--header-font-color);
   text-align: right;
   display: grid;
   grid-auto-flow: column;
@@ -36,10 +58,16 @@
   border-radius: 8px 8px 0 0;
   font-weight: 700;
   background-color: var(--header-back-color);
-  color: white;
 }
 .footer {
   height: 60%;
+}
+.product_name {
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 5px 0px 5px 7px;
 }
 .product {
   display: flex;
@@ -57,8 +85,12 @@
   border-right: 1px solid var(--header-border-color);
 }
 .rate_high {
-  color: green !important;
+  color: var(--rate-high-font-color);
+  background-color: var(--rate-high-back-color);
+
 }
 .rate_low {
-  color: red !important;
+  color: var(--rate-low-font-color);
+  background-color: var(--rate-low-back-color);
+ 
 }
