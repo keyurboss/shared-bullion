@@ -3,7 +3,7 @@ import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { 
   LiveRateService,
   RateObserDataType,
-} from '@rps/buillion-frontend-core/services';
+} from '@rps/buillion-frontend-core/services/live-rate.service';
 import { Observable } from 'rxjs';
 
 @Component({
