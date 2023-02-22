@@ -3,7 +3,7 @@ import { RateTables1Component } from '@rps/bullion-rate-tables/table1';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { Env } from '@rps/buillion-frontend-core/core';
-import { observable } from 'rxjs';
+
 @Component({
   standalone: true,
   imports: [RateTables1Component],
