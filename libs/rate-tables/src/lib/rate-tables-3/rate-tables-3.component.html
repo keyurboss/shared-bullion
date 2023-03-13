@@ -8,14 +8,14 @@
     <div *ngFor="let item of data" class="Items">
       <h3 class="product_name">{{ item.name }}</h3>
       <div class="product_price">
-        <p
+        <span
           *ngIf="rate | async; let rate"
           style="padding: 3px 10px"
           [class.rate_high]="rate['ask'].color === 'Green'"
           [class.rate_low]="rate['ask'].color === 'Red'"
         >
           {{ rate['ask'].rate }}
-        </p>
+        </span>
       </div>
     </div>
   </div>
