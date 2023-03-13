@@ -25,11 +25,11 @@
       "@rps/buillion-frontend-core/mock": [
         "libs/frontend-core/src/mock/index.ts"
       ],
-      "@rps/buillion-frontend-core/services/*": [
-        "libs/frontend-core/src/services/*"
-      ],
       "@rps/buillion-frontend-core/services": [
         "libs/frontend-core/src/services/index.ts"
+      ],
+      "@rps/buillion-frontend-core/services/*": [
+        "libs/frontend-core/src/services/*"
       ],
       "@rps/bullion-functions": ["libs/functions/src/index.ts"],
       "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
