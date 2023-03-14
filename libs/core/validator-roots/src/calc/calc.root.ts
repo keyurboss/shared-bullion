@@ -1,7 +1,11 @@
 import {
   GenerateExchangeBackwordCalcString,
   GenerateExchangeForwordCalcString,
-} from './calc.functions';
+  CshGenStrings,
+  CshID,
+  CshPremiumBuySellSnapshot,
+  CshType,
+} from '@rps/bullion-interfaces';
 import { Expose, Type, instanceToPlain } from 'class-transformer';
 import {
   IsEnum,
@@ -10,13 +14,7 @@ import {
   IsUUID,
   ValidateNested,
 } from 'class-validator';
-import { groupDbToPlain, groupToPlain } from '../core';
-import {
-  CshGenStrings,
-  CshID,
-  CshPremiumBuySellSnapshot,
-  CshType
-} from './calc.interface';
+import { groupDbToPlain, groupToPlain } from '../core.interface';
 
 export class CshPremiumBuySellEntity {
   @Expose()

@@ -1,9 +1,6 @@
 // (((({{symbole}}+{{sprem}})*{{conv}}*{{INR}})+{{duty}}+{{margin}})*(1+({{tax}}/100))/{{div}}*{{mult}})
 
 import { Opaque } from 'ts-essentials';
-
-
-
 export type CshID = Opaque<string, 'CshID'>;
 export enum CshType {
   fixed = 'fixed',

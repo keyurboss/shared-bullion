@@ -1,2 +1,2 @@
 export * from './calc.interface';
-export * from './calc.root';
+export * from './calc.functions';
