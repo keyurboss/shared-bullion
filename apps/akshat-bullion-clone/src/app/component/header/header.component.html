@@ -1,0 +1,45 @@
+<div class="main h-52 pt-3 w-full">
+  <div class="Logo pt-1 flex justify-center items-center w-full relative">
+    <div class="header_data_logo w-[80%] flex justify-center">
+      <a href="####"
+        ><img
+          class="img w-[440px] h-[100px] relative left-[20%]"
+          src="../../../assets/images/Akshat bullion logo.svg"
+          alt="Akshat Logo"
+      /></a>
+    </div>
+    <div
+      class="download_img border-[#fcea73] border h-[40px] w-[175px] flex justify-center items-center rounded-[5px] relative right-[6.20rem]"
+    >
+      <a
+        class="flex justify-center mr-[10px] items-center text-[#fce975]"
+        href="#######"
+        ><img
+          class="web h-[20px] w-[20px] mr-2"
+          src="../../../assets/images/download-outline.svg"
+        />Download Apps
+      </a>
+    </div>
+  </div>
+  <div class="menu_nav w-full flex justify-center">
+    <ul class="ul flex flex-row">
+      <li
+        *ngFor="let item of data"
+        class="p-[19px] hover:border-b hover:text-[#fce975] text-[white] border-[#fce975]"
+      >
+        <a class="font-sans cursor-pointer text-[16px]">{{ item.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="marquee w-full">
+    <div class="marquee_container">
+      <marquee
+        direction="left"
+        scrollamount="6"
+        class="marquee_container_marquee text-[18px] text-[#fce975]"
+      >
+        Welcome To Akshat Bullion.
+      </marquee>
+    </div>
+  </div>
+</div>

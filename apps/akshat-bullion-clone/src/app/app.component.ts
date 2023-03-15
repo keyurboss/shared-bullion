@@ -1,9 +1,10 @@
-import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @Component({
   standalone: true,
-  imports: [RouterModule],
+  imports: [HeaderComponent,FooterComponent],
   selector: 'Akshat-bull-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -11,3 +12,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'akshat-bullion-clone';
 }
+
