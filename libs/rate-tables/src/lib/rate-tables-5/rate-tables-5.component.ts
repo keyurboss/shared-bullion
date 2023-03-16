@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation,Inject } from '@angular/core';
+import { Component, ViewEncapsulation,Inject,Input } from '@angular/core';
 import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
 import { Observable } from 'rxjs';
 import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
@@ -20,4 +20,5 @@ export class RateTables5Component {
     this.SILVER= sahil.RateObser$.SILVER_SPOT.asObservable();
     this.INR= sahil.RateObser$.INR.asObservable();
   }
+  @Input() Product_name = 'GOLD SPOT';
 }

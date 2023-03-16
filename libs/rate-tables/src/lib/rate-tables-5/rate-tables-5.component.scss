@@ -7,6 +7,7 @@
     --rate-low-back-color:#008000;
     --box-border-color:#7c6533;
     --box-back-color: #fef8e8;   
+    --font-family: Roboto,Helvetica Neue,sans-serif;
     }
 
     
@@ -18,7 +19,7 @@
     display: flex;
     flex-direction: row;
     padding: 10px 10px;
-    font-family: Roboto,Helvetica Neue,sans-serif;
+    font-family: var(--font-family);
 }
 .box{
     margin: 10px 4px;
