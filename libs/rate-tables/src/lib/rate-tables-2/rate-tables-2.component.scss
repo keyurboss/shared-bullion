@@ -11,6 +11,7 @@
     --rate-low-font-color: #ffffff;
     --rate-low-back-color: #ff0000;
     --data-border-color: #e0bc29;
+    --font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 
  *{
@@ -29,7 +30,7 @@
 
 .main-div {
     width: 268px;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+    font-family: var(--font-family);
     letter-spacing: .5px;
     margin: 10px 10px;
 }
@@ -57,7 +58,7 @@
     align-items: center;
     font-size: 18px;
     border-radius: 5px;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+    font-family: var(--font-family);
     color: var(--data-font-color);
 }
 
