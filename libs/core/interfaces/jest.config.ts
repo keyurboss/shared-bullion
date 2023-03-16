@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'interfaces',
-  preset: '../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   globals: {},
   testEnvironment: 'node',
   transform: {
@@ -13,5 +13,5 @@ export default {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/interfaces',
+  coverageDirectory: '../../../coverage/libs/interfaces',
 };

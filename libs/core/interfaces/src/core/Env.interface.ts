@@ -13,3 +13,4 @@ export type ApplicationKey = Opaque<string, 'ApplicationKey'>;
 export type API_URL = Opaque<string, 'API_URL'>;
 // WS URL
 export type WS_URLs = Opaque<string, 'WS_URLs'>;
+export const BooleanNumberCheckRegex = /^[01]$/;

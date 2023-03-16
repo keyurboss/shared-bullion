@@ -1,7 +1,7 @@
 import {
-  JSONObjectKeyAndTypeValidator,
-  BooleanNumberCheckRegex,
+  JSONObjectKeyAndTypeValidator
 } from 'rps-jsonvalidator';
+import { BooleanNumberCheckRegex } from './Env.interface';
 
 export interface ProductList {
   pid?: number;
