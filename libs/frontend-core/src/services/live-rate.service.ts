@@ -28,13 +28,13 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
-  protected _LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> =
-    {} as never;
-  get LastRate(): Record<RateBaseSymboles, BaseSymbolePriceInterface> {
+  protected _LastRate: Map<RateBaseSymboles, BaseSymbolePriceInterface> =
+    new Map();
+  get LastRate(): Map<RateBaseSymboles, BaseSymbolePriceInterface> {
     return this._LastRate;
   }
   protected set LastRate(
-    value: Record<RateBaseSymboles, BaseSymbolePriceInterface>
+    value: Map<RateBaseSymboles, BaseSymbolePriceInterface>
   ) {
     this._LastRate = value;
     this.setRate(value);
@@ -56,7 +56,7 @@ export abstract class LiveRateService {
     protected initialiseRemoteConnection = true
   ) {
     if (lastRate !== null && typeof lastRate !== 'undefined') {
-      this.LastRate = lastRate;
+      this.LastRate = new Map(JsonToItrable(lastRate));
       this.RatesReady = true;
     }
     if (
@@ -68,19 +68,13 @@ export abstract class LiveRateService {
     }
     this.init();
   }
-  setRate(
-    Rate: Partial<Record<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>>
-  ) {
-    for (const [symb, current_rate] of JsonToItrable<
-      BaseSymbolePriceInterface,
-      RateBaseSymboles
-    >(Rate)) {
-      if (typeof this._LastRate[symb] === 'undefined') {
-        this._LastRate[symb] = current_rate;
+  setRate(Rate: Map<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>) {
+    for (const [symb, current_rate] of Rate) {
+      if (typeof this._LastRate.get(symb) === 'undefined') {
+        this._LastRate.set(symb, current_rate as BaseSymbolePriceInterface);
         continue;
       }
       let old = this.RateObser$[symb]?.value;
-
       if (old === null || typeof old === 'undefined') {
         old = {} as never;
       }
@@ -95,19 +89,20 @@ export abstract class LiveRateService {
           };
           continue;
         }
-        if (old[rateType].rate === current_rate[rateType]) {
+        const old_rate = old[rateType].rate;
+        if (old_rate === new_rate) {
           continue;
         }
-        if (old[rateType].rate < current_rate[rateType]) {
+        if (old_rate < new_rate) {
           old[rateType].color = HighLowColorType.Green;
-        } else if (this._LastRate[symb][rateType] > current_rate[rateType]) {
+        } else if (old_rate > new_rate) {
           old[rateType].color = HighLowColorType.Red;
         }
         if (old[rateType].timeOutRef !== null) {
           clearTimeout(old[rateType].timeOutRef);
           old[rateType].timeOutRef = null;
         }
-        old[rateType].rate = current_rate[rateType];
+        old[rateType].rate = new_rate;
         old[rateType].timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
           cro1[rateType].color = HighLowColorType.Default;
@@ -115,14 +110,17 @@ export abstract class LiveRateService {
         }, 900);
       }
       this.RateObser$[symb]?.next(old);
-      Object.assign(this._LastRate[symb], current_rate);
+      const obj = this._LastRate.get(symb);
+      if (typeof obj !== 'undefined') {
+        Object.assign(obj, current_rate);
+      }
     }
   }
   private async init() {
     this.CreatSubjects();
     if (this.RatesReady === false) {
       await this.getLastRates().then((rate) => {
-        this.LastRate = rate;
+        this.LastRate = new Map(JsonToItrable(rate));
         this.RatesReady = true;
       });
     }
