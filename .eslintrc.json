@@ -13,6 +13,14 @@
             "allow": [],
             "depConstraints": [
               {
+                "sourceTag": "scope:client",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:libs"]
+              },
+              {
+                "sourceTag": "scope:libs",
+                "onlyDependOnLibsWithTags": ["scope:libs"]
+              },
+              {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
               }
