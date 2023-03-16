@@ -1,14 +1,14 @@
+import { Inject, Injectable, Optional } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { InjectableRate, LiveRateService } from '../services/live-rate.service';
-import { RatesFixture } from '../fixtures';
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
   RateBaseSymboles,
   SymboleWiseRate,
 } from '@rps/bullion-interfaces';
-import { Inject, Injectable, Optional } from '@angular/core';
 import { Env } from '../core';
+import { RatesFixture } from '../fixtures';
+import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 
 @Injectable({
   providedIn: 'root',
