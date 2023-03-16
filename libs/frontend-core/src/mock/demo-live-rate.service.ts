@@ -1,16 +1,28 @@
+import { Inject, Injectable, Optional } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { LiveRateService } from '../services/live-rate.service';
-import { RatesFixture } from '../fixtures';
 import {
   BaseSymbolePriceInterface,
+  EnvInterface,
   RateBaseSymboles,
+  SymboleWiseRate,
 } from '@rps/bullion-interfaces';
-import { Injectable } from '@angular/core';
+import { Env } from '../core';
+import { RatesFixture } from '../fixtures';
+import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DemoLiveRateService extends LiveRateService {
+  constructor(
+    @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
+    @Optional() @Inject(Env) envvariable: EnvInterface,
+    @Optional()
+    @Inject('initialiseRemoteConnection')
+    initialiseRemoteConnection: boolean
+  ) {
+    super(lastRate, envvariable, initialiseRemoteConnection ?? true);
+  }
   InitRemoteConnection(): void {
     this.Gold();
     this.Silver();
