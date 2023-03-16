@@ -1,1 +1,58 @@
-<p>rate-tables works!</p>
+<!-- <p>rate-tables works!</p> -->
+
+<div class="table">
+  <div class="header">
+    <div class="product_group_header center">Future</div>
+    <div class="product_group_name flex_center center">Sell</div>
+    <div class="product_group_name flex_center center">Buy</div>
+    <div class="product_group_name flex_center center">High</div>
+    <div class="product_group_name flex_center center">Low</div>
+  </div>
+  <div class="footer">
+    <div class="product" *ngIf="GOLD | async; let gold">
+      <div class="product_name center right_border">GOLD FUTURE</div>
+      <div class="product_price upper_margin right_border center">
+        <div class="hii" [class.rate_high]="gold['ask'].color === 'Green'"
+          [class.rate_low]="gold['ask'].color === 'Red'">
+          {{ gold['bid'].rate }}
+        </div>
+      </div>
+      <div class="product_price upper_margin right_border center">
+        <div class="hii" [class.rate_high]="gold['ask'].color === 'Green'"
+          [class.rate_low]="gold['ask'].color === 'Red'">
+          {{ gold['ask'].rate }}
+        </div>
+      </div>
+      <div class="product_price upper_margin right_border center">
+        {{ gold['last-high'].rate }}
+      </div>
+      <div class="product_price remove_border upper_margin center">
+        {{ gold['last-low'].rate }}
+      </div>
+    </div>
+    <div class="product" *ngIf="SILVER | async; let silver">
+      <div class="product_name center right_border top_border">
+        SILVER FUTURE
+      </div>
+      <div class="product_price upper_margin right_border center top_border">
+        <div class="hii" [class.rate_high]="silver['bid'].color === 'Green'"
+          [class.rate_low]="silver['bid'].color === 'Red'">
+          {{ silver['bid'].rate }}
+        </div>
+      </div>
+      <div class="product_price upper_margin right_border center top_border">
+        <div class="hii" [class.rate_high]="silver['ask'].color === 'Green'"
+          [class.rate_low]="silver['ask'].color === 'Red'">
+          {{ silver['ask'].rate }}
+        </div>
+
+      </div>
+      <div class="product_price upper_margin right_border center top_border">
+        {{ silver['last-high'].rate }}
+      </div>
+      <div class="product_price remove_border upper_margin center top_border">
+        {{ silver['last-low'].rate }}
+      </div>
+    </div>
+  </div>
+</div>

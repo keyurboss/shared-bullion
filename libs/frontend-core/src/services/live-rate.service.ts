@@ -124,7 +124,7 @@ export abstract class LiveRateService {
         this.RatesReady = true;
       });
     }
-    if(this.initialiseRemoteConnection){
+    if (this.initialiseRemoteConnection) {
       this.InitRemoteConnection();
     }
   }
