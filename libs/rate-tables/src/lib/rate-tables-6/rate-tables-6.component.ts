@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation ,Inject} from '@angular/core';
+import { Component, ViewEncapsulation ,Inject,Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
 import { AsyncPipe, JsonPipe,NgIf } from '@angular/common';
@@ -12,7 +12,12 @@ import { AsyncPipe, JsonPipe,NgIf } from '@angular/common';
   styleUrls: ['./rate-tables-6.component.scss'],
 })
 export class RateTables6Component {
-
+  headers={
+    product_name:"FUTURE RATE",
+    bid:"BID",
+    diff:"DIFF",
+    ask:"ASK"
+  }
   GOLD:Observable<RateObserDataType>;
   SILVER:Observable<RateObserDataType>;
   constructor(@Inject(LiveRateService) sahil:LiveRateService){

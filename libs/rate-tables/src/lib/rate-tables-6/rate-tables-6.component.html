@@ -1,9 +1,9 @@
 <div class="main">
   <div class="header">
-    <div class="w_40 header_left_name">FUTURE RATE</div>
-    <div class="w_20 header_right_name center">BID</div>
-    <div class="w_20 header_right_name center">DIFF</div>
-    <div class="w_20 header_right_name center">ASK</div>
+    <div class="w_40 header_left_name">{{ headers.product_name }}</div>
+    <div class="w_20 header_right_name center">{{ headers.bid }}</div>
+    <div class="w_20 header_right_name center">{{ headers.diff }}</div>
+    <div class="w_20 header_right_name center">{{ headers.ask }}</div>
   </div>
   <div class="footer">
     <div class="footer_item" *ngIf="GOLD | async; let gold">
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="w_20 small center">
-        {{ gold['open'].rate }}-{{ gold['ask'].rate }}
+        {{ gold['open'].rate - gold['ask'].rate }}
       </div>
       <div class="w_20 center column">
         <div
@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="w_20 small center">
-        {{ silver['open'].rate }}-{{ silver['ask'].rate }}
+        {{ silver['open'].rate - silver['ask'].rate }}
       </div>
       <div class="w_20 center column">
         <div

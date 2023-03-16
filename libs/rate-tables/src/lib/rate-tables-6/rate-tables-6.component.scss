@@ -7,6 +7,7 @@
   --rate-high-back-color: #ff0000;
   --rate-low-font-color: #ffffff;
   --rate-low-back-color: #008000;
+  --font-family: Roboto, Helvetica Neue, sans-serif;
 }
 * {
   margin: 0;
@@ -35,7 +36,7 @@
   flex-direction: column;
   width: 350px;
   height: 100px;
-  font-family: Roboto, Helvetica Neue, sans-serif;
+  font-family:var(--font-family);
   padding: 10px 10px;
 }
 .header {
