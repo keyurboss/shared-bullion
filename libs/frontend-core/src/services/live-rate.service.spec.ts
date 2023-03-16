@@ -3,6 +3,7 @@ import { LiveRateService } from './live-rate.service';
 import { RatesFixture } from '../fixtures';
 import { firstValueFrom } from 'rxjs';
 import { DemoLiveRateService } from '../mock';
+import { JsonToItrable } from '../core';
 
 describe('ABS LiveRateService', () => {
   let service: LiveRateService;
@@ -11,7 +12,7 @@ describe('ABS LiveRateService', () => {
     const rates = RatesFixture.GenerateForAllSymboles();
     service = new DemoLiveRateService(rates, null as never,false);
     service.InitRemoteConnection();
-    expect(service.LastRate).toStrictEqual(rates);
+    expect(service.LastRate).toStrictEqual(new Map(JsonToItrable(rates)));
     expect(service.RatesReady).toStrictEqual(true);
     expect(firstValueFrom(service.RatesReady$)).resolves.toStrictEqual(true);
   });
