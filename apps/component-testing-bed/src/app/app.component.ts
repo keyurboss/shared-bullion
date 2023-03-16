@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Env } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import { RateTables7Component } from '@rps/bullion-rate-tables';
@@ -12,6 +13,10 @@ import { RateTables7Component } from '@rps/bullion-rate-tables';
     {
       provide: LiveRateService,
       useClass: DemoLiveRateService,
+    },
+    {
+      provide: Env,
+      useValue: {},
     },
   ],
 })
