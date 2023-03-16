@@ -33,11 +33,11 @@
       ],
       "@rps/bullion-functions": ["libs/functions/src/index.ts"],
       "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
-      "@rps/bullion-interfaces": ["libs/interfaces/src/index.ts"],
-      "@rps/bullion-interfaces/calc": ["libs/interfaces/src/calc/index.ts"],
-      "@rps/bullion-interfaces/calc/*": ["libs/interfaces/src/calc/*"],
-      "@rps/bullion-interfaces/core": ["libs/interfaces/src/core/index.ts"],
-      "@rps/bullion-interfaces/core/*": ["libs/interfaces/src/core/*"],
+      "@rps/bullion-interfaces": ["libs/core/interfaces/src/index.ts"],
+      "@rps/bullion-interfaces/calc": ["libs/core/interfaces/src/calc/index.ts"],
+      "@rps/bullion-interfaces/calc/*": ["libs/core/interfaces/src/calc/*"],
+      "@rps/bullion-interfaces/core": ["libs/core/interfaces/src/core/index.ts"],
+      "@rps/bullion-interfaces/core/*": ["libs/core/interfaces/src/core/*"],
       "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
       "@rps/bullion-rate-tables/table1": [
         "libs/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
@@ -56,7 +56,8 @@
       ],
       "@rps/bullion-rate-tables/table6": [
         "libs/rate-tables/src/lib/rate-tables-6/rate-tables-6.component.ts"
-      ]
+      ],
+      "@rps/bullion-validator-roots": ["libs/core/validator-roots/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
