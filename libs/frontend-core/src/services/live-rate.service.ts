@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { JsonToItrable } from '../core';
 
-type RateObserDataType = Record<
+export type RateObserDataType = Record<
   RateTypeKeys,
   {
     rate: number;
