@@ -17,13 +17,11 @@ import { RateTables6Component } from '@rps/bullion-rate-tables/table6';
       useClass: DemoLiveRateService,
     },
     {
-      provide : Env ,
-      useValue:{}
-    }
+      provide: Env,
+      useValue: {},
+    },
   ],
 })
 export class AppComponent {
   title = 'component-testing-bed';
-
-  
 }
