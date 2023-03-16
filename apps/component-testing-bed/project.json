@@ -1,6 +1,6 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "component-testing-bed",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/component-testing-bed/src",
   "prefix": "shared-bullion",
@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/component-testing-bed",
         "index": "apps/component-testing-bed/src/index.html",
         "main": "apps/component-testing-bed/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": ["zone.js","apps/component-testing-bed/src/polyfils.ts"],
         "tsConfig": "apps/component-testing-bed/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [

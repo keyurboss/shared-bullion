@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { RateTables1Component } from '@rps/bullion-rate-tables/table1';
-import { LiveRateService } from '@rps/buillion-frontend-core/services';
+import { Env } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { LiveRateService } from '@rps/buillion-frontend-core/services';
+import {
+  RateTables1Component,
+  RateTables3Component,
+} from '@rps/bullion-rate-tables';
 @Component({
   standalone: true,
-  imports: [RateTables1Component],
+  imports: [RateTables1Component, RateTables3Component],
   selector: 'shared-bullion-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -12,6 +16,10 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
     {
       provide: LiveRateService,
       useClass: DemoLiveRateService,
+    },
+    {
+      provide: Env,
+      useValue: {},
     },
   ],
 })

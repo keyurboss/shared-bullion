@@ -1,16 +1,28 @@
+import { Inject, Injectable, Optional } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { LiveRateService } from '../services/live-rate.service';
-import { RatesFixture } from '../fixtures';
 import {
   BaseSymbolePriceInterface,
+  EnvInterface,
   RateBaseSymboles,
+  SymboleWiseRate,
 } from '@rps/bullion-interfaces';
-import { Injectable } from '@angular/core';
+import { Env, JsonToItrable } from '../core';
+import { RatesFixture } from '../fixtures';
+import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DemoLiveRateService extends LiveRateService {
+  constructor(
+    @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
+    @Optional() @Inject(Env) envvariable: EnvInterface,
+    @Optional()
+    @Inject('initialiseRemoteConnection')
+    initialiseRemoteConnection: boolean
+  ) {
+    super(lastRate, envvariable, initialiseRemoteConnection ?? true);
+  }
   InitRemoteConnection(): void {
     this.Gold();
     this.Silver();
@@ -33,12 +45,16 @@ export class DemoLiveRateService extends LiveRateService {
         top: 15,
         bottom: 0,
       },
-      this._LastRate[RateBaseSymboles.SILVER]
+      this._LastRate.get(RateBaseSymboles.SILVER)
     );
-    this.setRate({
-      SILVER,
-      SILVER_MCX: SILVER,
-    });
+    this.setRate(
+      new Map(
+        JsonToItrable({
+          SILVER,
+          SILVER_MCX: SILVER,
+        })
+      )
+    );
     setTimeout(() => {
       this.Silver();
     }, timeout * 10000);
@@ -58,12 +74,16 @@ export class DemoLiveRateService extends LiveRateService {
         top: 15,
         bottom: 0,
       },
-      this._LastRate[RateBaseSymboles.GOLD]
+      this._LastRate.get(RateBaseSymboles.GOLD)
     );
-    this.setRate({
-      GOLD,
-      GOLD_MCX: GOLD,
-    });
+    this.setRate(
+      new Map(
+        JsonToItrable({
+          GOLD,
+          GOLD_MCX: GOLD,
+        })
+      )
+    );
     setTimeout(() => {
       this.Gold();
     }, timeout * 10000);
@@ -85,11 +105,15 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 0,
         points: 0.01,
       },
-      this._LastRate[RateBaseSymboles.SILVER_SPOT]
+      this._LastRate.get(RateBaseSymboles.SILVER_SPOT)
     );
-    this.setRate({
-      SILVER_SPOT,
-    });
+    this.setRate(
+      new Map(
+        JsonToItrable({
+          SILVER_SPOT,
+        })
+      )
+    );
     setTimeout(() => {
       this.SilverSpot();
     }, timeout * 10000);
@@ -112,11 +136,15 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 1,
         points: 0.01,
       },
-      this._LastRate[RateBaseSymboles.GOLD_SPOT]
+      this._LastRate.get(RateBaseSymboles.GOLD_SPOT)
     );
-    this.setRate({
-      GOLD_SPOT,
-    });
+    this.setRate(
+      new Map(
+        JsonToItrable({
+          GOLD_SPOT,
+        })
+      )
+    );
     setTimeout(() => {
       this.GoldSpot();
     }, timeout * 10000);
@@ -139,11 +167,15 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 0,
         points: 0.0001,
       },
-      this._LastRate[RateBaseSymboles.INR]
+      this._LastRate.get(RateBaseSymboles.INR)
     );
-    this.setRate({
-      INR,
-    });
+    this.setRate(
+      new Map(
+        JsonToItrable({
+          INR,
+        })
+      )
+    );
     setTimeout(() => {
       this.INR();
     }, timeout * 10000);

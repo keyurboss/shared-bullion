@@ -1,4 +1,4 @@
-import { Inject, InjectionToken, Optional, Injectable } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
@@ -10,9 +10,9 @@ import {
   SymboleWiseRate,
 } from '@rps/bullion-interfaces';
 import { BehaviorSubject } from 'rxjs';
-import { Env, JsonToItrable } from '../core';
+import { JsonToItrable } from '../core';
 
-type RateObserDataType = Record<
+export type RateObserDataType = Record<
   RateTypeKeys,
   {
     rate: number;
@@ -25,9 +25,6 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
   'Insert Current Price'
 );
 
-@Injectable({
-  providedIn: 'root',
-})
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
@@ -54,8 +51,9 @@ export abstract class LiveRateService {
   }
 
   constructor(
-    @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
-    @Optional() @Inject(Env) envvariable: EnvInterface
+    lastRate: SymboleWiseRate,
+    envvariable: EnvInterface,
+    protected initialiseRemoteConnection = true
   ) {
     if (lastRate !== null && typeof lastRate !== 'undefined') {
       this.LastRate = new Map(JsonToItrable(lastRate));
@@ -76,42 +74,42 @@ export abstract class LiveRateService {
         this._LastRate.set(symb, current_rate as BaseSymbolePriceInterface);
         continue;
       }
-      let cro = this.RateObser$[symb]?.value;
-      if (cro === null || typeof cro === 'undefined') {
-        cro = {} as never;
+      let old = this.RateObser$[symb]?.value;
+      if (old === null || typeof old === 'undefined') {
+        old = {} as never;
       }
       for (const [rateType, new_rate] of JsonToItrable<number, RateTypeKeys>(
         current_rate
       )) {
-        if (typeof cro[rateType] === 'undefined') {
-          cro[rateType] = {
+        if (typeof old[rateType] === 'undefined') {
+          old[rateType] = {
             rate: new_rate,
             color: HighLowColorType.Default,
             timeOutRef: null,
           };
           continue;
         }
-        const old_rate = cro[rateType].rate;
+        const old_rate = old[rateType].rate;
         if (old_rate === new_rate) {
           continue;
         }
         if (old_rate < new_rate) {
-          cro[rateType].color = HighLowColorType.Green;
+          old[rateType].color = HighLowColorType.Green;
         } else if (old_rate > new_rate) {
-          cro[rateType].color = HighLowColorType.Red;
+          old[rateType].color = HighLowColorType.Red;
         }
-        if (cro[rateType].timeOutRef !== null) {
-          clearTimeout(cro[rateType].timeOutRef);
-          cro[rateType].timeOutRef = null;
+        if (old[rateType].timeOutRef !== null) {
+          clearTimeout(old[rateType].timeOutRef);
+          old[rateType].timeOutRef = null;
         }
-        cro[rateType].rate = new_rate;
-        cro[rateType].timeOutRef = setTimeout(() => {
+        old[rateType].rate = new_rate;
+        old[rateType].timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
           cro1[rateType].color = HighLowColorType.Default;
           this.RateObser$[symb]?.next(cro1);
         }, 900);
       }
-      this.RateObser$[symb]?.next(cro);
+      this.RateObser$[symb]?.next(old);
       const obj = this._LastRate.get(symb);
       if (typeof obj !== 'undefined') {
         Object.assign(obj, current_rate);
@@ -126,7 +124,9 @@ export abstract class LiveRateService {
         this.RatesReady = true;
       });
     }
-    this.InitRemoteConnection();
+    if(this.initialiseRemoteConnection){
+      this.InitRemoteConnection();
+    }
   }
 
   private CreatSubjects() {
