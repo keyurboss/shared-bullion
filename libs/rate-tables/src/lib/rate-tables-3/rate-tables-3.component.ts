@@ -1,5 +1,5 @@
 import { NgFor, NgIf,AsyncPipe,JsonPipe } from '@angular/common';
-import { Component,Inject, ViewEncapsulation } from '@angular/core';
+import { Component,Inject, ViewEncapsulation,Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { 
   LiveRateService,
@@ -19,6 +19,8 @@ export class RateTables3Component {
   constructor(@Inject(LiveRateService) sahil: LiveRateService) {
     this.rate = sahil.RateObser$.GOLD.asObservable();
   }
+  @Input() Product_name = 'GOLD PRODUCTS';
+  @Input() sell = 'SELL';
   data=[
     {
       "name": "GOLD 999 IMP WITH TDS",
