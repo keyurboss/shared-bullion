@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Env } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
-import { RateTables1Component } from '@rps/bullion-rate-tables/table1';
-import { RateTables5Component } from '@rps/bullion-rate-tables/table5';
-
+import {
+  RateTables1Component,
+  RateTables3Component,
+} from '@rps/bullion-rate-tables';
 @Component({
   standalone: true,
-  imports: [RateTables1Component,RateTables5Component],
+  imports: [RateTables1Component, RateTables3Component],
   selector: 'shared-bullion-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -17,13 +18,11 @@ import { RateTables5Component } from '@rps/bullion-rate-tables/table5';
       useClass: DemoLiveRateService,
     },
     {
-      provide : Env ,
-      useValue:{}
-    }
+      provide: Env,
+      useValue: {},
+    },
   ],
 })
 export class AppComponent {
   title = 'component-testing-bed';
-
-  
 }
