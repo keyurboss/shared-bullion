@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'Akshat-bull-app-footer',
+  selector: 'akshat-bull-app-footer',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './footer.component.html',

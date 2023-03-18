@@ -5,7 +5,7 @@ interface navbar{
   url:string;
 }
 @Component({
-  selector: 'akshat-bull-header',
+  selector: 'akshat-bull-app-header',
   standalone: true,
   imports: [NgFor],
 //   encapsulation:ViewEncapsulation.ShadowDom,
