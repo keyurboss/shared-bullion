@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { NgFor} from '@angular/common';
+import { RouterLink } from '@angular/router';
 interface navbar{
   name:string;
   url:string;
@@ -7,7 +8,7 @@ interface navbar{
 @Component({
   selector: 'akshat-bull-app-header',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor , RouterLink],
 //   encapsulation:ViewEncapsulation.ShadowDom,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
@@ -36,7 +37,7 @@ export class HeaderComponent {
     },
     {
       name:'CONTACT US',
-      url:'',
+      url:'contact',
     },
     {
       name:'LOGIN',

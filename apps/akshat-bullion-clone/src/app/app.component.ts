@@ -4,11 +4,12 @@ import { FooterComponent } from './footer/footer.component';
 import { RateTables6Component } from '@rps/bullion-rate-tables/table6';
 import { Env, LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   standalone: true,
-  imports: [HeaderComponent,FooterComponent,RateTables6Component],
+  imports: [HeaderComponent,FooterComponent,RateTables6Component , RouterOutlet],
   selector: 'akshat-bull-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
