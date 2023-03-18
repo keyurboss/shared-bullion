@@ -1,4 +1,4 @@
-<div class="main h-52 pt-3 w-full">
+<div class="main backdrop-blur-[2.5px] h-52 pt-3 w-full">
     <div class="Logo pt-1 flex justify-center items-center w-full relative">
       <div class="header_data_logo w-[80%] flex justify-center">
         <a href="####"
@@ -27,7 +27,7 @@
           *ngFor="let item of data"
           class="p-[19px] hover:border-b hover:text-[#fce975] text-[white] border-[#fce975]"
         >
-          <a [routerLink]="item.url" class="font-sans cursor-pointer text-[16px]">{{ item.name }}</a>
+          <a [routerLink]="item.routerLink" class="font-sans cursor-pointer text-[16px]">{{ item.name }}</a>
         </li>
       </ul>
     </div>

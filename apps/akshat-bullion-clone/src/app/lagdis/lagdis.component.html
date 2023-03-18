@@ -1,1 +1,35 @@
-<p>lagdis works!</p>
+<div class="app_home_container">
+  <div class="lagdi">
+    <div class="header flex_center">
+      <h2>{{header_data.header}}</h2>
+    </div>
+    <div class="container flex_center">
+      <div class="table">
+        <div class="thead">
+          <div class="option">
+            <h4 class="flex_center"></h4>
+          </div>
+          <div class="option">
+            <h4 class="flex_center">{{header_data.gold}}</h4>
+          </div>
+          <div class="option">
+            <h4 class="flex_center">{{header_data.silver}}</h4>
+          </div>
+        </div>
+        <div *ngFor="let item of data" class="tbody" >
+          <div  class="com_row {{item.class}}">
+            <div class="com_prop">
+              <h5 class="flex_center">{{item.leftdata}}</h5>
+            </div>
+            <div class="com_prop">
+              <h5 class="flex_center">{{item.centerdata}}</h5>
+            </div>
+            <div class="com_prop">
+              <h5 class="flex_center">{{item.rightdata}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

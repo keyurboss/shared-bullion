@@ -3,7 +3,7 @@ import { NgFor} from '@angular/common';
 import { RouterLink } from '@angular/router';
 interface navbar{
   name:string;
-  url:string;
+  routerLink:string;
 }
 @Component({
   selector: 'akshat-bull-app-header',
@@ -17,31 +17,31 @@ export class HeaderComponent {
   data: navbar[]=[
     {
       name:'ABOUT US',
-      url:'',
+      routerLink:'/about-us',
     },
     {
       name:'LIVE RATE',
-      url:'',
+      routerLink:'/live-rate',
     },
     {
       name:'LAGDIS',
-      url:'',
+      routerLink:'/lagdis',
     },
     {
       name:'MESSAGES',
-      url:'',
+      routerLink:'/messages',
     },
     {
       name:'BANK DETAILS',
-      url:'',
+      routerLink:'/bank-details',
     },
     {
       name:'CONTACT US',
-      url:'contact',
+      routerLink:'/contact-us',
     },
     {
       name:'LOGIN',
-      url:'',
+      routerLink:'##',
     },
   ];
 }

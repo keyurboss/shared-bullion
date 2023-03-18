@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LIVERATEComponent } from './live-rate.component';
+import { LiveRateComponent } from './live-rate.component';
 
-describe('LIVERATEComponent', () => {
-  let component: LIVERATEComponent;
-  let fixture: ComponentFixture<LIVERATEComponent>;
+describe('LiveRateComponent', () => {
+  let component: LiveRateComponent;
+  let fixture: ComponentFixture<LiveRateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LIVERATEComponent],
+      imports: [LiveRateComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LIVERATEComponent);
+    fixture = TestBed.createComponent(LiveRateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

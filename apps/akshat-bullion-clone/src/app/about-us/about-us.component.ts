@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'Akshat-bull-app-about-us',
+  selector: 'akshat-bull-app-about-us',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterOutlet],
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.scss'],
 })
-export class ABOUTUSComponent {}
+export class AboutusComponent {}

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LAGDISComponent } from './lagdis.component';
+import { LagdisComponent } from './lagdis.component';
 
-describe('LAGDISComponent', () => {
-  let component: LAGDISComponent;
-  let fixture: ComponentFixture<LAGDISComponent>;
+describe('LagdisComponent', () => {
+  let component: LagdisComponent;
+  let fixture: ComponentFixture<LagdisComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LAGDISComponent],
+      imports: [LagdisComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LAGDISComponent);
+    fixture = TestBed.createComponent(LagdisComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
