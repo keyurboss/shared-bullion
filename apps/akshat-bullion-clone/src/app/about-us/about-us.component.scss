@@ -36,11 +36,12 @@
 .main{
     padding: 30px 10%;
     width: 100%;
+    background-color: #000000c5;
  
 }
 .about_us{
     position: relative;
-    background-color: #0006;
+
     height: 100%;
     width: 100%;
     margin-right: auto;
@@ -49,7 +50,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    background-image: url('../../assets/images/Logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .background-image{
     position: absolute;
@@ -58,3 +61,13 @@
     width: 100%;
     z-index: -1;
 }
+// .img{
+//     background-image: url('../../assets/images/Logo.svg');
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     opacity: 0.6;
+//     height: 28rem;
+//     width: 100%;
+//     display: block;
+//     position: absolute;
+// }

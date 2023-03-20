@@ -1,46 +1,13 @@
+<!-- <div class="img"></div> -->
 <div class="about_us">
-    <div class="main">
-    <div class="main_container">
-        <h2><span> WELCOME TO Akshat Bullion </span></h2>
-        <p>
-        Akshat Bullion was founded in 2018 by Akshat Shah who is doing business
-        for many year. Blend of his passion and experience in the Gold
-        & Silver industry have created the organization with customer
-        oriented. It is located in the heart city of Ahmedabad.
-    </p>
-    <p>
-        It is a fast growing organization having excellent track record with
-        suppliers all over region and gains reputation in the industry. His
-        innovative and intelligent ideas enhance our business network.
-    </p>
-</div>
-<div class="main_container">
-    <h2><span> STRENGTH </span></h2>
-    <p>
-        We believe delivery on time and transparent trade policies made possible
-        to achieve the important place in the business within the short span of
-        time. In the competitive arena Akshat Bullion obliged to satisfy its
-        customer and suppliers.
-    </p>
-    <p>
-        Our young, dynamic and qualified operation team to deliver impeccable
-        service to the clients. This is what drives our organization to succeed
-        and has drawn hundreds of prestigious customers to put immense trust and
-        faith in our business.
-    </p>
-</div>
-<div class="main_container">
-    <h2><span> VISION </span></h2>
-    <p>
-        Our company is having vision of expanding its presence very soon in the
-        refinery segment with own brand named as Akshat Bullion. In order to
-        serve you better and reach a wider network, we have focused to launch
-        our outlets all over the region.
-    </p>
-</div>
-    <div class="main_container">
-        <h2><span> MANAGEMENT TEAM </span></h2>
-        <p>Akshat Shah – Owner</p>
+  <div class="main">
+    <div *ngFor="let item of data" class="main_container">
+      <h2>
+        <span>{{ item.tittle }}</span>
+      </h2>
+      <p *ngFor="let para of item.content">
+        {{ para }}
+      </p>
     </div>
-      
+  </div>
 </div>

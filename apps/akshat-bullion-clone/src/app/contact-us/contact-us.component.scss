@@ -1,0 +1,117 @@
+:host{
+  --primary-light:#fce975;
+  --primary-dark:#b48531;
+
+}
+.contact-us {
+    height: 100%;
+    width: 100%;
+    padding: 30px 10%;
+  }
+  .contact-us .container {
+    flex-direction: row;
+    height: 100%;
+    align-items: stretch;
+  }
+  .contact-us .container .card {
+    flex: 1;
+    margin: 0px 20px;
+    min-height: 100px;
+    width: 300px;
+    position: relative;
+    background-color: #222;
+    border-radius: 18px;
+  }
+  .contact-us .container .card .logo {
+    height: 80px;
+    border-bottom: 2px solid var(--primary-light);
+  }
+  .contact-us .container .card .logo img {
+    height: 70%;
+    width: 70%;
+    background-color: var(--primary-light);
+  }
+  .contact-us .container .card .logo .location {
+    -webkit-mask: url('../../assets/images/location.svg') no-repeat center;
+    mask: url('../../assets/images/location.svg') no-repeat center;
+  }
+  .contact-us .container .card .logo .contact {
+    -webkit-mask: url('../../assets/images/contact.svg') no-repeat center;
+    mask: url('../../assets/images/contact.svg') no-repeat center;
+  }
+  .contact-us .container .card .logo .email {
+    -webkit-mask: url('../../assets/images/mail.svg') no-repeat center;
+    mask: url('../../assets/images/mail.svg') no-repeat center;
+  } 
+  .contact-us .container .card .data {
+    flex-grow: 1;
+  }
+  .contact-us .container .card .data .header {
+    margin-top: 10px;
+    height: 50px;
+  }
+  .contact-us .container .card .data .header h2 {
+    color: var(--primary-light);
+    margin: 0;
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .contact-us .container .card .data .sub_data {
+    padding: 15px 10px;
+    flex-direction: column;
+  }
+  .contact-us .container .card .data .sub_data p {
+    font-size: 16px;
+    color: #fff;
+    line-height: 25px;
+  }
+  .contact-us .container .card .data .sub_data p span a {
+    text-decoration: none;
+  }
+  .contact-us .container .card .data h4 {
+    height: 40px;
+    width: 100%;
+    margin: 20px 0;
+    margin: 0;
+    font-size: 18px;
+    color: var(--primary-dark);
+  }
+  .container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .contact-us .container .card::after {
+    position: absolute;
+    content: '';
+    top: calc(-1 * 3px);
+    left: calc(-1 * 3px);
+    z-index: -1;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    background: linear-gradient(
+      60deg,
+      #5f86f2,
+      #a65ff2,
+      #f25fd0,
+      #f25f61,
+      #f2cb5f,
+      #abf25f,
+      #5ff281,
+      #5ff2f0
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: 18px;
+    animation: moveGradient 4s alternate infinite;
+  }
+  @keyframes moveGradient {
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  .flex_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
