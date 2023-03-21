@@ -1,11 +1,10 @@
-<!-- <div class="img"></div> -->
-<div class="about_us font">
-  <div class="main">
-    <div *ngFor="let item of data" class="main_container">
-      <h2>
+<div class="about_us font relative h-full w-full mr-auto ml-auto flex justify-center items-center bg-no-repeat bg-center">
+  <div class="main w-full bg-[#000000c5] py-[30px] px-[10%]">
+    <div *ngFor="let item of data" class="main_container my-[20px] rounded-[6px] py-[10px] px-[20px]">
+      <h2 class="w-full text-center m-0 text-[24px] uppercase mb-[10px] border-b-[var(--primary-light)] border-b text-[var(--primary-light)] pb-[4px]">
         <span>{{ item.tittle }}</span>
       </h2>
-      <p *ngFor="let para of item.content">
+      <p *ngFor="let para of item.content" class="text-justify text-[16px] text-[#fff] tracking-normal leading-[20px] mb-[15px]">
         {{ para }}
       </p>
     </div>
