@@ -8,6 +8,9 @@ on:
       - 'feat/**'
       - 'feature/**'
       - 'fix/**'
+      - bugfix/*
+      - hotfix/**
+      - release/**
       
 jobs:
   build:
@@ -44,3 +47,83 @@ jobs:
 
       # - name: Yarn Affected Pack Server
       #   run: yarn nx affected --target=pack --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+
+  lint-test:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        target:
+          - lint
+          - test
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - run: git fetch --no-tags --prune --depth=1 origin main
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: set-shas
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
+
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Yarn Affected ${TARGET}
+        run: yarn nx affected --target=${TARGET} --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+        env:
+          TARGET: ${{ matrix.target }}
+
+  build-pack:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        target:
+          - build
+          - pack
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - run: git fetch --no-tags --prune --depth=1 origin main
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: set-shas
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
+
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Yarn Affected ${TARGET}
+        run: yarn nx affected --target=${TARGET} --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
+        env:
+          TARGET: ${{ matrix.target }}
