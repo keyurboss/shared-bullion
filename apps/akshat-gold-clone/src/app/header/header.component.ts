@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'akshat-gold-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NgFor],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -12,27 +12,28 @@ export class HeaderComponent {
   @Input() SERVICES_HOUR = 'SERVICES HOUR:';
   @Input() BOOKING_NUBERS = 'BOOKING NUBERS:';
   data=[
-    { name:"about",
+    { name:"ABOUT US",
        url:"",
    },
-    { name:"live rate",
+    { name:"LIVE RATE",
        url:"",
    },
-    { name:"updates",
+    { name:"UPDATES",
        url:"",
    },
-    { name:"Bank details",
+    { name:"BANK DETAILS",
        url:"",
    },
-    { name:"App",
+    { name:"APP",
        url:"",
    },
-    { name:"about",
+    { name:"CONTACT US",
        url:"",
    },
-    { name:"about",
+    { name:"ECO. CALENDER",
        url:"",
    },
+  
   ]
 
 }

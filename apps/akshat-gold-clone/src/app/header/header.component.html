@@ -1,53 +1,78 @@
-<div class="main">
-  <div class="header_top">
-    <div class="header_top_1">
-      <div class="header_data_timing_working">{{ SERVICES_HOUR }}</div>
-      <div class="coloumn">
-        <div class="header_data_timing_weekdays_days">Monday:</div>
-        <div class="header_data_timing_weekdays_time">10:AM- 6:PM</div>
+<div class="main h-[30vh]">
+  <div class="h-[60%] flex justify-center bg-[#bc9039]">
+    <div class="w-[30%] flex flex-col justify-center items-center">
+      <div class="header_data_timing_working text-[18px] text-[#fff] font-sans">
+        {{ SERVICES_HOUR }}
+      </div>
+      <div class="coloumn flex flex-row">
+        <div
+          class="header_data_timing_weekdays_days flex items-center text-[14px] font-sans text-[#282828] font-bold"
+        >
+          Monday:
+        </div>
+        <div
+          class="header_data_timing_weekdays_time flex items-center text-[14px] font-light"
+        >
+          10:AM- 6:PM
+        </div>
       </div>
     </div>
-    <div class="header_top_2">
+    <div class="w-[30%] flex flex-col justify-center items-center">
       <img src="../../assets/images/Logo.svg" alt="" />
     </div>
-    <div class="header_data_contact header_top_3">
-      <div class="header_data_contact_title">Booking Numbers:</div>
-      <div class="header_data_contact_contacts">
-        <div class="header_data_contact_contacts_contact">
-          <a href="tel:9265438886">9265438886</a> |
+    <div
+      class="w-[35%] flex-1 flex flex-col justify-center items-center text-right"
+    >
+      <div
+        class="flex justify-end w-[50%] text-end text-[#fff] font-sans text-[18px]"
+      >
+        Booking Numbers:
+      </div>
+      <div class="text-[#282828] mt-[2px] flex w-[50%] justify-end">
+        <div class="w-[100px] text-[14px] flex justify-end">
+          <a class="no-underline font-medium" href="tel:9265438886"
+            >9265438886</a
+          >
+          |
         </div>
-        <div class="header_data_contact_contacts_contact">
-          <a href="tel:9904718494">9904718494</a>
+        <div class="w-[100px] text-[14px] flex justify-end">
+          <a class="no-underline font-medium" href="tel:9904718494"
+            >9904718494</a
+          >
         </div>
       </div>
-      <div class="header_data_contact_contacts">
-        <div class="header_data_contact_contacts_contact">
-          <a href="tel:9904818494">9904818494</a>
+      <div class="text-[#282828] mt-[2px] flex w-[50%] justify-end">
+        <div class="w-[100px] text-[14px] flex justify-end">
+          <a class="no-underline font-medium" href="tel:9904818494"
+            >9904818494</a
+          >
         </div>
-        <!---->
       </div>
     </div>
   </div>
-  <div class="header_mid">
-   <div class="menu">
-    <div class="menu_nav">
-      <ul>
-        <a href="">ABOUT US</a>
-        <a href="">LIVE RATE</a>
-        <a href="">UPDATES</a>
-        <a href="">BANK DETAILS</a>
-        <a href="">APP</a>
-        <a href="">CONTACT US</a>
-        <a href="">ECO. CALENDER</a>
-      </ul>
+  <div class="h-[25%] bg-[#41241c]">
+    <div class="flex justify-center h-full">
+      <div class="flex items-center">
+        <ul class="flex flex-row h-full list-none items-center">
+          <li
+            class="px-[20px] h-full flex items-center hover:border-b-[3px] hover:border-b-[#ffffff]"
+            *ngFor="let item of data"
+          >
+            <a
+              class="text-[#999] flex items-center font-sans text-[12px] hover:text-[#bc9039]"
+              href=""
+              >{{ item.name }}</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
-   </div> 
   </div>
-  <div class="header_bottom">
+  <div class="bg-[#ccc] h-[15%] flex items-center justify-center">
     <marquee
       direction="left"
       scrollamount="6"
-      class="marquee_container_marquee"
+      class="marquee_container_marquee w-[80%]"
     >
       Welcome To Akshat Gold Pvt Ltd.
     </marquee>
