@@ -1,4 +1,4 @@
-<div class="main bg-[#000000c5] backdrop-blur-[2.5px] pt-3 w-full">
+<div class="main bg-[#000000c5] backdrop-blur-[2.5px] pt-3 w-full flex flex-col justify-center items-center">
     <div class="Logo pt-1 flex justify-center items-center w-full relative">
       <div class="header_data_logo w-[80%] flex justify-center">
         <a href="####"
@@ -23,15 +23,15 @@
     </div>
     <div class="menu_nav w-full flex justify-center">
       <ul class="ul flex flex-row">
-        <li
+        <li  routerLinkActive="click_2"
           *ngFor="let item of data"
           class="p-[19px] hover:border-b hover:text-[#fce975] text-[white] border-[#fce975]"
         >
-          <a [routerLink]="item.routerLink" class="font-sans cursor-pointer text-[16px]">{{ item.name }}</a>
+          <a [routerLink]="item.routerLink" routerLinkActive="click_1" class="font-sans cursor-pointer text-[16px]">{{ item.name }}</a>
         </li>
       </ul>
     </div>
-    <div class="marquee w-full">
+    <div class="marquee w-[80%]">
       <div class="marquee_container">
         <marquee
           direction="left"
