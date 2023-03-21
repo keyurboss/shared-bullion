@@ -1,7 +1,6 @@
 {
   "name": "@rps/bullion-rate-tables",
   "version": "0.0.1",
-  "private": true,
   "homepage": "https://github.com/rpsoftech/SharedBullion/tree/main/libs/rate-tables#readme",
   "license": "MIT",
   "description": "Rate Tables Designs For Bullion Appliacation",
