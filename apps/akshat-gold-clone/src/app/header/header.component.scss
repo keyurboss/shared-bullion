@@ -1,0 +1,14 @@
+.click {
+  color: #bc9039;
+}
+.click2 {
+  border-bottom: 3px solid #fff;
+  a {
+   :hover::after {
+    width: 100%;
+    background: blue;
+    transition: width 1s ease, background-color 1s ease-in-out;
+    
+    }
+  }
+}

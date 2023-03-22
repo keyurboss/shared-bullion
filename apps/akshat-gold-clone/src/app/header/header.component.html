@@ -1,32 +1,35 @@
-<div class="main h-[30vh]">
+<div class="main h-[28vh]">
   <div class="h-[60%] flex justify-center bg-[#bc9039]">
-    <div class="w-[30%] flex flex-col justify-center items-center">
-      <div class="header_data_timing_working text-[18px] text-[#fff] font-sans">
+    <div class="w-[33%] flex justify-center items-center flex-col">
+      <div class="flex justify-center items-center">
+      <h2 class="header_data_timing_working text-[18px] text-[#fff] font-sans m-[-8px] flex justify-center items-center">
         {{ SERVICES_HOUR }}
-      </div>
-      <div class="coloumn flex flex-row">
-        <div
-          class="header_data_timing_weekdays_days flex items-center text-[14px] font-sans text-[#282828] font-bold"
+      </h2>
+    </div>
+      <div class="coloumn flex flex-row justify-center items-center">
+        <p
+          class="header_data_timing_weekdays_days flex items-center text-[14px] font-sans text-[#282828]"
         >
           Monday:
-        </div>
-        <div
+          <span>10:AM- 6:PM</span>
+      </p>
+        <!-- <p
           class="header_data_timing_weekdays_time flex items-center text-[14px] font-light"
         >
           10:AM- 6:PM
-        </div>
+    </p> -->
       </div>
     </div>
-    <div class="w-[30%] flex flex-col justify-center items-center">
-      <img src="../../assets/images/Logo.svg" alt="" />
+    <div class="w-[33%] flex flex-col justify-center items-center">
+      <img class="w-[75%]" src="../../assets/images/Logo.svg" alt="" />
     </div>
     <div
-      class="w-[35%] flex-1 flex flex-col justify-center items-center text-right"
+      class="w-[33%] flex-1 flex flex-col justify-center items-center text-right"
     >
       <div
         class="flex justify-end w-[50%] text-end text-[#fff] font-sans text-[18px]"
       >
-        Booking Numbers:
+       <p> Booking Numbers:</p>
       </div>
       <div class="text-[#282828] mt-[2px] flex w-[50%] justify-end">
         <div class="w-[100px] text-[14px] flex justify-end">
@@ -55,11 +58,12 @@
       <div class="flex items-center">
         <ul class="flex flex-row h-full list-none items-center">
           <li
-            class="px-[20px] h-full flex items-center hover:border-b-[3px] hover:border-b-[#ffffff]"
+          routerLinkActive="click2"
+            class="px-[20px] h-full transition flex items-center hover:border-b-[3px] hover:border-b-[#ffffff]"
             *ngFor="let item of data"
           >
             <a
-              class="text-[#999] flex items-center font-sans text-[12px] hover:text-[#bc9039]"
+              [routerLink]="item.router_link" routerLinkActive="click" [routerLinkActiveOptions]="{exact:true}" class="text-[#999] flex items-center font-sans text-[12px] hover:text-[#bc9039]"
               href=""
               >{{ item.name }}</a
             >

@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'akshat-gold-header',
   standalone: true,
-  imports: [CommonModule,NgFor],
+  imports: [CommonModule,NgFor,RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -13,25 +14,22 @@ export class HeaderComponent {
   @Input() BOOKING_NUBERS = 'BOOKING NUBERS:';
   data=[
     { name:"ABOUT US",
-       url:"",
+       router_link:"about-us",
    },
     { name:"LIVE RATE",
-       url:"",
+       router_link:"live-rate",
    },
     { name:"UPDATES",
-       url:"",
+       router_link:"updates",
    },
     { name:"BANK DETAILS",
-       url:"",
-   },
-    { name:"APP",
-       url:"",
+       router_link:"bank-details",
    },
     { name:"CONTACT US",
-       url:"",
+       router_link:"contact-us",
    },
-    { name:"ECO. CALENDER",
-       url:"",
+    { name:"ECO CALENDER",
+       router_link:"eco-calender",
    },
   
   ]
