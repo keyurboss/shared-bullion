@@ -1,46 +1,48 @@
-<div class="main flex justify-center items-center mt-[40px] h-full">
-<div class="main_container_data">
-  <div class="main_container_data_logo">
-    <img alt="Bank_Logo" src="../../assets/images/bank_logo.png" />
+<div class="main flex justify-center items-center h-full">
+  <div class="flex flex-wrap justify-center items-center">
+<div *ngFor="let item of data" class="main_container_data rounded-[12px] shadow-white py-[2vh] px-0 max-w-[450px] mr-[40px] mt-[40px]">
+  <div class="main_container_data_logo w-full py-[5px] px-[5%] flex justify-center">
+    <img class="inline-block min-w-[70%] max-w-[70%] max-h-[130px] h-auto p-[4px]" alt="Bank_Logo" src={{item.img}} />
   </div>
-  <div class="main_container_data_details">
-    <div class="main_container_data_details_contant">
-      <h5>Account Name</h5>
-      <span>
+  <div class="w-full py-[5px] px-[5%]">
+    <div class="w-full font-semibold flex py-[2px] px-0">
+      <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.account_name}}</h5>
+      <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p class="ml-[10px]">Akshat Bullion</p></span
+        <p class="ml-[10px]">{{item.accountname}}</p></span
       >
     </div>
-    <div class="main_container_data_details_contant">
-      <h5>Bank Name</h5>
-      <span>
+    <div class="w-full font-semibold flex py-[2px] px-0">
+      <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.bank_name}}</h5>
+      <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p>Axis Bank</p></span
+        <p class="ml-[10px]">{{item.bankname}}</p></span
       >
     </div>
-    <div class="main_container_data_details_contant">
-      <h5>Account No</h5>
-      <span>
+    <div class="w-full font-semibold flex py-[2px] px-0">
+      <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.account_no}}</h5>
+      <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p class="bank-account">9200-2006-575-5340</p>
+        <p class="bank-account ml-[10px]">{{item.accountnumber}}</p>
         <div class="copy"></div
       ></span>
     </div>
-    <div class="main_container_data_details_contant">
-      <h5>IFSC Code</h5>
-      <span>
+    <div class="w-full font-semibold flex py-[2px] px-0">
+      <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.isfc_code}}</h5> 
+      <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p>UTIB-000-4758</p>
+        <p class="ml-[10px]">{{item.IFSCCode}}</p>
         <div class="copy"></div
       ></span>
     </div>
-    <div class="main_container_data_details_contant">
-      <h5>Branch Name</h5>
-      <span>
+    <div class="w-full font-semibold flex py-[2px] px-0">
+      <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.branch_name}}</h5>
+      <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p>Balasinor</p></span
+        <p class="ml-[10px]">{{item.branchname}}</p></span
       >
     </div>
   </div>
+</div>
 </div>
 </div>

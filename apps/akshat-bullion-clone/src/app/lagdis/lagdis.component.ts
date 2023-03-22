@@ -51,6 +51,5 @@ export class LagdisComponent {
     rightdata:"6600",
     class:"class"  
   },
-  
-  ]
+  ];
 }
