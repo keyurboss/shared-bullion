@@ -1,48 +1,89 @@
-<div class="app-home-container">
-  <div class="sub-container">
-    <div class="contact-us">  
-      <div class="container flex_center">
-        <div class="card">
-          <div class="logo flex_center"><img class="location" /></div>
-          <div class="data">
-            <div class="header flex_center"><h2>OFFICE ADDRESS</h2></div>
-            <div class="sub_data flex_center">
-              <p>Nr Pipala Sheri</p>
-              <p>Main Bazar</p>
-              <p>Balasinor, Mahisagar</p>
-              <p>Gujarat,388255</p>
-            </div>
-          </div>
+<div class="py-[30px] px-[10%] bg-[#0006]">
+  <div class="flex">
+    <div
+      class="flex-1 mx-[20px] min-h-[100px] w-[300px] rounded-[18px] bg-[#222]"
+    >
+      <div
+        class="border-b-[2px] border-[var(--primary-light)] h-[80px] flex justify-center items-center"
+      >
+        <img class="h-[70%] w-[70%]" src='../../assets/images/location.svg'/>
+      </div>
+      <div>
+        <div class="mt-[10px] h-[50px] flex justify-center items-center">
+          <h2 class="text-[20px] font-black text-[var(--primary-light)]">
+            {{Address.tittle}}
+          </h2>
         </div>
-        <div class="card">
-          <div class="logo flex_center"><img class="contact" /></div>
-          <div class="data">
-            <div class="header flex_center"><h2>Contact Numbers</h2></div>
-            <div class="sub_data flex_center">
-              <h4 class="flex_center">Personal</h4>
-              <p style="margin: 5px 0">
-                <span><b> Akshat Shah</b></span>
-              </p>
-              <p>
-                <span><a href="tel:'+918320361328'">+91 8320361328</a> </span>
-              </p>
-            </div>
-          </div>
+        <div
+          class="py-[15px] px-[10px] flex-col flex justify-center items-center"
+        >
+          <p class="text-[16px] text-[#fff] leading-[25px]">{{Address.line1}}</p>
+          <p class="text-[16px] text-[#fff] leading-[25px]">{{Address.line2}}</p>
+          <p class="text-[16px] text-[#fff] leading-[25px]">
+            {{Address.line3}}
+          </p>
+          <p class="text-[16px] text-[#fff] leading-[25px]">{{Address.line4}}</p>
         </div>
-        <div class="card">
-          <div class="logo flex_center"><img class="email" /></div>
-          <div class="data">
-            <div class="header flex_center"><h2>Email</h2></div>
-            <div class="sub_data flex_center">
-              <p>
-                <span style="width: 100%"
-                  ><a href="mailto:akshatshah185@gmail.com"
-                    >akshatshah185@gmail.com</a
-                  ></span
-                >
-              </p>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div
+      class="flex-1 mx-[20px] min-h-[100px] w-[300px] rounded-[18px] bg-[#222]"
+    >
+      <div
+        class="border-b-[2px] border-[var(--primary-light)] h-[80px] flex justify-center items-center"
+      >
+        <img class="h-[70%] w-[70%]" src='../../assets/images/contact.svg' />
+      </div>
+      <div>
+        <div class="mt-[10px] h-[50px] flex justify-center items-center">
+          <h2 class="text-[20px] font-black text-[var(--primary-light)]">
+            {{Contact.tittle}}
+          </h2>
+        </div>
+        <div
+          class="py-[15px] px-[10px] flex-col flex justify-center items-center"
+        >
+          <h4
+            class="flex text-[18px] text-[var(--primary-dark)] justify-center items-center"
+          >
+          {{Contact.line1}}
+          </h4>
+          <p
+            class="text-[16px] text-[#fff] leading-[25px]"
+            style="margin: 5px 0"
+          >
+            <span><b> {{Contact.line2}}</b></span>
+          </p>
+          <p class="text-[16px] text-[#fff] leading-[25px]">
+            <span><a href="tel:'{{Contact.line3}}'">{{Contact.line3}}</a> </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex-1 mx-[20px] min-h-[100px] w-[300px] rounded-[18px] bg-[#222] items-stretch"
+    >
+      <div
+        class="border-b-[2px] border-[var(--primary-light)] h-[80px] flex justify-center items-center"
+      >
+        <img class="h-[70%] w-[70%]" src='../../assets/images/mail.svg'/>
+      </div>
+      <div>
+        <div class="mt-[10px] h-[50px] flex justify-center items-center">
+          <h2 class="text-[20px] font-black text-[var(--primary-light)]">
+            {{Email.tittle}}
+          </h2>
+        </div>
+        <div
+          class="py-[15px] px-[10px] flex-col flex justify-center items-center"
+        >
+          <p class="text-[16px] text-[#fff] leading-[25px]">
+            <span style="width: 100%"
+              ><a href="mailto:{{Email.line1}}"
+                >{{Email.line1}}</a
+              ></span
+            >
+          </p>
         </div>
       </div>
     </div>
