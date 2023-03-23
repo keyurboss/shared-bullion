@@ -51,6 +51,13 @@ export const appRoutes: Route[] = [
             ),
         },
         {
+          path: 'login',
+          loadComponent: () =>
+            import('./login/login.component').then(
+              (a) => a.LoginComponent
+            ),
+        },
+        {
           path: '**',
           redirectTo: 'live-rate',
           pathMatch: 'full',

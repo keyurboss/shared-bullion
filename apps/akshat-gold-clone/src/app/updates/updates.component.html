@@ -1,1 +1,29 @@
-<p>updates works!</p>
+<div class="main">
+  <div class="main3 mx-[10%] my-[40px]">
+    <div
+      *ngFor="let item of data"
+      class="container_data my-[20px] p-[25px] rounded-xl shadow-2xl"
+    >
+      <div class="container_header relative pb-[15px]">
+        <h2
+          class="wlcm font-sans text-[25px] pb-[5px] border-b-[#bd9039] border-b-[1px] m-[-1px]"
+        >
+          {{ item.tittle }}
+        </h2>
+        <hr
+          class="border mb-[20px] pb-[1.2px] w-[80px] bg-[#bd9039] border-b-[3px] border-b-[#bd9039]"
+        />
+      </div>
+      <h1 class="container_mid font-sans text-[16px]">
+        {{ item.content }}
+      </h1>
+      <div class="container_time w-full relative h-[26%]">
+        <p
+          class="time mb-[5px] float-right font-normal text-justify text-[12px] leading-5 text-[#bd9039]"
+        >
+          {{ item.updated_time }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
