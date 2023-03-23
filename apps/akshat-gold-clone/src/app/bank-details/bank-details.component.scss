@@ -1,0 +1,26 @@
+.details{
+    min-width: 50vh;
+}
+.main{
+    padding: 10px 15px;
+
+}
+.mdl_grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+.main_data{
+    min-width: 35vw;
+    border-radius: 12px;
+    margin: 15px 0;
+    padding: 2vh 0;
+    box-shadow: 0 0 15px 5px #00000029;
+}
+.logo{
+    width: 100%;
+    padding: 5px 5%;
+    display: flex;
+    justify-content: center;
+}

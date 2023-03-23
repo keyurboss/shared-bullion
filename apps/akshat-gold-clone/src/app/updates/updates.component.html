@@ -21,7 +21,7 @@
         <p
           class="mb-[5px] float-right font-normal text-justify text-[12px] leading-5 text-[#bd9039]"
         >
-          {{ item.updated_time }}
+        Updated at  {{ item.updated_time | date : 'medium'}}
         </p>
       </div>
     </div>
