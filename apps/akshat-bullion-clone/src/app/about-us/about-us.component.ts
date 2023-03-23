@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgFor } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 interface components {
@@ -13,7 +13,10 @@ interface components {
   styleUrls: ['./about-us.component.scss'],
 })
 export class AboutusComponent {
-  data: components[] = [
+  images={
+    background_logo:'/assets/images/Logo.svg',
+  }; 
+    data: components[] = [
     {
       tittle: `WELCOME TO Akshat Bullion`,
       content: [

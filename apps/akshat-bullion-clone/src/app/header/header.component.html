@@ -1,10 +1,10 @@
 <div class="main bg-[#000000c5] backdrop-blur-[2.5px] pt-3 w-full flex flex-col justify-center items-center">
     <div class="Logo pt-1 flex justify-center items-center w-full relative">
-      <div class="header_data_logo w-[80%] flex justify-center">
+      <div class="w-[80%] flex justify-center">
         <a href="####"
           ><img
             class="img w-[440px] h-[100px] relative left-[20%]"
-            src="../../../assets/images/Akshat bullion logo.svg"
+            src="{{images.akshat_bull_logo}}"
             alt="Akshat Logo"
         /></a>
       </div>
@@ -16,8 +16,8 @@
           href="#######"
           ><img
             class="web h-[20px] w-[20px] mr-2"
-            src="../../../assets/images/download-outline.svg"
-          />Download Apps
+            src="{{images.download_outline}}"
+          />{{Input_data.Download_Apps}}
         </a>
       </div>
     </div>
@@ -36,9 +36,9 @@
         <marquee
           direction="left"
           scrollamount="6"
-          class="marquee_container_marquee text-[18px] text-[#fce975]"
+          class="text-[18px] text-[#fce975]"
         >
-          Welcome To Akshat Bullion.
+        {{Input_data.marquee}}
         </marquee>
       </div>
     </div>

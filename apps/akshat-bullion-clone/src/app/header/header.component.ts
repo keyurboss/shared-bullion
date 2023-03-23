@@ -13,6 +13,14 @@ interface navbar{
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent{
+  Input_data={
+    marquee:'Welcome To Akshat Bullion.',
+    Download_Apps:'Download Apps',
+  } 
+    images={
+    akshat_bull_logo:'/assets/images/Akshat bullion logo.svg',
+    download_outline:'/assets/images/download-outline.svg',
+  }
   data: navbar[]=[
     {
       name:'ABOUT US',

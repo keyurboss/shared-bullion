@@ -19,37 +19,37 @@ export class LagdisComponent {
     {leftdata:"1 GM",
     centerdata:"5900", 
     rightdata:"75",
-    class:"class"  
+    bg_color_class:"bg-[#5b5c5d]"  
   },
     {leftdata:"2 GM",
     centerdata:"11700", 
     rightdata:"150",
-    class:""  
+    bg_color_class:""  
   },
     {leftdata:"5 GM",
     centerdata:"29100", 
     rightdata:"330",
-    class:"class"  
+    bg_color_class:"bg-[#5b5c5d]"  
   },
     {leftdata:"10 GM",
     centerdata:"58100", 
     rightdata:"660",
-    class:""  
+    bg_color_class:""  
   },
     {leftdata:"20 GM",
     centerdata:"116100", 
     rightdata:"1320",
-    class:"class"  
+    bg_color_class:"bg-[#5b5c5d]"  
   },
     {leftdata:"50 GM",
     centerdata:"290100", 
     rightdata:"3300",
-    class:""  
+    bg_color_class:""  
   },
     {leftdata:"100 GM",
     centerdata:"580100", 
     rightdata:"6600",
-    class:"class"  
+    bg_color_class:"bg-[#5b5c5d]"  
   },
   ];
 }

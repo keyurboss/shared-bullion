@@ -11,6 +11,11 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./contact-us.component.scss'],
 })
 export class ContactUsComponent {
+  images={
+    location:'/assets/images/location.svg',
+    Contact:'/assets/images/contact.svg',  
+    Email:'/assets/images/mail.svg',
+  }
   Address = {
     tittle: 'OFFICE ADDRESS',
     line1: 'Nr Pipala Sheri',
