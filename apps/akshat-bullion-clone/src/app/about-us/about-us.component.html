@@ -1,12 +1,12 @@
 <div class="about_us font relative h-full w-full mr-auto ml-auto flex justify-center items-center bg-no-repeat bg-center">
   <div class="background_img">
 <img class="absolute top-1/2 left-1/2 opacity-20 translate-x-[-50%] translate-y-[-50%]" src="{{images.background_logo}}" alt="background_logo">
-    <div class="main w-full bg-[#000000c5] py-[30px] px-[10%]">
+    <div class="main w-full bg-[#000000cb] py-[30px] px-[10%]">
       <div *ngFor="let item of data" class="main_container my-[20px] rounded-[6px] py-[10px] px-[20px]">
       <h2 class="w-full text-center m-0 text-[24px] uppercase mb-[10px] border-b-[var(--primary-light)] border-b text-[var(--primary-light)] pb-[4px]">
         <span>{{ item.tittle }}</span>
       </h2>
-      <p *ngFor="let para of item.content" class="text-justify text-[16px] text-[#fff] tracking-normal leading-[20px] mb-[15px]">
+      <p *ngFor="let para of item.content" class="text-justify text-[16px] text-[#fff] tracking-normal Roboto leading-[20px] mb-[15px]">
         {{ para }}
       </p>
     </div>
