@@ -1,87 +1,78 @@
-<!-- <div class="footer">
+<div class="footer Roboto w-[80%]">
   <div class="top">
-    <div class="top_back abs abs_full_height"></div>
-    <div class="top_data">
-      <div class="top_data_static">
-        <div class="top_data_static_logo">
-          <img src="../../assets/images/Logo.svg" alt="Akshat Logo" />
-        </div>
-        <div class="top_data_static_text">
-          <p>
-            Akshat Bullion was founded in 2018 by Akshat Shah who is doing
-            business for many years. The blend of his passion and experience in
-            the Gold &amp;Silver industry have created the organization with
-            customer-oriented.
-          </p>
-        </div>
-        <div class="top_data_static_icons">
-          <div>
-            <img src="../../assets/images/logo-android.svg" alt="android logo" />
-          </div>
-          <div>
-            <img src="../../assets/images/logo-apple.svg" alt="Apple Logo" />
-          </div>
-        </div>
+    <div class="left_data">
+      <div class="logo">
+        <img class="h-[75px] w-[75px]" src="../../assets/images/Logo.svg" alt="Logo" />
       </div>
-      <div class="top_data_contact">
-        <div class="top_data_contact_header">CONTACT DETAIL</div>
-        <hr/>
-        <div class="top_data_contact_data">
-          <ul>
-            <li style="padding: 13px 0">
-              <div class="a">
-                <div class="call"></div>
-              </div>
-              <div class="text">
-                <span
-                  ><a href="tel:+918320361328" class="link"
-                    >(+91) 8320-361328</a
-                  ></span
-                >
-              </div>
-            </li>
-            <li>
-              <div class="a">
-                <img src="../../assets/images/mail.svg" alt="main logo" />
-              </div>
-              <div class="text">
-                <span
-                  ><a href="mailto:akshatshah185@gmail.com"
-                    >akshatshah185@gmail.com</a
-                  ></span
-                >
-              </div>
-            </li>
-          </ul>
-        </div>
+      <div class="text mt-[5px]">
+        <p class="text-[#fff] text-justify">
+          Akshat Bullion was founded in 2018 by Akshat Shah who is doing
+          business for many years. The blend of his passion and experience in
+          the Gold & Silver industry have created the organization with
+          customer-oriented.
+        </p>
+      </div>
+      <div class="flex flex-row py-[5px]">
+        <div class="mx-[5px]"><img class="h-[18px] w-[18px]" src="../../assets/images/logo-android.svg" alt="Android Logo" /></div>
+        <div  class="mx-[5px]"><img class="h-[18px] w-[18px]" src="../../assets/images/logo-apple.svg" alt="Apple Logo" /></div>
+      </div>
+    </div>
+    <div class="right_data">
+      <div class="top_data_contact_header">CONTACT DETAIL</div>
+      <hr />
+      <div>
+        <ul>
+          <li>
+            <div><img src="" alt="" /></div>
+            <div>
+              <span><a href=""></a></span>
+            </div>
+          </li>
+          <li></li>
+        </ul>
       </div>
     </div>
   </div>
-</div> -->
-
-<div class="footer">
-  <div class="top"></div>
-  <div class="bottom">
+  <div class="bottom Roboto">
     <div class="nav float-left">
       <ul class="flex flex-row">
-        <!-- <li *ngFor="let item of data" class="after-disable mr-[5px]">
-          <a class="text-[#fce975]" routerlink="/about-us" href="about-us">{{item.name}}</a>
-        </li> -->
         <li class="after-disable mr-[5px]">
-          <a routerlink="/about-us" href="about-us">About Us</a>
+          <a
+            class="text-[#fce975]"
+            routerlink="footer_data.aboutus_r_l"
+            href="about-us"
+            >{{ footer_data.aboutus
+            }}<span class="ml-[5px] text-[#fce975]">-</span></a
+          >
         </li>
-
         <li class="after-disable mr-[5px]">
-          <a routerlink="/messages" href="messages">Messages</a>
+          <a
+            class="text-[#fce975]"
+            routerlink="footer_data.message_r_l"
+            href="messages"
+            >{{ footer_data.message
+            }}<span class="ml-[5px] text-[#fce975]">-</span></a
+          >
         </li>
         <li class="after-disable mr-[5px]">
-          <a routerlink="/bank-details" href="bank-details">Bank Details</a>
+          <a
+            class="text-[#fce975]"
+            routerlink="footer_data.bank_d_r_l"
+            href="bank-details"
+            >{{ footer_data.bank_d
+            }}<span class="ml-[5px] text-[#fce975]">-</span></a
+          >
         </li>
         <li class="mr-[5px]">
-          <a routerlink="/contact-us" href="contact-us">Contact Us</a>
+          <a
+            class="text-[#fce975]"
+            routerlink="footer_data.contact_us_r_l"
+            href="contact-us"
+            >{{ footer_data.contact_us }}</a
+          >
         </li>
       </ul>
     </div>
-    <p class="float-right">Akshat Bullion © 2021 I All Rights Reserved</p>
+    <p class="float-right text-[#fce975]">{{ footer_data.copyright_text }}</p>
   </div>
 </div>
