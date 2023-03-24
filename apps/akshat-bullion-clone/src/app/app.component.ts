@@ -4,10 +4,9 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { RouterOutlet } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
-
 @Component({
   standalone: true,
-  imports: [RouterOutlet,SignUpComponent],
+  imports: [RouterOutlet, SignUpComponent],
   selector: 'akshat-bull-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -25,4 +24,3 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 export class AppComponent {
   title = 'akshat-bullion-clone';
 }
-

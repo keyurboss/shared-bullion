@@ -1,20 +1,21 @@
 import { Route } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const appRoutes: Route[] = [
   {
-    path:'login',
-    component: LoginComponent,
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((a) => a.LoginComponent),
   },
   {
-    path:'sign-up',
-    component: SignUpComponent,
+    path: 'sign-up',
+
+    loadComponent: () =>
+      import('./sign-up/sign-up.component').then((a) => a.SignUpComponent),
   },
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./home/home.component').then((a) => a.HomeComponent),
     children: [
       {
         path: '',

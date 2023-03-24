@@ -23,17 +23,17 @@
       <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.account_no}}</h5>
       <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p class="bank-account ml-[10px]">{{item.accountnumber}}</p>
-        <div class="copy"></div
-      ></span>
+        <p class="bank-account ml-[10px]">{{item.accountnumber}} <button class="w-[16px] ml-[10px] mt-[2px]" (click)="clipboard(item.accountnumber)"><img src="../../assets/images/copy.svg" alt=""></button></p>
+        <!-- <div class="copy"></div> -->
+      </span>
     </div>
     <div class="w-full font-semibold flex py-[2px] px-0">
       <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.isfc_code}}</h5> 
       <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
         :
-        <p class="ml-[10px]">{{item.IFSCCode}}</p>
-        <div class="copy"></div
-      ></span>
+        <p class="ml-[10px]">{{item.IFSCCode}} <button class="w-[16px] ml-[10px]" (click)="clipboard(item.IFSCCode)"><img src="../../assets/images/copy.svg" alt=""></button></p>
+        <!-- <div class="copy"></div> -->
+      </span>
     </div>
     <div class="w-full font-semibold flex py-[2px] px-0">
       <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.branch_name}}</h5>

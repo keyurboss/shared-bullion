@@ -64,4 +64,7 @@ export class BankdetailsComponent {
     //   img: '../../assets/images/icic_Bank_Logo.jpg',
     // },
   ];
+  clipboard(num:string){
+    navigator.clipboard.writeText(num);
+  }
 }
