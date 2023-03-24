@@ -12,13 +12,13 @@ import { RouterModule } from '@angular/router';
 export class FooterComponent {
 footer_data={
   aboutus:'About Us ',
-  aboutus_r_l:'/about-us',
+  aboutus_r_l:'home/about-us',
   message:'Messages',
-  message_r_l:'/messages',
+  message_r_l:'home/messages',
   bank_d:'Bank Details',
-  bank_d_r_l:'/bank-details',
+  bank_d_r_l:'home/bank-details',
   contact_us:'Contact Us',
-  contact_us_r_l:'/contact-us',
+  contact_us_r_l:'home/contact-us',
   copyright_text:'Akshat Bullion © 2021 I All Rights Reserved',
 };
 }

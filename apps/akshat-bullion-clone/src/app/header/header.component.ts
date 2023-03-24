@@ -24,31 +24,31 @@ export class HeaderComponent{
   data: navbar[]=[
     {
       name:'ABOUT US',
-      routerLink:'/about-us',
+      routerLink:'home/about-us',
     },
     {
       name:'LIVE RATE',
-      routerLink:'/live-rate',
+      routerLink:'home/live-rate',
     },
     {
       name:'LAGDIS',
-      routerLink:'/lagdis',
+      routerLink:'home/lagdis',
     },
     {
       name:'MESSAGES',
-      routerLink:'/messages',
+      routerLink:'home/messages',
     },
     {
       name:'BANK DETAILS',
-      routerLink:'/bank-details',
+      routerLink:'home/bank-details',
     },
     {
       name:'CONTACT US',
-      routerLink:'/contact-us',
+      routerLink:'home/contact-us',
     },
     {
       name:'LOGIN',
-      routerLink:'##',
+      routerLink:'/login',
     },
   ];
 }
