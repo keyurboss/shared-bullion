@@ -19,7 +19,7 @@ interface bankdata {
   styleUrls: ['./bank-details.component.scss'],
 })
 export class BankdetailsComponent {
-  bank_data_tittle={
+     bank_data_tittle={
     account_name:"Account Name",
     bank_name:"Bank Name",
     account_no:"Account No",

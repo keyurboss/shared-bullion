@@ -1,10 +1,11 @@
-<div class="footer Roboto w-[80%]">
-  <div class="top">
-    <div class="left_data">
-      <div class="logo">
+<div class="w-full flex justify-center items-cente bg-[#000]">
+  <div class="Roboto text-[14px]">
+    <div class="top w-full flex flex-row pt-[40px] pb-[30px] px-[155px]">
+      <div class="left_data w-[65%]">
+        <div class="logo">
         <img class="h-[75px] w-[75px]" src="../../assets/images/Logo.svg" alt="Logo" />
       </div>
-      <div class="text mt-[5px]">
+      <div class="text mt-[5px] w-[90%]">
         <p class="text-[#fff] text-justify">
           Akshat Bullion was founded in 2018 by Akshat Shah who is doing
           business for many years. The blend of his passion and experience in
@@ -17,62 +18,64 @@
         <div  class="mx-[5px]"><img class="h-[18px] w-[18px]" src="../../assets/images/logo-apple.svg" alt="Apple Logo" /></div>
       </div>
     </div>
-    <div class="right_data">
-      <div class="top_data_contact_header">CONTACT DETAIL</div>
-      <hr />
+    <div class="right_data flex-1">
+      <div class="m-0 text-[18px] leading-[18px] text-[var(--primary-light)]">CONTACT DETAIL</div>
+      <hr class="mt-[20px] mb-[17px] w-[35px] text-[var(--primary-light)]"/>
       <div>
         <ul>
-          <li>
-            <div><img src="" alt="" /></div>
-            <div>
-              <span><a href=""></a></span>
+          <li class="py-[13px] li">
+            <div class="w-[44px] h-[44px] flex justify-center items-center bg-[#f7f7f7] rounded-[50%]"><img class="w-[18px] h-[18px]" src="../../assets/images/contact_black.svg" alt="" /></div>
+            <div class="w-full h-full flex justify-center items-center flex-col">
+              <span class="block h-[50%] w-full text-[#fff]"><a class="" href="tel:+918320361328">(+91) 8320-361328</a></span>
             </div>
           </li>
-          <li></li>
+          <li class="li">
+            <div class="w-[44px] h-[44px] flex justify-center items-center bg-[#f7f7f7] rounded-[50%]"><img class="w-[18px] h-[18px]" src="../../assets/images/mail_black.svg" alt="" /></div>
+            <div class="w-full h-full flex justify-center items-center flex-col">
+              <span class="block h-[50%] w-full text-[#fff]"><a class="" href="mailto:akshatshah185@gmail.com">akshatshah185@gmail.com</a></span>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="bottom Roboto">
+  <div class="bottom Roboto ">
     <div class="nav float-left">
       <ul class="flex flex-row">
         <li class="after-disable mr-[5px]">
           <a
             class="text-[#fce975]"
-            routerlink="footer_data.aboutus_r_l"
-            href="about-us"
+            [routerLink]="footer_data.aboutus_r_l"
             >{{ footer_data.aboutus
             }}<span class="ml-[5px] text-[#fce975]">-</span></a
-          >
-        </li>
-        <li class="after-disable mr-[5px]">
-          <a
+            >
+          </li>
+          <li class="after-disable mr-[5px]">
+            <a
             class="text-[#fce975]"
-            routerlink="footer_data.message_r_l"
-            href="messages"
+            [routerLink]="footer_data.message_r_l"
             >{{ footer_data.message
             }}<span class="ml-[5px] text-[#fce975]">-</span></a
-          >
-        </li>
-        <li class="after-disable mr-[5px]">
-          <a
+            >
+          </li>
+          <li class="after-disable mr-[5px]">
+            <a
             class="text-[#fce975]"
-            routerlink="footer_data.bank_d_r_l"
-            href="bank-details"
+            [routerLink]="footer_data.bank_d_r_l"
             >{{ footer_data.bank_d
             }}<span class="ml-[5px] text-[#fce975]">-</span></a
-          >
+            >
         </li>
         <li class="mr-[5px]">
           <a
-            class="text-[#fce975]"
-            routerlink="footer_data.contact_us_r_l"
-            href="contact-us"
-            >{{ footer_data.contact_us }}</a
+          class="text-[#fce975]"
+          [routerLink]="footer_data.contact_us_r_l"
+          >{{ footer_data.contact_us }}</a
           >
         </li>
       </ul>
     </div>
     <p class="float-right text-[#fce975]">{{ footer_data.copyright_text }}</p>
   </div>
+</div>
 </div>
