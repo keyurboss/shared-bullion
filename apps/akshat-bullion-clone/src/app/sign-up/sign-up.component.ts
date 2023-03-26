@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
+  submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
     FirmName: new FormControl('', [Validators.required]),
@@ -23,12 +24,14 @@ export class SignUpComponent {
       Validators.required,
       Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
     ]),
-    EmailId: new FormControl('', [Validators.required]),
+    EmailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]),
     City: new FormControl('', [Validators.required]),
-    Password: new FormControl('', [Validators.required]),
+    Password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(5)]),
     ConfirmPassword: new FormControl('', [Validators.required]),
-    checkbox: new FormControl('', [Validators.required]),
-  });
+  })
+  // {
+  //   validators: this.MustMatch('Password','ConfirmPassword')
+  // });
   get Name() {
     return this.SignForm.get('Name');
   }
@@ -53,8 +56,15 @@ export class SignUpComponent {
   get Signup() {
     return this.SignForm.get('Signup');
   }
-  signupuser() {
-    console.warn(this.SignForm.value);
+  get SignFormControl() {
+    return this.SignForm.controls;
+  }
+  OnSignUpUserSubmit() {
+    this.submitted = true;
+    if (this.SignForm.valid) {
+      alert('Form Submitted succesfully!!!\n Check the values in browser console.');
+      console.table(this.SignForm.value);
+    }
   }
 }
 
