@@ -7,28 +7,80 @@
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">
         Add your details for Registration
       </h4>
-      <form [formGroup]="profileForm">
+      <form [formGroup]="SignForm" (ngSubmit)="signupuser()">
         <div class="inputs flex_center flex justify-center items-center flex-col">
-          <input placeholder="Name" [formControl]="name"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-          <input placeholder="Firm Name"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-          <input placeholder="Mobile No" type="tel"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-          <input placeholder="Email Id" type="email"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-          <input placeholder="City"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-          <input type="password" placeholder="Password"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-          <input type="password" placeholder="Confirm Password"
-            class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+          <div class="flex justify-center items-center">
+            <input placeholder="Name" formControlName="Name"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]" *ngIf="Name && Name.invalid && Name.touched"><img
+                class="h-[20px] w-[20px]" src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]" *ngIf="Name && Name.invalid && Name.touched">Name
+              Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input placeholder="FirmName" formControlName="FirmName"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="FirmName && FirmName.invalid && FirmName.touched"><img class="h-[20px] w-[20px]"
+                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="FirmName && FirmName.invalid && FirmName.touched">FirmName Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input placeholder="Mobile No" type="tel" formControlName="MobileNumber"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="MobileNumber && MobileNumber.invalid && MobileNumber.touched"><img class="h-[20px] w-[20px]"
+                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="MobileNumber && MobileNumber.invalid && MobileNumber.touched">valid MobileNumber Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input placeholder="Email Id" type="email" formControlName="EmailId"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="EmailId && EmailId.invalid && EmailId.touched"><img class="h-[20px] w-[20px]"
+                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="EmailId && EmailId.invalid && EmailId.touched">EmailId Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input placeholder="City" formControlName="City"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]" *ngIf="City && City.invalid && City.touched"><img
+                class="h-[20px] w-[20px]" src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]" *ngIf="City && City.invalid && City.touched">City
+              Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input type="password" placeholder="Password" formControlName="Password"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="Password && Password.invalid && Password.touched"><img class="h-[20px] w-[20px]"
+                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="Password && Password.invalid && Password.touched">Password Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input type="password" placeholder="Confirm Password" formControlName="ConfirmPassword"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="ConfirmPassword && ConfirmPassword.invalid && ConfirmPassword.touched"><img
+                class="h-[20px] w-[20px]" src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="ConfirmPassword && ConfirmPassword.invalid && ConfirmPassword.touched">ConfirmPassword
+              Required</span>
+          </div>
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
             <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><span
               class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms & Conditions</span>
           </div>
-          <input type="submit" value="Register"
-            class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px]" />
+          <div
+            class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center">
+            <button type="submit" [disabled]="SignForm.invalid">
+              Register
+            </button>
+          </div>
         </div>
       </form>
       <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">

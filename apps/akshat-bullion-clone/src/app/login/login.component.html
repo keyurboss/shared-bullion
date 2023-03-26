@@ -3,32 +3,51 @@
     <div class="login_input">
       <h1 class="font-medium text-center text-[var(--primary-light)] text-[32px]">Login</h1>
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">Add your details to login</h4>
-      <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
-        <input
+      <form [formGroup]="LoginForm" (ngSubmit)="Loginuser()">
+        <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
+          <!-- <input
           placeholder="Enter User id"
           class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none"
-        /><input
-          type="password"
-          placeholder="Enter Password"
-          class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none"
-        />
-        <div class="checkbox flex_center flex justify-center items-center cursor-default">
-          <input
-            type="checkbox"
-            class="ng-untouched ng-pristine ng-valid my-[10px] "
-          /><span class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember Me</span>
+        /> -->
+          <div class="flex justify-center items-center">
+            <input placeholder="Enter User id" formControlName="UserId"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="UserId && UserId.invalid && UserId.touched"><img class="h-[20px] w-[20px]"
+                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="UserId && UserId.invalid && UserId.touched">UserId
+              Required</span>
+          </div>
+          <div class="flex justify-center items-center">
+            <input type="password" placeholder="Enter Password" formControlName="password"
+              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+            <span class="text-[red] text-[10px] absolute left-[73%]"
+              *ngIf="password && password.invalid && password.touched"><img class="h-[20px] w-[20px]"
+                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
+            <span class="text-[red] text-[10px] absolute mt-[34px]"
+              *ngIf="password && password.invalid && password.touched">password
+              Required</span>
+          </div>
+          <div class="checkbox flex_center flex justify-center items-center cursor-default">
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px] " /><span
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember Me</span>
+          </div>
+          <div
+            class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center">
+            <button type="submit" [disabled]="LoginForm.invalid">
+              Login
+            </button>
+          </div>
         </div>
-        <input
-          type="submit"
-          value="Login"
-          class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px]"
-        />
-      </div>
+
+      </form>
       <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
-        <h5 class="text-center my-[10px] font-semibold text-[13px]" >Forgot Password</h5>
+        <h5 class="text-center my-[10px] font-semibold text-[13px]">Forgot Password</h5>
         <h5 class="text-center my-[10px] font-semibold text-[13px]">
           Don't have an Account?
-          <a class="text-[13px] font-semibold text-[#fc6011] border-b-[1px] border-b-[#fc6011]" routerLink="/sign-up" >Sign Up</a>
+          <a class="text-[13px] font-semibold text-[#fc6011] border-b-[1px] border-b-[#fc6011]"
+            routerLink="/sign-up">Sign Up</a>
         </h5>
       </div>
     </div>
