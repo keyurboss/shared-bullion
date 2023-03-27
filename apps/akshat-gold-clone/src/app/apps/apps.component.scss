@@ -1,15 +1,7 @@
-.mapp {
-  padding: 40px 15%;
-}
-.mapp_container_data {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
 .mapp_container_data_android {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
+  color: rgba(0, 0, 0, 0);
+  // -webkit-tap-highlight-color: transparent;
 }
 .image {
   display: flex;
