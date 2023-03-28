@@ -7,8 +7,12 @@
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">
         Add your details for Registration
       </h4>
+
+      <!-- ReactiveForm -->
       <form [formGroup]="SignForm" (ngSubmit)="OnSignUpUserSubmit()">
         <div class="inputs flex_center flex justify-center items-center flex-col">
+
+          <!--  NAME field  -->
           <div class="flex justify-center items-center">
             <input placeholder="Name" formControlName="Name"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
@@ -19,6 +23,8 @@
               *ngIf="(SignFormControl.Name.touched || submitted) && Name.invalid">Name
               required</span>
           </div>
+
+          <!--  FirmName field  -->
           <div class="flex justify-center items-center">
             <input placeholder="FirmName" formControlName="FirmName"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
@@ -28,8 +34,10 @@
             <span class="text-[red] text-[10px] absolute mt-[34px]"
               *ngIf="(SignFormControl.FirmName.touched || submitted) && FirmName.invalid">FirmName Required</span>
           </div>
+
+          <!--  MobileNumber field  -->
           <div class="flex justify-center items-center">
-            <input placeholder="Mobile No" type="tel" formControlName="MobileNumber"
+            <input placeholder="Mobile No" type="number" pattern="\d{10}" formControlName="MobileNumber"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
             <span class="text-[red] text-[10px] absolute left-[73%]"
               *ngIf="(SignFormControl.MobileNumber.touched || submitted) && MobileNumber.invalid"><img
@@ -41,6 +49,8 @@
               *ngIf="(SignFormControl.MobileNumber.touched || submitted) && MobileNumber.invalid">valid MobileNumber
               Required</span>
           </div>
+
+          <!--  EmailId field  -->
           <div class="flex justify-center items-center">
             <input placeholder="Email Id" type="email" formControlName="EmailId"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
@@ -50,6 +60,8 @@
             <span class="text-[red] text-[10px] absolute mt-[34px]"
               *ngIf="(SignFormControl.EmailId.touched || submitted) && EmailId.invalid">EmailId Required</span>
           </div>
+
+          <!--  City Name field  -->
           <div class="flex justify-center items-center">
             <input placeholder="City" formControlName="City"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
@@ -60,6 +72,8 @@
               *ngIf="(SignFormControl.City.touched || submitted) && City.invalid">City
               Required</span>
           </div>
+
+          <!--  Password field  -->
           <div class="flex justify-center items-center">
             <input type="password" placeholder="Password" formControlName="Password"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
@@ -69,6 +83,8 @@
             <span class="text-[red] text-[10px] absolute mt-[34px]"
               *ngIf="(SignFormControl.Password.touched || submitted) && Password.invalid">Password Required</span>
           </div>
+
+          <!--  Confirm Password field  -->
           <div class="flex justify-center items-center">
             <input type="password" placeholder="Confirm Password" formControlName="ConfirmPassword"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
@@ -78,13 +94,15 @@
             <span class="text-[red] text-[10px] absolute mt-[34px]"
               *ngIf="(SignFormControl.ConfirmPassword.touched || submitted) && ConfirmPassword.invalid">ConfirmPassword
               Required</span>
-            <!-- <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="ConfirmPassword.errors.MustMatch">Confirm Password Didn't Match</span> -->
           </div>
+
+          <!--  checkbox field  -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><span
-              class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms & Conditions</span>
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" formControlName="check" /><span
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]" [class.error]="(SignFormControl.check.touched || submitted)">Terms & Conditions</span>
           </div>
+
+          <!-- submit button -->
           <div
             class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center">
             <button type="submit">

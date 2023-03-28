@@ -19,6 +19,7 @@ export class SignUpComponent {
   submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
+    check:new FormControl('',[Validators.required]),
     FirmName: new FormControl('', [Validators.required]),
     MobileNumber: new FormControl('', [
       Validators.required,
@@ -57,6 +58,9 @@ export class SignUpComponent {
     return this.SignForm.get('Signup');
   }
   get SignFormControl() {
+    return this.SignForm.controls;
+  }
+  get check() {
     return this.SignForm.controls;
   }
   OnSignUpUserSubmit() {

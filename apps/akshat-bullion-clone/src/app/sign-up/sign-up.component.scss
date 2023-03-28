@@ -1,4 +1,12 @@
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .yellow_gradient {
-    background-image: radial-gradient(circle,#fce975,#ebcf62,#d9b651,#c79d40,#b48531);
+    background-image: radial-gradient(circle, #fce975, #ebcf62, #d9b651, #c79d40, #b48531);
     color: #a9481b;
+}
+.error{
+    color: red;
 }
