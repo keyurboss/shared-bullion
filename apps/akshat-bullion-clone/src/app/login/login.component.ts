@@ -17,6 +17,7 @@ import {
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  submitted = false;
   LoginForm = new FormGroup({
     UserId: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -27,8 +28,14 @@ export class LoginComponent {
   get password() {
     return this.LoginForm.get('password');
   }
-  Loginuser() {
-    console.warn(this.LoginForm.value);
+  get LoginFormControl() {
+    return this.LoginForm.controls;
+  }
+  OnLoginuserSubmit() {
+    this.submitted = true;
+    if (this.LoginForm.valid) {
+      console.log(this.LoginForm.value);
+    }
   }
 }
 

@@ -1,43 +1,53 @@
-<div class="h-[720px] w-[1550px] relative flex justify-center items-center Roboto">
-  <div class="max-w-[450px] h-[720px] w-[90%] relative flex justify-center items-center ">
+<div class="flex justify-center Roboto h-full">
+  <div class="relative flex justify-center items-center">
     <div class="login_input">
       <h1 class="font-medium text-center text-[var(--primary-light)] text-[32px]">Login</h1>
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">Add your details to login</h4>
-      <form [formGroup]="LoginForm" (ngSubmit)="Loginuser()">
+      <faorm [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
+        
+        <!-- ReactiveForm -->
         <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
+          
+          <!-- User id field -->
           <div class="flex justify-center items-center">
             <input placeholder="Enter User id" formControlName="UserId"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[73%]"
-              *ngIf="UserId && UserId.invalid && UserId.touched"><img class="h-[20px] w-[20px]"
+            <span class="text-[red] text-[10px] absolute left-[90%]"
+            *ngIf="(LoginFormControl.UserId.touched || submitted) && UserId.invalid"><img class="h-[20px] w-[20px]"
                 src="../../assets/images/alert-circle-outline.svg" alt=""></span>
             <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="UserId && UserId.invalid && UserId.touched">UserId
+            *ngIf="(LoginFormControl.UserId.touched || submitted) && UserId.invalid">UserId
               Required</span>
           </div>
+
+          <!-- password field -->
           <div class="flex justify-center items-center">
             <input type="password" placeholder="Enter Password" formControlName="password"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[73%]"
-              *ngIf="password && password.invalid && password.touched"><img class="h-[20px] w-[20px]"
+            <span class="text-[red] text-[10px] absolute left-[90%]"
+            *ngIf="(LoginFormControl.password.touched || submitted) && password.invalid"><img class="h-[20px] w-[20px]"
                 src="../../assets/images/alert-circle-outline.svg" alt=""></span>
             <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="password && password.invalid && password.touched">password
+            *ngIf="(LoginFormControl.password.touched || submitted) && password.invalid">password
               Required</span>
           </div>
+
+          <!-- checkbox field -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
             <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px] " /><span
               class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember Me</span>
           </div>
+
+          <!--Login button -->
           <div
-            class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center">
-            <button type="submit" [disabled]="LoginForm.invalid">
-              Login
-            </button>
-          </div>
+          class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center">
+          <button type="submit">
+            Login
+          </button>
         </div>
 
-      </form>
+        </div>
+      </faorm>
       <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
         <h5 class="text-center my-[10px] font-semibold text-[13px]">Forgot Password</h5>
         <h5 class="text-center my-[10px] font-semibold text-[13px]">

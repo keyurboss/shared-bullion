@@ -66,8 +66,7 @@ export class SignUpComponent {
   OnSignUpUserSubmit() {
     this.submitted = true;
     if (this.SignForm.valid) {
-      alert('Form Submitted succesfully!!!\n Check the values in browser console.');
-      console.table(this.SignForm.value);
+      console.log(this.SignForm.value);
     }
   }
 }
