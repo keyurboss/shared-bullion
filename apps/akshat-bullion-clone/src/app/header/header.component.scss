@@ -4,3 +4,15 @@ color:#fce975;
 .click_2{
 border-bottom:1px solid #fce975;
 }
+@media (max-width:800px){
+    //     .main_navbar{
+    .menu_nav{
+        display: none;
+    }
+//     }
+}
+.download_img{
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+}

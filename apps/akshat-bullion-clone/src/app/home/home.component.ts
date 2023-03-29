@@ -2,37 +2,66 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { NavBar1Component, navbar1 } from '@rps/angular-nav-bars'
-
+import { NavBar3Component, navbar3 } from '@rps/angular-nav-bars'
 
 @Component({
   selector: 'akshat-bull-app-about-us',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar1Component],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  images: navbar1[] = [
+  images: navbar3[] = [
     {
-      icon: {
-        url: '../../assets/images/home-outline.svg',
-        active_color: 'white',
-        inactive_color: 'red'
-      },
+      name: 'Live Rate',
       uid: '1',
-      name: 'home',
-      indicator_color: 'red'
+      indicator_color: 'white',
+      icon: {
+        url: '../../assets/svg/nav_liverate_logo.svg',
+        active_color: 'black',
+        inactive_color: 'white',
+      }
     },
     {
-      icon: {
-        url: '../../assets/images/home-outline.svg',
-        active_color: 'white',
-        inactive_color: 'red'
-      },
+      name: 'Lagdi',
       uid: '2',
-      name: 'home',
-      indicator_color: 'red'
-    }
+      indicator_color: 'white',
+      icon: {
+        url: '../../assets/svg/nav_Lagdi_logo.svg',
+        active_color: 'black',
+        inactive_color: 'white',
+      }
+    },
+    {
+      name: 'Bank Details',
+      uid: '3',
+      indicator_color: 'white',
+      icon: {
+        url: '../../assets/svg/nav_bank_logo.svg',
+        active_color: 'black',
+        inactive_color: 'white',
+      }
+    },
+    {
+      name: 'contact Us',
+      uid: '4',
+      indicator_color: 'white',
+      icon: {
+        url: '../../assets/svg/nav_contact_logo.svg',
+        active_color: 'black',
+        inactive_color: 'white',
+      }
+    },
+    {
+      name: 'Login',
+      uid: '5',
+      indicator_color: 'white',
+      icon: {
+        url: '../../assets/svg/nav_login_logo.svg',
+        active_color: 'black',
+        inactive_color: 'white',
+      }
+    },
   ]
 }

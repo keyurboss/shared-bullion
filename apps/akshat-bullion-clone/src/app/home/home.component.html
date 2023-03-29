@@ -1,6 +1,10 @@
 <section>
-  <akshat-bull-app-header></akshat-bull-app-header>
-  <nav-bars-1 class="nav_bar" [parentData]="images"></nav-bars-1>
+  <div class="main_navbar">
+    <akshat-bull-app-header></akshat-bull-app-header>
+  </div>
   <router-outlet></router-outlet>
+  <div class="mobile_navbar">
+    <nav-bars-3 class="nav_bg" [parentData]="images"></nav-bars-3>
+  </div>
   <akshat-bull-app-footer></akshat-bull-app-footer>
 </section>
