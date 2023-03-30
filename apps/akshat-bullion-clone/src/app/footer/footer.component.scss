@@ -98,3 +98,20 @@
     grid-auto-flow: column;
     grid-template-columns: 58px 1fr;
 }
+.top{
+  padding: 40px 10% 30px;
+}
+@media screen and (max-width: 1150px)
+{.top{
+ padding: 40px 5%!important;
+}
+}
+@media screen and (max-width: 950px)
+{.bottom{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ font-size: 12px;
+}
+}

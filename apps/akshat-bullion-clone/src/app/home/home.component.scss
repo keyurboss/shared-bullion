@@ -3,10 +3,8 @@
     --menu-text-color:#ffff;
 
 }
-// @media (max-width:200px){
-//     //     .main_navbar{
-//     .main_navbar{
-//         display: none;
-//     }
-// //     }
-// }
+@media screen and (max-width: 800px) {
+    .footer{
+        display: none;
+    }
+}

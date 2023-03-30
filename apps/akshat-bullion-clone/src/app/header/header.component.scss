@@ -1,18 +1,88 @@
-.click_1{
-color:#fce975;
+.click_1 {
+    color: #fce975;
 }
-.click_2{
-border-bottom:1px solid #fce975;
+
+.click_2 {
+    border-bottom: 1px solid #fce975;
 }
-@media (max-width:800px){
-    //     .main_navbar{
-    .menu_nav{
+
+.Logo {
+    margin: 20px 20px 0 0;
+}
+
+@media (max-width:800px) {
+    .menu_nav {
         display: none;
     }
-//     }
 }
-.download_img{
+
+.download_img {
     top: 50%;
-    right: 10%;
+    right: 5%;
     transform: translateY(-50%);
+}
+
+// *******************// media query//************************
+
+@media screen and (max-width: 1150px) {
+    .menu_nav {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .marquee {
+        width: 94%;
+    }
+
+    .main {
+        height: 225px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .download_img {
+        right: 0%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .download_img {
+        top: 0;
+        width: 97%;
+        transform: none;
+        background-color: #000;
+    }
+
+    .main {
+        height: 162px !important;
+    }
+
+    .img {
+        height: 90px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .marquee {
+        padding: 8px 0;
+    }
+
+    .img {
+        height: 85px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .marquee {
+        padding: 6px 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .marquee {
+        padding: 4px 0;
+    }
 }
