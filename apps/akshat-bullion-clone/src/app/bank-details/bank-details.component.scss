@@ -7,6 +7,18 @@
 
         padding: 20px 5% !important;
     }
+    .bank_detais{
+        margin-left: 20px;
+        h5{
+            width: 40%;
+        }
+        span{
+            width: 60%;
+        }
+    }
+    .main_container_data{
+        max-width: 400px;
+    }
 }
 
 @media screen and (max-width: 950px) {
