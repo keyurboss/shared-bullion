@@ -1,7 +1,7 @@
 import { LiveRateService } from './live-rate.service';
 // import faker from '@faker-js/faker';
 import { RatesFixture } from '../fixtures';
-import { firstValueFrom, skip } from 'rxjs';
+import { firstValueFrom, skip, timeout } from 'rxjs';
 import { DemoLiveRateService } from '../mock';
 import { JsonToItrable } from '../core';
 import { RateBaseSymboles } from '../../../core/interfaces/src';
@@ -96,16 +96,55 @@ describe('ABS LiveRateService', () => {
       );
     });
   });
-  test.skip('Auto Connect to Server', () => {
-    // class MockLiveRateService extends LiveRateService {
-    //   public getLastRates = jest.fn().mockImplementation(async () => {
-    //     return RatesFixture.GenerateForAllSymboles();
-    //   }).bind(this);
-    //   public InitRemoteConnection = jest.fn().bind(this);
-    // }
-    const rates = RatesFixture.GenerateForAllSymboles();
-    service = new DemoLiveRateService(rates, null as never, true);
-    expect(service.getLastRates).toBeCalledTimes(1);
-    expect(service.InitRemoteConnection).toBeCalledTimes(1);
+  describe('Auto Connect to Server and Get Last Rate', () => {
+    let mockMethods: Record<
+      keyof Pick<LiveRateService, 'getLastRates' | 'InitRemoteConnection'>,
+      jest.Mock
+    >;
+    class MockLiveRateService extends LiveRateService {
+      getLastRates(): Promise<
+        Record<RateBaseSymboles, BaseSymbolePriceInterface>
+      > {
+        return mockMethods.getLastRates();
+      }
+      InitRemoteConnection(): void {
+        return mockMethods.InitRemoteConnection();
+      }
+    }
+    beforeEach(() => {
+      mockMethods = {
+        getLastRates: jest
+          .fn()
+          .mockResolvedValue(RatesFixture.GenerateForAllSymboles()),
+        InitRemoteConnection: jest.fn(),
+      };
+    });
+    it('Default Rate is Passed then getLastRates is not called and Rates are ready', () => {
+      const rates = RatesFixture.GenerateForAllSymboles();
+      const service = new MockLiveRateService(rates, null as never, false);
+      expect(mockMethods.getLastRates).toBeCalledTimes(0);
+      expect(service.RatesReady).toStrictEqual(true);
+    });
+    it('Default Rate is Not Passed then getLastRates is called and Rates are not ready', async () => {
+      const rates = RatesFixture.GenerateForAllSymboles();
+      const service = new MockLiveRateService(
+        null as never,
+        null as never,
+        false
+      );
+      expect(service.RatesReady).toStrictEqual(false);
+      const initialValue = await firstValueFrom(service.RatesReady$.pipe());
+      const afterLastRate = await firstValueFrom(
+        service.RatesReady$.pipe(skip(1), timeout(2000))
+      );
+      expect(initialValue).toStrictEqual(false);
+      expect(afterLastRate).toStrictEqual(false);
+    });
+    test('InitRemoteConnection if true countructor',()=>{
+      const rates = RatesFixture.GenerateForAllSymboles();
+      new MockLiveRateService(rates, null as never, true);
+      expect(mockMethods.getLastRates).toBeCalledTimes(0);
+      expect(mockMethods.InitRemoteConnection).toBeCalledTimes(1);
+    });
   });
 });

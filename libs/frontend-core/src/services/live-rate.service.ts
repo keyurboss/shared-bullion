@@ -46,6 +46,7 @@ export abstract class LiveRateService {
     return this._RatesReady;
   }
   protected set RatesReady(value) {
+    // debugger;
     this._RatesReady = value;
     this.RatesReadyBehaviourSubject.next(value);
   }
