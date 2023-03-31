@@ -1,15 +1,15 @@
 <div class="flex justify-center Roboto h-full">
-  <div class="relative flex justify-center items-center">
-    <div class="login_input">
+  <div class="relative flex justify-center items-center w-full">
+    <div class="login_input w-full">
       <h1 class="font-medium text-center text-[var(--primary-light)] text-[32px]">Login</h1>
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">Add your details to login</h4>
-      <faorm [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
+      <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
         
         <!-- ReactiveForm -->
         <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
           
           <!-- User id field -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input placeholder="Enter User id" formControlName="UserId"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
             <span class="text-[red] text-[10px] absolute left-[90%]"
@@ -21,7 +21,7 @@
           </div>
 
           <!-- password field -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input type="password" placeholder="Enter Password" formControlName="password"
               class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
             <span class="text-[red] text-[10px] absolute left-[90%]"
@@ -47,7 +47,7 @@
         </div>
 
         </div>
-      </faorm>
+      </form>
       <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
         <h5 class="text-center my-[10px] font-semibold text-[13px]">Forgot Password</h5>
         <h5 class="text-center my-[10px] font-semibold text-[13px]">

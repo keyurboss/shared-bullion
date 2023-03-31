@@ -2,10 +2,6 @@
     box-shadow: 0 0 15px 5px #fff;
 }
 
-.main {
-    padding: 30px 10%;
-}
-
 @media screen and (max-width: 1150px) {
     .main {
 
@@ -18,31 +14,4 @@
 
         padding: 10px 15px !important;
     }
-}
-
-// @media screen and (max-width: 1150px) {
-//     .main_container_data {
-//         max-width: 35vw;
-//     }
-// }
-
-// @media screen and (max-width: 580px) {
-//     .main_container_data {
-//         width: 85%;
-//     }
-// }
-
-// @media screen and (max-width: 480px) {
-//     .main_container_data {
-//         width: 100%;
-//     }
-// }
-
-
-
-
-.main_container_data {
-    margin: 15px 0;
-    padding: 2vh 0;
-    border-radius: 12px;
 }

@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavBar3Component, navbar3 } from '@rps/angular-nav-bars'
+import { MAppComponent } from '../app/app.component';
 
 @Component({
   selector: 'akshat-bull-app-about-us',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component,MAppComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })

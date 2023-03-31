@@ -63,6 +63,13 @@ export const appRoutes: Route[] = [
           ),
       },
       {
+        path: 'home/Downloadapp',
+        loadComponent: () =>
+          import('./app/app.component').then(
+            (a) => a.MAppComponent
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'home/live-rate',
         pathMatch: 'full',
