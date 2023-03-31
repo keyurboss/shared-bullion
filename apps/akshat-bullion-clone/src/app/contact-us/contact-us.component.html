@@ -1,22 +1,16 @@
-<div class="py-[30px] px-[10%] bg-[#0006]">
-  <div class="flex">
-    <div
-      class="flex-1 mx-[20px] min-h-[100px] w-[300px] rounded-[18px] bg-[#222]"
-    >
-      <div
-        class="border-b-[2px] border-[var(--primary-light)] h-[80px] flex justify-center items-center"
-      >
-        <img class="h-[70%] w-[70%]" src='{{images.location}}'/>
+<div class="contact-us flex items-center justify-center Roboto">
+  <div class="container flex h-full flex-wrap items-stretch justify-center">
+    <div class="card m-[20px] min-h-[100px] w-[300px] relative rounded-[15px] bg-[#222]">
+      <div class="logo h-[80px] border-b-[2px] border-[var(--primary-light)] flex justify-center items-center">
+        <img class="h-[70%] w-[70%]" src='{{images.location}}' />
       </div>
-      <div>
+      <div class="data">
         <div class="mt-[10px] h-[50px] flex justify-center items-center">
           <h2 class="text-[20px] font-black text-[var(--primary-light)]">
             {{Address.tittle}}
           </h2>
         </div>
-        <div
-          class="py-[15px] px-[10px] flex-col flex justify-center items-center"
-        >
+        <div class="py-[15px] px-[10px] flex-col flex justify-center items-center">
           <p class="text-[16px] text-[#fff] leading-[25px]">{{Address.line1}}</p>
           <p class="text-[16px] text-[#fff] leading-[25px]">{{Address.line2}}</p>
           <p class="text-[16px] text-[#fff] leading-[25px]">
@@ -26,32 +20,21 @@
         </div>
       </div>
     </div>
-    <div
-      class="flex-1 mx-[20px] min-h-[100px] w-[300px] rounded-[18px] bg-[#222]"
-    >
-      <div
-        class="border-b-[2px] border-[var(--primary-light)] h-[80px] flex justify-center items-center"
-      >
+    <div class="card m-[20px] min-h-[100px] w-[300px] relative rounded-[15px] bg-[#222]">
+      <div class="logo h-[80px] border-b-[2px] border-[var(--primary-light)] flex justify-center items-center">
         <img class="h-[70%] w-[70%]" src='{{images.Contact}}' />
       </div>
-      <div>
+      <div class="data">
         <div class="mt-[10px] h-[50px] flex justify-center items-center">
           <h2 class="text-[20px] font-black text-[var(--primary-light)]">
             {{Contact.tittle}}
           </h2>
         </div>
-        <div
-          class="py-[15px] px-[10px] flex-col flex justify-center items-center"
-        >
-          <h4
-            class="flex text-[18px] text-[var(--primary-dark)] justify-center items-center"
-          >
-          {{Contact.line1}}
+        <div class="py-[15px] px-[10px] flex-col flex justify-center items-center">
+          <h4 class="flex text-[18px] text-[var(--primary-dark)] justify-center items-center">
+            {{Contact.line1}}
           </h4>
-          <p
-            class="text-[16px] text-[#fff] leading-[25px]"
-            style="margin: 5px 0"
-          >
+          <p class="text-[16px] text-[#fff] leading-[25px]" style="margin: 5px 0">
             <span><b> {{Contact.line2}}</b></span>
           </p>
           <p class="text-[16px] text-[#fff] leading-[25px]">
@@ -60,13 +43,26 @@
         </div>
       </div>
     </div>
-    <div
-      class="flex-1 mx-[20px] min-h-[100px] w-[300px] rounded-[18px] bg-[#222] items-stretch"
-    >
-      <div
-        class="border-b-[2px] border-[var(--primary-light)] h-[80px] flex justify-center items-center"
-      >
-        <img class="h-[70%] w-[70%]" src='{{images.Email}}'/>
+    <div class="card m-[20px] min-h-[100px] w-[300px] relative rounded-[15px] bg-[#222]">
+      <div class="logo h-[80px] border-b-[2px] border-[var(--primary-light)] flex justify-center items-center">
+        <img class="h-[70%] w-[70%]" src='{{images.Gst}}' />
+      </div>
+      <div>
+        <div class="mt-[10px] h-[50px] flex justify-center items-center">
+          <h2 class="text-[20px] font-black text-[var(--primary-light)]">
+            {{Gst.tittle}}
+          </h2>
+        </div>
+        <div class="py-[15px] px-[10px] flex-col flex justify-center items-center">
+          <p class="text-[16px] text-[#fff] leading-[25px]">
+            <span style="width: 100%"><b>{{Gst.line1}}</b></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card m-[20px] min-h-[100px] w-[300px] relative rounded-[15px] bg-[#222]">
+      <div class="logo h-[80px] border-b-[2px] border-[var(--primary-light)] flex justify-center items-center">
+        <img class="h-[70%] w-[70%]" src='{{images.Email}}' />
       </div>
       <div>
         <div class="mt-[10px] h-[50px] flex justify-center items-center">
@@ -74,18 +70,13 @@
             {{Email.tittle}}
           </h2>
         </div>
-        <div
-          class="py-[15px] px-[10px] flex-col flex justify-center items-center"
-        >
+        <div class="py-[15px] px-[10px] flex-col flex justify-center items-center">
           <p class="text-[16px] text-[#fff] leading-[25px]">
-            <span style="width: 100%"
-              ><a href="mailto:{{Email.line1}}"
-                >{{Email.line1}}</a
-              ></span
-            >
+            <span style="width: 100%"><a href="mailto:{{Email.line1}}">{{Email.line1}}</a></span>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
+

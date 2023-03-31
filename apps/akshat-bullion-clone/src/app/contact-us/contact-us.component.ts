@@ -14,6 +14,7 @@ export class ContactUsComponent {
   images={
     location:'/assets/images/location.svg',
     Contact:'/assets/images/contact.svg',  
+    Gst:'../../assets/images/Gst_logo.svg',
     Email:'/assets/images/mail.svg',
   }
   Address = {
@@ -28,6 +29,10 @@ export class ContactUsComponent {
     line1: 'Personal',
     line2: 'Akshat Shah',
     line3: '+91 8320361328',
+  };
+  Gst={
+    tittle: 'GST Numbers',
+    line1:'24GCZPS8574Q1ZW',
   };
   Email={
     tittle: 'Email',
