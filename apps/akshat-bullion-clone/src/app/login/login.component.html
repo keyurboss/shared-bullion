@@ -11,30 +11,18 @@
           <!-- User id field -->
           <div class="input flex justify-center items-center w-full">
             <input placeholder="Enter User id" formControlName="UserId"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[90%]"
-            *ngIf="(LoginFormControl.UserId.touched || submitted) && UserId.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-            *ngIf="(LoginFormControl.UserId.touched || submitted) && UserId.invalid">UserId
-              Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!-- password field -->
           <div class="input flex justify-center items-center w-full">
             <input type="password" placeholder="Enter Password" formControlName="password"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[90%]"
-            *ngIf="(LoginFormControl.password.touched || submitted) && password.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-            *ngIf="(LoginFormControl.password.touched || submitted) && password.invalid">password
-              Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!-- checkbox field -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px] " /><span
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" formControlName="RememberMe" /><span
               class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember Me</span>
           </div>
 

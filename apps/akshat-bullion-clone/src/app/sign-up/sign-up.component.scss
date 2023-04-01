@@ -10,3 +10,28 @@ input::-webkit-inner-spin-button {
 .error{
     color: red;
 }
+input.input_field:focus {
+    outline-width: 0;
+}
+@media screen and (max-width: 1200px) {
+    .Signup_input {
+        h1 {
+            font-size: 30px;
+        }
+
+        h4 {
+            font-size: 15px;
+
+        }
+    }
+
+    .input {
+        input {
+            width: 80%;
+        }
+    }
+
+    .inputs {
+        margin: 0;
+    }
+}

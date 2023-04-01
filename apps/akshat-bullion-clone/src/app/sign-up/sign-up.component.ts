@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'akshat-bull-app-sign-up',
@@ -19,7 +20,7 @@ export class SignUpComponent {
   submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
-    check:new FormControl('',[Validators.required]),
+    checkbox: new FormControl(false),
     FirmName: new FormControl('', [Validators.required]),
     MobileNumber: new FormControl('', [
       Validators.required,
@@ -27,12 +28,9 @@ export class SignUpComponent {
     ]),
     EmailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]),
     City: new FormControl('', [Validators.required]),
-    Password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(5)]),
+    Password: new FormControl('', [Validators.required, Validators.minLength(5)]),
     ConfirmPassword: new FormControl('', [Validators.required]),
   })
-  // {
-  //   validators: this.MustMatch('Password','ConfirmPassword')
-  // });
   get Name() {
     return this.SignForm.get('Name');
   }
@@ -57,46 +55,29 @@ export class SignUpComponent {
   get Signup() {
     return this.SignForm.get('Signup');
   }
-  get SignFormControl() {
-    return this.SignForm.controls;
+  get checkbox() {
+    return this.SignForm.get('checkbox');
   }
-  get check() {
+  get SignFormControl() {
     return this.SignForm.controls;
   }
   OnSignUpUserSubmit() {
     this.submitted = true;
-    if (this.SignForm.valid) {
+    if (this.EmailId.invalid) {
+      Swal.fire('Error', 'Invalid Email!', 'warning');
+    } else if (this.MobileNumber.invalid) {
+      Swal.fire('Error', 'Invalid MobileNumber!', 'warning');
+    } else if (this.Password.invalid) {
+      Swal.fire('Error', 'please Enter Min 8 Digit Long Password', 'warning');
+    } else if (this.Name.dirty === false || this.City.dirty === false || this.FirmName.dirty === false) {
+      Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
+    } else if (this.Password.value !== this.ConfirmPassword.value) {
+      Swal.fire('Error', 'Password and Confirm Password are not same!', 'warning');
+    } else if (this.checkbox.value === false) {
+      Swal.fire('Error', 'You Have not checked the Terms & Conditions..', 'warning');
+    } else {
       console.log(this.SignForm.value);
+      Swal.fire('Success', 'successfully submitted check console', 'success');
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const ConfirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-//   const password = control.get('password');
-//   const ConfirmPassword = control.get('confirmPassword');
-
-//   return password && ConfirmPassword && password.value === ConfirmPassword.value ? { ConfirmPassword: true } : null;
-// };
-
-//  implements OnInit {
-//   reactiveForm: FormGroup;
-//   ngOnInit(){
-//       this.reactiveForm=new FormGroup({
-//           userid: new FormControl(null),
-//           password: new FormControl(null),
-//       });
-//     }
-//   }

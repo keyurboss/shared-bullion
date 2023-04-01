@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'akshat-bull-app-login',
@@ -31,10 +31,16 @@ export class LoginComponent {
   get LoginFormControl() {
     return this.LoginForm.controls;
   }
+  get RememberMe() {
+    return this.LoginForm.get('RememberMe');
+  }
   OnLoginuserSubmit() {
     this.submitted = true;
-    if (this.LoginForm.valid) {
+    if (this.UserId.dirty === false || this.password.dirty === false) {
+      Swal.fire('All details are required!', 'Please fill out all fields!!', 'warning');
+    }else {
       console.log(this.LoginForm.value);
+      Swal.fire('Error', 'User Not Fonund', 'error');
     }
   }
 }

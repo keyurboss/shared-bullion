@@ -1,6 +1,6 @@
 <div class="Roboto my-[20px] h-full">
   <div class="relative flex justify-center items-center h-full">
-    <div class="login_input">
+    <div class="Signup_input w-full">
       <h1 class="font-medium text-center text-[var(--primary-light)] text-[24px]">
         New Registration
       </h1>
@@ -13,93 +13,52 @@
         <div class="inputs flex_center flex justify-center items-center flex-col">
 
           <!--  NAME field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input placeholder="Name" formControlName="Name"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.Name.touched || submitted) && Name.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.Name.touched || submitted) && Name.invalid">Name
-              required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  FirmName field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input placeholder="FirmName" formControlName="FirmName"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.FirmName.touched || submitted) && FirmName.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.FirmName.touched || submitted) && FirmName.invalid">FirmName Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  MobileNumber field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input placeholder="Mobile No" type="number" pattern="\d{10}" formControlName="MobileNumber"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.MobileNumber.touched || submitted) && MobileNumber.invalid"><img
-                class="h-[20px] w-[20px]" src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.MobileNumber.touched || submitted) && MobileNumber.invalid">valid MobileNumber
-              Required</span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.MobileNumber.touched || submitted) && MobileNumber.invalid">valid MobileNumber
-              Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  EmailId field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input placeholder="Email Id" type="email" formControlName="EmailId"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.EmailId.touched || submitted) && EmailId.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.EmailId.touched || submitted) && EmailId.invalid">EmailId Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  City Name field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input placeholder="City" formControlName="City"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.City.touched || submitted) && City.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.City.touched || submitted) && City.invalid">City
-              Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  Password field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input type="password" placeholder="Password" formControlName="Password"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.Password.touched || submitted) && Password.invalid"><img class="h-[20px] w-[20px]"
-                src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.Password.touched || submitted) && Password.invalid">Password Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  Confirm Password field  -->
-          <div class="flex justify-center items-center">
+          <div class="input flex justify-center items-center w-full">
             <input type="password" placeholder="Confirm Password" formControlName="ConfirmPassword"
-              class="my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
-            <span class="text-[red] text-[10px] absolute left-[57%]"
-              *ngIf="(SignFormControl.ConfirmPassword.touched || submitted) && ConfirmPassword.invalid"><img
-                class="h-[20px] w-[20px]" src="../../assets/images/alert-circle-outline.svg" alt=""></span>
-            <span class="text-[red] text-[10px] absolute mt-[34px]"
-              *ngIf="(SignFormControl.ConfirmPassword.touched || submitted) && ConfirmPassword.invalid">ConfirmPassword
-              Required</span>
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
           </div>
 
           <!--  checkbox field  -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" formControlName="check" /><span
-              class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms & Conditions</span>
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]"
+              formControlName="checkbox" /><span class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms &
+              Conditions</span>
           </div>
 
           <!-- submit button -->
