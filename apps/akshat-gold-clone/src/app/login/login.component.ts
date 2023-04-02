@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import {
   FormControl,
@@ -13,7 +13,7 @@ import {
 @Component({
   selector: 'akshat-gold-login',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, RouterOutlet],
+  imports: [CommonModule, HeaderComponent, RouterOutlet,ReactiveFormsModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

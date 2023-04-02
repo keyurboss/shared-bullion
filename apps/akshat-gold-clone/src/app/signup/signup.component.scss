@@ -1,0 +1,147 @@
+.signup {
+    height: 100%;
+    width: 100%;
+}
+
+.MAIN {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: #bc9039;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_menu {
+    height: 96%;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 0 15px #0000008c;
+    border-radius: 40px;
+    color: #000;
+    background-color: #fff;
+}
+
+.w3-animate-left {
+    position: relative;
+    animation: animateleft .4s;
+}
+
+.main_menu_img {
+    height: 13%;
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_menu_header {
+    text-align: center;
+    color: #4a4b4d;
+
+    h1 {
+        font-size: 21px;
+        font-weight: 400;
+    }
+}
+
+.main_menu_subheader {
+    text-align: center;
+    font-size: 15px;
+    color: #7c7d7e;
+
+    h6 {
+        font-size: 16px;
+        margin-top: 16px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+}
+
+.main_menu_inputs {
+    width: 100%;
+    text-align: center;
+    height: 53%;
+    position: relative;
+
+    input {
+        height: 12%;
+        margin: 7px 0;
+        background: #f2f2f2;
+        width: 90%;
+        border-radius: 30px;
+        padding: 10px 24px;
+        border: none;
+    }
+}
+
+.main_menu_bottom {
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.back_button_div {
+    position: absolute;
+    margin-left: 5%;
+    background-color: #41241c;
+    left: 0;
+    border-radius: 50%;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    img {
+        width: auto;
+        height: 100%;
+    }
+}
+
+.main_menu_bottom_remember {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    margin-top: 2vh;
+    justify-content: center;
+    align-items: center;
+
+    input {
+        margin: 5px 0;
+        background: #f2f2f2;
+        border-radius: 30px;
+        padding: 14px 24px;
+        border: none;
+    }
+
+    span {
+        margin-left: 5px;
+    }
+}
+
+.main_menu_bottom_button {
+    width: 100%;
+    margin: 2vh 0;
+    text-align: center;
+
+    button {
+        width: 90%;
+        text-align: center;
+        background-color: #41241c;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 500;
+    }
+}
+
+.main_menu_bottom_login {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
