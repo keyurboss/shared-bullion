@@ -8,4 +8,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './bank-details.component.html',
   styleUrls: ['./bank-details.component.scss'],
 })
-export class BankDetailsComponent {}
+export class BankDetailsComponent {
+  clipboard(num: string) {
+    navigator.clipboard.writeText(num);
+  }
+}
