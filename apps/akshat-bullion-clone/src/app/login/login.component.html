@@ -4,10 +4,10 @@
       <h1 class="font-medium text-center text-[var(--primary-light)] text-[32px]">Login</h1>
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">Add your details to login</h4>
       <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
-        
+
         <!-- ReactiveForm -->
         <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
-          
+
           <!-- User id field -->
           <div class="input flex justify-center items-center w-full">
             <input placeholder="Enter User id" formControlName="UserId"
@@ -22,18 +22,19 @@
 
           <!-- checkbox field -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" formControlName="RememberMe" /><span
-              class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember Me</span>
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><span
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember
+              Me</span>
           </div>
 
           <!--Login button -->
-          <div
-          class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center">
-          <button type="submit">
-            Login
-          </button>
-        </div>
-
+          <div class="sumbit_btn">
+            <button
+              class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px]"
+              id="submit" type="submit">
+              Login
+            </button>
+          </div>
         </div>
       </form>
       <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
