@@ -18,9 +18,18 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   users = [
-    { id: 'sahil', pass: 'sahil' },
-    { id: 'bhavy', pass: 'bhavy' },
-    { id: 'vraj', pass: 'vraj' }
+    { id: 'sahil', password: 'sahil' },
+    { id: 'Sahil', password: 'sahil' },
+    { id: 'harsh', password: 'harsh' },
+    { id: 'Harsh', password: 'harsh' },
+    { id: 'vraj', password: 'vraj' },
+    { id: 'Vraj', password: 'vraj' },
+    { id: 'bhavya', password: 'bhavya' },
+    { id: 'Bhavya', password: 'bhavya' },
+    { id: 'pratham', password: 'pratham' },
+    { id: 'Pratham', password: 'pratham' },
+    { id: 'alay', password: 'alay' },
+    { id: 'Alay', password: 'alay' },
   ];
 
   submitted = false;
@@ -48,7 +57,7 @@ export class LoginComponent {
     } else {
       let found = false;
       for (let i = 0; i < this.users.length; i++) {
-        if (this.users[i].id === this.UserId.value && this.users[i].pass === this.password.value) {
+        if (this.users[i].id === this.UserId.value && this.users[i].password === this.password.value) {
           found = true;
           break;
         }
