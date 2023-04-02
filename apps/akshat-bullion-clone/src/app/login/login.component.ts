@@ -46,9 +46,7 @@ export class LoginComponent {
   get LoginFormControl() {
     return this.LoginForm.controls;
   }
-  get RememberMe() {
-    return this.LoginForm.get('RememberMe');
-  }
+
   OnLoginuserSubmit() {
     this.submitted = true;
     console.log();

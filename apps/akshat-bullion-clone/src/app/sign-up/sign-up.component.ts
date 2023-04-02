@@ -25,6 +25,7 @@ export class SignUpComponent {
     MobileNumber: new FormControl('', [
       Validators.required,
       Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+      Validators.maxLength(10),
     ]),
     EmailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]),
     City: new FormControl('', [Validators.required]),
