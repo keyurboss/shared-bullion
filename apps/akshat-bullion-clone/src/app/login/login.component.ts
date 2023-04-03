@@ -67,6 +67,9 @@ export class LoginComponent {
       }
       console.log(this.LoginForm.value);
     }
+  };
+  ForgotPassword(){
+    Swal.fire('Forgot Password?', 'Please Contact Admin To Re-Set Password..!!', 'info');
   }
 }
 

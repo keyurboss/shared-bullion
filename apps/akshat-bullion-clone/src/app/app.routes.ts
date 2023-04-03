@@ -69,11 +69,11 @@ export const appRoutes: Route[] = [
             (a) => a.MAppComponent
           ),
       },
-      {
-        path: '**',
-        redirectTo: 'home/live-rate',
-        pathMatch: 'full',
-      },
     ],
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./error404/error404.component').then((a) => a.Error404Component),
   },
 ];
