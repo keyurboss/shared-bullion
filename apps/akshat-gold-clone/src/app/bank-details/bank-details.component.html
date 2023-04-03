@@ -1,12 +1,56 @@
-<div class="details">
-    <div class="main">
-        <div class="mdl_grid">
-            <div class="main_data">
-                <div class="logo">
-                    <img src="../../assets/images/AxisBank.png">
-                </div>
-            </div>      
+<div class="details min-h-[50vh]">
+  <div class="main py-[10px] px-[15%]"> 
+    <div class="main_container mdl-grid flex justify-evenly items-center py-[25px] px-[8px]">
+      <div
+        class="main_container_data w-[40%] rounded-xl my-[15px] mx-0 py-[2vh] px-0 mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--12-col-phone"
+      >
+        <div class="main_container_data_logo w-full py-[5px] px-[5%] flex justify-center">
+          <img class="inline-block min-w-[70%] max-w-[70%] max-h-[130px] h-auto p-[4px] leading-[1.42857143] bg-[#fff]"
+            alt="Bank Logo"
+            src="https://files.rpso.in/static/2dc19238d71613569239104.png"
+          />
         </div>
+        <div class="main_container_data_details w-full py-[5px] px-[5%]">
+          <div class="main_container_data_details_contant w-full block py-[2px] px-0 font-semibold leading-[1.2]">
+            <h5 class="w-[45%] font-bold text-xs inline-block m-0">Account Name</h5>
+            <span class="text-[12px] text-xs">
+              :
+              <p class="ml-[5%] inline-block font-bold">AKSHAT GOLD PVT LTD</p></span
+            >
+          </div>
+          <div class="main_container_data_details_contant">
+            <h5 class="w-[45%] font-bold text-xs inline-block m-0">Bank Name</h5>
+            <span class="text-[12px] text-xs">
+              :
+              <p class="ml-[5%] inline-block font-bold">AXIS BANK</p></span
+            >
+          </div>
+          <div class="main_container_data_details_contant">
+            <h5 class="w-[45%] font-bold text-xs inline-block m-0">Account No</h5>
+            <span class="text-[12px] text-xs">
+              :
+              <p class="bank-account ml-[5%] inline-block font-bold">921-0200-4224-1964</p>
+              <div class="copy inline-block h-[16px] w-[16px] ml-[10px] bg-[#000]" (click)="clipboard('921-0200-4224-1964')"></div
+            ></span>
+          </div>
+          <div class="main_container_data_details_contant">
+            <h5 class="w-[45%] font-bold text-xs inline-block m-0">IFSC Code</h5>
+            <span class="text-[12px] text-xs">
+              :
+              <p class="ml-[5%] inline-block font-bold">UTIB - 0003 - 606</p>
+              <div class="copy inline-block h-[16px] w-[16px] ml-[10px] bg-[#000]" (click)="clipboard('UTIB - 0003 - 606')"></div
+            ></span>
+          </div>
+          <div class="main_container_data_details_contant">
+            <h5 class="w-[45%] font-bold text-xs inline-block m-0">Branch Name</h5>
+            <span class="text-[12px] text-xs">
+              :
+              <p class="ml-[5%] inline-block font-bold">VATVA GJ</p></span
+            >
+          </div>
+        </div>
+      </div>
+      <!---->
     </div>
+  </div>
 </div>
-

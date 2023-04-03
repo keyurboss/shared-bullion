@@ -4,6 +4,11 @@ import { HomeComponent } from './home/home.component';
 
 export const appRoutes: Route[] = [
   {
+    path: 'signup',
+    loadComponent: () =>
+      import('./signup/signup.component').then((a) => a.SignupComponent),
+  },
+  {
     path: '',
     component: HomeComponent,
     children: [
