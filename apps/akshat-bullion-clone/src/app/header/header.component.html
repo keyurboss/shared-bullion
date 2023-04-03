@@ -4,13 +4,13 @@
     <div class="flex justify-center">
       <a href="####"><img class="img w-[440px] h-[100px]" src="{{images.akshat_bull_logo}}" alt="Akshat Logo" /></a>
     </div>
-    <div id="bank-details" *ngIf="showdownloadheader"
+    <div *ngIf="showdownloadheader"
       class="download_img absolute border-[#fcea73] border h-[40px] w-[175px] flex justify-center items-center rounded-[5px]">
       <a routerLink="home/Downloadapp" class="flex justify-center mr-[10px] items-center text-[#fce975]"
         href="#######"><img class="web h-[20px] w-[20px] mr-2"
           src="{{images.download_outline}}" />{{Input_data.Download_Apps}}
       </a>
-      <button (click)="hidedownloadheader()"
+      <button (click)="showdownloadheader = false"
         class="flex justify-center items-center absolute right-1 cursor-pointer cancle"><img class="h-7 w-7"
           src="../../assets/images/header_cancle_btn.svg" alt=""></button>
     </div>

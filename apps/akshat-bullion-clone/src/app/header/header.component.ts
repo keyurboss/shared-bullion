@@ -52,7 +52,4 @@ export class HeaderComponent {
       routerLink: '/login',
     },
   ];
-  hidedownloadheader() {
-    this.showdownloadheader = false;
-  }
 }
