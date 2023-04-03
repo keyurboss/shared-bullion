@@ -61,7 +61,8 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 5656
+        "port": 5656,
+        "host": "0.0.0.0"
       }
     },
     "extract-i18n": {
