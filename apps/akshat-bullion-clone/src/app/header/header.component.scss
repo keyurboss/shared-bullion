@@ -24,6 +24,12 @@
 
 // *******************// media query//************************
 
+@media screen and (min-width: 800px) {
+    .cancle {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1150px) {
     .menu_nav {
         font-size: 12px;

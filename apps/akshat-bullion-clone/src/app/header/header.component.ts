@@ -1,54 +1,58 @@
-import { Component} from '@angular/core';
-import { NgFor} from '@angular/common';
+import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
-interface navbar{
-  name:string;
-  routerLink:string;
+interface navbar {
+  name: string;
+  routerLink: string;
 }
 @Component({
   selector: 'akshat-bull-app-header',
   standalone: true,
-  imports: [NgFor , RouterModule],
+  imports: [NgFor, RouterModule, NgIf],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent{
-  Input_data={
-    marquee:'Welcome To Akshat Bullion.',
-    Download_Apps:'Download Apps',
-  } 
-    images={
-    akshat_bull_logo:'/assets/images/Akshat bullion logo.svg',
-    download_outline:'/assets/images/download-outline.svg',
+export class HeaderComponent {
+  showdownloadheader = true;
+  Input_data = {
+    marquee: 'Welcome To Akshat Bullion.',
+    Download_Apps: 'Download Apps',
   }
-  data: navbar[]=[
+  images = {
+    akshat_bull_logo: '/assets/images/Akshat bullion logo.svg',
+    download_outline: '/assets/images/download-outline.svg',
+  }
+  data: navbar[] = [
     {
-      name:'ABOUT US',
-      routerLink:'home/about-us',
+      name: 'ABOUT US',
+      routerLink: 'home/about-us',
     },
     {
-      name:'LIVE RATE',
-      routerLink:'home/live-rate',
+      name: 'LIVE RATE',
+      routerLink: 'home/live-rate',
     },
     {
-      name:'LAGDIS',
-      routerLink:'home/lagdis',
+      name: 'LAGDIS',
+      routerLink: 'home/lagdis',
     },
     {
-      name:'MESSAGES',
-      routerLink:'home/messages',
+      name: 'MESSAGES',
+      routerLink: 'home/messages',
     },
     {
-      name:'BANK DETAILS',
-      routerLink:'home/bank-details',
+      name: 'BANK DETAILS',
+      routerLink: 'home/bank-details',
     },
     {
-      name:'CONTACT US',
-      routerLink:'home/contact-us',
+      name: 'CONTACT US',
+      routerLink: 'home/contact-us',
     },
     {
-      name:'LOGIN',
-      routerLink:'/login',
+      name: 'LOGIN',
+      routerLink: '/login',
     },
   ];
+  hidedownloadheader() {
+    this.showdownloadheader = false;
+  }
 }

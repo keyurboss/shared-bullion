@@ -81,10 +81,13 @@ export class SignUpComponent {
       Swal.fire('Success', 'successfully submitted check console', 'success');
     }
   }
-  formatPhone(event) {
-    const input = event.target;
-    const originalValue = input.value;
-    const regex = /[^0-9]/gi;
-    input.value = originalValue.replace(regex, '');
+  formatPhone(event: KeyboardEvent) {
+    const input = event.key;
+    if (input === 'Backspace') {
+      return
+    }
+    if (typeof input !== 'undefined' && isNaN(+input)) {
+      event.preventDefault();
+    }
   }
 }

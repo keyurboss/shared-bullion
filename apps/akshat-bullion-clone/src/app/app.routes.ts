@@ -72,8 +72,12 @@ export const appRoutes: Route[] = [
     ],
   },
   {
-    path: '**',
+    path: 'error404',
     loadComponent: () =>
       import('./error404/error404.component').then((a) => a.Error404Component),
+  },
+  {
+    path: '**',
+    redirectTo: 'error404',
   },
 ];
