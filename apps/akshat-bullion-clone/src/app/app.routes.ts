@@ -72,6 +72,11 @@ export const appRoutes: Route[] = [
     ],
   },
   {
+    path: 'otp',
+    loadComponent: () =>
+      import('./otp/otp.component').then((a) => a.OtpComponent),
+  },
+  {
     path: 'error404',
     loadComponent: () =>
       import('./error404/error404.component').then((a) => a.Error404Component),
@@ -79,5 +84,5 @@ export const appRoutes: Route[] = [
   {
     path: '**',
     redirectTo: 'error404',
-  },
+    },
 ];

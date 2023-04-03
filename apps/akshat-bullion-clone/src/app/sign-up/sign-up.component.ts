@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
+  constructor(private router: Router) {}
   submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
@@ -77,8 +78,8 @@ export class SignUpComponent {
     } else if (this.checkbox.value === false) {
       Swal.fire('Error', 'You Have not checked the Terms & Conditions..', 'warning');
     } else {
-      console.log(this.SignForm.value);
-      Swal.fire('Success', 'successfully submitted check console', 'success');
+      // window.location.pathname= 'home/about-us'
+      this.router.navigate((['/otp']));
     }
   }
   formatPhone(event: KeyboardEvent) {
