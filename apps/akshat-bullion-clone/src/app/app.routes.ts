@@ -82,7 +82,12 @@ export const appRoutes: Route[] = [
       import('./error404/error404.component').then((a) => a.Error404Component),
   },
   {
+    path: 'termsNpolicy/tnc',
+    loadComponent: () =>
+      import('./terms-npolicy/terms-npolicy.component').then((a) => a.TermsNpolicyComponent),
+  },
+  {
     path: '**',
     redirectTo: 'error404',
-    },
+  },
 ];
