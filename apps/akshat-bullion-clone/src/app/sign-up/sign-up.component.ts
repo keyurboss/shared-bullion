@@ -19,6 +19,7 @@ import Swal from 'sweetalert2';
 export class SignUpComponent {
   constructor(private router: Router) { }
   submitted = false;
+  // sahil:number=null;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
     checkbox: new FormControl(false),
@@ -28,7 +29,7 @@ export class SignUpComponent {
       Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
       Validators.maxLength(10),
     ]),
-    EmailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]),
+    EmailId: new FormControl('', [Validators.required, Validators.email]),
     City: new FormControl('', [Validators.required]),
     Password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     ConfirmPassword: new FormControl('', [Validators.required]),
@@ -79,8 +80,17 @@ export class SignUpComponent {
       Swal.fire('Error', 'You Have not checked the Terms & Conditions..', 'warning');
     } else {
       // setTimeout(() => this.router.navigate((['/otp'])), 5000)
-      this.router.navigate((['/otp']))
+      this.router.navigate((['/otp']));
+      let mask = "";
+      const sahil = this.MobileNumber.value;
+      for (let i = 0; i <= sahil.length - 2; i++) {
+        mask += "X";
+      }
+      const xxnumber = mask + this.MobileNumber.value.slice(8, 10);
+      console.log(xxnumber);
+
     }
+    return null;
   }
   formatPhone(event: KeyboardEvent) {
     const input = event.key;
@@ -88,6 +98,16 @@ export class SignUpComponent {
       return
     }
     if (typeof input !== 'undefined' && isNaN(+input)) {
+      event.preventDefault();
+    }
+  }
+  startingspace(event: any) {
+    if (event.target.selectionStart === 0 && event.code === "Space") {
+      event.preventDefault();
+    }
+  }
+  nospace(event: any) {
+    if (event.keyCode === 32) {
       event.preventDefault();
     }
   }

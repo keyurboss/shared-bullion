@@ -3454,15 +3454,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rps/angular-nav-bars@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@rps/angular-nav-bars@npm:1.0.1"
+"@rps/angular-nav-bars@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@rps/angular-nav-bars@npm:1.0.2"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
     "@angular/common": ^14.2.0
     "@angular/core": ^14.2.0
-  checksum: 341be239f32a899d59f0b5e3a8e7a29dab3d4b2e5fd7a0abac7f9d2fe94ac6748890f1751ac647429569500034678a065e141ab0dbbf87e4d43a9aa478cbd018
+  checksum: 42fbbffebf4acd46b05ba158503d50f0b5997ccc6d94094deaad5f4dbfe2d8933b763fcb6cbbe4cc87178780cff13fdf0678f6bb93bc8e216466ec73620873fa
   languageName: node
   linkType: hard
 
@@ -12886,7 +12886,7 @@ __metadata:
     "@nrwl/node": 15.8.6
     "@nrwl/nx-cloud": 15.2.1
     "@nrwl/workspace": 15.8.6
-    "@rps/angular-nav-bars": ^1.0.1
+    "@rps/angular-nav-bars": ^1.0.2
     "@schematics/angular": ~15.1.0
     "@types/jest": 29.4.4
     "@types/node": 16.11.7

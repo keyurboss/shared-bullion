@@ -71,6 +71,16 @@ export class LoginComponent {
   ForgotPassword(){
     Swal.fire('Forgot Password?', 'Please Contact Admin To Re-Set Password..!!', 'info');
   }
+  startingspace(event: any) {
+    if (event.target.selectionStart === 0 && event.code === "Space") {
+      event.preventDefault();
+    }
+  }
+  nospace(event: any) {
+    if (event.keyCode === 32) {
+      event.preventDefault();
+    }
+  }
 }
 
 
