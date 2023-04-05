@@ -79,7 +79,6 @@ export class SignUpComponent {
     } else if (this.checkbox.value === false) {
       Swal.fire('Error', 'You Have not checked the Terms & Conditions..', 'warning');
     } else {
-      // setTimeout(() => this.router.navigate((['/otp'])), 5000)
       this.router.navigate((['/otp']));
       let mask = "";
       const sahil = this.MobileNumber.value;

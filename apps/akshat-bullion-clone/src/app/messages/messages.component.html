@@ -1,2 +1,14 @@
-<div class="main h-[250px]">
+<div class="main py-[40px] px-[11%] Roboto">
+    <div class="main_cotainer">
+        <div *ngFor="let item of data" class="main_container_data">
+            <div class="main_container_data_header">
+                <h2>{{item.tittle}}</h2>
+                <hr>
+            </div>
+            <div class="main_container_data_contant"> {{item.content}}</div>
+            <div class="main_container_data_timestamp">
+                <p>{{item.updated_time}}</p>
+            </div>
+        </div>
+    </div>
 </div>
