@@ -49,7 +49,6 @@ export class LoginComponent {
 
   OnLoginuserSubmit() {
     this.submitted = true;
-    console.log();
     if (this.UserId.dirty === false || this.password.dirty === false) {
       Swal.fire('All details are required!', 'Please fill out all fields!!', 'warning');
     } else {
@@ -68,7 +67,7 @@ export class LoginComponent {
       console.log(this.LoginForm.value);
     }
   };
-  ForgotPassword(){
+  ForgotPassword() {
     Swal.fire('Forgot Password?', 'Please Contact Admin To Re-Set Password..!!', 'info');
   }
   startingspace(event: any) {

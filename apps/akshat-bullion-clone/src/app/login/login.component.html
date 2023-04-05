@@ -11,26 +11,26 @@
           <!-- User id field -->
           <div class="input flex justify-center items-center w-full">
             <input placeholder="Enter User id" formControlName="UserId" (keydown)="startingspace($event)"
-              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!-- password field -->
           <div class="input flex justify-center items-center w-full">
             <input type="password" placeholder="Enter Password" formControlName="password" (keydown)="nospace($event)"
-              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none" />
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!-- checkbox field -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><span
-              class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember
-              Me</span>
+            <input type="checkbox" id="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><label
+              for="checkbox" class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember
+              Me</label>
           </div>
 
           <!--Login button -->
           <div class="sumbit_btn">
             <button
-              class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px]"
+              class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] focus:outline-none"
               id="submit" type="submit">
               Login
             </button>
