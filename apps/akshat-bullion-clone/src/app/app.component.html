@@ -1,8 +1,10 @@
-<div class="main">
+<div class="main flex justify-center">
     <div class="backgroundimg">
         <div class="img_parent">
-            <img src="../assets/images/background.png" alt="">
+            <img class="object-cover" src="../assets/images/background.png" alt="">
         </div>
     </div>
-<router-outlet></router-outlet>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
 </div>

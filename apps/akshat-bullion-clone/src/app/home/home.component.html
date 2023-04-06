@@ -1,12 +1,12 @@
-<section>
-  <div class="main_navbar">
+<div class="app-home">
+  <div class="app-home-header">
     <akshat-bull-app-header></akshat-bull-app-header>
+
   </div>
-  <router-outlet></router-outlet>
-  <div class="mobile_navbar">
-    <nav-bars-3 class="nav_bg" [parentData]="images"></nav-bars-3>
+  <div class="app-home-container mx-auto">
+    <router-outlet></router-outlet>
   </div>
-  <div class="footer">
+  <div class="app-home-footer">
     <akshat-bull-app-footer></akshat-bull-app-footer>
   </div>
-</section>
+</div>
