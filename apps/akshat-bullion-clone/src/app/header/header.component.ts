@@ -17,6 +17,7 @@ export class HeaderComponent {
   Input_data = {
     marquee: 'Welcome To Akshat Bullion.',
     Download_Apps: 'Download Apps',
+    Download_router_link:'app/home/Downloadapp'
   }
   images = {
     akshat_bull_logo: '/assets/images/Akshat bullion logo.svg',
@@ -25,27 +26,27 @@ export class HeaderComponent {
   data: navbar[] = [
     {
       name: 'ABOUT US',
-      routerLink: 'home/about-us',
+      routerLink: 'app/home/about-us',
     },
     {
       name: 'LIVE RATE',
-      routerLink: 'home/live-rate',
+      routerLink: 'app/home/live-rate',
     },
     {
       name: 'LAGDIS',
-      routerLink: 'home/lagdis',
+      routerLink: 'app/home/lagdis',
     },
     {
       name: 'MESSAGES',
-      routerLink: 'home/messages',
+      routerLink: 'app/home/messages',
     },
     {
       name: 'BANK DETAILS',
-      routerLink: 'home/bank-details',
+      routerLink: 'app/home/bank-details',
     },
     {
       name: 'CONTACT US',
-      routerLink: 'home/contact-us',
+      routerLink: 'app/home/contact-us',
     },
     {
       name: 'LOGIN',

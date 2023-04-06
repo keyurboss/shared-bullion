@@ -10,7 +10,7 @@
   </div>
   <div class="footer">
     <div class="product" *ngIf="GOLD | async; let gold">
-      <div class="product_name center right_border">GOLD FUTURE</div>
+      <div class="product_name center right_border text-[white]">GOLD FUTURE</div>
       <div class="product_price upper_margin right_border center">
         <div class="hii" [class.rate_high]="gold['ask'].color === 'Green'"
           [class.rate_low]="gold['ask'].color === 'Red'">
@@ -18,12 +18,12 @@
         </div>
       </div>
       <div class="product_price upper_margin right_border center">
-        <div class="hii" [class.rate_high]="gold['ask'].color === 'Green'"
+        <div class="hii text-[white]" [class.rate_high]="gold['ask'].color === 'Green'"
           [class.rate_low]="gold['ask'].color === 'Red'">
           {{ gold['ask'].rate }}
         </div>
       </div>
-      <div class="product_price upper_margin right_border center">
+      <div class="product_price upper_margin right_border center text-[white]">
         {{ gold['last-high'].rate }}
       </div>
       <div class="product_price remove_border upper_margin center">

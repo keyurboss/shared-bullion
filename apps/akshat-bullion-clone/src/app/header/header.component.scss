@@ -1,25 +1,10 @@
+// *******************// routerLinkActive class//************************
 .click_1 {
     color: #fce975;
 }
 
 .click_2 {
     border-bottom: 1px solid #fce975;
-}
-
-.Logo {
-    margin: 20px 20px 0 0;
-}
-
-@media (max-width:800px) {
-    .menu_nav {
-        display: none;
-    }
-}
-
-.download_img {
-    top: 50%;
-    right: 10%;
-    transform: translateY(-50%);
 }
 
 // *******************// media query//************************
@@ -90,5 +75,11 @@
 @media screen and (max-width: 400px) {
     .marquee {
         padding: 4px 0;
+    }
+}
+
+@media (max-width:800px) {
+    .menu_nav {
+        display: none;
     }
 }

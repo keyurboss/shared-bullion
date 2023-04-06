@@ -1,7 +1,7 @@
 :host {
-  --header-back-color: #3b2f2f;
+  --header-back-color: #000000;
   --header-font-color: #ffffff;
-  --header-border-color: #3b2f2f;
+  --header-border-color: #fcea73;
   --data-back-color: #ffffff;
   --data-font-color: #ffffff;
   --rate-high-back-color: #008000;
@@ -29,6 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
   
 }
 .hii{
@@ -57,7 +58,6 @@
   font-size: 15px;
   border-radius: 8px 8px 0 0;
   font-weight: 700;
-  background-color: var(--header-back-color);
 }
 .footer {
   height: 60%;
@@ -68,6 +68,7 @@
   align-items: center;
   justify-content: left;
   padding: 5px 0px 5px 7px;
+  color: #ffffff;
 }
 .product {
   display: flex;
