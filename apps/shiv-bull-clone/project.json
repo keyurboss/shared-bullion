@@ -1,0 +1,100 @@
+{
+  "name": "shiv-bull-clone",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/shiv-bull-clone/src",
+  "prefix": "shiv-bull-app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/shiv-bull-clone",
+        "index": "apps/shiv-bull-clone/src/index.html",
+        "main": "apps/shiv-bull-clone/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/shiv-bull-clone/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/shiv-bull-clone/src/favicon.ico",
+          "apps/shiv-bull-clone/src/assets"
+        ],
+        "styles": ["apps/shiv-bull-clone/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "shiv-bull-clone:build:production"
+        },
+        "development": {
+          "browserTarget": "shiv-bull-clone:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 5555,
+        "host": "0.0.0.0"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "shiv-bull-clone:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/shiv-bull-clone/**/*.ts",
+          "apps/shiv-bull-clone/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/shiv-bull-clone/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

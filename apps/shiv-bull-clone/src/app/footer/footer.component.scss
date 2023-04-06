@@ -1,0 +1,45 @@
+.color {
+  position: fixed;
+  bottom: 0px;
+}
+.nav {
+  --indicator-border-color: white;
+  --bg-color: #543e12;
+  --icon-bg: black !important;
+  --icon-heigh-width: 25px;
+  --menu-border-radius: 0px;
+
+  
+}
+.line{
+  background-color: white;
+  bottom: 0px;
+  position: fixed;
+  height: 80px;  
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+  .nav{
+    display: none;
+  }
+  .line{
+    display: none;
+  }
+}
+  
+  @media screen and (max-width: 768px) {
+    .color {
+      display: none;
+    }
+    .nav{
+      display: box;
+    
+
+    }
+    .line{
+      display: flex;
+    }
+  }

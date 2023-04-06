@@ -1,0 +1,51 @@
+<div class="main w-full pb-6 px-4">
+  <div class="g1">
+    
+    <div class=" text-[18px] mr-[20px]  mt-8" *ngFor="let details of banks">
+      <div>
+        <img
+        [src]="details.img"
+        alt="image not found"
+        class="image h-[120px]"
+        />
+      </div>
+      <div class="account-name p-[10px] w-full flex bg-[var(--primary-dark)] border-b-[1px] border-[var(--primary-gold)] items-center text-white ">
+        <div class="name items-center  pl-2 w-[35%] ">Account Name</div>
+        <div class=" flex w-[35%]  ">
+          <pre class="text">::  {{ details.accountname}}</pre
+            >
+          </div>
+        </div>
+        <div class="account-num w-full p-[10px] flex bg-[var(--primary-dark)] border-b-[1px] border-[var(--primary-gold)] items-center text-white">
+      <div class="name flex w-[35%]  pl-2">Account Number</div>
+      <div class="flex flex-row">
+        <pre class="text mr-24">::  {{details.accountnumber}}</pre>
+      
+          <img src="../../assets/images/copylogo.svg" class="h-[20px] w-[20px]" (click)="clipboard(details.accountnumber)" alt=""> 
+        
+      </div>
+    </div>
+    <div class="bank-name w-full p-[10px] flex bg-[var(--primary-dark)] border-b-[1px] border-[var(--primary-gold)] items-center text-white">
+      <div class="name w-[35%]  pl-2">Bank Name</div>
+      
+      <div>
+        <pre class="text">::  {{details.bankname}}</pre>
+      </div>
+    </div>
+    <div class="branch-name w-full p-[10px] flex bg-[var(--primary-dark)] border-b-[1px] border-[var(--primary-gold)] items-center text-white">
+      <div class="name w-[35%]  pl-2">Branch Name</div>
+      <div>
+        <pre class="text mr-24">::  {{details.branchname}}</pre>
+      </div>
+    </div>
+    <div class="IFSC-num w-full p-[10px] flex bg-[var(--primary-dark)] border-b-[1px] border-[var(--primary-gold)] items-center text-white">
+      <div class="name w-[35%] pl-2">IFSC Code</div>
+      <div class="flex flex-row">
+        <pre class="text mr-24">::  {{details.IFSCCode}}</pre>
+        <img src="../../assets/images/copylogo.svg" class="h-[20px] w-[20px]" (click)="clipboard(details.IFSCCode)" alt=""> 
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
