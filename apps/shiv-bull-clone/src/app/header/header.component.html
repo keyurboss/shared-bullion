@@ -2,15 +2,15 @@
   <div class="color block h-8 w-full bg-[var(--primary-dark)]"></div>
   <div class="headerMain flex justify-center w-full bg-[var(--header-bg)]">
     <div class="childheader w-[70%] flex justify-between">
-      <div *ngFor="let item of data2" class="logoheader flex items-center justify-center w-2/6">
+      <div
+        *ngFor="let item of data2"
+        class="logoheader flex items-center justify-center w-2/6"
+      >
         <!--logo header-->
-        <a  ng-dblclick="expression"
-        routerLink="{{item.router_link}}" 
-        >
-
+        <a ng-dblclick="expression" [routerLink]="item.router_link">
           <img
-          src="../../../assets/images/shivbuliionLogo.png"
-          class="imageLogo w-3/4 pt-2 pb-2"
+            src="../../../assets/images/shivbuliionLogo.png"
+            class="imageLogo w-3/4 pt-2 pb-2"
           />
         </a>
       </div>
@@ -29,24 +29,23 @@
           >
         </div>
       </div>
-<div class="flex justify-center items-center">
-
-  <div
-  class="downloadlogo flex relative justify-center items-center h-[50px]"
-      >
-      <a class="p-[5px] border-black border rounded-[5px] m-[5px]">
-        <img
-            class="icon flex justify-center items-center content-around h-[39px] rounded-[5px]"
-            src="../../../assets/images/playstoricon.png"
-          />
-        </a>
-        <a class="p-[5px] border-black border rounded-[5px]">
-          <img
-          class="icon flex justify-center items-center h-[39px] rounded-[5px]"
-          src="../../../assets/images/appstoreicon.png"
-          />
-        </a>
-      </div>
+      <div class="flex justify-center items-center">
+        <div
+          class="downloadlogo flex relative justify-center items-center h-[50px]"
+        >
+          <a class="p-[5px] border-black border rounded-[5px] m-[5px]">
+            <img
+              class="icon flex justify-center items-center content-around h-[39px] rounded-[5px]"
+              src="../../../assets/images/playstoricon.png"
+            />
+          </a>
+          <a class="p-[5px] border-black border rounded-[5px]">
+            <img
+              class="icon flex justify-center items-center h-[39px] rounded-[5px]"
+              src="../../../assets/images/appstoreicon.png"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +57,10 @@
     >
       <li *ngFor="let item of data" class="py-2 my-0.5 mx-1">
         <a
-          [routerLink]="item.router_link" routerLinkActive  ="click" [routerLinkActiveOptions]="{exact: true}" class="transition  py-2 px-5 my-0.5 mx-1 flex-1 rounded-md bg-[--primary-dark] text-[var(--primary-medium)] hover:bg-[var(--header-bg)] hover:text-[#543e12] "
+          [routerLink]="item.router_link"
+          routerLinkActive="click"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="transition py-2 px-5 my-0.5 mx-1 flex-1 rounded-md bg-[--primary-dark] text-[var(--primary-medium)] hover:bg-[var(--header-bg)] hover:text-[#543e12]"
           >{{ item.name }}</a
         >
       </li>
