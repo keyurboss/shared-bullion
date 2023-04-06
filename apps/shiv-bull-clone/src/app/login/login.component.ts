@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { VariableBinding } from '@angular/compiler';
 
 @Component({
   selector: 'shiv-bull-app-login',
