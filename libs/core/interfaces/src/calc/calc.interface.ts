@@ -2,14 +2,15 @@
 
 import { Opaque } from 'ts-essentials';
 export type CshID = Opaque<string, 'CshID'>;
-export enum CshType {
-  fixed = 'fixed',
-  exec = 'exec',
+export enum CalculatedOnPriceof {
+  EXCHANGE = 'EXCHANGE',
+  BANK = 'BANK',
+  FIX = 'FIX',
 }
 export type CshPremiumBuySellSnapshot = {
   tax: number;
-  tcs: number;
-  tds: number;
+  // tcs: number;
+  // tds: number;
   premium: number;
 };
 export type CshVariableSnapshot = {
