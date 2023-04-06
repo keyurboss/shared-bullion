@@ -1,11 +1,10 @@
 import { Expose, Type, instanceToPlain } from 'class-transformer';
 import { IsUUID } from 'class-validator';
 import {
-  groupToPlain,
-  groupDbToPlain,
-  validateSyncOrFail,
+    groupDbToPlain,
+    groupToPlain,
+    validateSyncOrFail,
 } from '../core.interface';
-import { v4 } from 'uuid';
 export class BaseEntity<T> {
   @Expose()
   @IsUUID()
