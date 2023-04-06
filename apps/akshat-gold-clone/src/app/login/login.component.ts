@@ -24,6 +24,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  submitted = false;
   users = [
     { id: 'sahil@gmail.com', password: 'sahil' },
     { id: 'Sahil@gmail.com', password: 'sahil' },
@@ -38,10 +39,12 @@ export class LoginComponent {
     { id: 'alay@gmail.com', password: 'alay' },
     { id: 'Alay@gmail.com', password: 'alay' },
   ];
-  submitted = false;
   LoginForm = new FormGroup({
-    UserId: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    UserId: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+    ]),
   });
   get UserId() {
     return this.LoginForm.get('UserId');
@@ -52,18 +55,21 @@ export class LoginComponent {
   get LoginFormControl() {
     return this.LoginForm.controls;
   }
-  get RememberMe() {
-    return this.LoginForm.get('RememberMe');
-  }
   OnLoginuserSubmit() {
     this.submitted = true;
-    console.log();
-    if (this.UserId?.dirty === false || this.password?.dirty === false) {
-      Swal.fire('All details are required!', 'Please fill out all fields!!', 'warning');
+    if (this.UserId?.untouched || this.password?.untouched) {
+      Swal.fire('', 'fill all details', 'error');
+    } else if (this.UserId?.invalid) {
+      Swal.fire('', 'enter valid user-id', 'error');
+    } else if (this.password?.invalid) {
+      Swal.fire('', 'enter valid password', 'error');
     } else {
       let found = false;
       for (let i = 0; i < this.users.length; i++) {
-        if (this.users[i].id === this.UserId?.value && this.users[i].password === this.password?.value) {
+        if (
+          this.users[i].id === this.UserId?.value &&
+          this.users[i].password === this.password?.value
+        ) {
           found = true;
           break;
         }
@@ -75,5 +81,12 @@ export class LoginComponent {
       }
       console.log(this.LoginForm.value);
     }
+  }
+  ForgotPassword() {
+    Swal.fire(
+      'Forgot Password?',
+      'Please Contact Admin To Re-Set Password..!!',
+      'info'
+    );
   }
 }

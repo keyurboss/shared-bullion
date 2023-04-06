@@ -1,7 +1,8 @@
 <div class="signup flex justify-center bg-[#bc9039] w-[450px]">
   <div class="main flex justify-center mt-[20px] w-full">
     <div class="main_menu w3-animate-left">
-      <div class="main_menu_img ">
+      <!-- <form [formGroup]="SignForm" (ngSubmit)=" OnSignUpUserSubmit()"> -->
+      <div class="main_menu_img">
         <a routerlink="/login" href="/login"><img class="back" src="../../assets/images/chevron-back-circle.svg" /></a>
         <img class="logo" src="../../assets/images/AG(1).svg" alt="Akshat Logo" />
       </div>
@@ -12,59 +13,26 @@
         <h6 class="text-[10px]">Add your details for registration</h6>
       </div>
       <div agclickentertonext="" class="main_menu_inputs">
-        <input
-          placeholder="Name"
-          index="0"
-          required=""
-          class="ng-untouched ng-pristine ng-invalid"
-          autofocus
-        /><input
-          placeholder="Email"
-          index="1"
-          type="email"
-          required=""
-          class="ng-untouched ng-pristine ng-invalid"
-        /><input
-          index="2"
-          placeholder="Mobile No"
-          maxlength="10"
-          type="tel"
-          required=""
-          class="ng-untouched ng-pristine ng-invalid"
-        /><input
-          index="3"
-          placeholder="Company Name"
-          required=""
-          class="ng-untouched ng-pristine ng-invalid"
-        /><input
-          index="4"
-          placeholder="Password"
-          type="password"
-          required=""
-          class="ng-untouched ng-pristine ng-invalid"
-        /><input
-          index="5"
-          placeholder="Confirm Password"
-          type="password"
-          required=""
-          class="ng-untouched ng-pristine ng-invalid"
-        />
+        <input placeholder="Name" index="0" required="" autofocus /><input placeholder="Email" index="1" type="email"
+          required="" /><input index="2" placeholder="Mobile No" maxlength="10" type="tel" required="" /><input
+          index="3" placeholder="Company Name" required="" /><input index="4" placeholder="Password" type="password"
+          required="" /><input index="5" placeholder="Confirm Password" type="password" required="" />
       </div>
       <div class="main_menu_bottom">
         <div class="main_menu_bottom_remember">
-          <input
-            type="checkbox"
-            placeholder="Password"
-            class="ng-untouched ng-pristine ng-valid"
-          /><span routerlink="/tnc" tabindex="0">Terms &amp; Conditions</span>
+          <input type="checkbox" placeholder="Password" class="ng-untouched ng-pristine ng-valid" /><span
+            routerlink="/tnc" tabindex="0">Terms &amp; Conditions</span>
         </div>
-        <div class="main_menu_bottom_button"><button class="text-[12px]">Sign Up</button></div>
+        <div class="main_menu_bottom_button">
+          <button class="text-[12px]">Sign Up</button>
+        </div>
         <div class="main_menu_bottom_login">
           <h6>
             Already have Account? <a routerlink="/login" href="/login">Login</a>
           </h6>
         </div>
       </div>
+    <!-- </form> -->
     </div>
   </div>
 </div>

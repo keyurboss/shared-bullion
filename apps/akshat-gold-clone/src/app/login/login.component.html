@@ -2,7 +2,7 @@
   <div class="main">
     <div class="main_menu">
       <div class="main_menu_data">
-        <form>
+        <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
           <div class="main_menu_data_header">
             <h3>Login</h3>
           </div>
@@ -10,25 +10,14 @@
             <h6>Add your details to login</h6>
           </div>
           <div class="main_menu_data_inputs">
-            <input
-              type="text"
-              placeholder="Mobile No or Email id"
-              class="ng-untouched ng-pristine ng-valid"
-              autofocus
-            /><input
-              type="password"
-              placeholder="Password"
-              class="ng-untouched ng-pristine ng-valid"
-            />
+            <input type="text" placeholder="Mobile No or Email id" formControlName="UserId" />
+            <input type="password" placeholder="Password" formControlName="password" />
           </div>
-          <div class="main_menu_data_forgot">
-            <h6>Forgot your password?</h6>
+          <div class="main_menu_data_forgot" (click)="ForgotPassword()">
+           <h6>Forgot your password?</h6>
           </div>
           <div class="main_menu_data_remember">
-            <input
-              type="checkbox"
-              class="ng-untouched ng-pristine ng-valid"
-            /><span>Remember Me</span>
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid" /><span>Remember Me</span>
           </div>
           <div class="main_menu_data_loginButton">
             <button type="submit">Login</button>
