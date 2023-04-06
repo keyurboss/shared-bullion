@@ -1,6 +1,19 @@
 {
   "name": "@rps/bullion-rate-tables",
   "version": "0.0.1",
+  "homepage": "https://github.com/rpsoftech/SharedBullion/tree/main/libs/rate-tables#readme",
+  "license": "MIT",
+  "description": "Rate Tables Designs For Bullion Appliacation",
+  "author": {
+    "email": "rpsoftechindia@gmail.com",
+    "name": "RP Softech",
+    "url": "https://rpsoftech.net"
+  },
+  "repository": {
+    "directory": "libs/rate-tables",
+    "type": "git",
+    "url": "https://github.com/rpsoftech/SharedBullion"
+  },
   "peerDependencies": {
     "@angular/common": "^15.1.0",
     "@angular/core": "^15.1.0"

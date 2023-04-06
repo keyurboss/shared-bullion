@@ -1,1 +1,70 @@
-<p>rate-tables works!</p>
+<div class="main">
+  <div class="header">
+    <div class="w_40 header_left_name">{{ headers.product_name }}</div>
+    <div class="w_20 header_right_name center">{{ headers.bid }}</div>
+    <div class="w_20 header_right_name center">{{ headers.diff }}</div>
+    <div class="w_20 header_right_name center">{{ headers.ask }}</div>
+  </div>
+  <div class="footer">
+    <div class="footer_item" *ngIf="GOLD | async; let gold">
+      <div class="w_40 footer_name">GOLD FUTURE</div>
+      <div class="w_20 footer__price column center">
+        <div
+          class="footer_price_uper center"
+          [class.rate_high]="gold['bid'].color === 'Green'"
+          [class.rate_low]="gold['bid'].color === 'Red'"
+        >
+          {{ gold['bid'].rate }}
+        </div>
+        <div class="footer_price_lower center">
+          L - {{ gold['last-low'].rate }}
+        </div>
+      </div>
+      <div class="w_20 small center">
+        {{ gold['open'].rate - gold['ask'].rate }}
+      </div>
+      <div class="w_20 center column">
+        <div
+          class="footer_price_uper center"
+          [class.rate_high]="gold['ask'].color === 'Green'"
+          [class.rate_low]="gold['ask'].color === 'Red'"
+        >
+          {{ gold['ask'].rate }}
+        </div>
+        <div class="footer_price_lower center">
+          H - {{ gold['last-high'].rate }}
+        </div>
+      </div>
+    </div>
+    <div class="footer_item" *ngIf="SILVER | async; let silver">
+      <div class="w_40 footer_name">SILVER FUTURE</div>
+      <div class="w_20 column center">
+        <div
+          class="footer_price_uper center"
+          [class.rate_high]="silver['bid'].color === 'Green'"
+          [class.rate_low]="silver['bid'].color === 'Red'"
+        >
+          {{ silver['bid'].rate }}
+        </div>
+        <div class="footer_price_lower center">
+          L - {{ silver['last-low'].rate }}
+        </div>
+      </div>
+      <div class="w_20 small center">
+        {{ silver['open'].rate - silver['ask'].rate }}
+      </div>
+      <div class="w_20 center column">
+        <div
+          class="footer_price_uper center"
+          [class.rate_high]="silver['ask'].color === 'Green'"
+          [class.rate_low]="silver['ask'].color === 'Red'"
+        >
+          {{ silver['ask'].rate }}
+        </div>
+        <div class="footer_price_lower center">
+          H - {{ silver['last-high'].rate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

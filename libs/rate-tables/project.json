@@ -12,6 +12,9 @@
         "project": "libs/rate-tables/ng-package.json"
       },
       "configurations": {
+        "production-npm": {
+          "tsConfig": "libs/rate-tables/tsconfig.lib.prod.json"
+        },
         "production": {
           "tsConfig": "libs/rate-tables/tsconfig.lib.prod.json"
         },
@@ -47,5 +50,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:shared"]
 }
