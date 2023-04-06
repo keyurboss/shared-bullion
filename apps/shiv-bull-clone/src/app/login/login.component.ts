@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
   FormGroup,
@@ -12,12 +12,11 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'shiv-bull-app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgFor, ReactiveFormsModule],
+  imports: [RouterModule, NgFor,NgIf, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   usersId = [
     { id: 'sahil@gmail.com', password: 'sahil' },
     { id: 'Sahil@gmail.com', password: 'sahil' },
@@ -55,14 +54,14 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-// onPress(){
-//   this.submitted=true;
-//   let user1:string = this.user;
-//   console.log(user1, user1.length);
-//   let trimuser = user1.trim()
-//   console.log(trimuser, trimuser.length);
+  // onPress(){
+  //   this.submitted=true;
+  //   let user1:string = this.user;
+  //   console.log(user1, user1.length);
+  //   let trimuser = user1.trim()
+  //   console.log(trimuser, trimuser.length);
 
-// }
+  // }
 
   onSubmitbtn() {
     this.submitted = true;
@@ -72,13 +71,13 @@ export class LoginComponent {
       Swal.fire('', 'enter valid user id', 'error');
     } else if (this.password?.invalid) {
       Swal.fire('', 'enter valid password', 'error');
-    }
-    else{
-
-      
+    } else {
       let found = false;
       for (let i = 0; i < this.usersId.length; i++) {
-        if (this.usersId[i].id === this.user?.value && this.usersId[i].password === this.password?.value) {
+        if (
+          this.usersId[i].id === this.user?.value &&
+          this.usersId[i].password === this.password?.value
+        ) {
           found = true;
           break;
         }
@@ -87,12 +86,12 @@ export class LoginComponent {
         Swal.fire('', 'Login successful', 'success');
       } else {
         Swal.fire('Error', 'User not found', 'error');
-          }
-          console.log(this.loginForm.value);
-          const user1=this.user?.value?.trim();
-          console.log(user1);
-          console.log(this.password?.value?.trim());
-        }
       }
-        
-      }
+      console.log(this.loginForm.value);
+      const user1 = this.user?.value?.trim();
+      console.log(user1);
+      console.log(this.password?.value?.trim());
+    }
+  }
+
+}

@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBar3Component, navbar3 } from '@rps/angular-nav-bars';
-import { RouterModule } from '@angular/router';
+import { RouterModule} from '@angular/router';
 
-// interface navbar {
-//   uid: string;
-//   icon:{url:string,inactive_color: string,active_color:string,};
-
-//   name: string;
-//   indicator_color:string
-//   router_link: string;
-// }
+interface navigationBar {
+  uid: string;
+  router_link: string;
+}
 @Component({
   selector: 'shiv-bull-app-footer',
   standalone: true,
@@ -74,4 +70,51 @@ export class FooterComponent {
 
   ];
 
+
+
+
+  // data: navigationBar[]=[
+  //   {
+  //     uid:'1',
+  //     router_link:'home/about',
+  //   },
+  //   {
+  //     uid:'2',
+  //     router_link:'home/bank-details',
+  //   },
+  //   {
+  //     uid:'3',
+  //     router_link:'home/live-rate',
+  //   },
+  //   {
+  //     uid:'4',
+  //     router_link:'home/contact-us',
+  //   },
+  //   {
+  //     uid:'5',
+  //     router_link:'home/update',
+  //   },
+  // ]
+
+  
+//   title = 'detect-route-change';
+//   currentRoute: string;
+
+//   constructor(private router: Router) {
+//     this.currentRoute = "";
+//     this.router.events.subscribe((event: Event) => {
+//         if (event instanceof NavigationStart) {
+//             // Show progress spinner or progress bar
+//             console.log('Route change detected');
+//         }
+
+//         if (event instanceof NavigationEnd) {
+//             // Hide progress spinner or progress bar
+//             this.currentRoute = event.url;          
+//             console.log(event);
+//         } 
+//     });
+
+
+// }
 }

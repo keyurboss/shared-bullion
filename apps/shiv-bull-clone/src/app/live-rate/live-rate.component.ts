@@ -12,12 +12,20 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 @Component({
   selector: 'shiv-bull-app-live-rate',
   standalone: true,
-  imports: [CommonModule,RateTables1Component,RateTables2Component,RateTables3Component,RateTables4Component,RateTables5Component,RateTables6Component],
-  providers:[
+  imports: [
+    CommonModule,
+    RateTables1Component,
+    RateTables2Component,
+    RateTables3Component,
+    RateTables4Component,
+    RateTables5Component,
+    RateTables6Component,
+  ],
+  providers: [
     {
-      provide:LiveRateService,
-      useClass:DemoLiveRateService,
-    }
+      provide: LiveRateService,
+      useClass: DemoLiveRateService,
+    },
   ],
   templateUrl: './live-rate.component.html',
   styleUrls: ['./live-rate.component.scss'],
