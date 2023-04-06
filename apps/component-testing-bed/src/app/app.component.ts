@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import { RateTables6Component, RateTables7Component } from '@rps/bullion-rate-tables';
+import { Env } from '../../../../libs/frontend-core/src';
 @Component({
   standalone: true,
   imports: [RateTables7Component, RateTables6Component],
