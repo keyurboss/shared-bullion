@@ -2,7 +2,7 @@ const nxPreset = require('@nrwl/jest/preset').default;
 
 module.exports = {
   ...nxPreset,
-  setupFilesAfterEnv: ['jest.setup.ts'],
+  // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   /* TODO: Update to latest Jest snapshotFormat
    * By default Nx has kept the older style of Jest Snapshot formats
    * to prevent breaking of any existing tests with snapshots.
@@ -12,5 +12,5 @@ module.exports = {
    * Example: "nx affected --targets=test --update-snapshot"
    * More info: https://jestjs.io/docs/upgrading-to-jest29#snapshot-format
    */
-  // snapshotFormat: { escapeString: true, printBasicPrototype: true },
+  snapshotFormat: { escapeString: true, printBasicPrototype: true },
 };
