@@ -1,117 +1,19 @@
+.li {
+  grid-template-columns: 58px 1fr;
+}
 
-.top_back {
-  background-color: #000000a1;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-}
-.abs {
-  z-index: -1;
-  position: absolute;
-}
-.abs_full_height {
-  top: 0%;
-  left: 0%;
-  height: 100%;
-  width: 100%;
-}
-.bottom {
-  width: 100%;
-  float: left;
-  background-color: #000000a1;
-  padding: 15px 10%;
-}
-.bottom_container {
-  max-width: 1150px;
-  margin: 0 auto;
-}
-.nav {
-  float: left;
-  display: block;
-  p {
-    float: right;
-    color: #fce975;
-    margin: 0;
-    text-align: center;
+@media screen and (max-width: 1150px) {
+  .top {
+    padding: 40px 5% !important;
   }
 }
-.menu {
-  width: 100%;
-  position: relative;
-  background-color: #000;
 
-  display: none;
-  outline: none !important;
-}
-.other {
-  height: 100%;
-  flex-direction: column;
-  span {
-    color: #fff;
+@media screen and (max-width: 950px) {
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 12px;
   }
-}
-.left {
-  align-items: flex-start;
-  margin: 0 10px;
-}
-.flex_center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.img {
-  width: 100%;
-  img {
-    height: 26px;
-    width: 26px;
-    background-color: #fce975;
-  }
-}
-.home {
-  height: 100%;
-  flex-direction: column;
-}
-.pending_limit {
-  height: 100%;
-}
-.hide {
-  display: none !important;
-}
-.lagdi {
-  height: 100%;
-  flex-direction: column;
-}
-.person {
-  height: 100%;
-  flex-direction: column;
-}
-.right {
-  align-items: flex-end;
-  margin: 0 10px;
-}
-.bottom {
-  background-color: black;
-  padding: 15px 10%;
-}
-.li{
-  display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 58px 1fr;
-}
-.top{
-  padding: 40px 10% 30px;
-}
-@media screen and (max-width: 1150px)
-{.top{
- padding: 40px 5%!important;
-}
-}
-@media screen and (max-width: 950px)
-{.bottom{
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- font-size: 12px;
-}
 }
