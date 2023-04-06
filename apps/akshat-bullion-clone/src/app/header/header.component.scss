@@ -7,6 +7,25 @@
     border-bottom: 1px solid #fce975;
 }
 
+.Underline {
+
+    &::after {
+        display: block;
+        content: "";
+        border-bottom: solid 2px #fce975;
+        margin-bottom: 25px;
+        transform: scaleX(0);
+        transition: transform 0.5s ease-out;
+    }
+
+    &:hover {        
+        &::after {
+            transform: scaleX(1);
+
+        }
+    }
+}
+
 // *******************// media query//************************
 
 @media screen and (min-width: 800px) {

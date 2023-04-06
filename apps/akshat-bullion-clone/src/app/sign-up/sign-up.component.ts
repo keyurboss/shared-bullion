@@ -24,15 +24,15 @@ export class SignUpComponent {
     Name: new FormControl('', [Validators.required]),
     checkbox: new FormControl(false),
     FirmName: new FormControl('', [Validators.required]),
-    MobileNumber: new FormControl('5555555555', [
+    MobileNumber: new FormControl('', [
       Validators.required,
       Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
       Validators.maxLength(10),
     ]),
-    EmailId: new FormControl('asas@asas.sa', [Validators.required, Validators.email]),
+    EmailId: new FormControl('', [Validators.required, Validators.email]),
     City: new FormControl('', [Validators.required]),
-    Password: new FormControl('123456787', [Validators.required, Validators.minLength(8)]),
-    ConfirmPassword: new FormControl('123456787', [Validators.required]),
+    Password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    ConfirmPassword: new FormControl('', [Validators.required]),
   })
   get Name() {
     return this.SignForm.get('Name');
@@ -83,7 +83,6 @@ export class SignUpComponent {
     } else if (this.checkbox.value === false) {
       Swal.fire('Error', 'You Have not checked the Terms & Conditions..', 'warning');
     } else {
-      console.log(this.SignForm.value);
       this.router.navigate((['/otp']));
       // let mask = "";
       // for (let i = 0; i <= sahil.length - 2; i++) {

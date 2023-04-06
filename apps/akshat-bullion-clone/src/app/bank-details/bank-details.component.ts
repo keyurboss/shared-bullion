@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgFor } from '@angular/common';
 interface bankdata {
@@ -21,12 +21,13 @@ interface bankdata {
   styleUrls: ['./bank-details.component.scss'],
 })
 export class BankdetailsComponent {
-     bank_data_tittle={
-    account_name:"Account Name",
-    bank_name:"Bank Name",
-    account_no:"Account No",
-    isfc_code:"IFSC Code",
-    branch_name:"Branch Name",
+  klick = false;
+  bank_data_tittle = {
+    account_name: "Account Name",
+    bank_name: "Bank Name",
+    account_no: "Account No",
+    isfc_code: "IFSC Code",
+    branch_name: "Branch Name",
   }
   data: bankdata[] = [
     {
@@ -73,8 +74,8 @@ export class BankdetailsComponent {
     //   branchname: 'Balasinor',
     //   img: '../../assets/images/icic_Bank_Logo.jpg',
     // },
-  ]; 
-  clipboard(num:string){
+  ];
+  clipboard(num: string) {
     navigator.clipboard.writeText(num);
   }
 }

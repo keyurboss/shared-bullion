@@ -29,7 +29,9 @@
           <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
             :
             <p class="bank-account ml-[10px]">{{item.accountnumber}} <button class="w-[16px] ml-[10px] mt-[2px]"
-                (click)="clipboard(item.Copyaccountnumber)"><img src="../../assets/images/copy.svg" alt=""></button></p>
+                (click)="clipboard(item.Copyaccountnumber)"><img (click)="klick=!klick" src="../../assets/images/copy.svg"
+                  alt=""></button></p>
+            <span *ngIf="klick===true">{{klick}}</span>
             <!-- <div class="copy"></div> -->
           </span>
         </div>

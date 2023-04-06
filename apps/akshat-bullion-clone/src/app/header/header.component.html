@@ -1,5 +1,4 @@
-<div
-  class="main backdrop-blur-[2.5px] w-full flex flex-col justify-center items-center h-[213px] Roboto">
+<div class="main backdrop-blur-[2.5px] w-full flex flex-col justify-center items-center h-[213px] Roboto">
   <div class="Logo flex justify-center items-center w-full relative h-[60%] mt-[15px]">
     <div class="flex justify-center">
       <a routerLink="app/home/live-rate"><img class="img w-[440px] h-[100px]" src="{{images.akshat_bull_logo}}"
@@ -17,9 +16,8 @@
     </div>
   </div>
   <div class="menu_nav w-full flex justify-center h-[25%] text-[14px]">
-    <ul class="ul flex flex-row">
-      <li routerLinkActive="click_2" *ngFor="let item of data"
-        class="p-[19px] hover:border-b hover:text-[#fce975] text-[white] border-[#fce975]">
+    <ul class="ul flex flex-row Underline">
+      <li routerLinkActive="click_2" *ngFor="let item of data" class="p-[19px] text-[white] Underline border-[#fce975]">
         <a [routerLink]="item.routerLink" routerLinkActive="click_1" [routerLinkActiveOptions]="{exact:true}"
           class="cursor-pointer">{{ item.name }}</a>
       </li>
