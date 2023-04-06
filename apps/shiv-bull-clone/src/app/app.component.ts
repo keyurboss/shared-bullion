@@ -5,10 +5,10 @@ import { HeaderComponent } from './header/header.component';
 
 @Component({
   standalone: true,
-  imports: [HeaderComponent,FooterComponent,RouterOutlet],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
   selector: 'shiv-bull-app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'], 
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'shiv-bull-clone';

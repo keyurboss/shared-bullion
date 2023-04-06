@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule],
+      imports: [AppComponent, RouterTestingModule],
     }).compileComponents();
   });
 
@@ -22,12 +21,20 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('shiv-bull-clone');
   });
 
-  it('should render title', () => {
+  it('should render Main Div', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome shiv-bull-clone'
-    );
+    const MAinDiv = compiled.getElementsByClassName('main-div')
+    expect(MAinDiv).toHaveLength(1)
+    expect(MAinDiv[0]).toBeInstanceOf(HTMLElement)
+  });
+  it('should render Router Outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const RouterOutLet = compiled.querySelectorAll('router-outlet')
+    expect(RouterOutLet).toHaveLength(1)
+    expect(RouterOutLet[0]).toBeInstanceOf(HTMLElement)
   });
 });
