@@ -8,94 +8,41 @@
     --rate-high-font-color: black;
     --rate-low-font-color: black;
     --data-border-color: #7c6533;
-    }
-.header {
-    padding: 5px;
-    margin: auto;
-    text-align: right;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1.9fr 1fr;
-    font-size: 15px;
-    font-weight: 700;
-}
-.product {
-    padding: 5px;
-    margin: 2px;
-    display: flex;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1.9fr 1fr;
-    font-size: 12px;
-    font-weight: 900;
-    border-radius: 2px;
-    background-color: var(--data-back-color);
-    border: 1px solid #7c6533;
-}
-.time {
-    width: 100%;
-    display: block;
-    justify-content: left;
-    text-align: start;
-    padding: 0px 5px 0px 0px;
-    align-items: start;
-    font-size: 9px;
-    font-weight: 100;
-}
-.name {
-    width: 100%;
-    display: block;
-    justify-content: left;
-    text-align: start;
-    padding: 0px 5px 0px 0px;
-    align-items: start;
-}
-.price {
-    margin-top: 4px;
-    display: block;
-    text-align: right;
-    font-size: 15px;
-}
-.product_group_header {
-    width: 100%;
-    text-align: start;
-}
-.product_group_left_header {
-    width: 100%;
-    text-align: right;
-    
+    --rate-low-font-color: #ffffff;
+    --rate-low-back-color: #008000;
+    --rate-high-font-color: #ffffff;
+    --rate-high-back-color: #ff0000;
 }
 .table {
     padding: 10px;
     margin: 0px;
-    width: 25%;
+    // width: 25%;
     font-size: 12px;
     font-weight: 700;
 }
 
-
-
-
-.product_group_middle_header {
-    width: 100%;
-    text-align: center;
-    
-}
-.header {
+.header_1 {
     padding: 5px;
-    margin: auto;
-    text-align: right;
+    text-align: left;
     display: grid;
+    width: 100%;
     grid-auto-flow: column;
     grid-template-columns: 1.9fr 1fr;
     font-size: 15px;
     font-weight: 700;
 }
-.product {
-    padding: 5px;
-    margin: 2px;
+
+.product_group_left_header_1 {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_1 {
+    padding: 5px;
+    margin: 2px 0 2px 0;
     display: grid;
+    width: 100%;
     grid-auto-flow: column;
     grid-template-columns: 1.9fr 1fr;
     font-size: 12px;
@@ -104,17 +51,20 @@
     background-color: var(--data-back-color);
     border: 1px solid #7c6533;
 }
-.time {
+.product_2 {
+    padding: 5px;
+    margin: 2px 0 2px 0;
+    display: grid;
     width: 100%;
-    display: block;
-    justify-content: left;
-    text-align: start;
-    padding: 5px 5px 0px 0px;
-    align-items: start;
-    font-size: 9px;
-    font-weight: 100;
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 12px;
+    font-weight: 900;
+    border-radius: 2px;
+    background-color: var(--data-back-color);
+    border: 1px solid #7c6533;
 }
-.name {
+.name_1 {
     width: 100%;
     display: block;
     justify-content: left;
@@ -124,47 +74,94 @@
     font-weight: bolder;
     align-items: start;
 }
-.price_buy {
-    display: block;
-    text-align: center;
-    font-size: 15px;
-}
-.price_sell {
-    display: block;
-    text-align: right;
-    font-size: 15px;
-}
-.product_group_header {
+.time {
     width: 100%;
+    display: flex;
+    justify-content: left;
     text-align: start;
+    padding: 5px 0 0px 0px;
+    align-items: start;
+    font-size: 9px;
+    font-weight: 100;
 }
-.product_group_left_header {
-    width: 100%;
-    text-align: right;
+.price {
+    
+    display:flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    
     
 }
-.table {
-    padding: 10px;
-    margin: 0px;
-    width: 25%;
-    font-size: 12px;
+.header_2 {
+    padding: 5px;
+    text-align: left;
+    display: grid;
+    width: 100%;
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 15px;
     font-weight: 700;
 }
-.high_low_price_sell {
+.product_group_middle_header_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+.product_group_left_header_2 {
+    display: flex;
+    justify-content: center;
+}
+.two_name{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.buy_name{
+    display: flex;
+    flex-direction: column;
+    flex-grow:1 ;
+}
+.name_2{
     width: 100%;
     display: block;
-    text-align: center;
+    justify-content: left;
+    text-align: start;
+    padding: 0px 5px 0px 0px;
+    font-size: 15px;
+    font-weight: bolder;
+    align-items: start;
+}
+
+
+.high_low_price_sell {
+    display: flex;
+    justify-content: center;
     padding: 5px 5px 0px 0px;
     font-size: 9px;
     font-weight: 100;   
 }
 
 .high_low_price_buy {
-    width: 100%;
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     padding: 5px 5px 0px 0px;
     font-size: 9px;
     font-weight: 100;
     
 }
+.rate_high {
+    color: var(--rate-high-font-color) !important;
+    background-color: var(--rate-high-back-color) !important;
+  }
+  .rate_low {
+    color: var(--rate-low-font-color) !important;
+    background-color: var(--rate-low-back-color) !important;
+    
+  }
+  .rate{
+    padding: 5px;
+    border-radius: 3px;
+    
+  }
