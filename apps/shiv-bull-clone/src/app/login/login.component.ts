@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  show_Password = true;
   usersId = [
     { id: 'sahil@gmail.com', password: 'sahil' },
     { id: 'Sahil@gmail.com', password: 'sahil' },
