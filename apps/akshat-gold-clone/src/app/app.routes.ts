@@ -25,45 +25,45 @@ export const appRoutes: Route[] = [
         pathMatch: 'full',
       },
       {
-        path: 'about-us',
+        path: 'home/about-us',
         loadComponent: () =>
           import('./about-us/about-us.component').then(
             (a) => a.AboutUsComponent
           ),
       },
       {
-        path: 'live-rate',
+        path: 'home/live-rate',
         loadComponent: () =>
           import('./live-rate/live-rate.component').then(
             (a) => a.LiveRateComponent
           ),
       },
       {
-        path: 'updates',
+        path: 'home/updates',
         loadComponent: () =>
           import('./updates/updates.component').then((a) => a.UpdatesComponent),
       },
       {
-        path: 'bank-details',
+        path: 'home/bank-details',
         loadComponent: () =>
           import('./bank-details/bank-details.component').then(
             (a) => a.BankDetailsComponent
           ),
       },
       {
-        path: 'app',
+        path: 'home/app',
         loadComponent: () =>
           import('./apps/apps.component').then((a) => a.AppsComponent),
       },
       {
-        path: 'eco-calender',
+        path: 'home/eco-calender',
         loadComponent: () =>
           import('./eco-calendar/eco-calendar.component').then(
             (a) => a.EcoCalendarComponent
           ),
       },
       {
-        path: 'contact-us',
+        path: 'home/contact-us',
         loadComponent: () =>
           import('./contact-us/contact-us.component').then(
             (a) => a.ContactUsComponent
@@ -71,7 +71,7 @@ export const appRoutes: Route[] = [
       },
       
       {
-        path: 'login',
+        path: 'home/live-rate/login',
         loadComponent: () =>
           import('./login/login.component').then((a) => a.LoginComponent),
       },

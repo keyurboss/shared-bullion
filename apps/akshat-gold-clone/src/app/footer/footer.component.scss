@@ -1,3 +1,23 @@
 .li {
   grid-template-columns: 58px 1fr;
 }
+
+
+
+@media screen and (max-width:897px) {
+ .footer{
+  width: 100%;
+ }   
+}
+@media screen and (max-width:305px) {
+ .footer{
+  width: 100%;
+ }   
+}
+@media screen and (max-width:656px) {
+ .top{
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+ }   
+}

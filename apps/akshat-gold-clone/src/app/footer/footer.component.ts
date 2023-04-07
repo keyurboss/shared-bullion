@@ -12,13 +12,13 @@ import { RouterModule } from '@angular/router';
 export class FooterComponent {
 footer_data={
   aboutus:'About Us ',
-  aboutus_r_l:'about-us',
+  aboutus_r_l:'home/about-us',
   message:'Updates',
-  message_r_l:'updates',
+  message_r_l:'home/updates',
   bank_d:'Bank Details',
-  bank_d_r_l:'bank-details',
+  bank_d_r_l:'home/bank-details',
   contact_us:'Contact Us',
-  contact_us_r_l:'contact-us',
-  copyright_text:'Akshat Gold Pvt Ltd © 2018 I All Rights Reserved',
+  contact_us_r_l:'home/contact-us',
+  copyright_text:'Akshat Gold Pvt Ltd © 2018 I All Rights Reserved I Pratham Patel',
 };
 }
