@@ -66,7 +66,7 @@ export class SignupComponent {
   OnSignUpUserSubmit() {
     this.submitted = true;
     if (this.SignForm?.untouched) {
-      Swal.fire('', 'All Fields Required', 'error');
+      Swal.fire('', 'All Fields Required', 'warning');
     } else if (this.Email?.invalid) {
       Swal.fire('Error', 'Invalid Email', 'warning');
     } else if (this.MobileNumber?.invalid) {

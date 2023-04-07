@@ -1,34 +1,45 @@
-<div class="login h-[100vh] w-[100vw] top-0 z-0 fixed">
-  <div class="main w-full h-full flex justify-center items-center">
-    <div class="main_menu">
-      <div class="main_menu_data">
+<div class="h-[100vh] w-[100vw] top-0 z-0 fixed">
+  <div class="w-full h-full flex justify-center items-center">
+    <div class="z-[12] absolute w-[90%] rounded-[60px] max-w-[450px]">
+      <div class="main_menu_data h-[56%] min-h-[400px] w-full bg-[#fff] rounded-[60px]">
         <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
-          <div class="main_menu_data_header">
-            <h3>Login</h3>
+          <div class="text-[#41241c] pt-[3vh] pb-[1.5vh] text-center">
+            <h3 class="font-Segoe UI font-bold text-[20px]">Login</h3>
           </div>
-          <div class="main_menu_data_subheader">
-            <h6>Add your details to login</h6>
+          <div class="text-[#41241c] text-center">
+            <h6 class="text-[13px] pb-[5px]">Add your details to login</h6>
           </div>
-          <div class="main_menu_data_inputs">
-            <input type="text" placeholder="Mobile No or Email id" formControlName="UserId"/>
-            <input type="password" placeholder="Password" formControlName="password" />
+          <div class="w-full text-center">
+            <input class="my-[5px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[12px] px-[24px] outline-none"
+              type="text" placeholder="Mobile No or Email id" formControlName="UserId" />
+            <input class="my-[5px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[12px] px-[24px] outline-none"
+              type="password" placeholder="Password" formControlName="password" />
           </div>
-          <div class="main_menu_data_forgot" (click)="ForgotPassword()">
-           <h6 class="cursor-pointer">Forgot your password?</h6>
+          <div class="mt-[10px] pr-[5%] w-full flex justify-end text-[#41241c]" (click)="ForgotPassword()">
+            <h6 class="cursor-pointer m-0 font-bold text-[13.5px]">
+              Forgot your password?
+            </h6>
           </div>
-          <div class="main_menu_data_remember">
-            <input type="checkbox" class="ng-untouched ng-pristine ng-valid" /><span>Remember Me</span>
+          <div class="w-full text-center flex mt-[15px] justify-center items-center">
+            <input type="checkbox"
+              class="my-[5px] mx-0 bg-[#f2f2f2] rounded-[30px] py-[12px] px-[24px] outline-none" /><span
+              class="ml-[5px] text-[14.5px] font-bold">Remember Me</span>
           </div>
-          <div class="main_menu_data_loginButton">
-            <button type="submit">Login</button>
+          <div class="w-full my-[15px] mx-0 text-center">
+            <button
+              class="w-[90%] text-center bg-[#41241c] text-[#fff] py-[12px] px-[24px] rounded-[30px] font-medium text-[19px]"
+              type="submit">
+              Login
+            </button>
           </div>
-          <div class="main_menu_data_signUp">
-            <span> Don't Have an account ? </span>
-            <a routerLink="/signup">Register</a>
+          <div class="w-full text-center tect-[#41241c]">
+            <span class="font-bold text-[14px]"> Don't Have an account ? </span>
+            <a class="font-bold text-[14px] text-[#41241c] border-b-[2px] border-[#41241c]"
+              routerLink="/signup">Register</a>
           </div>
         </form>
       </div>
     </div>
   </div>
-  <div class="background"></div>
+  <div class="h-[100vh] w-[100vw] z-11 absolute top-0 bg-[#000000a3]"></div>
 </div>

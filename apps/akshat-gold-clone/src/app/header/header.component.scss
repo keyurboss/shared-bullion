@@ -22,7 +22,7 @@
   .logo {
     width: 70%;
   }
-  .img{
+  .img {
     width: 400px;
     height: 90px;
   }
@@ -45,34 +45,32 @@
   }
 }
 @media screen and (max-width: 375px) {
-  .img{
+  .img {
     width: 350px;
     height: 90px;
   }
 }
-@media screen and (max-width:572px) {
-  .img{
+@media screen and (max-width: 572px) {
+  .img {
     width: 400px;
     height: 90px;
-   
-  } 
-  .header{
+  }
+  .header {
     margin: 0%;
     padding: 0%;
   }
-
 }
-@media screen and (max-width:802px) {
-  .header{
-      padding: 10px;
+@media screen and (max-width: 802px) {
+  .header {
+    padding: 10px;
   }
 }
-@media screen and (max-width:592px) {
-  .header{
+@media screen and (max-width: 592px) {
+  .header {
     margin: auto;
     padding: 15px 0;
   }
-    img{
-      width: 400px;
-    }
+  img {
+    width: 400px;
+  }
 }

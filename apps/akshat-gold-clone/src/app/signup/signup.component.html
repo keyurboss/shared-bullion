@@ -1,15 +1,19 @@
-<div class="signup flex justify-center bg-[#bc9039] w-[450px]">
-  <div class="main flex justify-center mt-[20px] w-full">
-    <div class="main_menu w3-animate-left">
+<div class="flex justify-center bg-[#bc9039] h-[745px] w-full">
+  <div class="flex justify-center mt-[20px] w-full">
+    <div
+      class="main_menu w3-animate-left h-[98%] w-[90%] max-w-[450px] relative rounded-[40px] text-[#000] bg-[#fff]"
+    >
       <form
         [formGroup]="SignForm"
         (ngSubmit)="OnSignUpUserSubmit()"
         class="h-full"
       >
-        <div class="main_menu_img">
-          <a routerlink="/login" href="/login"
+        <div
+          class="h-[13%] pt-[2%] flex justify-center text-center"
+        >
+          <a routerlink="home/live-rate/login" href="home/live-rate/login"
             ><img
-              class="back"
+              class="absolute h-[30px] w-[30px] left-[4%] top-[5%] rounded-[55px] cursor-pointer"
               src="../../assets/images/chevron-back-circle.svg"
           /></a>
           <img
@@ -18,51 +22,44 @@
             alt="Akshat Logo"
           />
         </div>
-        <div class="main_menu_header">
-          <h1 class="mt-[20px] mb-[10px]">New Registration</h1>
+        <div class="text-center text-[#4a4b4d]">
+          <h1 class="mt-[20px] mb-[10px] text-[19px] font-normal">
+            New Registration
+          </h1>
         </div>
-        <div class="main_menu_subheader">
-          <h6 class="text-[10px]">Add your details for registration</h6>
+        <div class="text-center text-[10px] text-[#7c7d7e]">
+          <h6 class="text-[14px] mt-[16px] mb-[10px] font-medium leading-[1.2]">
+            Add your details for registration
+          </h6>
         </div>
-        <div agclickentertonext="" class="main_menu_inputs">
-          <input placeholder="Name" index="0" required="" autofocus /><input
-            placeholder="Email"
-            index="1"
-            type="email"
-            required=""
-          /><input
-            index="2"
-            placeholder="Mobile No"
-            maxlength="10"
-            type="tel"
-            required=""
-          /><input index="3" placeholder="Company Name" required="" /><input
-            index="4"
-            placeholder="Password"
-            type="password"
-            required=""
-          /><input
-            index="5"
-            placeholder="Confirm Password"
-            type="password"
-            required=""
-          />
+        <div
+          agclickentertonext=""
+          class="w-full text-center h-[53%] relative"
+        >
+          <input class="h-[12%] my-[7px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[10px] px-[24px] border-none outline-none" placeholder="Name" index="0" required="" />
+          <input class="h-[12%] my-[7px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[10px] px-[24px] border-none outline-none" placeholder="Email" index="1" type="email" required=""/>
+          <input class="h-[12%] my-[7px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[10px] px-[24px] border-none outline-none" index="2" placeholder="Mobile No" maxlength="10" type="tel" required=""/>
+          <input class="h-[12%] my-[7px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[10px] px-[24px] border-none outline-none" index="3" placeholder="Company Name" required="" />
+          <input class="h-[12%] my-[7px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[10px] px-[24px] border-none outline-none" index="4" placeholder="Password" type="password" required=""/>
+          <input class="h-[12%] my-[7px] mx-0 bg-[#f2f2f2] w-[90%] rounded-[30px] py-[10px] px-[24px] border-none outline-none" index="5" placeholder="Confirm Password" type="password" required=""/>
         </div>
-        <div class="main_menu_bottom">
-          <div class="main_menu_bottom_remember">
+        <div class="w-full text-center">
+          <div class="text-[15px] w-full text-center flex mt-[2vh] justify-center items-center">
             <input
               type="checkbox"
               placeholder="Password"
-              class="cursor-pointer"
-            /><a routerLink="/terms-and-con">Terms &amp; Conditions</a>
+              class="cursor-pointer my-[5px] mx-0 bg-[#f2f2f2] rounded-[30px] py-[14px] px-[24px] outline-none"
+            /><a class="ml-[5px]" routerLink="/terms-and-con">Terms &amp; Conditions</a>
           </div>
-          <div class="main_menu_bottom_button">
-            <button class="text-[12px]">Sign Up</button>
+          <div class="w-full my-[2vh] mx-0 text-center">
+            <button class="text-[12px] w-[90%] text-center bg-[#41241c] text-[#fff] py-[10px] px-[24px] rounded-[30px] font-medium">Sign Up</button>
           </div>
-          <div class="main_menu_bottom_login">
+          <div class="font-normal text-[15px] mt-[15px] mb-[12px] leading-[1.2]">
             <h6>
               Already have Account?
-              <a routerLink="/login">Login</a>
+              <a class="font-semibold border-b-2 border-[#41241c]" routerlink="home/live-rate/login" href="home/live-rate/login"
+                >Login</a
+              >
             </h6>
           </div>
         </div>
