@@ -1,5 +1,5 @@
-<div class="login">
-  <div class="main">
+<div class="login h-[100vh] w-[100vw] top-0 z-0 fixed">
+  <div class="main w-full h-full flex justify-center items-center">
     <div class="main_menu">
       <div class="main_menu_data">
         <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
@@ -14,7 +14,7 @@
             <input type="password" placeholder="Password" formControlName="password" />
           </div>
           <div class="main_menu_data_forgot" (click)="ForgotPassword()">
-           <h6>Forgot your password?</h6>
+           <h6 class="cursor-pointer">Forgot your password?</h6>
           </div>
           <div class="main_menu_data_remember">
             <input type="checkbox" class="ng-untouched ng-pristine ng-valid" /><span>Remember Me</span>

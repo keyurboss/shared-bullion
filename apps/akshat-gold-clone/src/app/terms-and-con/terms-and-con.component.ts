@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'akshat-gold-terms-and-con',
+  selector: 'akshat-gold-clone',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './terms-and-con.component.html',
   styleUrls: ['./terms-and-con.component.scss'],
 })

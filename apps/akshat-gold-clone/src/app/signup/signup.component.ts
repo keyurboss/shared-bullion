@@ -1,20 +1,17 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { maxLength } from 'class-validator';
-import { Console } from 'console';
-import { get } from 'http';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'akshat-gold-signup',
   standalone: true,
-  imports: [CommonModule, NgIf, RouterModule, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
@@ -68,36 +65,31 @@ export class SignupComponent {
   }
   OnSignUpUserSubmit() {
     this.submitted = true;
-    if(this.SignForm?.untouched){
+    if (this.SignForm?.untouched) {
       Swal.fire('', 'All Fields Required', 'error');
-    }
-    // if (this.Email?.invalid) {
-    //   Swal.fire('Error', 'Invalid Email', 'warning');
-    // } else if (this.MobileNumber?.invalid) {
-    //   Swal.fire('Error', 'Invalid MobileNumber', 'warning');
-    // } else if (this.Password?.invalid) {
-    //   Swal.fire('Error', 'please enter min 4 digit Password', 'warning');
-    // } else if (
-    //   this.Name?.dirty === false ||
-    //   this.CompneyName?.dirty === false
-    // ) {
-    //   Swal.fire('Error', 'Please Fill All Field', 'warning');
-    // } else if (this.Password?.value !== this.ConfirmPassword?.value) {
-    //   Swal.fire(
-    //     'Error',
-    //     'Password and Confirm Password are not same!',
-    //     'warning'
-    //   );
-    // } else if (this.checkbox?.value === false) {
-    //   Swal.fire(
-    //     'Error',
-    //     'You Have not checked the Terms & Conditions..',
-    //     'warning'
-    //   );
-    // } else {
+    } else if (this.Email?.invalid) {
+      Swal.fire('Error', 'Invalid Email', 'warning');
+    } else if (this.MobileNumber?.invalid) {
+      Swal.fire('Error', 'Invalid MobileNumber', 'warning');
+    } else if (this.Password?.invalid) {
+      Swal.fire('Error', 'please enter min 4 digit Password', 'warning');
+    } else if (this.Name?.dirty === false || this.CompneyName?.dirty === false) {
+      Swal.fire('Error', 'Please Fill All Field', 'warning');
+    } else if (this.Password?.value !== this.ConfirmPassword?.value) {
+      Swal.fire(
+        'Error',
+        'Password and Confirm Password are not same!',
+        'warning'
+      );
+    } else if (this.checkbox?.value === false) {
+      Swal.fire(
+        'Error',
+        'You Have not checked the Terms & Conditions..',
+        'warning'
+      );
+    } else {
       console.log(this.SignForm.value);
       Swal.fire('Success', 'successfully submitted check console', 'success');
     }
-    
   }
-// }
+}

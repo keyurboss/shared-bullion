@@ -9,6 +9,13 @@ export const appRoutes: Route[] = [
       import('./signup/signup.component').then((a) => a.SignupComponent),
   },
   {
+    path: 'terms-and-con',
+    loadComponent: () =>
+      import('./terms-and-con/terms-and-con.component').then(
+        (a) => a.TermsAndConComponent
+      ),
+  },
+  {
     path: '',
     component: HomeComponent,
     children: [
@@ -46,9 +53,7 @@ export const appRoutes: Route[] = [
       {
         path: 'app',
         loadComponent: () =>
-          import('./apps/apps.component').then(
-            (a) => a.AppsComponent
-          ),
+          import('./apps/apps.component').then((a) => a.AppsComponent),
       },
       {
         path: 'eco-calender',
@@ -64,6 +69,7 @@ export const appRoutes: Route[] = [
             (a) => a.ContactUsComponent
           ),
       },
+      
       {
         path: 'login',
         loadComponent: () =>
