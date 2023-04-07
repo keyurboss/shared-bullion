@@ -15,6 +15,11 @@
 </div>
 
 <div class="line flex justify-center w-full items-end">
-  <nav-bars-3 [parentData]="navbar" class="nav bottom-1 flex"></nav-bars-3>
-
+  <nav-bars-3
+    [parentData]="navbar"
+    (indexChange)="OnChnageEvent($event)"
+    [index]="active_uid"
+    class="nav bottom-1 flex"
+  >
+  </nav-bars-3>
 </div>

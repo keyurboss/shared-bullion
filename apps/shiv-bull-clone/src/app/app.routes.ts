@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { AppComponent } from './app.component';
+// import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
@@ -65,4 +65,5 @@ export const appRoutes: Route[] = [
       },
     ],
   },
+  
 ];
