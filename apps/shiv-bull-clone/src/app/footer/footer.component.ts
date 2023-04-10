@@ -29,7 +29,7 @@ export class FooterComponent {
   navbar: navbar3[] = [
     {
       uid: '1',
-      router_link: 'home/about',
+      router_link: 'home/update',
 
       icon: {
         url: '../../assets/images/newspaper-outline.svg',
@@ -41,19 +41,19 @@ export class FooterComponent {
     },
     {
       uid: '2',
-      router_link: 'home/about',
+      router_link: 'home/bank-details',
 
       icon: {
         url: '../../assets/images/icon_bank_detail.svg',
         inactive_color: 'var(--header-bg)',
         active_color: 'white',
       },
-      name: 'Bank-Details',
+      name: 'Bank Details',
       indicator_color: '#543e12',
     },
     {
       uid: '3',
-      router_link: 'home/about',
+      router_link: 'home/live-rate',
 
       icon: {
         url: '../../assets/images/nav_Lagdi_logo.svg',
@@ -65,7 +65,7 @@ export class FooterComponent {
     },
     {
       uid: '4',
-      router_link: 'home/ab',
+      router_link: 'home/contact-us',
 
       icon: {
         url: '../../assets/images/nav_contact_logo.svg',
@@ -77,18 +77,18 @@ export class FooterComponent {
     },
     {
       uid: '5',
-      router_link: 'home/live-rate',
+      router_link: 'home/about',
 
       icon: {
         url: '../../assets/images/calendar-outline.svg',
         inactive_color: 'var(--header-bg',
         active_color: 'white',
       },
-      name: 'Eco.Calander',
+      name: 'About-us',
       indicator_color: '#543e12',
     },
   ];
-  active_uid = '4';
+  active_uid = '3';
   constructor(private routes: Router) {}
 
   OnChnageEvent(vlueEitted: string) {

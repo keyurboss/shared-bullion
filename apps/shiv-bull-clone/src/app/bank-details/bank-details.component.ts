@@ -26,16 +26,6 @@ export class BankDetailsComponent {
   banks:bankdata[] = [
     
     {
-      id: 4,
-      accountname: 'SHIV ENTERPRISE',
-      accountnumber: '138305500445',
-      bankname: 'ICICI BANK',
-      branchname: 'PALACE ROAD,RAJKOT',
-      IFSCCode: 'ICIC0001383',
-      img:'../../assets/images/AXISbanklogo.png'
-    },
-    
-    {
       id: 1,
       accountname: 'SHIV ENTERPRISE',
       accountnumber: '138305500445',
@@ -44,26 +34,36 @@ export class BankDetailsComponent {
       IFSCCode: 'ICIC0001383',
       img:'../../assets/images/icic_logo.jpg'
     },
+    // {
+    //   id: 4,
+    //   accountname: 'SHIV ENTERPRISE',
+    //   accountnumber: '138305500445',
+    //   bankname: 'ICICI BANK',
+    //   branchname: 'PALACE ROAD,RAJKOT',
+    //   IFSCCode: 'ICIC0001383',
+    //   img:'../../assets/images/AXISbanklogo.png'
+    // },
     
-    {
-      id: 2,
-      accountname: 'SHIV ENTERPRISE',
-      accountnumber: '138305500445',
-      bankname: 'ICICI BANK',
-      branchname: 'PALACE ROAD,RAJKOT',
-      IFSCCode: 'ICIC0001383',
-      img:'../../assets/images/AXISbanklogo.png'
-    },
     
-    {
-      id: 3,
-      accountname: 'SHIV ENTERPRISE',
-      accountnumber: '138305500445',
-      bankname: 'ICICI BANK',
-      branchname: 'PALACE ROAD,RAJKOT',
-      IFSCCode: 'ICIC0001383',
-      img:'../../assets/images/icic_logo.jpg'
-    },
+    // {
+    //   id: 2,
+    //   accountname: 'SHIV ENTERPRISE',
+    //   accountnumber: '138305500445',
+    //   bankname: 'ICICI BANK',
+    //   branchname: 'PALACE ROAD,RAJKOT',
+    //   IFSCCode: 'ICIC0001383',
+    //   img:'../../assets/images/AXISbanklogo.png'
+    // },
+    
+    // {
+    //   id: 3,
+    //   accountname: 'SHIV ENTERPRISE',
+    //   accountnumber: '138305500445',
+    //   bankname: 'ICICI BANK',
+    //   branchname: 'PALACE ROAD,RAJKOT',
+    //   IFSCCode: 'ICIC0001383',
+    //   img:'../../assets/images/icic_logo.jpg'
+    // },
     
   ];
 
