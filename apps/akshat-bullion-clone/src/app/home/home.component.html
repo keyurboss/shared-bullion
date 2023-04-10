@@ -1,12 +1,13 @@
 <div class="app-home">
   <div class="app-home-header">
     <akshat-bull-app-header></akshat-bull-app-header>
-
   </div>
   <div class="app-home-container mx-auto">
     <router-outlet></router-outlet>
   </div>
-  <div class="app-home-footer">
-    <akshat-bull-app-footer></akshat-bull-app-footer>
+  <div class="app-footer w-full">
+    <akshat-bull-app-footer class="window-footer"></akshat-bull-app-footer>
+    <!-- <nav-bars-3 [parentData]="navbar" class="Mapp-footer hidden" (indexChange)="OnChnageEvent($event)"
+      [index]="active_uid"></nav-bars-3> -->
   </div>
 </div>

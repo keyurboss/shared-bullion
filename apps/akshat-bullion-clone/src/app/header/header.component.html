@@ -1,11 +1,11 @@
 <div class="main backdrop-blur-[2.5px] w-full flex flex-col justify-center items-center h-[213px] Roboto">
-  <div class="Logo flex justify-center items-center w-full relative h-[60%] mt-[15px]">
+  <div class="Logo flex justify-center items-center w-full relative h-[60%]">
     <div class="flex justify-center">
       <a routerLink="app/home/live-rate"><img class="img w-[440px] h-[100px]" src="{{images.akshat_bull_logo}}"
           alt="Akshat Logo" /></a>
     </div>
     <div *ngIf="showdownloadheader"
-      class="download_img absolute translate-y-[-50%] border-[#fcea73] border h-[40px] w-[175px] flex justify-center items-center rounded-[5px] top-1/2 right-[10%]">
+      class="download_img absolute translate-y-[-50%] border-[#fcea73] border h-[40px] w-[175px] flex justify-center items-center rounded-[5px] top-1/2">
       <a routerLink="{{Input_data.Download_router_link}}"
         class="flex justify-center mr-[10px] items-center text-[#fce975]" href="#######"><img
           class="web h-[20px] w-[20px] mr-2" src="{{images.download_outline}}" />{{Input_data.Download_Apps}}
@@ -16,15 +16,15 @@
     </div>
   </div>
   <div class="menu_nav w-full flex justify-center h-[25%] text-[14px]">
-    <ul class="ul flex flex-row Underline">
-      <li routerLinkActive="click_2" *ngFor="let item of data" class="p-[19px] text-[white] Underline border-[#fce975]">
-        <a [routerLink]="item.routerLink" routerLinkActive="click_1" [routerLinkActiveOptions]="{exact:true}"
-          class="cursor-pointer">{{ item.name }}</a>
-      </li>
+    <ul class="ul flex flex-row">
+      <a *ngFor="let item of data" [routerLink]="item.routerLink" routerLinkActive="click_1"
+        [routerLinkActiveOptions]="{exact:true}" class="cursor-pointer Underline text-[white]">
+        <li class="py-[15px] px-[19px] border-[#fce975]">{{ item.name }}</li>
+      </a>
     </ul>
   </div>
   <div class="marquee w-[80%] h-[15%] text-[16px]">
-    <div class="marquee_container">
+    <div class="marquee_container w-full flex items-center">
       <marquee direction="left" scrollamount="6" class="text-[#fce975]">
         {{Input_data.marquee}}
       </marquee>

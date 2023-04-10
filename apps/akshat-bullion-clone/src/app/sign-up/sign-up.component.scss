@@ -4,7 +4,7 @@ input::-webkit-inner-spin-button {
 }
 
 // *******************// media query//************************
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
     .Signup_input {
         h1 {
             font-size: 30px;
@@ -18,7 +18,7 @@ input::-webkit-inner-spin-button {
 
     .input {
         input {
-            width: 80%;
+            width: 65%;
         }
     }
 

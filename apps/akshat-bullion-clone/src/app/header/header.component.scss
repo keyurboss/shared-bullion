@@ -1,10 +1,10 @@
 // *******************// routerLinkActive class//************************
 .click_1 {
     color: #fce975;
-}
 
-.click_2 {
-    border-bottom: 1px solid #fce975;
+    li {
+        border-bottom: 2px solid #fce975;
+    }
 }
 
 .Underline {
@@ -13,24 +13,27 @@
         display: block;
         content: "";
         border-bottom: solid 2px #fce975;
-        margin-bottom: 25px;
         transform: scaleX(0);
-        transition: transform 0.5s ease-out;
+        transition: transform 0.25s ease-out;
     }
 
-    &:hover {        
+    &:hover {
+        color: #fce975;
+
         &::after {
             transform: scaleX(1);
-
         }
     }
 }
 
 // *******************// media query//************************
-
 @media screen and (min-width: 800px) {
     .cancle {
         display: none;
+    }
+
+    .download_img {
+        left: 80%;
     }
 }
 
@@ -47,12 +50,6 @@
 
     .main {
         height: 225px;
-    }
-}
-
-@media screen and (max-width: 960px) {
-    .download_img {
-        right: 0%;
     }
 }
 
