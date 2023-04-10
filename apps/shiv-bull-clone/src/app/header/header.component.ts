@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router } from '@angular/router';
 
 interface navbar {
   name: string;
@@ -42,10 +42,9 @@ export class HeaderComponent {
     },
         
   ];
-  data2=[
-    {
-      name:'login',
-      router_link:'login',
-    }
-  ]
+ 
+  constructor(private router: Router) { }
+  expression(){
+    this.router.navigateByUrl('login');
+  }
 }

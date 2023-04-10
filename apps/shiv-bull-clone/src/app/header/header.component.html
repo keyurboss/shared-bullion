@@ -3,11 +3,10 @@
   <div class="headerMain flex justify-center w-full bg-[var(--header-bg)]">
     <div class="childheader w-[70%] flex justify-between">
       <div
-        *ngFor="let item of data2"
         class="logoheader flex items-center justify-center w-2/6"
       >
         <!--logo header-->
-        <a ng-dblclick="expression" [routerLink]="item.router_link">
+        <a (dblclick)="expression()">
           <img
             src="../../../assets/images/shivbuliionLogo.png"
             class="imageLogo w-3/4 pt-2 pb-2"
