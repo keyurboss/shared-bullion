@@ -43,42 +43,31 @@
                 <img src="../../assets/images/lock-logo.svg" alt="" />
               </div>
 
-
-
               <input
                 id="password"
-
-                [type]="(show_Password) ? 'password' : 'text'"
-              
-              
+                [type]="show_Password ? 'password' : 'text'"
                 class="w-[90%] outline-none"
                 formControlName="password"
                 placeholder="Enter Password"
               />
-
-
-
-
               <span class="img w-[10%] p-1 bg-white h-full cursor-pointer"
                 ><img
                   id="toggle-password"
-                  *ngIf="show_Password=== true "
-                  (click)="show_Password=false"
+                  *ngIf="show_Password === true"
+                  (mousedown)="show_Password = false"
                   src="assets/images/eye-off-outline.svg"
-                  
                   alt="assets/images/eye-outline.svg"
-                  />
-                  <img
+                />
+                <img
                   id="toggle-password"
-                  *ngIf="show_Password=== false; "
-                  (click)="show_Password=true"
+                  *ngIf="show_Password === false"
+                  (mouseout)="show_Password = true"
                   src="assets/images/eye-outline.svg"
                   alt="assets/images/eye-off-outline.svg"
-              />
-            </span>
+                />
+              </span>
 
-
-<!-- 
+              <!-- 
               <span ngIf="typeChanger==false" class="img w-[10%] p-1 bg-white h-full cursor-pointer"
                 ><img
                 (click)="changeType()"
@@ -86,9 +75,6 @@
                   src="../../assets/images/eye-outline.svg"
                   alt=""
               /></span> -->
-
-
-
             </div>
           </div>
 

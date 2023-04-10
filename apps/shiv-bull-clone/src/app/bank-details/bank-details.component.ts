@@ -1,19 +1,19 @@
-import { CommonModule, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
-interface bankdata{
-      id:number;
-      accountname: string;
-      accountnumber: string;
-      bankname: string;
-      branchname:string;
-      IFSCCode: string;
-      img:string;
+interface bankdata {
+  id: number;
+  accountname: string;
+  accountnumber: string;
+  bankname: string;
+  branchname: string;
+  IFSCCode: string;
+  img: string;
 }
 @Component({
   selector: 'shiv-bull-app-bank-details',
   standalone: true,
-  imports: [CommonModule,NgFor],
+  imports: [NgFor],
   templateUrl: './bank-details.component.html',
   styleUrls: ['./bank-details.component.scss'],
 })
@@ -23,8 +23,7 @@ export class BankDetailsComponent {
   //   navigator.clipboard.writeText(copyText.value);
 
   // }
-  banks:bankdata[] = [
-    
+  banks: bankdata[] = [
     {
       id: 1,
       accountname: 'SHIV ENTERPRISE',
@@ -32,7 +31,7 @@ export class BankDetailsComponent {
       bankname: 'ICICI BANK',
       branchname: 'PALACE ROAD,RAJKOT',
       IFSCCode: 'ICIC0001383',
-      img:'../../assets/images/icic_logo.jpg'
+      img: '../../assets/images/icic_logo.jpg',
     },
     // {
     //   id: 4,
@@ -43,8 +42,7 @@ export class BankDetailsComponent {
     //   IFSCCode: 'ICIC0001383',
     //   img:'../../assets/images/AXISbanklogo.png'
     // },
-    
-    
+
     // {
     //   id: 2,
     //   accountname: 'SHIV ENTERPRISE',
@@ -54,7 +52,7 @@ export class BankDetailsComponent {
     //   IFSCCode: 'ICIC0001383',
     //   img:'../../assets/images/AXISbanklogo.png'
     // },
-    
+
     // {
     //   id: 3,
     //   accountname: 'SHIV ENTERPRISE',
@@ -64,12 +62,10 @@ export class BankDetailsComponent {
     //   IFSCCode: 'ICIC0001383',
     //   img:'../../assets/images/icic_logo.jpg'
     // },
-    
   ];
 
-  clipboard(num:string){
-    // 
+  clipboard(num: string) {
+    //
     navigator.clipboard.writeText(num);
-
   }
 }
