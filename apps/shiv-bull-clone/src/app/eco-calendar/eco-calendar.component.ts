@@ -8,4 +8,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './eco-calendar.component.html',
   styleUrls: ['./eco-calendar.component.scss'],
 })
-export class EcoCalendarComponent {}
+export class EcoCalendarComponent {
+  ase(){
+
+    const hi = document.getElementById("main")?.offsetHeight;
+    console.log(hi);
+    
+  }
+}

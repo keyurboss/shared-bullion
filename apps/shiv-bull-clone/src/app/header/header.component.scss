@@ -1,7 +1,12 @@
-// :host {
+:host {
 //   --primary-dark: #543e12;
 //   --primary-medium: #f5eeda;
 //   --header-bg: #fef8e8;
+
+
+  --background-color: #fef8e8;
+}
+
 // }
 .transition {
   transition: 0.6s ease-in-out;
