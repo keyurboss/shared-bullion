@@ -1,4 +1,4 @@
-<div class="w-full flex justify-center items-cente">
+<div class="w-full flex justify-center items-cente relative">
   <div class="Roboto text-[14px] w-full">
     <div class="top pt-[40px] px-[10%] pb-[30px] w-full flex flex-row">
       <div class="left_data w-[65%]">
@@ -67,20 +67,22 @@
       </div>
       <p class="float-right text-[#fce975]">{{ footer_data.copyright_text }}</p>
     </div>
-    <div class="menu flex items-center Roboto w-full justify-around h-[80px] relative bg-[#000] outline-none">
+    <div
+      class="menu flex items-center Roboto w-full justify-around h-[80px] bg-[#000] outline-none bottom-0 fixed left-0">
       <div class="other justify-center flex items-center h-full flex-col">
-        <div class="img justify-center flex items-center w-full"><img class="other_img h-[26px] w-[26px]"
-            src="../../assets/svg/nav_icon_3x3.svg"></div><span class="text-[12px] text-[#fff]">Menu</span>
+        <div class="img justify-center flex items-center w-full"><img
+            class="other_img h-[26px] w-[26px]" src="../../assets/svg/nav_icon_3x3.svg"></div><span
+          class="text-[12px] text-[#fff]">Menu</span>
       </div>
-      <div class="home justify-center flex items-center h-full flex-col">
+      <div [routerLink]="'app/home/live-rate'" class="home justify-center flex items-center h-full flex-col">
         <div class="img justify-center flex items-center w-full"><img class="home_img h-[26px] w-[26px]"
             src="../../assets/svg/nav_home_logo.svg"></div><span class="text-[12px] text-[#fff]">Live Rate</span>
       </div>
-      <div class="lagdi justify-center flex items-center h-full flex-col">
+      <div [routerLink]="'app/home/lagdis'" class="lagdi justify-center flex items-center h-full flex-col">
         <div class="img justify-center flex items-center w-full"><img class="lagdi_img h-[26px] w-[26px]"
             src="../../assets/svg/nav_Lagdi_logo.svg"></div><span class="text-[12px] text-[#fff]">Lagdi</span>
       </div>
-      <div class="right justify-center flex items-center person h-full flex-col">
+      <div [routerLink]="'/login'" class="right justify-center flex items-center person h-full flex-col">
         <div class="img justify-center flex items-center w-full"><img class="person_img h-[26px] w-[26px]"
             src="../../assets/svg/nav_login_logo.svg"></div><span class="text-[12px] text-[#fff]">Login</span>
       </div>

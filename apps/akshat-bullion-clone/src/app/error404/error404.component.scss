@@ -53,6 +53,7 @@
     font-size: 1.3em;
     line-height: 1.15;
     max-width: 100%;
+    color: #fefefe;
   }
 
   .right-section {
@@ -66,7 +67,8 @@
     padding: 0;
   }
 
-  .error-link {
-    margin-top: 30px;
+  .error_link {
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 8px 1px #fff;
   }
 }
