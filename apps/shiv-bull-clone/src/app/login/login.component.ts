@@ -33,7 +33,7 @@ export class LoginComponent {
     { id: 'Alay@gmail.com', password: 'alay' },
   ];
   data = {
-    router_link: 'home/live-rate',
+    router_link: '/home/live-rate',
   };
   submitted = false;
   loginForm = new FormGroup({

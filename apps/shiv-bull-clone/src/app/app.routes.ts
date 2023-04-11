@@ -7,63 +7,65 @@ export const appRoutes: Route[] = [
   {
     path: 'login',
     component: LoginComponent,
-    
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     children: [
       {
         path: '',
-        redirectTo: 'home/live-rate',
+        redirectTo: 'live-rate',
         pathMatch: 'full',
       },
       {
-        path: 'home/about',
+        path: 'about',
         loadComponent: () =>
           import('./about/about.component').then((a) => a.AboutComponent),
       },
       {
-        path: 'home/live-rate',
+        path: 'live-rate',
         loadComponent: () =>
           import('./live-rate/live-rate.component').then(
             (a) => a.LiveRateComponent
           ),
       },
       {
-        path: 'home/update',
+        path: 'update',
         loadComponent: () =>
           import('./update/update.component').then((a) => a.UpdateComponent),
       },
-      
+
       {
-        path: 'home/bank-details',
+        path: 'bank-details',
         loadComponent: () =>
           import('./bank-details/bank-details.component').then(
             (a) => a.BankDetailsComponent
           ),
       },
       {
-        path: 'home/eco-calendar',
+        path: 'eco-calendar',
         loadComponent: () =>
           import('./eco-calendar/eco-calendar.component').then(
             (a) => a.EcoCalendarComponent
           ),
       },
       {
-        path: 'home/contact-us',
+        path: 'contact-us',
         loadComponent: () =>
           import('./contact-us/contact-us.component').then(
             (a) => a.ContactUsComponent
           ),
       },
-      
-      {
-        path: '**',
-        redirectTo: 'home/live-rate',
-        pathMatch: 'full',
-      },
     ],
   },
-  
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'prefix',
+  },
+  {
+    path: '**',
+    redirectTo: 'live-rate',
+    pathMatch: 'full',
+  },
 ];

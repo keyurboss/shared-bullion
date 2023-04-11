@@ -18,27 +18,27 @@ export class HeaderComponent {
   data: navbar[] = [
     {
       name: 'About',
-      router_link: 'home/about',
+      router_link: '/home/about',
     },
     {
       name: 'Live Rate',
-      router_link: 'home/live-rate',
+      router_link: '/home/live-rate',
     },
     {
       name: 'Updates',
-      router_link: 'home/update',
+      router_link: '/home/update',
     },
     {
       name: 'Bank Details',
-      router_link: 'home/bank-details',
+      router_link: '/home/bank-details',
     },
     {
       name: 'Economic Calendar',
-      router_link: 'home/eco-calendar',
+      router_link: '/home/eco-calendar',
     },
     {
       name: 'Contact Us',
-      router_link: 'home/contact-us',
+      router_link: '/home/contact-us',
     },
         
   ];

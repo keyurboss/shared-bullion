@@ -1,7 +1,8 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule,NavigationEnd } from '@angular/router';
 import { NavBar3Component } from '@rps/angular-nav-bars';
+import { filter } from 'rxjs';
 
 interface navigationBar {
   // uid: string;
@@ -29,7 +30,7 @@ export class FooterComponent {
   navbar: navbar3[] = [
     {
       uid: '1',
-      router_link: 'home/update',
+      router_link: '/home/update',
 
       icon: {
         url: '../../assets/images/newspaper-outline.svg',
@@ -41,7 +42,7 @@ export class FooterComponent {
     },
     {
       uid: '2',
-      router_link: 'home/bank-details',
+      router_link: '/home/bank-details',
 
       icon: {
         url: '../../assets/images/icon_bank_detail.svg',
@@ -53,7 +54,7 @@ export class FooterComponent {
     },
     {
       uid: '3',
-      router_link: 'home/live-rate',
+      router_link: '/home/live-rate',
 
       icon: {
         url: '../../assets/images/nav_Lagdi_logo.svg',
@@ -65,7 +66,7 @@ export class FooterComponent {
     },
     {
       uid: '4',
-      router_link: 'home/contact-us',
+      router_link: '/home/contact-us',
 
       icon: {
         url: '../../assets/images/nav_contact_logo.svg',
@@ -77,7 +78,7 @@ export class FooterComponent {
     },
     {
       uid: '5',
-      router_link: 'home/about',
+      router_link: '/home/about',
 
       icon: {
         url: '../../assets/images/calendar-outline.svg',
@@ -89,9 +90,13 @@ export class FooterComponent {
     },
   ];
   active_uid = '3';
-  constructor(private routes: Router) {}
+  constructor(private routes: Router) {
+  }
 
   OnChnageEvent(vlueEitted: string) {
+    if(this.active_uid === vlueEitted){
+      return
+    }
     console.log(vlueEitted);
     this.active_uid = vlueEitted;
     const found = this.navbar.find(({ uid }) => uid === this.active_uid);
