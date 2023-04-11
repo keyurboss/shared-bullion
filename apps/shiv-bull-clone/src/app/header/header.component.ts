@@ -48,5 +48,10 @@ export class HeaderComponent {
     this.router.navigateByUrl('login');
   }
 
+ // eslint-disable-next-line @typescript-eslint/member-ordering
+ link ={
+    androrid_link: "",
+    ios_link: "",
+  };
 
 }
