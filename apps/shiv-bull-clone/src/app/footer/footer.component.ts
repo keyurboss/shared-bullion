@@ -78,14 +78,14 @@ export class FooterComponent {
     },
     {
       uid: '5',
-      router_link: '/home/about',
+      router_link: '/home/eco-calendar',
 
       icon: {
         url: '../../assets/images/calendar-outline.svg',
         inactive_color: 'var(--header-bg',
         active_color: 'white',
       },
-      name: 'About-us',
+      name: 'Eco Calendar',
       indicator_color: '#543e12',
     },
   ];
