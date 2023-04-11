@@ -12,6 +12,12 @@
   }
 }
 
+
+
+
+
+
+
 @media screen and (max-width: 950px) {
   .h1 {
     display: none;
@@ -37,7 +43,7 @@
     padding: 17px 0;
   }
   .marquee {
-    box-shadow: 1px 1px 5px #ccc;
+    box-shadow: 1px 5px 4px #aea9a9;
     padding: 7px 0;
   }
   .head_mid {
@@ -52,7 +58,7 @@
 }
 @media screen and (max-width: 572px) {
   .img {
-    width: 400px;
+    width: 350px;
     height: 90px;
   }
   .header {
@@ -68,9 +74,15 @@
 @media screen and (max-width: 592px) {
   .header {
     margin: auto;
-    padding: 15px 0;
+    padding: 12px 0;
   }
   img {
     width: 400px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 450px;
+    height: 90px;
   }
 }

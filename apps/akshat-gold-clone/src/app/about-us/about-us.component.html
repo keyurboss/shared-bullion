@@ -1,21 +1,28 @@
-<div
-  class="flex w-[80%] main justify-center text-16px items-center mr-auto ml-auto h-full p-[2%] relative"
->
-  <div class="about_us">
-    <img class="absolute left-[50%] top-[50%] opacity-20" src="../../assets/images/solo-logo.svg"/>
-    <div class="flex flex-col w-full px-4 mb-4">
-      <div class="header text-center font-bold text-[28px]"></div>
-      <div
-        *ngFor="let item of data"
-        class="welcome font-sans mb-[10px] p-2 text-[#282828]"
-      >
-        <h2 class="text-[24px] border-b-[2px] border-[#bc9039]">
-          {{ item.tittle }}
-        </h2>
-        <hr class="w-[15%] max-w-[90px] border-[#bc9039] border-b-[2px] mb-6" />
-        <p *ngFor="let para of item.content" class="pb-1 mb-1">
-          {{ para }}
-        </p>
+<div class="flex justify-center items-center w-full h-full">
+  <div
+    class="flex main justify-center text-16px items-center h-full py-[40px] px-[15%] relative"
+  >
+    <div class="about_us">
+      <img
+        class="absolute left-[50%] top-[52%] opacity-20 h-[700px]"
+        src="../../assets/images/solo-logo.svg"
+      />
+      <div class="flex flex-col w-full px-4 mb-4">
+        <div class="header text-center font-bold text-[28px]"></div>
+        <div
+          *ngFor="let item of data"
+          class="welcome font-sans pb-[10px] text-[#282828]"
+        >
+          <h2 class="text-[24px] border-b-[2px] border-[#bc9039]">
+            {{ item.tittle }}
+          </h2>
+          <hr
+            class="w-[15%] max-w-[90px] border-[#bc9039] border-b-[2px] mb-6"
+          />
+          <p *ngFor="let para of item.content" class="pb-1 mb-1">
+            {{ para }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

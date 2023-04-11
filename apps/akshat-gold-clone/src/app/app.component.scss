@@ -1,4 +1,9 @@
 ::-webkit-scrollbar {
-  // overflow: hidden; 
+  // overflow: hidden;
   overflow-y: hidden;
-  }
+}
+.main {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
