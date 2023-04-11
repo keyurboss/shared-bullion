@@ -2,3 +2,10 @@
     font-family: Roboto,Helvetica Neue,sans-serif;
     color: var(--primary-dark);
 }
+
+@media screen and (max-width:425px) {
+    .loginpage{
+        width: 90%;
+    }
+    
+}

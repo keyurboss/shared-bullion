@@ -1,5 +1,5 @@
 <script src="sweetalert2.all.min.js"></script>
-<div class="w-full main h-[100vh]">
+<div class="w-full flex flex-col items-center main h-[100vh]">
   <div
     class="header w-full h-[7%] flex justify-center items-center bg-[var(--header-bg)]"
   >
@@ -11,10 +11,10 @@
     <span class="text-[24px] font-bold text-[var(--primary-dark)]">LOGIN</span>
   </div>
 
-  <div class="flex w-full h-[80%] justify-center items-center">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmitbtn()">
+  <div class="form flex w-full  h-[80%] justify-center items-center">
+    <form [formGroup]="loginForm" class="w-full flex items-center" (ngSubmit)="onSubmitbtn()">
       <div
-        class="loginpage bg-[var(--header-bg)] w-[400px] border-[3px] rounded-[7px] border-[var(--primary-dark)] h-[350px] flex flex-col p-[20px]"
+        class="loginpage bg-[var(--header-bg)] m-auto w-[400px] border-[3px] rounded-[7px] border-[var(--primary-dark)] h-[350px] flex flex-col p-[20px]"
       >
         <div class="flex h-[15%] justify-center items-center">
           <div class="login font-bold text-[20px]">LOGIN</div>
