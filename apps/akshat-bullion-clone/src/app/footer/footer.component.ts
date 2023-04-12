@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { popupServices } from '../services/pop-upmenu.service';
 
 @Component({
   selector: 'akshat-bull-app-footer',
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
+  constructor(public _testService: popupServices) { }
   footer_data = {
     aboutus: 'About Us ',
     aboutus_r_l: 'app/home/about-us',

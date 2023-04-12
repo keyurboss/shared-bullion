@@ -6,6 +6,7 @@ import { NavBar3Component } from '@rps/angular-nav-bars'
 import { MAppComponent } from '../app/app.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { popupServices } from '../services/pop-upmenu.service';
 
 // interface navigationBar {
 //   router_link: string;
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent { 
+export default class HomeComponent { 
+  constructor(public _testService: popupServices) {}
   // active_uid = '4';
   // constructor(private routes: Router) { }
   // navbar: navbar3[] = [
@@ -96,10 +98,4 @@ export class HomeComponent {
   //     console.log(found?.router_link);
   //   }
   // }
-  isOpen = false;
-
-  toggleSidebar() {
-    this.isOpen = !this.isOpen;
-  }
-
 }

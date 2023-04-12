@@ -15,7 +15,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     loadComponent: () =>
-      import('./home/home.component').then((a) => a.HomeComponent),
+      import('./home/home.component').then((a) => a.default),
     children: [
       {
         path: '',

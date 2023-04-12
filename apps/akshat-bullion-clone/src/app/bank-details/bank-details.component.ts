@@ -21,7 +21,6 @@ interface bankdata {
   styleUrls: ['./bank-details.component.scss'],
 })
 export class BankdetailsComponent {
-  klick = false;
   bank_data_tittle = {
     account_name: "Account Name",
     bank_name: "Bank Name",
