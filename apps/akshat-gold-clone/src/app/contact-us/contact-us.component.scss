@@ -4,9 +4,49 @@
 
 .main_container_data_row_col_header h2 {
   font-family: Philosopher;
-
   border-bottom: 1px solid #bc9039;
 }
 .main_container_data_row_col_header hr {
   border: 1px solid #bc9039;
+}
+
+//<******************media quary******************************************>
+
+@media screen and (max-device-width: 950px) {
+  .main {
+    height: 100vh;
+    padding: 40px 2% !important;
+  }
+  .main_container_data_row {
+    flex-direction: column;
+  }
+  .main_container {
+    height: 100%;
+  }
+  .content {
+    height: 4vh;
+  }
+  .content1 {
+    height: 5vh;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .main {
+    padding: 40px 10%;
+  }
+}
+@media screen and (max-device-width: 850px) {
+  .main_container_data {
+    display: block;
+  }
+}
+@media screen and (max-device-width: 850px) {
+  .main_container_data_row {
+    display: block;
+  }
+}
+@media screen and (max-width: 508px) {
+  .contact {
+    padding-top: 35px;
+  }
 }
