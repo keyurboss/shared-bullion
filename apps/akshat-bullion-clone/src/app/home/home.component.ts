@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavBar3Component } from '@rps/angular-nav-bars'
 import { MAppComponent } from '../app/app.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 // interface navigationBar {
 //   router_link: string;
 // }
@@ -20,7 +23,7 @@ import { MAppComponent } from '../app/app.component';
 @Component({
   selector: 'akshat-bull-app-about-us',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component, MAppComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component, MAppComponent,CommonModule,RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
@@ -93,5 +96,10 @@ export class HomeComponent {
   //     console.log(found?.router_link);
   //   }
   // }
+  isOpen = false;
+
+  toggleSidebar() {
+    this.isOpen = !this.isOpen;
+  }
 
 }
