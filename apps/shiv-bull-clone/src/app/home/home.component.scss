@@ -4,6 +4,9 @@
     flex-shrink: 1;
     flex-basis: 80px;
  }
+ .main{  
+   margin-top: 90px;
+ }
 }
 @media screen and (min-width: 768px) {
  .footer{
@@ -11,4 +14,5 @@
     flex-shrink: 1;
     flex-basis: 24px;
  }
+ 
 }
