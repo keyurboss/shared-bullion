@@ -74,7 +74,8 @@ export class BankdetailsComponent {
     //   img: '../../assets/images/icic_Bank_Logo.jpg',
     // },
   ];
-  clipboard(num: string) {
+  clipboard(num: any) {
     navigator.clipboard.writeText(num);
+    num.setSelectionRange(0,99999);
   }
 }

@@ -1,52 +1,65 @@
 <div class="h-full">
   <div class="main flex flex-wrap justify-center items-center py-[30px] px-[10%]">
     <div *ngFor="let item of data"
-      class="main_container_data shadow-white max-w-[472px] my-[15px] mx-0 py-[2vh] px-0 rounded-[12px]">
+      class="main_container_data shadow-white max-w-[472px] my-[15px] mx-[20px] py-[2vh] px-0 rounded-[12px]">
       <div class="main_container_data_logo w-full py-[5px] px-[5%] flex justify-center">
         <img class="inline-block min-w-[70%] max-w-[70%] max-h-[130px] h-auto p-[4px]" alt="Bank_Logo"
-          src={{item.img}} />
+          src="{{ item.img }}" />
       </div>
-      <div class="w-full py-[5px] px-[5%]">
+      <div class="main_container_data_details w-full py-[5px] px-[5%] ">
         <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
           <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">
-            {{bank_data_tittle.account_name}}</h5>
-          <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
-            :
-            <p class="ml-[10px]">{{item.accountname}}</p>
-          </span>
-        </div>
-        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
-          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.bank_name}}
+            {{ bank_data_tittle.account_name }}
           </h5>
           <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
             :
-            <p class="ml-[10px]">{{item.bankname}}</p>
+            <p class="ml-[10px]">{{ item.accountname }}</p>
           </span>
         </div>
         <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
-          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.account_no}}
+          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.bank_name }}
           </h5>
           <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
             :
-            <p class="bank-account ml-[10px]">{{item.accountnumber}} <button class="w-[16px] ml-[10px] mt-[2px]"
-                (click)="clipboard(item.Copyaccountnumber)"><img src="../../assets/images/copy.svg" alt=""></button></p>
+            <p class="ml-[10px]">{{ item.bankname }}</p>
           </span>
         </div>
         <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
-          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.isfc_code}}
+          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.account_no }}
           </h5>
           <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
             :
-            <p class="ml-[10px]">{{item.IFSCCode}} <button class="w-[16px] ml-[10px]"
-                (click)="clipboard(item.CopyIFSCCode)"><img src="../../assets/images/copy.svg" alt=""></button></p>
+            <p class="bank-account ml-[10px]">
+              {{ item.accountnumber }}
+              <button class="w-[16px] ml-[10px] mt-[2px]" (click)="clipboard(item.Copyaccountnumber)">
+                <img src="../../assets/images/copy.svg" alt="" />
+              </button>
+            </p>
           </span>
         </div>
         <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
-          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">{{bank_data_tittle.branch_name}}
+          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.isfc_code }}
           </h5>
           <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
             :
-            <p class="ml-[10px]">{{item.branchname}}</p>
+            <p class="ml-[10px]">
+              {{ item.IFSCCode }}
+              <button class="w-[16px] ml-[10px]" (click)="clipboard(item.CopyIFSCCode)">
+                <img src="../../assets/images/copy.svg" alt="" />
+              </button>
+            </p>
+          </span>
+        </div>
+        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
+          <h5 class="w-[45%] text-[14px] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.branch_name }}
+          </h5>
+          <span class="flex items-center w-[55%] text-[14px] text-[#fff]">
+            :
+            <p class="ml-[10px]">{{ item.branchname }}</p>
           </span>
         </div>
       </div>

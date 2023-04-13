@@ -28,31 +28,28 @@
           <!-- password field -->
           <div class="input flex justify-center items-center w-full">
             <input
-            [type]="(show_Password) ? 'password' : 'text'"
+              [type]="show_Password ? 'password' : 'text'"
               placeholder="Enter Password"
               formControlName="password"
               (keydown)="nospace($event)"
               [(ngModel)]="userData.LoginPassword"
               class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
             />
-            <span class="img w-[10%] p-1 bg-white h-full cursor-pointer"
-                ><img
-                  id="toggle-password"
-                  src="../../assets/images/eye-off-outline.svg"
-                  alt=""
-              /></span>
-                  *ngIf="show_Password=== true "
-                  (click)="show_Password=false"
-                  src="assets/images/eye-off-outline.svg"
-
-                  alt="assets/images/eye-outline.svg"
-                  />
-                  <img
-                  id="toggle-password"
-                  *ngIf="show_Password=== false; "
-                  (click)="show_Password=true"
-                  src="assets/images/eye-outline.svg"
-                  alt="assets/images/eye-off-outline.svg"
+            <span
+              class="bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"
+              ><img
+                id="toggle-password"
+                *ngIf="show_Password === true"
+                (mousedown)="show_Password = false"
+                src="../../assets/svg/eye-off-outline.svg"
+                alt="eye-off-outline"
+              />
+              <img
+                id="toggle-password"
+                *ngIf="show_Password === false"
+                (mouseup)="show_Password = true"
+                src="../../assets/svg/eye-outline.svg"
+                alt="eye-outline"
               />
             </span>
           </div>

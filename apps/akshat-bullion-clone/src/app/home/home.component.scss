@@ -1,39 +1,37 @@
 .Mapp-footer {
-    --indicator-border-color: white;
-    --bg-color: black;
+  --indicator-border-color: white;
+  --bg-color: black;
 }
+@media screen and (max-width: 800px) {
+  .app-home-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
 
-@media screen and (max-width:800px) {
-    .app-home-header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-    }
-
-    .app-home-container {
-        margin-top: 170px;
-    }
+  .app-home-container {
+    margin-top: 170px;
+  }
 }
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .sidebar {
-    position: fixed;
-    bottom: 0;
-    left: -200px;
-    width: 200px;
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: -200px;
+  width: 200px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
 
-    &.open {
-        left: 0;
-    }
+  &.open {
+    left: 0;
+  }
 }
 
-@media screen and (min-width:800px) {
-    .sidebar{
-        display: none;
-    }
-    
+@media screen and (min-width: 800px) {
+  .sidebar {
+    display: none;
+  }
 }

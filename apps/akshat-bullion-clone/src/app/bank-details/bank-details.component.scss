@@ -31,3 +31,14 @@
         padding: 10px 15px !important;
     }
 }
+@media screen and (max-width: 500px) {
+    .main_container_data_details {
+        padding:0px !important;
+    }
+    .bank_detais {
+        margin-left: 0px !important;
+        h5 {
+            width: 35%;
+        }
+    }
+}

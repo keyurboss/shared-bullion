@@ -19,7 +19,8 @@ import { UserDataService } from '../services/rememberData.service';
 })
 export class SignUpComponent {
   constructor(private router: Router, public userData: UserDataService) {}
-
+  show_Password=true;
+  show_CPassword=true;
   submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
@@ -69,42 +70,56 @@ export class SignUpComponent {
     return this.SignForm.controls;
   }
   OnSignUpUserSubmit() {
+    console.log('click');
     this.submitted = true;
-    this.Name.setValue(this.Name.value.trim());
-    this.FirmName.setValue(this.FirmName.value.trim());
-    if (this.EmailId.invalid) {
-      Swal.fire('Error', 'Invalid Email!', 'warning');
-    } else if (this.MobileNumber.invalid) {
-      Swal.fire('Error', 'Invalid MobileNumber!', 'warning');
-    } else if (this.Password.invalid) {
-      Swal.fire('Error', 'please Enter Min 8 Digit Long Password', 'warning');
-    } else if (
-      this.Name.dirty === false ||
-      this.City.dirty === false ||
-      this.FirmName.dirty === false
-    ) {
-      Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
-    } else if (this.Password.value !== this.ConfirmPassword.value) {
-      Swal.fire(
-        'Error',
-        'Password and Confirm Password are not same!',
-        'warning'
-      );
-    } else if (this.SignForm.invalid) {
-      Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
-    } else if (this.checkbox.value === false) {
-      Swal.fire(
-        'Error',
-        'You Have not checked the Terms & Conditions..',
-        'warning'
-      );
-    } else {
-      this.router.navigate(['/otp']);
+    // this.Name.setValue(this.Name.value.trim());
+    // this.FirmName.setValue(this.FirmName.value.trim());
+
+    // if (this.EmailId.invalid) {
+    //   Swal.fire('Error', 'Invalid Email!', 'warning');
+    // } else if (this.MobileNumber.invalid) {
+    //   Swal.fire('Error', 'Invalid MobileNumber!', 'warning');
+    // } else if (this.Password.invalid) {
+    //   Swal.fire('Error', 'please Enter Min 8 Digit Long Password', 'warning');
+    // } else if (
+    //   this.Name.dirty === false ||
+    //   this.City.dirty === false ||
+    //   this.FirmName.dirty === false
+    // ) {
+    //   Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
+    // } else if (this.Password.value !== this.ConfirmPassword.value) {
+    //   Swal.fire(
+    //     'Error',
+    //     'Password and Confirm Password are not same!',
+    //     'warning'
+    //   );
+    // } else if (this.SignForm.invalid) {
+    //   Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
+    // } else if (this.checkbox.value === false) {
+    //   Swal.fire(
+    //     'Error',
+    //     'You Have not checked the Terms & Conditions..',
+    //     'warning'
+    //   );
+    // } else {
+    //   this.router.navigate(['/otp']);
+
+    for (const key in this.SignForm.controls) {
+      const iterator: FormControl = this.SignForm.controls[key];
+      if (iterator.invalid) {
+        console.log(iterator);
+        Swal.fire('Error', 'Are Compulsorytyyyyyyy!', 'warning');
+        if (iterator.dirty) {
+          Swal.fire('Error', 'Plese Enter valid information', 'warning');
+        }
+        break;
+      }
       // let mask = "";
       // for (let i = 0; i <= sahil.length - 2; i++) {
       // mask += "X";
       // const xxnumber = mask + this.MobileNumber.value.slice(8, 10);
       // console.log(xxnumber);
+      // }
     }
   }
   formatPhone(event: KeyboardEvent) {

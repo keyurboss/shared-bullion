@@ -2,37 +2,37 @@
   <div class="app-home-header">
     <akshat-bull-app-header></akshat-bull-app-header>
   </div>
-  <div class="app-home-container mx-auto relative">
+  <div class="app-home-container mx-auto relative overflow-y-auto">
     <router-outlet></router-outlet>
   </div>
   <div class="app-footer w-full">
     <akshat-bull-app-footer class="window-footer"></akshat-bull-app-footer>
   </div>
   <div class="sidebar Roboto h-[87%] top-0 bg-black" [class.open]="_testService.status">
-    <div class="wrapper flex flex-col justify-end text-[#fff] items-center h-full w-full  ">
-      <div routerLink="app/home/bank-details" (click)="_testService.status=!_testService.status"
-        class="w-full flex flex-row items-center p-[10px] border-b border-b-[#ccc] border-t border-t-[#ccc] topborder">
-        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_bank_logo.svg" alt="">
+    <div class="wrapper flex flex-col justify-end text-[#fff] items-center h-full w-full">
+      <div routerLink="app/home/bank-details" (click)="_testService.status = !_testService.status"
+        class="menuname w-full flex flex-row items-center p-[10px] border-b border-b-[#ccc] border-t border-t-[#ccc] topborder">
+        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_bank_logo.svg" alt="" />
         <h3 class="text-[14px] py-[8px] px-[5px]">BANK DETAILS</h3>
       </div>
-      <div routerLink="app/home/contact-us" (click)="_testService.status=!_testService.status"
+      <div routerLink="app/home/contact-us" (click)="_testService.status = !_testService.status"
         class="w-full flex flex-row items-center p-[10px] border-b border-b-[#ccc]">
-        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_contact_logo.svg" alt="">
+        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_contact_logo.svg" alt="" />
         <h3 class="text-[14px] py-[8px] px-[5px]">CONTACT US</h3>
       </div>
-      <div routerLink="app/home/about-us" (click)="_testService.status=!_testService.status"
+      <div routerLink="app/home/about-us" (click)="_testService.status = !_testService.status"
         class="w-full flex flex-row items-center p-[10px] border-b border-b-[#ccc]">
-        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_aboutus_logo.svg" alt="">
+        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_aboutus_logo.svg" alt="" />
         <h3 class="text-[14px] py-[8px] px-[5px]">About Us</h3>
       </div>
-      <div routerLink="app/home/messages" (click)="_testService.status=!_testService.status"
+      <div routerLink="app/home/messages" (click)="_testService.status = !_testService.status"
         class="w-full flex flex-row items-center p-[10px] border-b border-b-[#ccc]">
-        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_mail_logo.svg" alt="">
+        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar_mail_logo.svg" alt="" />
         <h3 class="text-[14px] py-[8px] px-[5px]">MESSAGES</h3>
       </div>
-      <div routerLink="app/home/Downloadapp" (click)="_testService.status=!_testService.status"
+      <div routerLink="app/home/Downloadapp" (click)="_testService.status = !_testService.status"
         class="w-full flex flex-row items-center p-[10px] border-b border-b-[#ccc]">
-        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar-app-logo.svg" alt="">
+        <img class="h-[18px] w-[18px]" src="../../assets/sidebarsvg/sidebar-app-logo.svg" alt="" />
         <h3 class="text-[14px] py-[8px] px-[5px]">APP</h3>
       </div>
     </div>
