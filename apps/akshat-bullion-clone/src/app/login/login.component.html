@@ -1,48 +1,86 @@
 <div class="flex justify-center Roboto h-full">
   <div class="relative flex justify-center items-center w-full">
     <div class="login_input w-full">
-      <h1 class="font-medium text-center text-[var(--primary-light)] text-[32px]">Login</h1>
-      <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">Add your details to login</h4>
+      <h1
+        class="font-medium text-center text-[var(--primary-light)] text-[32px]"
+      >
+        Login
+      </h1>
+      <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">
+        Add your details to login
+      </h4>
       <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
-
         <!-- ReactiveForm -->
-        <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
-
+        <div
+          class="inputs flex_center my-[25px] flex justify-center items-center flex-col"
+        >
           <!-- User id field -->
           <div class="input flex justify-center items-center w-full">
-            <input placeholder="Enter User id" formControlName="UserId" (keydown)="startingspace($event)"
-              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+            <input
+              placeholder="Enter User id"
+              formControlName="UserId"
+              (keydown)="startingspace($event)"
+              [(ngModel)]="userData.LoginUserId"
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
+            />
           </div>
 
           <!-- password field -->
           <div class="input flex justify-center items-center w-full">
-            <input type="password" placeholder="Enter Password" formControlName="password" (keydown)="nospace($event)"
-              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              formControlName="password"
+              (keydown)="nospace($event)"
+              [(ngModel)]="userData.LoginPassword"
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
+            />
           </div>
 
           <!-- checkbox field -->
-          <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" id="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><label
-              for="checkbox" class="ml-[5px] text-[#fff] font-semibold text-[16px]"> Remember
-              Me</label>
+          <div
+            class="checkbox flex_center flex justify-center items-center cursor-default"
+          >
+            <input
+              type="checkbox"
+              id="checkbox"
+              class="ng-untouched ng-pristine ng-valid my-[10px]"
+            /><label
+              for="checkbox"
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]"
+            >
+              Remember Me</label
+            >
           </div>
 
           <!--Login button -->
           <div class="sumbit_btn">
             <button
               class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] focus:outline-none"
-              id="submit" type="submit">
+              id="submit"
+              type="submit"
+            >
               Login
             </button>
           </div>
         </div>
       </form>
-      <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
-        <h5 class="text-center my-[10px] font-semibold text-[13px]" (click)="ForgotPassword()">Forgot Password</h5>
+      <div
+        class="flex justify-center items-center flex-col text-[#ccc] cursor-default"
+      >
+        <h5
+          class="text-center my-[10px] font-semibold text-[13px]"
+          (click)="ForgotPassword()"
+        >
+          Forgot Password
+        </h5>
         <h5 class="text-center my-[10px] font-semibold text-[13px]">
           Don't have an Account?
-          <a class="text-[13px] font-semibold text-[#fc6011] border-b-[1px] border-b-[#fc6011]"
-            routerLink="/sign-up">Sign Up</a>
+          <a
+            class="text-[13px] font-semibold text-[#fc6011] border-b-[1px] border-b-[#fc6011]"
+            routerLink="/sign-up"
+            >Sign Up</a
+          >
         </h5>
       </div>
     </div>

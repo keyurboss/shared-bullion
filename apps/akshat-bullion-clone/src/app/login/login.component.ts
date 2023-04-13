@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { UserDataService } from '../services/rememberData.service';
 
 @Component({
   selector: 'akshat-bull-app-login',
@@ -17,6 +18,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  constructor(public userData: UserDataService) {}
   users = [
     { id: 'sahil', password: 'sahil' },
     { id: 'Sahil', password: 'sahil' },
@@ -50,11 +52,18 @@ export class LoginComponent {
   OnLoginuserSubmit() {
     this.submitted = true;
     if (this.UserId.dirty === false || this.password.dirty === false) {
-      Swal.fire('All details are required!', 'Please fill out all fields!!', 'warning');
+      Swal.fire(
+        'All details are required!',
+        'Please fill out all fields!!',
+        'warning'
+      );
     } else {
       let found = false;
       for (let i = 0; i < this.users.length; i++) {
-        if (this.users[i].id === this.UserId.value && this.users[i].password === this.password.value) {
+        if (
+          this.users[i].id === this.UserId.value &&
+          this.users[i].password === this.password.value
+        ) {
           found = true;
           break;
         }
@@ -66,12 +75,16 @@ export class LoginComponent {
       }
       console.log(this.LoginForm.value);
     }
-  };
+  }
   ForgotPassword() {
-    Swal.fire('Forgot Password?', 'Please Contact Admin To Re-Set Password..!!', 'info');
+    Swal.fire(
+      'Forgot Password?',
+      'Please Contact Admin To Re-Set Password..!!',
+      'info'
+    );
   }
   startingspace(event: any) {
-    if (event.target.selectionStart === 0 && event.code === "Space") {
+    if (event.target.selectionStart === 0 && event.code === 'Space') {
       event.preventDefault();
     }
   }
@@ -81,5 +94,3 @@ export class LoginComponent {
     }
   }
 }
-
-

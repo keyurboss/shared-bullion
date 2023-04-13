@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
+import { UserDataService } from '../services/rememberData.service';
 // import Swal from 'sweetalert2';
-
 @Component({
   selector: 'akshat-bull-app-sign-up',
   standalone: true,
@@ -18,7 +18,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, public userData: UserDataService) {}
+
   submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
@@ -31,9 +32,12 @@ export class SignUpComponent {
     ]),
     EmailId: new FormControl('', [Validators.required, Validators.email]),
     City: new FormControl('', [Validators.required]),
-    Password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    Password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
     ConfirmPassword: new FormControl('', [Validators.required]),
-  })
+  });
   get Name() {
     return this.SignForm.get('Name');
   }
@@ -74,16 +78,28 @@ export class SignUpComponent {
       Swal.fire('Error', 'Invalid MobileNumber!', 'warning');
     } else if (this.Password.invalid) {
       Swal.fire('Error', 'please Enter Min 8 Digit Long Password', 'warning');
-    } else if (this.Name.dirty === false || this.City.dirty === false || this.FirmName.dirty === false) {
+    } else if (
+      this.Name.dirty === false ||
+      this.City.dirty === false ||
+      this.FirmName.dirty === false
+    ) {
       Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
     } else if (this.Password.value !== this.ConfirmPassword.value) {
-      Swal.fire('Error', 'Password and Confirm Password are not same!', 'warning');
+      Swal.fire(
+        'Error',
+        'Password and Confirm Password are not same!',
+        'warning'
+      );
     } else if (this.SignForm.invalid) {
       Swal.fire('Error', 'All fields Are Compulsory!', 'warning');
     } else if (this.checkbox.value === false) {
-      Swal.fire('Error', 'You Have not checked the Terms & Conditions..', 'warning');
+      Swal.fire(
+        'Error',
+        'You Have not checked the Terms & Conditions..',
+        'warning'
+      );
     } else {
-      this.router.navigate((['/otp']));
+      this.router.navigate(['/otp']);
       // let mask = "";
       // for (let i = 0; i <= sahil.length - 2; i++) {
       // mask += "X";
@@ -94,14 +110,14 @@ export class SignUpComponent {
   formatPhone(event: KeyboardEvent) {
     const input = event.key;
     if (input === 'Backspace') {
-      return
+      return;
     }
     if (typeof input !== 'undefined' && isNaN(+input)) {
       event.preventDefault();
     }
   }
   startingspace(event: any) {
-    if (event.target.selectionStart === 0 && event.code === "Space") {
+    if (event.target.selectionStart === 0 && event.code === 'Space') {
       event.preventDefault();
     }
   }
