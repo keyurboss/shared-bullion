@@ -19,6 +19,9 @@ import { UserDataService } from '../services/rememberData.service';
 })
 export class LoginComponent {
   constructor(public userData: UserDataService) {}
+
+  show_Password = true;
+
   users = [
     { id: 'sahil', password: 'sahil' },
     { id: 'Sahil', password: 'sahil' },
