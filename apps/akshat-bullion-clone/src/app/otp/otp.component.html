@@ -2,27 +2,28 @@
   <div class="lso_otp w3-animate-lef flex justify-center items-center max-w-[450px] w-[90%] h-full relative">
     <div class="wrapper absolute w-full">
       <div class="wrapper_head flex justify-center items-center flex-col">
-        <h2 class="font-normal text-[#fce975] text-center my-[6px] text-[24px]">
-          We have sent an OTP to your Mobile
-        </h2>
-        <h4 class="text-[14px] font-normal text-[#fff] text-center my-[6px]">
-          Please enter the OTP sent to +91 {{this.userData.SignupUserMobileNumber}}
+        <h1 class="font-normal text-[#fce975] text-center my-[6px] text-[28px]">
+          Please enter the OTP sent to
+        </h1>
+        <h4 class="flex text-[15px] font-normal text-[#fff] text-center my-[6px]">
+          +91 {{this.userData.SignupUserMobileNumber}}.
+          <a routerLink="/sign-up" class="text-[#2874f0] ml-5 underline">Change</a>
         </h4>
       </div>
       <form [formGroup]="OtpForm" (ngSubmit)="OnOtpuserSubmit()">
         <div class="wrapper_inputs flex justify-center items-center flex-col">
           <div class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row">
-            <input autofocus (keydown)="formatPhone($event)" (keyup)="jump($event, '', txt1, txt2)" #txt1 type="tel"
-              maxlength="1" formControlName="input1"
+            <input autofocus (keydown)="formatPhone($event)" (keydown)="nospace($event)"
+              (keyup)="jump($event, '', txt1, txt2)" #txt1 type="tel" maxlength="1" formControlName="input1"
               class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
-            <input (keydown)="formatPhone($event)" (keyup)="jump($event, txt1, txt2, txt3)" #txt2 type="tel"
-              maxlength="1" formControlName="input2"
+            <input (keydown)="formatPhone($event)" (keydown)="nospace($event)" (keyup)="jump($event, txt1, txt2, txt3)"
+              #txt2 type="tel" maxlength="1" formControlName="input2"
               class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
-            <input (keydown)="formatPhone($event)" (keyup)="jump($event, txt2, txt3, txt4)" #txt3 type="tel"
-              maxlength="1" formControlName="input3"
+            <input (keydown)="formatPhone($event)" (keydown)="nospace($event)" (keyup)="jump($event, txt2, txt3, txt4)"
+              #txt3 type="tel" maxlength="1" formControlName="input3"
               class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
-            <input (keydown)="formatPhone($event)" (keyup)="jump($event, txt3, txt4, '')" type="tel" #txt4 maxlength="1"
-              formControlName="input4"
+            <input (keydown)="formatPhone($event)" (keydown)="nospace($event)" (keyup)="jump($event, txt3, txt4, '')"
+              type="tel" #txt4 maxlength="1" formControlName="input4"
               class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
           </div>
           <input type="submit" value="Submit" placeholder="Enter Password"

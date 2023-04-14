@@ -8,12 +8,13 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UserDataService } from '../services/rememberData.service';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'akshat-bull-app-otp',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss'],
 })
@@ -61,11 +62,11 @@ export class OtpComponent {
       Swal.fire('Wrong Otp..!', '', 'warning');
     }
   }
-  // nospace(event: any) {
-  //   if (event.keyCode === 32) {
-  //     event.preventDefault();
-  //   }
-  // }
+  nospace(event: any) {
+    if (event.keyCode === 32) {
+      event.preventDefault();
+    }
+  }
   formatPhone(event: KeyboardEvent) {
     const input = event.key;
     if (input === 'Backspace') {

@@ -1,4 +1,8 @@
 .card{
     border: 2px solid greenyellow;
 }
-
+@media screen and (max-width:800px) {
+    .contact-us{
+      padding-bottom: 110px;
+    }  
+  }

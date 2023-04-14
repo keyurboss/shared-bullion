@@ -35,9 +35,8 @@ export class SignUpComponent {
     City: new FormControl('', [Validators.required]),
     Password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
     ]),
-    ConfirmPassword: new FormControl('', [Validators.required]),
+    ConfirmPassword: new FormControl('',)
   });
   get Name() {
     return this.SignForm.get('Name');
@@ -70,17 +69,21 @@ export class SignUpComponent {
     return this.SignForm.controls;
   }
   OnSignUpUserSubmit() {
-    console.log('click');
     this.submitted = true;
     for (const key in this.SignForm.controls) {
       const iterator: FormControl = this.SignForm.controls[key];
       if (iterator.invalid) {
-        console.log(iterator);
-        Swal.fire('Error', `${key} Are Compulsorytyyyyyyy!`, 'warning');
+        Swal.fire('Error', `${key} Field is Compulsory!`, 'warning');
         if (iterator.dirty) {
-          Swal.fire('Error', `${key} Plese Enter valid information`, 'warning');
+          Swal.fire('Error', `Plese Enter valid ${key}`, 'warning');
         }
         break;
+      } else if (this.Password.value.length < 8) {
+        Swal.fire(
+          'Error',
+          'Plese Enter Min 8 Digit Long Password',
+          'warning'
+        );
       } else if (this.Password.value !== this.ConfirmPassword.value) {
         Swal.fire(
           'Error',
