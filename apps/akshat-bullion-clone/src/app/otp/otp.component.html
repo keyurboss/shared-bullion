@@ -1,7 +1,5 @@
 <div class="lso relative flex justify-center items-center h-full w-full Roboto">
-  <div
-    class="lso_otp w3-animate-lef flex justify-center items-center max-w-[450px] w-[90%] h-full relative"
-  >
+  <div class="lso_otp w3-animate-lef flex justify-center items-center max-w-[450px] w-[90%] h-full relative">
     <div class="wrapper absolute w-full">
       <div class="wrapper_head flex justify-center items-center flex-col">
         <h2 class="font-normal text-[#fce975] text-center my-[6px] text-[24px]">
@@ -13,50 +11,22 @@
       </div>
       <form [formGroup]="OtpForm" (ngSubmit)="OnOtpuserSubmit()">
         <div class="wrapper_inputs flex justify-center items-center flex-col">
-          <div
-            class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row"
-          >
-            <input
-            (keydown)="formatPhone($event)"
-              (keyup)="jump($event, '', txt1, txt2)"
-              #txt1
-              type="tel"
-              maxlength="1"
+          <div class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row">
+            <input autofocus (keydown)="formatPhone($event)" (keyup)="jump($event, '', txt1, txt2)" #txt1 type="tel" maxlength="1"
               formControlName="input1"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none"
-            />
-            <input
-                (keydown)="formatPhone($event)"
-              (keyup)="jump($event, txt1, txt2, txt3)"
-              #txt2
-              type="tel"
-              maxlength="1"
-              formControlName="input2"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none"
-            />
-            <input
-              (keyup)="jump($event, txt2, txt3, txt4)"
-              #txt3
-              type="tel"
-              maxlength="1"
-              formControlName="input3"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none"
-            />
-            <input
-              (keyup)="jump($event, txt3, txt4, '')"
-              type="tel"
-              #txt4
-              maxlength="1"
+              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
+            <input (keydown)="formatPhone($event)" (keyup)="jump($event, txt1, txt2, txt3)" #txt2 type="tel"
+              maxlength="1" formControlName="input2"
+              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
+            <input (keydown)="formatPhone($event)" (keyup)="jump($event, txt2, txt3, txt4)" #txt3 type="tel"
+              maxlength="1" formControlName="input3"
+              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
+            <input (keydown)="formatPhone($event)" (keyup)="jump($event, txt3, txt4, '')" type="tel" #txt4 maxlength="1"
               formControlName="input4"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none"
-            />
+              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
           </div>
-          <input
-            type="submit"
-            value="Submit"
-            placeholder="Enter Password"
-            class="yellow_gradient text-[#a9481b] font-semibold min-w-[270px] text-[16px] p-[15px] rounded-[25px] focus:outline-none"
-          />
+          <input type="submit" value="Submit" placeholder="Enter Password"
+            class="yellow_gradient text-[#a9481b] font-semibold min-w-[270px] text-[16px] p-[15px] rounded-[25px] focus:outline-none" />
         </div>
       </form>
       <div class="options text-[#ccc] my-[20px]"></div>
