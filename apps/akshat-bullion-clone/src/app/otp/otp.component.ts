@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { UserDataService } from '../services/rememberData.service';
+
 
 @Component({
   selector: 'akshat-bull-app-otp',
@@ -16,6 +18,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./otp.component.scss'],
 })
 export class OtpComponent {
+  constructor(public userData: UserDataService) { }
+
   submitted = false;
   OtpForm = new FormGroup({
     input1: new FormControl('', [Validators.required]),
@@ -73,21 +77,22 @@ export class OtpComponent {
   }
 
   jump(event: any, privious: any, current: any, next: any) {
-      const length=current.value.length;
-      const maxlength=current.getAttribute('maxlength');
-      if (event.key =='Backspace') {
-        console.log('Bakespace');
-        if (privious != '') {
-          privious.focus();
-          console.log('privious.focus');
-        }
+    const length = current.value.length;
+    const maxlength = current.getAttribute('maxlength');
+    if (event.key == 'Backspace') {
+      console.log('Bakespace');
+      if (privious != '') {
+        privious.focus();
+        console.log('privious.focus');
       }
-      if (length == maxlength) {
-        console.log('length == maxlength');
-        if (next != '') {
-          console.log('next.focus');
-          next.focus();
-        }}
+    }
+    if (length == maxlength) {
+      console.log('length == maxlength');
+      if (next != '') {
+        console.log('next.focus');
+        next.focus();
+      }
     }
   }
+}
 

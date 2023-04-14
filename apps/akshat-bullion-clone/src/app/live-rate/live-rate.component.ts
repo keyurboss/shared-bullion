@@ -7,6 +7,7 @@ import { RateTables4Component } from '@rps/bullion-rate-tables/table4';
 import { RateTables5Component } from '@rps/bullion-rate-tables/table5';
 import { RateTables6Component } from '@rps/bullion-rate-tables/table6';
 
+
 @Component({
   selector: 'akshat-bull-app-live-rate',
   standalone: true,
