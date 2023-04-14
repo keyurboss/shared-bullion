@@ -2,6 +2,7 @@
     background-image: radial-gradient(circle, #fce975, #ebcf62, #d9b651, #c79d40, #b48531);
     color: #a9481b;
 }
+
 // *******************// media query//************************
 @media screen and (max-width: 900px) {
     .login_input {
@@ -13,6 +14,22 @@
             font-size: 20px;
 
         }
+    }
+
+    .input_change {
+        width: 66% !important;
+        background-color: #fff;
+        border-radius: 25px;
+        height: 54px;
+        position: relative;
+    }
+
+    .input_field_change {
+        width: 100% !important;
+    }
+
+    .eyeimg_change {
+        right: 1.4rem;
     }
 
     .input {

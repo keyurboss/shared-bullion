@@ -19,7 +19,7 @@
           </div>
 
           <!-- password field -->
-          <div class="input flex justify-center items-center w-full">
+          <div class="input input_change flex justify-center items-center">
             <input id="loginpassword" [type]="show_Password ? 'password' : 'text'" placeholder="Enter Password"
               formControlName="password" (keydown)="nospace($event)" [(ngModel)]="userData.LoginPassword" onpaste="setTimeout(() => { 
                 const pastedText = document.getElementById('loginpassword').value;
@@ -31,9 +31,9 @@
                   this.value = trimmedText;
                 }
               },0)"
-              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
-            <span class="bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"><img id="toggle-password"
-                *ngIf="show_Password === true" (mousedown)="show_Password = false"
+              class="input_field input_field_change my-[10px] py-[15px] min-w-[270px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+            <span class="eyeimg_change bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"><img
+                id="toggle-password" *ngIf="show_Password === true" (mousedown)="show_Password = false"
                 src="../../assets/svg/eye-off-outline.svg" alt="eye-off-outline" />
               <img id="toggle-password" *ngIf="show_Password === false" (mouseup)="show_Password = true"
                 src="../../assets/svg/eye-outline.svg" alt="eye-outline" />
