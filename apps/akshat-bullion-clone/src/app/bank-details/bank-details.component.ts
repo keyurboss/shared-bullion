@@ -76,6 +76,6 @@ export class BankdetailsComponent {
   ];
   clipboard(num: any) {
     navigator.clipboard.writeText(num);
-    num.setSelectionRange(0,99999);
+    num.setSelectionRange(0, 99999);
   }
 }
