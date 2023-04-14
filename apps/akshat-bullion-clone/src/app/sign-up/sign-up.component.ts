@@ -108,9 +108,9 @@ export class SignUpComponent {
       const iterator: FormControl = this.SignForm.controls[key];
       if (iterator.invalid) {
         console.log(iterator);
-        Swal.fire('Error', 'Are Compulsorytyyyyyyy!', 'warning');
+        Swal.fire('Error', `${key} Are Compulsorytyyyyyyy!`, 'warning');
         if (iterator.dirty) {
-          Swal.fire('Error', 'Plese Enter valid information', 'warning');
+          Swal.fire('Error', `${key} Plese Enter valid information`, 'warning');
         }
         break;
       }
