@@ -3,7 +3,7 @@
     color: #a9481b;
 }
 // *******************// media query//************************
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
     .login_input {
         h1 {
             font-size: 40px;
@@ -17,7 +17,7 @@
 
     .input {
         input {
-            width: 80%;
+            width: 65%;
         }
     }
 

@@ -1,9 +1,7 @@
 <div class="Roboto my-[20px] h-full">
   <div class="relative flex justify-center items-center h-full">
     <div class="Signup_input w-full">
-      <h1
-        class="font-medium text-center text-[var(--primary-light)] text-[24px]"
-      >
+      <h1 class="font-medium text-center text-[var(--primary-light)] text-[24px]">
         New Registration
       </h1>
       <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">
@@ -12,167 +10,137 @@
 
       <!-- ReactiveForm -->
       <form [formGroup]="SignForm" (ngSubmit)="OnSignUpUserSubmit()">
-        <div
-          class="inputs flex_center flex justify-center items-center flex-col"
-        >
+        <div class="inputs flex_center flex justify-center items-center flex-col">
           <!--  NAME field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              placeholder="Name"
-              formControlName="Name"
-              autofocus
-              (keydown)="startingspace($event)"
-              [(ngModel)]="userData.SignupUserName"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
+            <input placeholder="Name" formControlName="Name" autofocus (keydown)="startingspace($event)"
+              onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)" [(ngModel)]="userData.SignupUserName"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!--  FirmName field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              placeholder="FirmName"
-              formControlName="FirmName"
-              (keydown)="startingspace($event)"
-              [(ngModel)]="userData.SignupUserFirmName"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
+            <input placeholder="FirmName" formControlName="FirmName" (keydown)="startingspace($event)"
+              [(ngModel)]="userData.SignupUserFirmName" onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!--  MobileNumber field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              placeholder="Mobile No"
-              type="tel"
-              minlength="10"
-              maxlength="10"
-              formControlName="MobileNumber"
-              (keydown)="formatPhone($event)"
-              (keydown)="nospace($event)"
-              [(ngModel)]="userData.SignupUserMobileNumber"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
+            <input id="mobilenumber" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"
+              formControlName="MobileNumber" (keydown)="formatPhone($event)" (keydown)="nospace($event)"
+              [(ngModel)]="userData.SignupUserMobileNumber" onpaste="setTimeout(() => { 
+                const pastedText = document.getElementById('mobilenumber').value;
+                let trimmedText = pastedText.trim();
+                const hasSpacesInMiddle = /\s/.test(trimmedText);
+                if (hasSpacesInMiddle===true){
+                  this.value = '';
+                } else {
+                  this.value = trimmedText;
+                }
+              },0)"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!--  EmailId field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              placeholder="Email Id"
-              type="email"
-              formControlName="EmailId"
-              (keydown)="nospace($event)"
-              [(ngModel)]="userData.SignupUserEmailid"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
+            <input id="email" placeholder="Email Id" type="email" formControlName="EmailId" (keydown)="nospace($event)"
+              [(ngModel)]="userData.SignupUserEmailid" onpaste="setTimeout(() => { 
+                const pastedText = document.getElementById('email').value;
+                let trimmedText = pastedText.trim();
+                const hasSpacesInMiddle = /\s/.test(trimmedText);
+                if (hasSpacesInMiddle===true){
+                  this.value = '';
+                } else {
+                  this.value = trimmedText;
+                }
+              },0)"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!--  City Name field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              placeholder="City"
-              formControlName="City"
-              (keydown)="nospace($event)"
-              [(ngModel)]="userData.SignupUserCity"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
+            <input id="city" placeholder="City" formControlName="City" (keydown)="nospace($event)"
+              [(ngModel)]="userData.SignupUserCity" onpaste="setTimeout(() => { 
+                const pastedText = document.getElementById('city').value;
+                let trimmedText = pastedText.trim();
+                const hasSpacesInMiddle = /\s/.test(trimmedText);
+                if (hasSpacesInMiddle===true){
+                  this.value = '';
+                } else {
+                  this.value = trimmedText;
+                }
+              },0)"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!--  Password field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              [type]="show_Password ? 'password' : 'text'"
-              placeholder="Password"
-              formControlName="Password"
-              id="password"
-              (keydown)="nospace($event)"
-              [(ngModel)]="userData.SignupUserPassword"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
-            <span
-              class="bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"
-              ><img
-                id="toggle-password"
-                *ngIf="show_Password === true"
-                (mousedown)="show_Password = false"
-                src="../../assets/svg/eye-off-outline.svg"
-                alt="eye-off-outline"
-              />
-              <img
-                id="toggle-password"
-                *ngIf="show_Password === false"
-                (mouseup)="show_Password = true"
-                src="../../assets/svg/eye-outline.svg"
-                alt="eye-outline"
-              />
+            <input id="signuppassword" [type]="show_Password ? 'password' : 'text'" placeholder="Password"
+              formControlName="Password" (keydown)="nospace($event)" [(ngModel)]="userData.SignupUserPassword" onpaste="setTimeout(() => { 
+                const pastedText = document.getElementById('signuppassword').value;
+                let trimmedText = pastedText.trim();
+                const hasSpacesInMiddle = /\s/.test(trimmedText);
+                if (hasSpacesInMiddle===true){
+                  this.value = '';
+                } else {
+                  this.value = trimmedText;
+                }
+              },0)"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+            <span class="bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"><img id="toggle-password"
+                *ngIf="show_Password === true" (mousedown)="show_Password = false"
+                src="../../assets/svg/eye-off-outline.svg" alt="eye-off-outline" />
+              <img id="toggle-password" *ngIf="show_Password === false" (mouseup)="show_Password = true"
+                src="../../assets/svg/eye-outline.svg" alt="eye-outline" />
             </span>
-            <!-- <i id="togglePassword" (click)="myFunction()">sahil</i> -->
           </div>
 
           <!--  Confirm Password field  -->
           <div class="input flex justify-center items-center w-full">
-            <input
-              [type]="show_CPassword ? 'password' : 'text'"
-              placeholder="Confirm Password"
-              formControlName="ConfirmPassword"
-              (keydown)="nospace($event)"
-              [(ngModel)]="userData.SignupUserCPassword"
-              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none"
-            />
-            <span
-              class="bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"
-              ><img
-                id="toggle-password"
-                *ngIf="show_CPassword === true"
-                (mousedown)="show_CPassword = false"
-                src="../../assets/svg/eye-off-outline.svg"
-                alt="eye-off-outline"
-              />
-              <img
-                id="toggle-password"
-                *ngIf="show_CPassword === false"
-                (mouseup)="show_CPassword = true"
-                src="../../assets/svg/eye-outline.svg"
-                alt="eye-outline"
-              />
+            <input id="ConfirmPassword" [type]="show_CPassword ? 'password' : 'text'" placeholder="Confirm Password"
+              formControlName="ConfirmPassword" (keydown)="nospace($event)" [(ngModel)]="userData.SignupUserCPassword"
+              onpaste="setTimeout(() => { 
+                const pastedText = document.getElementById('ConfirmPassword').value;
+                let trimmedText = pastedText.trim();
+                const hasSpacesInMiddle = /\s/.test(trimmedText);
+                if (hasSpacesInMiddle===true){
+                  this.value = '';
+                } else {
+                  this.value = trimmedText;
+                }
+              },0)"
+              class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+            <span class="bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"><img id="toggle-password"
+                *ngIf="show_CPassword === true" (mousedown)="show_CPassword = false"
+                src="../../assets/svg/eye-off-outline.svg" alt="eye-off-outline" />
+              <img id="toggle-password" *ngIf="show_CPassword === false" (mouseup)="show_CPassword = true"
+                src="../../assets/svg/eye-outline.svg" alt="eye-outline" />
             </span>
           </div>
 
           <!--  checkbox field  -->
-          <div
-            class="checkbox flex_center flex justify-center items-center cursor-default"
-          >
-            <input
-              type="checkbox"
-              class="ng-untouched ng-pristine ng-valid my-[10px]"
-              formControlName="checkbox"
-            /><span
-              routerLink="/termsNpolicy/tnc"
-              class="ml-[5px] text-[#fff] font-semibold text-[16px]"
-              >Terms & Conditions</span
-            >
+          <div class="checkbox flex_center flex justify-center items-center cursor-default">
+            <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]"
+              formControlName="checkbox" /><span routerLink="/termsNpolicy/tnc"
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms & Conditions</span>
           </div>
 
           <!-- submit button -->
           <div class="submit_btn">
             <button
               class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] flex justify-center items-center focus:outline-none"
-              id="submit"
-              type="submit"
-            >
+              id="submit" type="submit">
               Register
             </button>
           </div>
         </div>
       </form>
-      <div
-        class="flex justify-center items-center flex-col text-[#ccc] cursor-default"
-      >
+      <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
         <h5 class="text-center my-[10px] font-semibold text-[13px]">
           Already have an Account?
-          <a
-            class="text-[13px] font-semibold text-[#fc6011] border-b-[1px] border-b-[#fc6011]"
-            routerLink="/login"
-            >Login</a
-          >
+          <a class="text-[13px] font-semibold text-[#fc6011] border-b-[1px] border-b-[#fc6011]"
+            routerLink="/login">Login</a>
         </h5>
       </div>
     </div>
