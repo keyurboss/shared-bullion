@@ -24,7 +24,6 @@ export class SignUpComponent {
   submitted = false;
   SignForm = new FormGroup({
     Name: new FormControl('', [Validators.required]),
-    checkbox: new FormControl(false),
     FirmName: new FormControl('', [Validators.required]),
     MobileNumber: new FormControl('', [
       Validators.required,
@@ -36,7 +35,8 @@ export class SignUpComponent {
     Password: new FormControl('', [
       Validators.required,
     ]),
-    ConfirmPassword: new FormControl('',)
+    ConfirmPassword: new FormControl(''),
+    checkbox: new FormControl(false),
   });
   get Name() {
     return this.SignForm.get('Name');
@@ -73,32 +73,36 @@ export class SignUpComponent {
     for (const key in this.SignForm.controls) {
       const iterator: FormControl = this.SignForm.controls[key];
       if (iterator.invalid) {
+        console.log('iterator.invalid');
         Swal.fire('Error', `${key} Field is Compulsory!`, 'warning');
         if (iterator.dirty) {
+          console.log('iterator.dirty');
           Swal.fire('Error', `Plese Enter valid ${key}`, 'warning');
         }
         break;
-      } else if (this.Password.value.length < 8) {
-        Swal.fire(
-          'Error',
-          'Plese Enter Min 8 Digit Long Password',
-          'warning'
-        );
-      } else if (this.Password.value !== this.ConfirmPassword.value) {
-        Swal.fire(
-          'Error',
-          'Password and Confirm Password are not same!',
-          'warning'
-        );
       }
-      else if (this.checkbox.value === false) {
-        Swal.fire(
-          'Error',
-          'You Have not checked the Terms & Conditions..',
-          'warning'
-        );
-      } else {
-        this.router.navigate(['/otp']);
+      if (this.SignForm.valid) {
+        if (this.Password.value.length < 8) {
+          Swal.fire(
+            'Error',
+            'Plese Enter Min 8 Digit Long Password',
+            'warning'
+          );
+        } else if (this.Password.value !== this.ConfirmPassword.value) {
+          Swal.fire(
+            'Error',
+            'Password and Confirm Password are not same!',
+            'warning'
+          );
+        } else if (this.checkbox.value === false) {
+          Swal.fire(
+            'Error',
+            'You Have not checked the Terms & Conditions..',
+            'warning'
+          );
+        } else {
+          this.router.navigate(['/otp']);
+        }
       }
     }
   }
