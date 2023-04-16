@@ -1,15 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  FormControl,
-  FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { UserDataService } from '../services/rememberData.service';
 import { RouterModule } from '@angular/router';
-
 
 @Component({
   selector: 'akshat-bull-app-otp',
@@ -18,50 +13,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss'],
 })
-export class OtpComponent {
+export class OtpComponent implements OnInit {
+  @ViewChild('first', { static: true }) first: ElementRef;
   constructor(public userData: UserDataService) { }
 
-  submitted = false;
-  OtpForm = new FormGroup({
-    input1: new FormControl('', [Validators.required]),
-    input2: new FormControl('', [Validators.required]),
-    input3: new FormControl('', [Validators.required]),
-    input4: new FormControl('', [Validators.required]),
-  });
-  get input1() {
-    return this.OtpForm.get('input1');
-  }
-  get input2() {
-    return this.OtpForm.get('input2');
-  }
-  get input3() {
-    return this.OtpForm.get('input3');
-  }
-  get input4() {
-    return this.OtpForm.get('input4');
-  }
-  OnOtpuserSubmit() {
-    this.submitted = true;
-    if (
-      this.input1.dirty &&
-      this.input2.dirty &&
-      this.input3.dirty &&
-      this.input4.dirty
-    ) {
-      if (
-        this.input1.value === '1' &&
-        this.input2.value === '1' &&
-        this.input3.value === '1' &&
-        this.input4.value === '1'
-      ) {
-        Swal.fire('', 'sign up successful.....', 'success');
-      } else {
-        Swal.fire('Wrong Otp..!', '', 'warning');
-      }
-    } else {
-      Swal.fire('Wrong Otp..!', '', 'warning');
-    }
-  }
   nospace(event: any) {
     if (event.keyCode === 32) {
       event.preventDefault();
@@ -76,24 +31,32 @@ export class OtpComponent {
       event.preventDefault();
     }
   }
-
-  jump(event: any, privious: any, current: any, next: any) {
-    const length = current.value.length;
-    const maxlength = current.getAttribute('maxlength');
-    if (event.key == 'Backspace') {
-      console.log('Bakespace');
-      if (privious != '') {
-        privious.focus();
-        console.log('privious.focus');
-      }
+  ngOnInit() {
+    const inputs = document.querySelectorAll<HTMLInputElement>('#otp > *[id]');
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key === 'Backspace') {
+          inputs[i].value = '';
+          if (i !== 0) inputs[i - 1].focus();
+        } else {
+          if (i === inputs.length - 1 && inputs[i].value !== '') {
+            return true;
+          } else if (
+            (event.keyCode > 47 && event.keyCode < 58) ||
+            (event.keyCode > 95 && event.keyCode < 106)
+          ) {
+            inputs[i].value = event.key;
+            if (i !== inputs.length - 1) inputs[i + 1].focus();
+            event.preventDefault();
+          } else if (event.keyCode > 64 && event.keyCode < 91) {
+            inputs[i].value = String.fromCharCode(event.keyCode);
+            if (i !== inputs.length - 1) inputs[i + 1].focus();
+            event.preventDefault();
+          }
+        }
+        return false; // add a default return statement
+      });
     }
-    if (length == maxlength) {
-      console.log('length == maxlength');
-      if (next != '') {
-        console.log('next.focus');
-        next.focus();
-      }
-    }
+    this.first.nativeElement.focus();
   }
 }
-

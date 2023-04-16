@@ -3,7 +3,7 @@
     <akshat-bull-app-header></akshat-bull-app-header>
   </div>
   <div class="app-home-container mx-auto relative overflow-y-auto">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActive()"></router-outlet>
   </div>
   <div class="app-footer w-full">
     <akshat-bull-app-footer class="window-footer"></akshat-bull-app-footer>

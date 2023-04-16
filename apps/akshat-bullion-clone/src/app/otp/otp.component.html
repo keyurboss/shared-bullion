@@ -10,21 +10,33 @@
           <a routerLink="/sign-up" class="text-[#fc6011] ml-5 underline">Change</a>
         </h4>
       </div>
-      <form [formGroup]="OtpForm" (ngSubmit)="OnOtpuserSubmit()">
+      <form>
         <div class="wrapper_inputs flex justify-center items-center flex-col">
-          <div class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row">
-            <input autofocus (keydown)="formatPhone($event)" (keydown)="nospace($event)"
-              (keyup)="jump($event, '', txt1, txt2)" #txt1 type="tel" maxlength="1" formControlName="input1"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
-            <input (keydown)="formatPhone($event)" (keydown)="nospace($event)" (keyup)="jump($event, txt1, txt2, txt3)"
-              #txt2 type="tel" maxlength="1" formControlName="input2"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
-            <input (keydown)="formatPhone($event)" (keydown)="nospace($event)" (keyup)="jump($event, txt2, txt3, txt4)"
-              #txt3 type="tel" maxlength="1" formControlName="input3"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
-            <input (keydown)="formatPhone($event)" (keydown)="nospace($event)" (keyup)="jump($event, txt3, txt4, '')"
-              type="tel" #txt4 maxlength="1" formControlName="input4"
-              class="yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] text-center border border-[#000000] rounded-[12px] font-semibold text-[#a9481b] focus:outline-none" />
+          <div id="otp" class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row">
+            <input
+              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" type="tel" id="first" maxlength="1"
+              formControlName="input1" autofocus />
+            <input
+              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" type="tel" id="second" maxlength="1"
+              formControlName="input2" />
+            <input
+              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" type="tel" id="third" maxlength="1"
+              formControlName="input3" />
+            <input
+              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" type="tel" id="fourth" maxlength="1"
+              formControlName="input4" />
+            <input
+              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" type="tel" id="fifth" maxlength="1"
+              formControlName="input5" />
+            <input
+              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" type="tel" id="sixth" maxlength="1"
+              formControlName="input6" />
           </div>
           <input type="submit" value="Submit" placeholder="Enter Password"
             class="yellow_gradient text-[#a9481b] font-semibold min-w-[270px] text-[16px] p-[15px] rounded-[25px] focus:outline-none" />

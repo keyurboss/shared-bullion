@@ -33,7 +33,7 @@
             :
             <p class="bank-account ml-[10px]">
               {{ item.accountnumber }}
-              <button class="w-[16px] ml-[10px] mt-[2px]" (click)="clipboard(item.Copyaccountnumber)">
+              <button class="w-[16px] ml-[10px] mt-[2px]" (click)="copyToClipboard(item.Copyaccountnumber)">
                 <img src="../../assets/images/copy.svg" alt="" />
               </button>
             </p>
@@ -47,7 +47,7 @@
             :
             <p class="ml-[10px]">
               {{ item.IFSCCode }}
-              <button class="w-[16px] ml-[10px]" (click)="clipboard(item.CopyIFSCCode)">
+              <button class="w-[16px] ml-[10px]" (click)="copyToClipboard(item.CopyIFSCCode)">
                 <img src="../../assets/images/copy.svg" alt="" />
               </button>
             </p>

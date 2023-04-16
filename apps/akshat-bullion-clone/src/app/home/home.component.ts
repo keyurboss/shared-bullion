@@ -24,12 +24,12 @@ import { popupServices } from '../services/pop-upmenu.service';
 @Component({
   selector: 'akshat-bull-app-about-us',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component, MAppComponent,CommonModule,RouterModule],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavBar3Component, MAppComponent, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export default class HomeComponent { 
-  constructor(public _testService: popupServices) {}
+export default class HomeComponent {
+  constructor(public _testService: popupServices) { }
   // active_uid = '4';
   // constructor(private routes: Router) { }
   // navbar: navbar3[] = [
@@ -98,4 +98,11 @@ export default class HomeComponent {
   //     console.log(found?.router_link);
   //   }
   // }
-}
+  onActive() {
+    window.scrollTo({
+      top: 1,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
+} 

@@ -107,7 +107,7 @@ export class SignUpComponent {
     if (input === 'Backspace') {
       return;
     }
-    if (typeof input !== 'undefined' && isNaN(+input)) {
+    if ((typeof input !== 'undefined' && isNaN(+input)) && event.keyCode != 9) {
       event.preventDefault();
     }
   }
