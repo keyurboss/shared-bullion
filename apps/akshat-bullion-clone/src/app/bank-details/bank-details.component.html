@@ -1,4 +1,4 @@
-<div class="margin h-full">
+<div class="margin h-full Roboto relative">
   <div class="main flex flex-wrap justify-center items-center py-[30px] px-[10%]">
     <div *ngFor="let item of data"
       class="main_container_data shadow-white max-w-[472px] my-[15px] mx-[20px] py-[2vh] px-0 rounded-[12px]">
@@ -33,7 +33,8 @@
             :
             <p class="bank-account ml-[10px]">
               {{ item.accountnumber }}
-              <button class="w-[16px] ml-[10px] mt-[2px]" (click)="copyToClipboard(item.Copyaccountnumber)">
+              <button class="w-[16px] ml-[10px] mt-[2px]" (click)="copyToClipboard(item.Copyaccountnumber)"
+                [disabled]="disabled">
                 <img src="../../assets/images/copy.svg" alt="" />
               </button>
             </p>
@@ -62,6 +63,18 @@
             <p class="ml-[10px]">{{ item.branchname }}</p>
           </span>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full flex justify-center items-center">
+    <div *ngIf="showMessage"
+      class="fixed bottom-0 rounded-md flex m-[24px] z-10 max-w-[30vw] min-w-[320px] py-[8px] px-[16px] min-h-[48px] origin-center bg text-[14px] Roboto items-center justify-center">
+      <div class="w-[75%] flex items-center">
+        <span class="!w-full">{{message}}</span>
+      </div>
+      <div
+        class="w-[25%] text-[black] flex items-center justify-center bg-white rounded-[3px] leading-[36px] font-medium">
+        <button (click)="showMessage = false">Dismiss</button>
       </div>
     </div>
   </div>

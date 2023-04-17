@@ -21,6 +21,9 @@ interface bankdata {
   styleUrls: ['./bank-details.component.scss'],
 })
 export class BankdetailsComponent {
+  message = '';
+  showMessage = false;
+  disabled = false;
   bank_data_tittle = {
     account_name: "Account Name",
     bank_name: "Bank Name",
@@ -75,6 +78,10 @@ export class BankdetailsComponent {
     // },
   ];
   async copyToClipboard(num: any) {
+    function hasAlphabet(input: string): boolean {
+      const regex = /[a-zA-Z]/;
+      return regex.test(input);
+    }
     const textToCopy = num;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(textToCopy)
@@ -85,6 +92,21 @@ export class BankdetailsComponent {
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
+    }
+
+    if (!this.disabled) {
+      if (hasAlphabet(textToCopy) === true) {
+        this.message = 'IFSC Code Copied.....'
+      } else {
+        this.message = 'Account Number Copied.....'
+      }
+      this.showMessage = true;
+      this.disabled = true;
+
+      setTimeout(() => {
+        this.showMessage = false;
+        this.disabled = false;
+      }, 3000);
     }
   }
 }
