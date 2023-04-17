@@ -65,7 +65,11 @@ export class BankDetailsComponent {
   ];
 
   clipboard(num: string) {
-    //
     navigator.clipboard.writeText(num);
+    const popupBox = document.querySelector('#popUpId') as HTMLDivElement;
+    popupBox.style.display = 'flex';
+    setTimeout(() => {
+      popupBox.style.display = 'none';
+    }, 2000);
   }
 }
