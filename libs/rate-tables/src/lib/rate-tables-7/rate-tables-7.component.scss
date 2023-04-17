@@ -12,6 +12,11 @@
     --rate-low-back-color: #008000;
     --rate-high-font-color: #ffffff;
     --rate-high-back-color: #ff0000;
+    --font-family: Roboto, Helvetica Neue, sans-serif;
+}
+.main_div{
+    font-family: var(--font-family);
+
 }
 .table {
     padding: 10px;
