@@ -33,9 +33,9 @@
               },0)"
               class="input_field input_field_change my-[10px] py-[15px] min-w-[270px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
             <span class="eyeimg_change bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"><img
-                id="toggle-password" *ngIf="show_Password === true" (mousedown)="show_Password = false"
+                id="toggle-password" *ngIf="show_Password === true" (click)="show_Password = false"
                 src="../../assets/svg/eye-off-outline.svg" alt="eye-off-outline" />
-              <img id="toggle-password" *ngIf="show_Password === false" (mouseup)="show_Password = true"
+              <img id="toggle-password" *ngIf="show_Password === false" (click)="show_Password = true"
                 src="../../assets/svg/eye-outline.svg" alt="eye-outline" />
             </span>
           </div>

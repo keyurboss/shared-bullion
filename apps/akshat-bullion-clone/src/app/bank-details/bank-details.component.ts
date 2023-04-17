@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgFor } from '@angular/common';
-import { error } from 'console';
 interface bankdata {
   id: number;
   accountname: string;
