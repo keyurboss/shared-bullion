@@ -1,9 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterModule,NavigationEnd } from '@angular/router';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { NavBar3Component } from '@rps/angular-nav-bars';
-import { filter } from 'rxjs';
-
 interface navigationBar {
   // uid: string;
   router_link: string;
@@ -30,7 +28,7 @@ export class FooterComponent {
   navbar: navbar3[] = [
     {
       uid: '1',
-      router_link: '/home/update',
+      router_link: '`/home/update',
 
       icon: {
         url: '../../assets/images/newspaper-outline.svg',
@@ -89,13 +87,12 @@ export class FooterComponent {
       indicator_color: '#543e12',
     },
   ];
-  active_uid = '3';
-  constructor(private routes: Router) {
-  }
-
+  active_uid='3';
+  constructor(private routes: Router) {}
+  
   OnChnageEvent(vlueEitted: string) {
-    if(this.active_uid === vlueEitted){
-      return
+    if (this.active_uid === vlueEitted) {
+      return;
     }
     console.log(vlueEitted);
     this.active_uid = vlueEitted;
