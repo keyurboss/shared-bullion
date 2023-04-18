@@ -11,11 +11,11 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./contact-us.component.scss'],
 })
 export class ContactUsComponent {
-  images={
-    location:'/assets/images/location.svg',
-    Contact:'/assets/images/contact.svg',  
-    Gst:'../../assets/images/Gst_logo.svg',
-    Email:'/assets/images/mail.svg',
+  images = {
+    location: '/assets/images/location.svg',
+    Contact: '/assets/images/contact.svg',
+    Gst: '../../assets/images/Gst_logo.svg',
+    Email: '/assets/images/mail.svg',
   }
   Address = {
     tittle: 'OFFICE ADDRESS',
@@ -30,12 +30,18 @@ export class ContactUsComponent {
     line2: 'Akshat Shah',
     line3: '+91 8320361328',
   };
-  Gst={
+  Gst = {
     tittle: 'GST Numbers',
-    line1:'24GCZPS8574Q1ZW',
+    line1: '24GCZPS8574Q1ZW',
   };
-  Email={
+  Email = {
     tittle: 'Email',
-    line1:'akshatshah185@gmail.com',
+    line1: 'akshatshah185@gmail.com',
   };
+  constructor() {
+    this.scrolltotop()
+  }
+  scrolltotop() {
+    window.scroll(1, 0);
+  }
 }
