@@ -131,4 +131,14 @@
     </div>
   </div>
 </div>
+
+<div class="line flex justify-center w-full items-end text-[13px] h-[112px]">
+  <nav-bars-3
+    [parentData]="navbar"
+    class="nav bottom-0 flex"
+    (indexChange)="OnChangeEvent($event)"
+    [index]="active_uid"
+  >
+  </nav-bars-3>
+</div>
 <!-- </div> -->

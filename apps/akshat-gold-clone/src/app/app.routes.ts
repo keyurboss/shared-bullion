@@ -21,7 +21,7 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        redirectTo: 'live-rate',
+        redirectTo: 'home/live-rate',
         pathMatch: 'full',
       },
       {
