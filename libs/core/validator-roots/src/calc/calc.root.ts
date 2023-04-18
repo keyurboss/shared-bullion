@@ -15,13 +15,15 @@ import {
 import {
   CalculatedOnPriceof,
   CshVariableSnapshot,
-} from '@rps/bullion-interfaces/calc/calc.interface';
+} from '@rps/bullion-interfaces';
 import { groupDbToPlain, groupToPlain } from '../core.interface';
 import { BaseEntity } from '../core/base.entity';
 import { v4 } from 'uuid';
 import { DeepOmit } from 'ts-essentials';
 
 export class CshPremiumBuySellEntity implements CshPremiumBuySellSnapshot {
+  tcs = 0;
+  tds = 0;
   @Expose()
   @IsNumber()
   tax!: number;
@@ -47,32 +49,32 @@ export class CshVariableSnapshotEntity implements CshVariableSnapshot {
 
 export type CalcEntityOptions = Pick<
   CalcEntity,
-  'Id' | 'Type' | 'VariableSnapshot' | 'createdAt' | 'modifiedAt'
+  'id' | 'type' | 'variableSnapshot' | 'createdAt' | 'modifiedAt'
 >;
 export class CalcEntity extends BaseEntity<CshID> {
   @Expose()
   @IsEnum(CalculatedOnPriceof)
-  Type!: CalculatedOnPriceof;
+  type!: CalculatedOnPriceof;
 
   @Expose()
   @IsNotEmptyObject()
   @ValidateNested()
   @Type(() => CshVariableSnapshotEntity)
-  VariableSnapshot!: CshVariableSnapshotEntity;
+  variableSnapshot!: CshVariableSnapshotEntity;
 
   @Expose({
     groups: [groupDbToPlain, groupToPlain],
   })
   get ForwordGenStrings(): CshGenStrings {
-    if (this.Type === CalculatedOnPriceof.FIX) {
+    if (this.type === CalculatedOnPriceof.FIX) {
       return {
-        buy: this.VariableSnapshot.buy.premium.toString(),
-        sell: this.VariableSnapshot.sell.premium.toString(),
+        buy: this.variableSnapshot.buy.premium.toString(),
+        sell: this.variableSnapshot.sell.premium.toString(),
       };
     } else {
       return {
-        buy: GenerateExchangeForwordCalcString(this.VariableSnapshot.buy),
-        sell: GenerateExchangeForwordCalcString(this.VariableSnapshot.sell),
+        buy: GenerateExchangeForwordCalcString(this.variableSnapshot.buy),
+        sell: GenerateExchangeForwordCalcString(this.variableSnapshot.sell),
       };
     }
   }
@@ -81,16 +83,16 @@ export class CalcEntity extends BaseEntity<CshID> {
     groups: [groupDbToPlain, groupToPlain],
   })
   get BackwordGenStrings(): CshGenStrings {
-    if (this.Type === CalculatedOnPriceof.FIX) {
+    if (this.type === CalculatedOnPriceof.FIX) {
       return {
-        buy: this.VariableSnapshot.buy.premium.toString(),
-        sell: this.VariableSnapshot.sell.premium.toString(),
+        buy: this.variableSnapshot.buy.premium.toString(),
+        sell: this.variableSnapshot.sell.premium.toString(),
       };
     }
 
     return {
-      buy: GenerateExchangeBackwordCalcString(this.VariableSnapshot.buy),
-      sell: GenerateExchangeBackwordCalcString(this.VariableSnapshot.sell),
+      buy: GenerateExchangeBackwordCalcString(this.variableSnapshot.buy),
+      sell: GenerateExchangeBackwordCalcString(this.variableSnapshot.sell),
     };
   }
   static generateID() {
@@ -98,16 +100,16 @@ export class CalcEntity extends BaseEntity<CshID> {
   }
 
   static from({
-    Id = v4() as CshID,
-    Type,
-    VariableSnapshot,
+    id = v4() as CshID,
+    type,
+    variableSnapshot,
     createdAt,
     modifiedAt,
   }: CalcEntityOptions) {
     const entity = new CalcEntity();
-    entity.Id = Id;
-    entity.Type = Type;
-    entity.VariableSnapshot = VariableSnapshot;
+    entity.id = id;
+    entity.type = type;
+    entity.variableSnapshot = variableSnapshot;
     entity.createdAt = createdAt;
     entity.modifiedAt = modifiedAt;
     return entity;
@@ -131,12 +133,12 @@ export class CalcEntity extends BaseEntity<CshID> {
       }
     >,
     createdAt = new Date(),
-    Id = CalcEntity.generateID()
+    id = CalcEntity.generateID()
   ) {
     return CalcEntity.updateEntity({
       ...options,
       createdAt,
-      Id,
+      id,
     });
   }
 }

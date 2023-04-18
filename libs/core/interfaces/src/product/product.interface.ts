@@ -8,11 +8,21 @@ import {
 } from '../calc/calc.interface';
 
 export type SourceSymbole = RateBaseSymboles.GOLD | RateBaseSymboles.SILVER;
-export type CaculationSumbole =
+export const SourceSymboleValues = [
+  RateBaseSymboles.GOLD,
+  RateBaseSymboles.SILVER,
+];
+export type CaculationSymbole =
   | RateBaseSymboles.GOLD
   | RateBaseSymboles.SILVER
   | RateBaseSymboles.GOLD_MCX
   | RateBaseSymboles.SILVER_MCX;
+export const CaculationSymboleValue = [
+  RateBaseSymboles.GOLD,
+  RateBaseSymboles.SILVER,
+  RateBaseSymboles.GOLD_MCX,
+  RateBaseSymboles.SILVER_MCX,
+];
 
 export enum ProductShowLocation {
   MCX = 'MCX',
@@ -29,18 +39,18 @@ export enum CalculatedOnPriceType {
 export type ProductID = Opaque<string, 'ProductID'>;
 
 export interface Product {
-  Id: ProductID;
-  Name: string;
-  SourceSymbole: SourceSymbole;
-  CalculationSymbole: CaculationSumbole;
-  IsActive: boolean;
-  IsHedging: boolean;
-  ShowLocation: ProductShowLocation;
-  CalculatedOnPriceof: CalculatedOnPriceof;
-  CalculatedOnPriceType: CalculatedOnPriceType;
-  CalcSnapshot: CshVariableSnapshot;
-  CreatedAt: Date;
-  ModifiedAt: Date;
+  id: ProductID;
+  name: string;
+  sourceSymbole: SourceSymbole;
+  calculationSymbole: CaculationSymbole;
+  isActive: boolean;
+  isHedging: boolean;
+  showLocation: ProductShowLocation;
+  calculatedOnPriceof: CalculatedOnPriceof;
+  calculatedOnPriceType: CalculatedOnPriceType;
+  calcSnapshot: CshVariableSnapshot;
+  createdAt: Date;
+  modifiedAt: Date;
 }
 
 // export interface ProductList {

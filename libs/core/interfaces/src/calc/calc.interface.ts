@@ -9,8 +9,8 @@ export enum CalculatedOnPriceof {
 }
 export type CshPremiumBuySellSnapshot = {
   tax: number;
-  // tcs: number;
-  // tds: number;
+  tcs: number;
+  tds: number;
   premium: number;
 };
 export type CshVariableSnapshot = {

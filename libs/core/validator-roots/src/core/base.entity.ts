@@ -8,7 +8,7 @@ import {
 export class BaseEntity<T> {
   @Expose()
   @IsUUID()
-  Id!: T;
+  id!: T;
 
   @Expose()
   @Type(() => Date)

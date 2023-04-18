@@ -7,11 +7,13 @@ describe(CalcEntity.name, () => {
   let options: CalcEntityOptions;
   beforeEach(() => {
     options = {
-      Id: faker.datatype.uuid() as CshID,
+      id: faker.datatype.uuid() as CshID,
       createdAt: faker.date.past(),
       modifiedAt: faker.date.recent(),
-      VariableSnapshot: {
+      variableSnapshot: {
         buy: {
+          tcs: faker.datatype.number(),
+          tds: faker.datatype.number(),
           premium: faker.datatype.number(),
           tax: faker.datatype.number({
             max: 10,
@@ -19,6 +21,8 @@ describe(CalcEntity.name, () => {
           }),
         },
         sell: {
+          tcs: faker.datatype.number(),
+          tds: faker.datatype.number(),
           premium: faker.datatype.number(),
           tax: faker.datatype.number({
             max: 10,
@@ -26,7 +30,7 @@ describe(CalcEntity.name, () => {
           }),
         },
       },
-      Type: faker.helpers.arrayElement<CalculatedOnPriceof>(
+      type: faker.helpers.arrayElement<CalculatedOnPriceof>(
         Object.values(CalculatedOnPriceof)
       ),
     };
@@ -35,18 +39,18 @@ describe(CalcEntity.name, () => {
     test('Date is not Passed', () => {
       const entity = CalcEntity.updateEntity(options);
       expect(entity).toBeInstanceOf(CalcEntity);
-      expect(entity.Type).toStrictEqual(options.Type);
-      expect(entity.VariableSnapshot).toStrictEqual(options.VariableSnapshot);
-      expect(entity.Id).toStrictEqual(options.Id);
+      expect(entity.type).toStrictEqual(options.type);
+      expect(entity.variableSnapshot).toStrictEqual(options.variableSnapshot);
+      expect(entity.id).toStrictEqual(options.id);
       expect(entity.createdAt).toStrictEqual(options.createdAt);
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
     test('Date is Passed', () => {
       const entity = CalcEntity.updateEntity(options, options.modifiedAt);
       expect(entity).toBeInstanceOf(CalcEntity);
-      expect(entity.Type).toStrictEqual(options.Type);
-      expect(entity.VariableSnapshot).toStrictEqual(options.VariableSnapshot);
-      expect(entity.Id).toStrictEqual(options.Id);
+      expect(entity.type).toStrictEqual(options.type);
+      expect(entity.variableSnapshot).toStrictEqual(options.variableSnapshot);
+      expect(entity.id).toStrictEqual(options.id);
       expect(entity.createdAt).toStrictEqual(options.createdAt);
       expect(entity.modifiedAt).toStrictEqual(options.modifiedAt);
     });
@@ -55,9 +59,9 @@ describe(CalcEntity.name, () => {
     test('No Id and Date is not Passed', () => {
       const entity = CalcEntity.createEntity(options);
       expect(entity).toBeInstanceOf(CalcEntity);
-      expect(entity.Type).toStrictEqual(options.Type);
-      expect(entity.VariableSnapshot).toStrictEqual(options.VariableSnapshot);
-      expect(entity.Id).not.toStrictEqual(options.Id);
+      expect(entity.type).toStrictEqual(options.type);
+      expect(entity.variableSnapshot).toStrictEqual(options.variableSnapshot);
+      expect(entity.id).not.toStrictEqual(options.id);
       expect(entity.createdAt).not.toStrictEqual(options.createdAt);
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
@@ -65,9 +69,9 @@ describe(CalcEntity.name, () => {
       const id = faker.datatype.uuid() as CshID;
       const entity = CalcEntity.createEntity(options, undefined, id);
       expect(entity).toBeInstanceOf(CalcEntity);
-      expect(entity.Type).toStrictEqual(options.Type);
-      expect(entity.VariableSnapshot).toStrictEqual(options.VariableSnapshot);
-      expect(entity.Id).toStrictEqual(id);
+      expect(entity.type).toStrictEqual(options.type);
+      expect(entity.variableSnapshot).toStrictEqual(options.variableSnapshot);
+      expect(entity.id).toStrictEqual(id);
       expect(entity.createdAt).not.toStrictEqual(options.createdAt);
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
@@ -75,9 +79,9 @@ describe(CalcEntity.name, () => {
       const id = faker.datatype.uuid() as CshID;
       const entity = CalcEntity.createEntity(options, options.createdAt, id);
       expect(entity).toBeInstanceOf(CalcEntity);
-      expect(entity.Type).toStrictEqual(options.Type);
-      expect(entity.VariableSnapshot).toStrictEqual(options.VariableSnapshot);
-      expect(entity.Id).toStrictEqual(id);
+      expect(entity.type).toStrictEqual(options.type);
+      expect(entity.variableSnapshot).toStrictEqual(options.variableSnapshot);
+      expect(entity.id).toStrictEqual(id);
       expect(entity.createdAt).toStrictEqual(options.createdAt);
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
@@ -87,9 +91,9 @@ describe(CalcEntity.name, () => {
     test('Common options', () => {
       const entity = CalcEntity.from(options);
       expect(entity).toBeInstanceOf(CalcEntity);
-      expect(entity.Id).toStrictEqual(options.Id);
-      expect(entity.Type).toStrictEqual(options.Type);
-      expect(entity.VariableSnapshot).toStrictEqual(options.VariableSnapshot);
+      expect(entity.id).toStrictEqual(options.id);
+      expect(entity.type).toStrictEqual(options.type);
+      expect(entity.variableSnapshot).toStrictEqual(options.variableSnapshot);
       expect(entity.createdAt).toStrictEqual(options.createdAt);
       expect(entity.modifiedAt).toStrictEqual(options.modifiedAt);
     });
