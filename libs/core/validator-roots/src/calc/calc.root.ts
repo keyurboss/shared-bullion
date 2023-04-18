@@ -15,7 +15,7 @@ import {
 import {
   CalculatedOnPriceof,
   CshVariableSnapshot,
-} from '@rps/bullion-interfaces/calc';
+} from '@rps/bullion-interfaces/calc/calc.interface';
 import { groupDbToPlain, groupToPlain } from '../core.interface';
 import { BaseEntity } from '../core/base.entity';
 import { v4 } from 'uuid';
