@@ -72,4 +72,20 @@ export class BankDetailsComponent {
       popupBox.style.display = 'none';
     }, 2000);
   }
+  
+  showButton(){
+    const hide= document.querySelector('.hide') as HTMLDivElement;
+   if(hide.style.display=="none"){
+
+     hide.style.display='flex';
+    }
+  }
+  // hideButton1(){
+  //   const hide1= document.querySelector('.hide1') as HTMLDivElement;
+  //   hide1.style.display='none';
+  // }
+  // showButton1(){
+  //   const show1= document.querySelector('.hide1') as HTMLDivElement;
+  //   show1.style.display='flex';
+  // }
 }
