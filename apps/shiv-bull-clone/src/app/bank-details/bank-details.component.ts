@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Input } from 'postcss';
+import { ClipboardModule} from "@angular/cdk/clipboard";
 
 interface bankdata {
   id: number;
@@ -14,7 +14,7 @@ interface bankdata {
 @Component({
   selector: 'shiv-bull-app-bank-details',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,ClipboardModule],
   templateUrl: './bank-details.component.html',
   styleUrls: ['./bank-details.component.scss'],
 })
@@ -66,41 +66,12 @@ export class BankDetailsComponent {
     // },
   ];
 
-  clipboard(num: string) {
-    if (navigator.clipboard) {
-      this.alay = true;
-      setTimeout(() => {
-        this.alay = false;
-      }, 100);
-      const textToCopy = num;
-      console.log(num);
-      navigator.clipboard.writeText(textToCopy);
-    } else {
-      const textArea = document.createElement('textarea');
-      textArea.value = num;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.body.removeChild(textArea);
-    }
+  showHide() {
     const popupBox = document.querySelector('#popUpId') as HTMLDivElement;
     popupBox.style.display = 'flex';
     setTimeout(() => {
       popupBox.style.display = 'none';
-    }, 1000);
-  }
+    }, 1000)
 
-  showButton() {
-    const hide = document.querySelector('.hide') as HTMLDivElement;
-    if (hide.style.display == 'none') {
-      hide.style.display = 'flex';
-    }
   }
-  // hideButton1(){
-  //   const hide1= document.querySelector('.hide1') as HTMLDivElement;
-  //   hide1.style.display='none';
-  // }
-  // showButton1(){
-  //   const show1= document.querySelector('.hide1') as HTMLDivElement;
-  //   show1.style.display='flex';
-  // }
 }

@@ -26,8 +26,8 @@
           <button
           [class.hidden]="alay"
           class="right-0 absolute"
-          (click)="clipboard(details.accountnumber)"
-      
+          (click)="showHide()"
+          [cdkCopyToClipboard]="details.accountnumber"
           >
             <img
               src="../../assets/images/copylogo.svg"
@@ -63,7 +63,8 @@
           <button
             [class.hidden]="alay"
             class="right-0 absolute"
-            (click)="clipboard(details.IFSCCode)"
+            [cdkCopyToClipboard]="details.IFSCCode"
+            (click)="showHide()"
           >
             <img
               src="../../assets/images/copylogo.svg"
