@@ -1,9 +1,8 @@
-import { beforeEach, describe } from '@jest/globals';
-import { ProductDocument, ProductRoot } from './product.root';
-import { faker } from '@faker-js/faker';
-import { CalculatedOnPriceof, CshID, ProductID } from '../../../interfaces/src';
+import { describe } from '@jest/globals';
+import { ProductRoot } from './product.root';
 
 describe(ProductRoot.name, () => {
-  let options: ProductDocument;
-  beforeEach(() => {});
+  // let options: ProductDocument;
+  // beforeEach(() => {});
+  it.todo('Create TESTS here')
 });

@@ -1,7 +1,7 @@
 import { beforeEach, describe } from '@jest/globals';
 import { CalcEntity, CalcEntityOptions } from './calc.root';
 import { faker } from '@faker-js/faker';
-import { CalculatedOnPriceof, CshID } from '../../../interfaces/src';
+import { CalculatedOnPriceof, CshID } from '@rps/bullion-interfaces';
 
 describe(CalcEntity.name, () => {
   let options: CalcEntityOptions;

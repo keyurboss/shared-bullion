@@ -4,7 +4,7 @@ import { RatesFixture } from '../fixtures';
 import { firstValueFrom, skip, timeout } from 'rxjs';
 import { DemoLiveRateService } from '../mock';
 import { JsonToItrable } from '../core';
-import { RateBaseSymboles } from '../../../core/interfaces/src';
+import { RateBaseSymboles } from '@rps/bullion-interfaces/core';
 import {
   BaseSymbolePriceInterface,
   HighLowColorType,
@@ -126,7 +126,7 @@ describe('ABS LiveRateService', () => {
       expect(service.RatesReady).toStrictEqual(true);
     });
     it('Default Rate is Not Passed then getLastRates is called and Rates are not ready', async () => {
-      const rates = RatesFixture.GenerateForAllSymboles();
+      // const rates = RatesFixture.GenerateForAllSymboles();
       const service = new MockLiveRateService(
         null as never,
         null as never,
