@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { Input } from 'postcss';
 
 interface bankdata {
   id: number;
@@ -18,6 +19,7 @@ interface bankdata {
   styleUrls: ['./bank-details.component.scss'],
 })
 export class BankDetailsComponent {
+  alay = false;
   // copyText:[string];
   // copyNumber{}{
   //   navigator.clipboard.writeText(copyText.value);
@@ -65,19 +67,32 @@ export class BankDetailsComponent {
   ];
 
   clipboard(num: string) {
-    navigator.clipboard.writeText(num);
+    if (navigator.clipboard) {
+      this.alay = true;
+      setTimeout(() => {
+        this.alay = false;
+      }, 100);
+      const textToCopy = num;
+      console.log(num);
+      navigator.clipboard.writeText(textToCopy);
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = num;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.body.removeChild(textArea);
+    }
     const popupBox = document.querySelector('#popUpId') as HTMLDivElement;
     popupBox.style.display = 'flex';
     setTimeout(() => {
       popupBox.style.display = 'none';
-    }, 2000);
+    }, 1000);
   }
-  
-  showButton(){
-    const hide= document.querySelector('.hide') as HTMLDivElement;
-   if(hide.style.display=="none"){
 
-     hide.style.display='flex';
+  showButton() {
+    const hide = document.querySelector('.hide') as HTMLDivElement;
+    if (hide.style.display == 'none') {
+      hide.style.display = 'flex';
     }
   }
   // hideButton1(){

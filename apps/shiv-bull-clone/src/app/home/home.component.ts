@@ -7,10 +7,12 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'shiv-bull-app-home',
   standalone: true,
-  imports: [CommonModule,HeaderComponent,RouterOutlet,FooterComponent],
+  imports: [CommonModule, HeaderComponent, RouterOutlet, FooterComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  
+  activate() {
+    window.scroll(1, 0);
+  }
 }

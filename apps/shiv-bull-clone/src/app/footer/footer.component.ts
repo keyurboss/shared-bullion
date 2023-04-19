@@ -28,7 +28,7 @@ export class FooterComponent {
   navbar: navbar3[] = [
     {
       uid: '1',
-      router_link: '`/home/update',
+      router_link: 'home/update',
 
       icon: {
         url: '../../assets/images/newspaper-outline.svg',
@@ -87,19 +87,17 @@ export class FooterComponent {
       indicator_color: '#543e12',
     },
   ];
-  active_uid='3';
+  active_uid = '3';
   constructor(private routes: Router) {}
-  
+
   OnChnageEvent(vlueEitted: string) {
     if (this.active_uid === vlueEitted) {
       return;
     }
-    console.log(vlueEitted);
     this.active_uid = vlueEitted;
     const found = this.navbar.find(({ uid }) => uid === this.active_uid);
     if (found) {
       this.routes.navigateByUrl(`${found?.router_link}`);
-      console.log(found?.router_link);
     }
   }
 }

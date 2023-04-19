@@ -65,7 +65,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: '**',
-    redirectTo: 'live-rate',
+    redirectTo: 'home/live-rate',
     pathMatch: 'full',
   },
 ];
