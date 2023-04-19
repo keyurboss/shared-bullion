@@ -93,7 +93,6 @@ export class BankdetailsComponent {
       document.execCommand('copy');
       document.body.removeChild(textArea);
     }
-
     if (!this.disabled) {
       if (hasAlphabet(textToCopy) === true) {
         this.message = 'IFSC Code Copied.....'
@@ -106,7 +105,7 @@ export class BankdetailsComponent {
       setTimeout(() => {
         this.showMessage = false;
         this.disabled = false;
-      }, 3000);
+      }, 1500);
     }
   }
 }

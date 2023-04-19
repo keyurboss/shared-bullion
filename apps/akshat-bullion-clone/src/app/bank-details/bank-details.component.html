@@ -48,7 +48,7 @@
             :
             <p class="ml-[10px]">
               {{ item.IFSCCode }}
-              <button class="w-[16px] ml-[10px]" (click)="copyToClipboard(item.CopyIFSCCode)">
+              <button class="w-[16px] ml-[10px]" [disabled]="disabled" (click)="copyToClipboard(item.CopyIFSCCode)">
                 <img src="../../assets/images/copy.svg" alt="" />
               </button>
             </p>
