@@ -43,11 +43,12 @@
             <span class="text-[12px] text-xs">
               :
               <p class="p bank-account ml-[5%] inline-block font-bold">
-                921-0200-4224-1964
+                {{ bank.AN }}
               </p>
               <div
                 class="copy inline-block h-[16px] w-[16px] ml-[10px] bg-[#000]"
-                (click)="clipboard('921-0200-4224-1964')"
+                (click)="clipboard(bank.CAN)"
+                [cdkCopyToClipboard]="bank.CAN"
               ></div
             ></span>
           </div>
@@ -57,10 +58,13 @@
             </h5>
             <span class="text-[12px] text-xs">
               :
-              <p class="p ml-[5%] inline-block font-bold">UTIB - 0003 - 606</p>
-              <div 
+              <p class="p ml-[5%] inline-block font-bold">
+                {{ bank.IFSCCODE }}
+              </p>
+              <div
                 class="copy inline-block h-[16px] w-[16px] ml-[10px] bg-[#000]"
-                (click)="clipboard('UTIB - 0003 - 606')" 
+                [cdkCopyToClipboard]="bank.CIFSCCODE"
+                (click)="clipboard(bank.CIFSCCODE)"
               ></div
             ></span>
           </div>
@@ -79,13 +83,16 @@
     </div>
   </div>
   <div class="w-full flex justify-center items-center">
-    <div *ngIf="showMessage"
-      class="fixed bottom-0 rounded-md flex m-[24px] z-10 max-w-[30vw] min-w-[320px] py-[8px] px-[16px] min-h-[48px] origin-center bg text-[14px] Roboto items-center justify-center">
+    <div
+      *ngIf="showMessage"
+      class="fixed bottom-0 rounded-md flex m-[24px] z-10 max-w-[30vw] min-w-[320px] py-[8px] px-[16px] min-h-[48px] origin-center bg text-[14px] Roboto items-center justify-center"
+    >
       <div class="w-[75%] flex items-center">
-        <span class="!w-full">{{message}}</span>
+        <span class="!w-full">{{ message }}</span>
       </div>
       <div
-        class="w-[25%] text-[black] flex items-center justify-center bg-white rounded-[3px] leading-[36px] font-medium">
+        class="w-[25%] text-[black] flex items-center justify-center bg-white rounded-[3px] leading-[36px] font-medium"
+      >
         <button (click)="showMessage = false">Dismiss</button>
       </div>
     </div>

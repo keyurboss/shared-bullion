@@ -5,13 +5,13 @@
 .dragable_div {
   z-index: 10;
   position: fixed;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
   background-color: #41241c;
   padding: 9px;
   box-shadow: 0 5px 10px #555454;
-  bottom: 80px;
+  bottom: 100px;
 }
 .img1{
   height: 100%;
@@ -24,4 +24,13 @@
   width: 100%;
   -webkit-mask: url(../../assets/images/logo-whatsapp.svg) no-repeat center;
   background-color: #fff;
+}
+
+
+
+
+@media screen and (min-width: 801px) {
+  .dragable_div{
+    display: none;
+  }
 }
