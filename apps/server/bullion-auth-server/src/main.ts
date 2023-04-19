@@ -6,20 +6,13 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
-import { DataServerAppModule } from './app/data-server-app.module';
-import { AppConfig } from './app/env/app.config';
-import { appEnvNameKey } from '@rps/bullion-interfaces/core';
+import { AppModule } from './app/bullion-auth.app.module';
 
 async function bootstrap() {
-
-  const app = await NestFactory.create(DataServerAppModule.register({
-    appEnv: process.env[appEnvNameKey] as never
-  }));
+  const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
-  const config = app.get(AppConfig);
-
   app.setGlobalPrefix(globalPrefix);
-  const port = config.port;
+  const port = process.env.PORT || 3000;
   await app.listen(port);
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`

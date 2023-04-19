@@ -1,5 +1,5 @@
 import { DynamicModule, Global, Module } from "@nestjs/common";
-import { AppConfig } from "./App.config";
+import { AppConfig } from "./app.config";
 import { ConfigModule } from "@nestjs/config";
 import { defaultValidationSchema } from "./validation.schema";
 

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'bullion-data-server-e2e',
+  displayName: 'bullion-auth-server-e2e',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -15,5 +15,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/bullion-data-server-e2e',
+  coverageDirectory: '../../../coverage/bullion-auth-server-e2e',
 };
