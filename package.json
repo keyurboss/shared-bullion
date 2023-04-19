@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test":"nx test"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.1.0",
     "@angular-devkit/core": "~15.1.0",
