@@ -61,7 +61,13 @@
       "@rps/bullion-rate-tables/table6": [
         "libs/rate-tables/src/lib/rate-tables-6/rate-tables-6.component.ts"
       ],
-      "@rps/bullion-validator-roots": ["libs/core/validator-roots/src/index.ts"]
+      "@rps/bullion-rate-tables/table7": [
+        "libs/rate-tables/src/lib/rate-tables-7/rate-tables-7.component.ts"
+      ],
+      "@rps/bullion-validator-roots": [
+        "libs/core/validator-roots/src/index.ts"
+      ],
+      "@rps/server-core": ["libs/core/server/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
