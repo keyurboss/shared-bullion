@@ -24,8 +24,10 @@
           <pre class="text">::  {{ details.accountnumber }}</pre>
 
           <button
-            (click)="clipboard(details.IFSCCode)"
-            class="right-0 absolute"
+          [class.hidden]="alay"
+          class="right-0 absolute"
+          (click)="clipboard(details.accountnumber)"
+      
           >
             <img
               src="../../assets/images/copylogo.svg"

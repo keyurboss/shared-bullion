@@ -1,5 +1,5 @@
 {
-  "name": "core-validator-roots",
+  "name": "validator-roots",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core/validator-roots/src",
   "projectType": "library",
