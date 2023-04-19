@@ -14,7 +14,6 @@ export type BaseSymbolePriceInterface = Record<RateTypeKeys, number>;
 export const RateTypeKeysArray = Object.values(RateTypeKeys);
 
 export enum RateBaseSymboles {
-  HighLowColorType,
   GOLD = 'GOLD',
   GOLD_SPOT = 'GOLD_SPOT',
   GOLD_MCX = 'GOLD_MCX',
