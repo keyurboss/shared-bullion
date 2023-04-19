@@ -271,6 +271,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/cdk@npm:~15.1.0":
+  version: 15.1.6
+  resolution: "@angular/cdk@npm:15.1.6"
+  dependencies:
+    parse5: ^7.1.2
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": ^15.0.0 || ^16.0.0
+    "@angular/core": ^15.0.0 || ^16.0.0
+    rxjs: ^6.5.3 || ^7.4.0
+  dependenciesMeta:
+    parse5:
+      optional: true
+  checksum: fec4cbe65db486d52f004ee2503459531f66f73e50595697af9177567b12ccc99f438459fa3b6c982c906627b23e7492e9dc4634818624e48dcd32a063edc4ac
+  languageName: node
+  linkType: hard
+
 "@angular/cli@npm:~15.1.0":
   version: 15.1.6
   resolution: "@angular/cli@npm:15.1.6"
@@ -12683,7 +12700,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse5@npm:^7.0.0, parse5@npm:^7.1.1":
+"parse5@npm:^7.0.0, parse5@npm:^7.1.1, parse5@npm:^7.1.2":
   version: 7.1.2
   resolution: "parse5@npm:7.1.2"
   dependencies:
@@ -14541,6 +14558,7 @@ __metadata:
     "@angular-eslint/eslint-plugin-template": ~15.0.0
     "@angular-eslint/template-parser": ~15.0.0
     "@angular/animations": ~15.1.0
+    "@angular/cdk": ~15.1.0
     "@angular/cli": ~15.1.0
     "@angular/common": ~15.1.0
     "@angular/compiler": ~15.1.0
