@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgFor } from '@angular/common';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 interface bankdata {
   id: number;
   accountname: string;
   accountnumber: string;
-  Copyaccountnumber: string;
   bankname: string;
   branchname: string;
   img: string;
   IFSCCode: string;
-  CopyIFSCCode: string;
 }
 
 @Component({
   selector: 'akshat-bull-app-bank-details',
   standalone: true,
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule, NgFor, ClipboardModule],
   templateUrl: './bank-details.component.html',
   styleUrls: ['./bank-details.component.scss'],
 })
@@ -37,75 +36,30 @@ export class BankdetailsComponent {
       accountname: 'Akshat Bullion',
       bankname: 'Axis Bank',
       accountnumber: '9200-2006-575-5340',
-      Copyaccountnumber: '920020065755340',
       IFSCCode: 'UTIB-000-4758',
-      CopyIFSCCode: 'UTIB0004758',
       branchname: 'Balasinor',
       img: '../../assets/images/Axis_Bank_Logo.png',
     },
-    // {
-    //   id: 1,
-    //   accountname: 'Akshat Bullion',
-    //   bankname: 'Axis Bank',
-    //   accountnumber: '1111-1111-111-1111',
-    //   IFSCCode: 'UTIB-000-1111',
-    //   Copyaccountnumber: '111111111111111',
-    //   CopyIFSCCode: 'UTIB0001111',
-    //   branchname: 'Balasinor',
-    //   img: '../../assets/images/icic_Bank_Logo.jpg',
-    // },
-    // {
-    //   id: 2,
-    //   accountname: 'Akshat Bullion',
-    //   bankname: 'Axis Bank',
-    //   accountnumber: '2222-2222-222-2222',
-    //   IFSCCode: 'UTIB-000-2222',
-    //   Copyaccountnumber: '222222222222222',
-    //   CopyIFSCCode: 'UTIB0002222',
-    //   branchname: 'Balasinor',
-    //   img: '../../assets/images/Axis_Bank_Logo.png',
-    // },
-    // {
-    //   id: 3,
-    //   accountname: 'Akshat Bullion',
-    //   bankname: 'Axis Bank',
-    //   accountnumber: '3333-3333-333-3333',
-    //   IFSCCode: 'UTIB-000-3333',
-    //   Copyaccountnumber: '333333333333333',
-    //   CopyIFSCCode: 'UTIB0003333',
-    //   branchname: 'Balasinor',
-    //   img: '../../assets/images/icic_Bank_Logo.jpg',
-    // },
   ];
+  removeHyphens(cardNumber: string): string {
+    return cardNumber.replace(/-/g, '');
+  }
   async copyToClipboard(num: any) {
     function hasAlphabet(input: string): boolean {
       const regex = /[a-zA-Z]/;
       return regex.test(input);
     }
     const textToCopy = num;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(textToCopy)
+    if (hasAlphabet(textToCopy) === true) {
+      this.message = 'IFSC Code Copied.....'
     } else {
-      const textArea = document.createElement('textarea');
-      textArea.value = num;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
+      this.message = 'Account Number Copied.....'
     }
     if (!this.disabled) {
-      if (hasAlphabet(textToCopy) === true) {
-        this.message = 'IFSC Code Copied.....'
-      } else {
-        this.message = 'Account Number Copied.....'
-      }
       this.showMessage = true;
-      this.disabled = true;
-
       setTimeout(() => {
         this.showMessage = false;
-        this.disabled = false;
-      }, 1500);
+      }, 2000);
     }
   }
 }

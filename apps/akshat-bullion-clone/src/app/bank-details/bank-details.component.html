@@ -33,8 +33,8 @@
             :
             <p class="bank-account ml-[10px]">
               {{ item.accountnumber }}
-              <button class="w-[16px] ml-[10px] mt-[2px]" (click)="copyToClipboard(item.Copyaccountnumber)"
-                [disabled]="disabled">
+              <button class="w-[16px] ml-[10px] mt-[2px]" [cdkCopyToClipboard]="removeHyphens(item.accountnumber)"
+                (click)="copyToClipboard(item.accountnumber)">
                 <img src="../../assets/images/copy.svg" alt="" />
               </button>
             </p>
@@ -48,7 +48,8 @@
             :
             <p class="ml-[10px]">
               {{ item.IFSCCode }}
-              <button class="w-[16px] ml-[10px]" [disabled]="disabled" (click)="copyToClipboard(item.CopyIFSCCode)">
+              <button class="w-[16px] ml-[10px]" [cdkCopyToClipboard]="removeHyphens(item.IFSCCode)"
+                (click)="copyToClipboard(item.IFSCCode)">
                 <img src="../../assets/images/copy.svg" alt="" />
               </button>
             </p>
