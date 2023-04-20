@@ -105,6 +105,8 @@ describe('ABS LiveRateService', () => {
       getLastRates(): Promise<
         Record<RateBaseSymboles, BaseSymbolePriceInterface>
       > {
+        console.log('oughsadiouaghsd');
+        
         return mockMethods.getLastRates();
       }
       InitRemoteConnection(): void {
@@ -130,15 +132,19 @@ describe('ABS LiveRateService', () => {
       const service = new MockLiveRateService(
         null as never,
         null as never,
-        false
+        true
       );
+      console.log('asdhuo');
+      service.RatesReady$.subscribe(console.log)
       expect(service.RatesReady).toStrictEqual(false);
-      const initialValue = await firstValueFrom(service.RatesReady$.pipe());
-      const afterLastRate = await firstValueFrom(
+      const initialValue =  firstValueFrom(service.RatesReady$);
+      const afterLastRate = firstValueFrom(
         service.RatesReady$.pipe(skip(1), timeout(2000))
       );
-      expect(initialValue).toStrictEqual(false);
-      expect(afterLastRate).toStrictEqual(false);
+      expect(initialValue).resolves.toStrictEqual(false);
+      expect(afterLastRate).resolves.toStrictEqual(true);
+      await Promise.allSettled([initialValue,afterLastRate]);
+      expect(mockMethods.getLastRates).toBeCalledTimes(1);
     });
     test('InitRemoteConnection if true countructor',()=>{
       const rates = RatesFixture.GenerateForAllSymboles();
