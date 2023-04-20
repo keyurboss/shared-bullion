@@ -1,5 +1,5 @@
 import { HealthIndicatorResult, TimeoutError } from '@nestjs/terminus';
-import * as faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 import { MongoDbHealthIndicator } from './mongo-db.health';
 
@@ -15,7 +15,7 @@ describe(MongoDbHealthIndicator.name, () => {
       const mongoDbServiceMock = { db: mongoDbMock };
 
       mongoDbHealthIndicator = new MongoDbHealthIndicator(
-        mongoDbServiceMock as never,
+        mongoDbServiceMock as never
       );
 
       key = faker.internet.userName();
@@ -28,7 +28,7 @@ describe(MongoDbHealthIndicator.name, () => {
       return expect(resultPromise).resolves.toStrictEqual(
         expect.objectContaining({
           [key]: expect.objectContaining({ ok: 1, status: 'up' }),
-        }),
+        })
       );
     });
   });
@@ -43,7 +43,7 @@ describe(MongoDbHealthIndicator.name, () => {
       const mongoDbServiceMock = { db: mongoDbMock };
 
       mongoDbHealthIndicator = new MongoDbHealthIndicator(
-        mongoDbServiceMock as never,
+        mongoDbServiceMock as never
       );
 
       key = faker.internet.userName();

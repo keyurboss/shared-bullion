@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RateTables1Component } from './rate-tables-1.component';
-import { 
-  LiveRateService,
-} from '@rps/buillion-frontend-core/services/live-rate.service';
+import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 
 describe('RateTablesComponent', () => {
