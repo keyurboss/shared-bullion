@@ -3,6 +3,8 @@ import { AppEnvName } from '@rps/bullion-interfaces/core';
 import {
   MongoRepositoryLocalModule,
   MongoRepositoryProductionModule,
+  RedisRepositoryLocalModule,
+  RedisRepositoryProductionModule,
 } from '@rps/server-core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -21,7 +23,11 @@ export class DataServerAppModule implements NestModule {
     switch (appEnv) {
       case 'ci':
       case 'local':
-        imports = [...imports, MongoRepositoryLocalModule];
+        imports = [
+          ...imports,
+          MongoRepositoryLocalModule,
+          RedisRepositoryLocalModule,
+        ];
         break;
       case 'production':
         imports = [
@@ -29,6 +35,11 @@ export class DataServerAppModule implements NestModule {
           MongoRepositoryProductionModule.forRoot({
             urlKey: 'DATA_DB_URL',
             tlsCaKey: 'DATA_DB_TLS_CA',
+          }),
+          RedisRepositoryProductionModule.forRoot({
+            urlKey: 'DATA_REDIS_URL',
+            userNameKey: 'DATA_REDIS_USERNAME',
+            passwordKey: 'DATA_REDIS_PASSWORD',
           }),
         ];
         break;
