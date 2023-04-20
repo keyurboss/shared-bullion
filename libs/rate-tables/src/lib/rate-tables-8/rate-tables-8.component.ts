@@ -7,10 +7,11 @@ import {
 import { Observable } from 'rxjs';
  interface data{
   headerName:string;
-  leftSideName:string;
-  leftValue:number;
-  rightSideName:string;
-  rightValue:number;
+  details:{
+
+    Name:string;
+    Value:number;
+  }[]
  }
 @Component({
   selector: 'rps-bull-rate-tables-8',
@@ -32,17 +33,65 @@ export class RateTables8Component {
  table : data[]=[
   {
     headerName:'GOLD PRODUCT',
-    leftSideName:'IMP 999 RTGS(TCS)',
-    leftValue:74,
-    rightSideName:'LOCAL RTGS(TCS)',
-    rightValue:44,
-  },
-  {
-    headerName:'SILVER PRODUCT',
-    leftSideName:'PETI 30KG RTGS(TCS)',
-    leftValue:77772,
-    rightSideName:'CHORSA RTGS(TCS)',
-    rightValue:4456521,
-  },
- ]
+    details:[{
+
+      Name:'IMP 999 RTGS(TCS)',
+      Value:74,},{
+
+        Name:'LOCAL RTGS(TCS)',
+        Value:44,
+      },
+      {
+
+        Name:'LOCAL RTGS(TCS)',
+        Value:44,
+      }]
+    },
+    {
+      headerName:'GOLD PRODUCT',
+      details:[{
+  
+        Name:'IMP 999 RTGS(TCS)',
+        Value:74,},{
+  
+          Name:'LOCAL RTGS(TCS)',
+          Value:44,
+        },{
+
+          Name:'LOCAL RTGS(TCS)',
+          Value:44,
+        }]
+      },
+      {
+        headerName:'GOLD PRODUCT',
+        details:[{
+    
+          Name:'IMP 999 RTGS(TCS)',
+          Value:74,},{
+    
+            Name:'LOCAL RTGS(TCS)',
+            Value:44,
+          },{
+
+            Name:'LOCAL RTGS(TCS)',
+            Value:44,
+          }]
+        },
+        
+  ]
 }
+//   {
+//     headerName:'SILVER PRODUCT',
+//     leftSideName:'PETI 30KG RTGS(TCS)',
+//     leftValue:77772,
+//     rightSideName:'CHORSA RTGS(TCS)',
+//     rightValue:4456521,
+//   },
+//   {
+//     headerName:'SILVER PRODUCT',
+//     leftSideName:'PETI 30KG RTGS(TCS)',
+//     leftValue:77772,
+//     rightSideName:'CHORSA RTGS(TCS)',
+//     rightValue:4456521,
+//   },
+//  ]

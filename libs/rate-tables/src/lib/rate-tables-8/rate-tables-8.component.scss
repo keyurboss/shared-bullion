@@ -20,8 +20,9 @@
   font-family: var(--font-family);
   font-size: 16px;
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
 }
 .table{
   width: 45%;
@@ -43,22 +44,24 @@
 .body{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   border: var(--header-border-color) 2px solid;
   border-radius: 10px;
   width: 100%;
   font-weight: 500;
   padding: 10px;
+  justify-content: space-around;
+
   margin-top: 5px;
+  :nth-of-type(2n){
+ border-left: #fce975 2px solid;
+  }
 }
-.rightPart{
+
+.details{
+  flex-wrap: wrap;
   display: flex;
-  width: 48%;
-  flex-direction: column;
-  align-items: center;
-}
-.leftPart{
-  display: flex;
-  width: 48%;
+  width: 45%;
   flex-direction: column;
   align-items: center;  
-}
+  }
