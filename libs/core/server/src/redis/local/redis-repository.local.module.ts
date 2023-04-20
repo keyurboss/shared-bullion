@@ -1,12 +1,9 @@
-import {
-  Global,
-  Module
-} from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 
 import { RedisDbHealthIndicator } from '../redis-db.health';
 import { RedisDbService } from '../redis-db.service';
 import { RedisClient } from '../redis.token';
-import { redisClientLocalFactory } from './redis-client.local.factory';
+import { RedisLocalClient } from './redis-client.local.client';
 
 @Global()
 @Module({
@@ -14,11 +11,10 @@ import { redisClientLocalFactory } from './redis-client.local.factory';
     RedisDbService,
     {
       provide: RedisClient,
-      useFactory: redisClientLocalFactory,
+      useValue: new RedisLocalClient(),
     },
     RedisDbHealthIndicator,
   ],
   exports: [RedisDbService, RedisDbHealthIndicator],
 })
-export class RedisRepositoryLocalModule  {
-}
+export class RedisRepositoryLocalModule {}
