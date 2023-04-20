@@ -50,11 +50,14 @@
   width: 100%;
   font-weight: 500;
   padding: 10px;
-  justify-content: space-around;
+  justify-content: space-between;
 
   margin-top: 5px;
   :nth-of-type(2n){
  border-left: #fce975 2px solid;
+  }
+  :nth-of-type(n+3){
+    border-top: #fce975 2px solid;
   }
 }
 

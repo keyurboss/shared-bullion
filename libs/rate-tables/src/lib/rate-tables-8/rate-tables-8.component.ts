@@ -75,6 +75,10 @@ export class RateTables8Component {
 
             Name:'LOCAL RTGS(TCS)',
             Value:44,
+          },{
+
+            Name:'LOCAL RTGS(TCS)',
+            Value:44,
           }]
         },
         
