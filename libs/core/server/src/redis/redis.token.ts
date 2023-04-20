@@ -1,8 +1,15 @@
 // export const REDIS_CLIENT = 'REDIS_CLIENT';
+
+import { RedisCommandArgument } from '@redis/client/dist/lib/commands';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export abstract class RedisClient {
   protected readonly DATA: Record<string, any> = {};
 
+  ping(message?: RedisCommandArgument): Promise<string> {
+    return this.PING(message);
+  }
+  abstract PING(message?: RedisCommandArgument): Promise<string>;
   abstract SET(key: string | number, value: any): Promise<void>;
   async set(key: string | number, value: any) {
     this.SET(key, value);

@@ -18,7 +18,7 @@ export class RedisDbHealthIndicator extends HealthIndicator {
 
   async isHealthy(key: string): Promise<HealthIndicatorResult> {
     const timeoutInMs = 1000;
-    const pingCheck$ = from(this.redisDbService.db.SET('PING', 1)).pipe(
+    const pingCheck$ = from(this.redisDbService.db.ping('1')).pipe(
       timeout({
         first: timeoutInMs,
         with: () =>
