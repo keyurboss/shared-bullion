@@ -3,6 +3,7 @@
   --header-font-color: #ffffff;
   --header-border-color: #bc9039;
   --data-back-color: #ffffff;
+ 
   --data-font-color: #ffffff;
   --rate-high-back-color: #00ff40;
   --rate-low-back-color: #ff0000;
@@ -18,6 +19,13 @@
   color: var(--header-font-color);
   font-family: var(--font-family);
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.table{
+  width: 45%;
+
 }
 .header{
   display: flex;
@@ -38,18 +46,19 @@
   border: var(--header-border-color) 2px solid;
   border-radius: 10px;
   width: 100%;
+  font-weight: 500;
   padding: 10px;
   margin-top: 5px;
 }
 .rightPart{
   display: flex;
-  width: 50%;
+  width: 48%;
   flex-direction: column;
   align-items: center;
 }
 .leftPart{
   display: flex;
-  width: 50%;
+  width: 48%;
   flex-direction: column;
   align-items: center;  
 }

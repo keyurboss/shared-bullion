@@ -1,12 +1,12 @@
 <div class="main">
-  <div class="table">
+  <div class="table" *ngFor="let item of table">
     <div class="header">
-      <span class="name">GOLD PRODUCT</span>
+      <span class="name">{{item.headerName}}</span>
     </div>
     <div class="body">
       <div class="leftPart">
-        <h2 style="font-size: 16px; padding: 5px; margin: 0px;">IMP 999 RTGS(TCS)</h2>
-        <h3 style="font-size: 20px; padding: 10px 0 0 ; margin: 0px;">62417</h3>
+        <h2 style="font-size: 16px; padding: 5px; margin: 0px;">{{item.leftSideName}}</h2>
+        <h3 style="font-size: 20px; padding: 10px 0 0 ; margin: 0px;  font-weight: 800;">{{item.leftValue}}</h3>
       </div>
       <span
         style="
@@ -18,8 +18,8 @@
       >
       </span>
       <div class="rightPart">
-        <h2 style="font-size: 16px; padding: 5px; margin: 0px;">LOCAL RTGS</h2>
-        <h3 style="font-size: 20px; padding: 10px 0 0 ; margin: 0px;">62365</h3>
+        <h2 style="font-size: 16px; padding: 5px; margin: 0px;">{{item.rightSideName}}</h2>
+        <h3 style="font-size: 20px; padding: 10px 0 0 ; margin: 0px; font-weight: 800;">{{item.rightValue}}</h3>
       </div>
     </div>
   </div>
