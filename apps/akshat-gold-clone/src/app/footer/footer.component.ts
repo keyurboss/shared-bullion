@@ -6,6 +6,9 @@ import { NavBar3Component } from '@rps/angular-nav-bars';
 interface navigationBar {
   router_link: string;
 }
+
+// <********************interface-for-navbar*********************>
+
 interface navbar3 extends navigationBar {
   uid: string;
   router_link: string;
@@ -84,18 +87,29 @@ export class FooterComponent {
     },
   ];
 
-  footer_data = {
-    aboutus: 'About Us ',
-    aboutus_r_l: 'home/about-us',
-    message: 'Updates',
-    message_r_l: 'home/updates',
-    bank_d: 'Bank Details',
-    bank_d_r_l: 'home/bank-details',
-    contact_us: 'Contact Us',
-    contact_us_r_l: 'home/contact-us',
-    copyright_text:
-      'Akshat Gold Pvt Ltd © 2018 I All Rights Reserved I Pratham Patel',
-  };
+  // <**********************footer-left*****************************>
+
+  footer_data: { name: string; url: string }[] = [
+    {
+      name: 'About Us',
+      url: 'home/about-us',
+    },
+    {
+      name: 'Updates',
+      url: 'home/updates',
+    },
+    {
+      name: 'Bank Details',
+      url: 'home/bank-details',
+    },
+    {
+      name: 'Contact Us',
+      url: 'home/contact-us',
+    },
+  ];
+
+  // <******************************navbar********************************>
+
   active_uid = '3';
   constructor(private routes: Router) {}
   OnChangeEvent(valueEitted: string) {

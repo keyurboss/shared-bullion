@@ -1,4 +1,3 @@
-<!-- <div class="footer1 m-0 p-0 w-full flex justify-center items-center "> -->
 <div class="main-footer flex justify-evenly items-center bg-[#bc9039]">
   <div class="Roboto text-[14px]">
     <div class="flex h-[300px] justify-center items-center">
@@ -102,32 +101,17 @@
     >
       <div class="nav float-left">
         <ul class="flex flex-row">
-          <li class="after-disable mr-[6px]">
-            <a class="text-[#fff]" [routerLink]="footer_data.aboutus_r_l"
-              >{{ footer_data.aboutus
-              }}<span class="ml-[5px] text-[#fce975]">-</span></a
+          <li class="after-disable mr-[6px]" *ngFor="let footer of footer_data">
+            <a class="text-[#fff]" [routerLink]="footer.url"
+              >{{ footer.name
+              }}<span class="ml-[5px] text-[#fce975]"> </span></a
             >
-          </li>
-          <li class="after-disable mr-[5px]">
-            <a class="text-[#fff]" [routerLink]="footer_data.message_r_l"
-              >{{ footer_data.message
-              }}<span class="ml-[5px] text-[#fce975]">-</span></a
-            >
-          </li>
-          <li class="after-disable mr-[5px]">
-            <a class="text-[#fff]" [routerLink]="footer_data.bank_d_r_l"
-              >{{ footer_data.bank_d
-              }}<span class="ml-[5px] text-[#fce975]">-</span></a
-            >
-          </li>
-          <li class="mr-[5px]">
-            <a class="text-[#fff]" [routerLink]="footer_data.contact_us_r_l">{{
-              footer_data.contact_us
-            }}</a>
           </li>
         </ul>
       </div>
-      <p class="float-right text-[#fff]">{{ footer_data.copyright_text }}</p>
+      <p class="float-right text-[#fff]">
+        Akshat Gold Pvt Ltd © 2018 I All Rights Reserved I Pratham Patel
+      </p>
     </div>
   </div>
 </div>
@@ -141,4 +125,3 @@
   >
   </nav-bars-3>
 </div>
-<!-- </div> -->
