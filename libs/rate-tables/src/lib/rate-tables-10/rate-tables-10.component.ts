@@ -1,6 +1,6 @@
-import {JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { 
+import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core/services/live-rate.service';
@@ -14,31 +14,4 @@ import { Observable } from 'rxjs';
   templateUrl: './rate-tables-10.component.html',
   styleUrls: ['./rate-tables-10.component.scss'],
 })
-export class RateTables10Component {
-  rate: Observable<RateObserDataType>;
-  constructor(@Inject(LiveRateService) Pratham: LiveRateService) {
-    this.rate = Pratham.RateObser$.GOLD.asObservable();
-  }
-  rate_class = {
-    red: true,
-    green: false,
-  };
-  data=[
-    {
-      "name": "GOLD 999 IMP WITH TDS",
-      "value":"58860"
-    },
-    {
-      "name": "GOLD 999 IMP WITH TCS",
-      "value":"58915"
-    },
-    {
-      "name": "GOLD 999 LOCAL WITH TDS",
-      "value":"58790"
-    },
-    {
-      "name": "GOLD 999 LOCAL WITH TCS",
-      "value":"58845"
-    },
-  ]
-}
+export class RateTables10Component {}

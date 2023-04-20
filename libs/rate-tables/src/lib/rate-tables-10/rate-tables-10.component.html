@@ -1,19 +1,35 @@
-<section class="main-div">
-  <section class="justify_content border parent flex">
-    <h3 class="parent_left white">GOLD PRODUCTS</h3>
-    <p class="parent_right white">SELL</p>
-  </section>
-
-  <section *ngFor="let item of data" class="justify_content border child flex">
-    <h3 class="child_left">{{ item.name }}</h3>
-    <p
-      class="child_right"
-      *ngIf="rate | async; let rate"
-      style="padding: 5px"
-      [class.rate_high]="rate['ask'].color === 'Green'"
-      [class.rate_low]="rate['ask'].color === 'Red'"
-    >
-      {{ rate['ask'].rate }}
-    </p>
-  </section>
-</section>
+<div class="main">
+  <div class="single">
+    <div class="main0">
+      <div class="type_1">
+        <div class="type_1_cont">
+          <div class="details">
+            <div>GOLD</div>
+            <div>1997.50</div>
+          </div>
+          <div class="bg_img">
+            <img src="https://akshatgold.com/assets/img/gold_bar_back.png" alt="product logo" />
+          </div>
+        </div>
+        <div class="type_1_cont">
+          <div class="details">
+            <div>SILVER</div>
+            <div>25.40</div>
+          </div>
+          <div class="bg_img">
+            <img src="https://akshatgold.com/assets/img/silver_bar_back.png" alt="product logo" />
+          </div>
+        </div>
+        <div class="type_1_cont">
+          <div class="details">
+            <div>INR</div>
+            <div>82.1600</div>
+          </div>
+          <div class="bg_img">
+            <img src="https://akshatgold.com/assets/img/rabi_logo.png" alt="product logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
