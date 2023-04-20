@@ -4,54 +4,56 @@ import {
   Module,
   ModuleMetadata,
   OnModuleDestroy,
+  Inject,
 } from '@nestjs/common';
-import { MongoClient } from 'mongodb';
-
 import { RedisDbHealthIndicator } from '../redis-db.health';
 import { RedisDbService } from '../redis-db.service';
+import { RedisClient } from '../redis.token';
 import {
-  MongoClientProductionConfig,
-  MongoClientProductionConfigOptions,
+  RedisClientProductionConfig,
+  RedisClientProductionConfigOptions,
 } from './redis-client.production.config';
-import { mongoClientProductionFactory } from './redis-client.production.factory';
+import { redisClientProductionFactory } from './redis-client.production.factory';
+import { RedisClientType } from 'redis';
 
-export type MongoRepositoryProductionModuleConfig =
-  MongoClientProductionConfigOptions;
+export type RedisRepositoryProductionModuleConfig =
+  RedisClientProductionConfigOptions;
 
 @Global()
 @Module({
   providers: [
     RedisDbService,
     {
-      provide: MongoClient,
-      useFactory: mongoClientProductionFactory,
-      inject: [MongoClientProductionConfig],
+      provide: RedisClient,
+      useFactory: redisClientProductionFactory,
+      inject: [RedisClientProductionConfig],
     },
     RedisDbHealthIndicator,
   ],
-  exports: [RedisDbService, MongoDbHealthIndicator],
+  exports: [RedisDbService, RedisDbHealthIndicator],
 })
-export class MongoRepositoryProductionModule implements OnModuleDestroy {
-  constructor(private readonly client: MongoClient) {}
+export class RedisRepositoryProductionModule implements OnModuleDestroy {
+  constructor(@Inject(RedisClient) private readonly client: RedisClientType) {}
 
   static forRoot({
     urlKey,
-    tlsCaKey,
-  }: MongoRepositoryProductionModuleConfig): DynamicModule {
+    passwordKey,
+  }: RedisRepositoryProductionModuleConfig): DynamicModule {
     const providers: ModuleMetadata['providers'] = [
       {
-        provide: MongoClientProductionConfig,
-        useFactory: () => new MongoClientProductionConfig({ urlKey, tlsCaKey }),
+        provide: RedisClientProductionConfig,
+        useFactory: () =>
+          new RedisClientProductionConfig({ urlKey, passwordKey }),
       },
     ];
 
     return {
-      module: MongoRepositoryProductionModule,
+      module: RedisRepositoryProductionModule,
       providers,
     };
   }
 
   async onModuleDestroy() {
-    await this.client.close();
+    await this.client.disconnect();
   }
 }

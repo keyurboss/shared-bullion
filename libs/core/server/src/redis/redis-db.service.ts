@@ -1,14 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { Db, MongoClient } from 'mongodb';
-import { createClient } from 'redis';
+import { Inject, Injectable } from '@nestjs/common';
+import { RedisClient } from './redis.token';
 
 @Injectable()
 export class RedisDbService {
-  readonly db: Db;
+  readonly db: RedisClient;
 
-  constructor(client: MongoClient) {
-    this.db = client.db();
-    const db1 = createClient();
-    db1
+  constructor(@Inject(RedisClient) client: RedisClient) {
+    this.db = client
   }
 }

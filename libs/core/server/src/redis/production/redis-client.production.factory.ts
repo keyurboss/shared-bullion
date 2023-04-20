@@ -1,33 +1,31 @@
-import { writeFileSync } from 'fs';
 
 import { Logger } from '@nestjs/common';
-import { MongoClient, MongoClientOptions } from 'mongodb';
-import * as tmp from 'tmp';
+import { createClient } from 'redis';
 
-import { MongoClientProductionConfig } from './redis-client.production.config';
+import { RedisClientOptions } from '@redis/client';
+import { RedisClientProductionConfig } from './redis-client.production.config';
 
-export const mongoClientProductionFactory = async ({
-  tlsCa,
+export const redisClientProductionFactory = async ({
+  password,
+  userName,
   url,
-}: MongoClientProductionConfig) => {
-  const logger = new Logger('MongoClient');
+}: RedisClientProductionConfig) => {
+  const logger = new Logger('RedisClient');
 
-  const options: MongoClientOptions = {};
-
-  if (tlsCa) {
-    const file = tmp.fileSync();
-    writeFileSync(file.name, tlsCa);
-
-    options.tls = true;
-    options.tlsCAFile = file.name;
-    options.tlsAllowInvalidHostnames = true;
+  const options: RedisClientOptions = {
+    url,
+  };
+  if (password) {
+    options.password = password;
   }
-
-  const client = new MongoClient(url, options);
+  if (userName) {
+    options.username = userName;
+  }
+  const client = createClient(options);
 
   await client.connect();
 
-  logger.log(`connected to ${url}`);
+  logger.log(`connected to redis ${url}`);
 
   return client;
 };

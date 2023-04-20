@@ -12,14 +12,13 @@ import { RedisDbService } from './redis-db.service';
 
 @Injectable()
 export class RedisDbHealthIndicator extends HealthIndicator {
-  constructor(private readonly mongoDbService: RedisDbService) {
+  constructor(private readonly redisDbService: RedisDbService) {
     super();
   }
 
   async isHealthy(key: string): Promise<HealthIndicatorResult> {
     const timeoutInMs = 1000;
-
-    const pingCheck$ = from(this.mongoDbService.db.command({ ping: 1 })).pipe(
+    const pingCheck$ = from(this.redisDbService.db.SET('PING', 1)).pipe(
       timeout({
         first: timeoutInMs,
         with: () =>
@@ -29,15 +28,15 @@ export class RedisDbHealthIndicator extends HealthIndicator {
                 timeoutInMs,
                 this.getStatus(key, false, {
                   message: `timeout of ${timeout}ms exceeded`,
-                }),
-              ),
+                })
+              )
           ),
-      }),
+      })
     );
 
     try {
       const response = await lastValueFrom(pingCheck$);
-      return this.getStatus(key, true, response);
+      return this.getStatus(key, true, { response });
     } catch (error) {
       if (error instanceof TimeoutError) {
         throw error;
@@ -47,7 +46,7 @@ export class RedisDbHealthIndicator extends HealthIndicator {
 
       throw new HealthCheckError(
         `${key} is not available`,
-        this.getStatus(key, false, { message }),
+        this.getStatus(key, false, { message })
       );
     }
   }

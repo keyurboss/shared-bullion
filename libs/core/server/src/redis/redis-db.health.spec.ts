@@ -1,28 +1,28 @@
 import { HealthIndicatorResult, TimeoutError } from '@nestjs/terminus';
-import * as faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 import { RedisDbHealthIndicator } from './redis-db.health';
 
 describe(RedisDbHealthIndicator.name, () => {
-  let mongoDbHealthIndicator: RedisDbHealthIndicator;
-  let mongoDbMock: Record<'command', jest.Mock>;
+  let redisDbHealthIndicator: RedisDbHealthIndicator;
+  let redisDbMock: Record<'command', jest.Mock>;
   let key: string;
   let resultPromise: Promise<HealthIndicatorResult>;
 
   describe('when ping succeeds ', () => {
     beforeEach(() => {
-      mongoDbMock = { command: jest.fn().mockResolvedValue({ ok: 1 }) };
-      const mongoDbServiceMock = { db: mongoDbMock };
+      redisDbMock = { command: jest.fn().mockResolvedValue({ ok: 1 }) };
+      const redisDbServiceMock = { db: redisDbMock };
 
-      mongoDbHealthIndicator = new RedisDbHealthIndicator(
-        mongoDbServiceMock as never,
+      redisDbHealthIndicator = new RedisDbHealthIndicator(
+        redisDbServiceMock as never,
       );
 
       key = faker.internet.userName();
-      resultPromise = mongoDbHealthIndicator.isHealthy(key);
+      resultPromise = redisDbHealthIndicator.isHealthy(key);
     });
 
-    it.todo('calls MongoDB service DB command with config');
+    it.todo('calls redisDB service DB command with config');
 
     it('resolves result', () => {
       return expect(resultPromise).resolves.toStrictEqual(
@@ -35,22 +35,22 @@ describe(RedisDbHealthIndicator.name, () => {
 
   describe('when ping fails ', () => {
     beforeEach(() => {
-      mongoDbMock = {
+      redisDbMock = {
         command: jest.fn().mockImplementation(() => {
           return new Promise((response) => setTimeout(response, 1500));
         }),
       };
-      const mongoDbServiceMock = { db: mongoDbMock };
+      const redisDbServiceMock = { db: redisDbMock };
 
-      mongoDbHealthIndicator = new RedisDbHealthIndicator(
-        mongoDbServiceMock as never,
+      redisDbHealthIndicator = new RedisDbHealthIndicator(
+        redisDbServiceMock as never,
       );
 
       key = faker.internet.userName();
-      resultPromise = mongoDbHealthIndicator.isHealthy(key);
+      resultPromise = redisDbHealthIndicator.isHealthy(key);
     });
 
-    it.todo('calls MongoDB service DB command with config');
+    it.todo('calls redisDB service DB command with config');
 
     it('rejects', () => {
       return expect(resultPromise).rejects.toBeInstanceOf(TimeoutError);
