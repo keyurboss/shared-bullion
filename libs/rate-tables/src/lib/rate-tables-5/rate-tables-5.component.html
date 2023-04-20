@@ -1,12 +1,44 @@
-<div class="main_div">
-    <div class="box">
-        <div class="box_header">
-            <h3 class="">{{Product_name}}</h3>
+<div class="body">
+    <div class="small main_div">
+        <div class="box">
+            <div class="box_header">
+                <h3 class="">{{Product_name}}</h3>
+            </div>
+            <div class="box_footer" *ngIf="GOLD | async; let gold">
+                <div class="box_footer_uperitem"><span [class.rate_high]="gold['ask'].color === 'Green'"
+                        [class.rate_low]="gold['ask'].color === 'Red'">{{gold['ask'].rate | number:'1.2-2'}}</span>
+                </div>
+                <div class="box_footer_loewritem">{{gold['last-high'].rate| number:'1.2-2'}} / {{gold['last-low'].rate|
+                    number:'1.2-2'}}</div>
+            </div>
         </div>
-        <div class="box_footer" *ngIf="GOLD | async; let gold">
-            <div class="box_footer_uperitem" [class.rate_high]="gold['bid'].color === 'Green'"
-                [class.rate_low]="gold['bid'].color === 'Red'">{{gold['ask'].rate}}</div>
-            <div class="box_footer_loewritem">{{gold['last-high'].rate}} / {{gold['last-low'].rate}}</div>
+    </div>
+
+    <div class="big rateTable">
+        <div class="header">
+            <h3> {{Product_name}} </h3>
+        </div>
+        <div class="footer" *ngIf="GOLD | async; let gold">
+            <div class="divi">
+                <div class="bidask">
+                    <p class="para">BID</p><span class="bidAskrate" [class.rate_high]="gold['bid'].color === 'Green'"
+                        [class.rate_low]="gold['bid'].color === 'Red'">
+                        {{gold['bid'].rate | number:'1.2-2'}}</span>
+                </div>
+            </div>
+            <div class="divi">
+                <div class="bidask">
+                    <p class="para">ASK</p><span class="bidAskrate" [class.rate_high]="gold['ask'].color === 'Green'"
+                        [class.rate_low]="gold['ask'].color === 'Red'">{{gold['ask'].rate| number:'1.2-2'}}
+                    </span>
+                </div>
+            </div>
+            <div class="divi">
+                <div class="highlow"><span class="highLowrate">H -
+                        {{gold['last-high'].rate| number:'1.2-2'}}</span><span class="highLowrate">L -
+                        {{gold['last-low'].rate| number:'1.2-2'}}</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
