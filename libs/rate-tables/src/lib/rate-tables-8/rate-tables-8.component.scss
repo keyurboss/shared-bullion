@@ -9,17 +9,24 @@
   --rate-high-font-color: #ffffff;
   --rate-low-font-color: #ffffff;
   --data-border-color: #000;
+  --primary-light:#fce975;
   --font-family: Roboto, Helvetica Neue, sans-serif;
+
 }
 .main{
   background: black;
-  color: var(--header-border-color);
-  border: var(--header-border-color) 2px solid;
+  color: var(--header-font-color);
+  font-family: var(--font-family);
+  font-size: 16px;
 }
 .header{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 0;
+  font-size: 22px;
+  color:var(--primary-light) ;
+  font-weight: 700;
 }
 .name{
   display: flex;
@@ -28,7 +35,11 @@
 .body{
   display: flex;
   flex-direction: row;
+  border: var(--header-border-color) 2px solid;
+  border-radius: 10px;
   width: 100%;
+  padding: 10px;
+  margin-top: 5px;
 }
 .rightPart{
   display: flex;
@@ -40,7 +51,5 @@
   display: flex;
   width: 50%;
   flex-direction: column;
-  align-items: center;
-  border-right: var(--header-border-color) 2px solid;
-  
+  align-items: center;  
 }
