@@ -1,0 +1,16 @@
+{
+  "AngulrService": {
+    "scope": "typescript",
+    "prefix": "angular-service",
+    "description": "Angular Services",
+    "body": [
+      "import { Injectable } from '@angular/core';",
+      "@Injectable({",
+      "\tprovidedIn: 'root',",
+      "})",
+      "export class ${0:ServiceName} {",
+      "\tconstructor(){}",
+      "}"
+    ]
+  }
+}

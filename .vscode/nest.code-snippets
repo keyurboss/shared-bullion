@@ -1,0 +1,15 @@
+{
+  "NestJSServices": {
+    "scope": "typescript",
+    "prefix": "nestjs-service",
+    "description": "Nestjs Services",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class ${0:ServiceName} {",
+      "\tconstructor(){}",
+      "}"
+    ]
+  }
+}

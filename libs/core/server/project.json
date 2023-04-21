@@ -1,5 +1,5 @@
 {
-  "name": "core-server",
+  "name": "server-core",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core/server/src",
   "projectType": "library",
