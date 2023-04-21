@@ -9,6 +9,8 @@
     --box-back-color: #fef8e8;
     --primary-dark: #543e12;
     --mcx-border: #7c6533;
+    --small-display:flex;
+    --big--display:flex;
     --font-family: Roboto, Helvetica Neue, sans-serif;
 }
 
@@ -24,6 +26,7 @@
     max-width: 300px;
     display: none;
     flex-direction: row;
+    display: var(--small-display);
     font-family: var(--font-family);
 }
 
@@ -84,6 +87,8 @@
 }
 
 .rateTable {
+    display: var(--big--display);
+    flex-direction: column;
     max-width: 650px;
     box-sizing: border-box;
     margin-bottom: 5px;
@@ -169,14 +174,4 @@
     justify-content: center;
     align-items: center;
 
-}
-
-@media screen and (max-width:300px) {
-    .main_div {
-        display: flex;
-    }
-
-    .rateTable {
-        display: none;
-    }
 }
