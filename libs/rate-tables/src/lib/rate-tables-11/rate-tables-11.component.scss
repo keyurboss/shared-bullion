@@ -49,9 +49,8 @@
   border-radius: 8px 8px 0 0;
   font-weight: 700;
   padding: 9px 0;
-  text-transform: uppercase;
   background: #41241c;
-  color: rgb(255, 255, 255);
+  color: #fff;
 }
 .product_group_header {
   flex: 70;
@@ -70,7 +69,6 @@
   font-size: 13px;
   color: #41241c;
   font-weight: 700;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 .product {
   display: flex;
@@ -79,7 +77,6 @@
   font-size: 13px;
   color: #41241c;
   font-weight: 700;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 .product_name {
   flex: 70;
