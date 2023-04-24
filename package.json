@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "nx test"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.1.0",
     "@angular-devkit/core": "~15.1.0",
@@ -79,6 +82,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.3.0",
     "mongodb-memory-server": "^8.12.2",
+    "redis": "^4.6.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.7.3",
