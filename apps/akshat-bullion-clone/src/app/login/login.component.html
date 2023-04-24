@@ -13,15 +13,14 @@
           <!-- User id field -->
           <div class="input flex justify-center items-center w-full">
             <input id="loginuserid" placeholder="Enter User id" formControlName="UserId"
-              (keydown)="startingspace($event)" [(ngModel)]="userData.LoginUserId"
-              onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
+              (keydown)="startingspace($event)" onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
               class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!-- password field -->
           <div class="input input_change flex justify-center items-center">
             <input id="loginpassword" [type]="show_Password ? 'password' : 'text'" placeholder="Enter Password"
-              formControlName="password" (keydown)="nospace($event)" [(ngModel)]="userData.LoginPassword" onpaste="setTimeout(() => { 
+              formControlName="password" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
                 const pastedText = document.getElementById('loginpassword').value;
                 let trimmedText = pastedText.trim();
                 const hasSpacesInMiddle = /\s/.test(trimmedText);

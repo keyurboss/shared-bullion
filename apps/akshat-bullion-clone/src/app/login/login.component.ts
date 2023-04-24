@@ -9,6 +9,8 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UserDataService } from '../services/rememberData.service';
+import { UsersDataService } from '../services/users-data.service';
+
 
 @Component({
   selector: 'akshat-bull-app-login',
@@ -18,25 +20,10 @@ import { UserDataService } from '../services/rememberData.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(public userData: UserDataService) {}
-
+  Name: string;
+  Password: string;
+  constructor(public userData: UserDataService, private usersdata: UsersDataService) { }
   show_Password = true;
-
-  users = [
-    { id: 'sahil', password: 'sahil' },
-    { id: 'Sahil', password: 'sahil' },
-    { id: 'harsh', password: 'harsh' },
-    { id: 'Harsh', password: 'harsh' },
-    { id: 'vraj', password: 'vraj' },
-    { id: 'Vraj', password: 'vraj' },
-    { id: 'bhavya', password: 'bhavya' },
-    { id: 'Bhavya', password: 'bhavya' },
-    { id: 'pratham', password: 'pratham' },
-    { id: 'Pratham', password: 'pratham' },
-    { id: 'alay', password: 'alay' },
-    { id: 'Alay', password: 'alay' },
-  ];
-
   submitted = false;
   LoginForm = new FormGroup({
     UserId: new FormControl('', [Validators.required]),
@@ -61,22 +48,22 @@ export class LoginComponent {
         'warning'
       );
     } else {
-      let found = false;
-      for (let i = 0; i < this.users.length; i++) {
-        if (
-          this.users[i].id === this.UserId.value &&
-          this.users[i].password === this.password.value
-        ) {
-          found = true;
-          break;
+      this.usersdata.users().subscribe((sahil: any[]) => {
+        const user = sahil.find((user) => user.Name === this.UserId.value);
+        if (user && user.Password === this.password.value) {
+          Swal.fire(
+            '',
+            'User Found',
+            'success'
+          );
+        } else {
+          Swal.fire(
+            '',
+            'User Not Found',
+            'error'
+          );
         }
-      }
-      if (found) {
-        Swal.fire('', 'Login successful', 'success');
-      } else {
-        Swal.fire('Error', 'User not found', 'error');
-      }
-      console.log(this.LoginForm.value);
+      })
     }
   }
   ForgotPassword() {

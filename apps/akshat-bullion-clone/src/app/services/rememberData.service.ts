@@ -4,13 +4,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserDataService {
-  LoginUserId: string;
-  LoginPassword: string;
-  SignupUserName: string;
-  SignupUserFirmName: string;
-  SignupUserMobileNumber: string;
-  SignupUserEmailid: string;
-  SignupUserCity: string;
-  SignupUserPassword: string;
-  SignupUserCPassword: string;
+  login = {
+    LoginUserId: '',
+    LoginPassword: '',
+  }
+
+  signup = {
+    SignupUserName: '',
+    SignupUserFirmName: '',
+    SignupUserMobileNumber: '',
+    SignupUserEmailid: '',
+    SignupUserCity: '',
+    SignupUserPassword: '',
+    SignupUserCPassword: '',
+  }
 }

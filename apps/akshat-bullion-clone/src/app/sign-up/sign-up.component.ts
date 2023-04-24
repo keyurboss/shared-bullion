@@ -9,6 +9,7 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UserDataService } from '../services/rememberData.service';
+import { UsersDataService } from '../services/users-data.service';
 // import Swal from 'sweetalert2';
 @Component({
   selector: 'akshat-bull-app-sign-up',
@@ -18,7 +19,13 @@ import { UserDataService } from '../services/rememberData.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
-  constructor(private router: Router, public userData: UserDataService) { }
+
+  Users: any;
+  constructor(private router: Router, public userData: UserDataService, private usersdata: UsersDataService) {
+    this.usersdata.users().subscribe((data) => {
+      this.Users = data;
+    });
+  }
   show_Password = true;
   show_CPassword = true;
   submitted = false;
@@ -68,41 +75,49 @@ export class SignUpComponent {
   get SignFormControl() {
     return this.SignForm.controls;
   }
+
   OnSignUpUserSubmit() {
+    const sahil = {
+      Name: this.Name.value,
+      FirmName: this.FirmName.value,
+      MobileNumber: this.MobileNumber.value,
+      EmailId: this.EmailId.value,
+      City: this.City.value,
+      Password: this.Password.value,
+    }
     this.submitted = true;
     for (const key in this.SignForm.controls) {
       const iterator: FormControl = this.SignForm.controls[key];
       if (iterator.invalid) {
-        console.log('iterator.invalid');
         Swal.fire('Error', `${key} Field is Compulsory!`, 'warning');
         if (iterator.dirty) {
-          console.log('iterator.dirty');
           Swal.fire('Error', `Plese Enter valid ${key}`, 'warning');
         }
         break;
       }
-      if (this.SignForm.valid) {
-        if (this.Password.value.length < 8) {
-          Swal.fire(
-            'Error',
-            'Plese Enter Min 8 Digit Long Password',
-            'warning'
-          );
-        } else if (this.Password.value !== this.ConfirmPassword.value) {
-          Swal.fire(
-            'Error',
-            'Password and Confirm Password are not same!',
-            'warning'
-          );
-        } else if (this.checkbox.value === false) {
-          Swal.fire(
-            'Error',
-            'You Have not checked the Terms & Conditions..',
-            'warning'
-          );
-        } else {
-          this.router.navigate(['/otp']);
-        }
+    }
+    if (this.SignForm.valid) {
+      if (this.Password.value.length < 8) {
+        Swal.fire(
+          'Error',
+          'Plese Enter Min 8 Digit Long Password',
+          'warning'
+        );
+      } else if (this.Password.value !== this.ConfirmPassword.value) {
+        Swal.fire(
+          'Error',
+          'Password and Confirm Password are not same!',
+          'warning'
+        );
+      } else if (this.checkbox.value === false) {
+        Swal.fire(
+          'Error',
+          'You Have not checked the Terms & Conditions..',
+          'warning'
+        );
+      } else {
+        this.router.navigate(['/otp']);
+        this.usersdata.saveusersdata(sahil).subscribe()
       }
     }
   }

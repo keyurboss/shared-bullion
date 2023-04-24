@@ -41,10 +41,11 @@ export class BankdetailsComponent {
       img: '../../assets/images/Axis_Bank_Logo.png',
     },
   ];
+  timeoutId: NodeJS.Timeout;
   removeHyphens(cardNumber: string): string {
     return cardNumber.replace(/-/g, '');
   }
-  async copyToClipboard(num: any) {
+  async startTimeout(num: any) {
     function hasAlphabet(input: string): boolean {
       const regex = /[a-zA-Z]/;
       return regex.test(input);
@@ -57,9 +58,16 @@ export class BankdetailsComponent {
     }
     if (!this.disabled) {
       this.showMessage = true;
-      setTimeout(() => {
+      this.timeoutId = setTimeout(() => {
         this.showMessage = false;
-      }, 2000);
+      }, 3000);
     }
+  }
+  cancelTimeout() {
+    clearTimeout(this.timeoutId);
+  }
+  restartTimeout(num: any) {
+    this.cancelTimeout();
+    this.startTimeout(num);
   }
 }

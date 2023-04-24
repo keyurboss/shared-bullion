@@ -7,12 +7,12 @@ import { RateTables4Component } from '@rps/bullion-rate-tables/table4';
 import { RateTables5Component } from '@rps/bullion-rate-tables/table5';
 import { RateTables6Component } from '@rps/bullion-rate-tables/table6';
 
-
 @Component({
   selector: 'akshat-bull-app-live-rate',
   standalone: true,
-  imports: [CommonModule,RateTables1Component,RateTables2Component,RateTables3Component,RateTables4Component,RateTables5Component,RateTables6Component],
+  imports: [CommonModule, RateTables1Component, RateTables2Component, RateTables3Component, RateTables4Component, RateTables5Component, RateTables6Component],
   templateUrl: './live-rate.component.html',
   styleUrls: ['./live-rate.component.scss'],
+
 })
-export class LiveRateComponent {}
+export class LiveRateComponent { }
