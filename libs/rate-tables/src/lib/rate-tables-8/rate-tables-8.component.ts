@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   details:{
 
     Name:string;
-    Value:number;
   }[]
  }
 @Component({
@@ -22,9 +21,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./rate-tables-8.component.scss'],
 })
 export class RateTables8Component {
-  rate: Observable<RateObserDataType>;
-  constructor(@Inject(LiveRateService) Pratham: LiveRateService) {
-    this.rate = Pratham.RateObser$.GOLD.asObservable();
+  gold: Observable<RateObserDataType>;
+  // silver: Observable<RateObserDataType>;
+  constructor(@Inject(LiveRateService) Alay: LiveRateService) {
+    this.gold = Alay.RateObser$.GOLD.asObservable();
+    this.gold = Alay.RateObser$.SILVER.asObservable();
   }
   rate_class = {
     red: true,
@@ -36,51 +37,24 @@ export class RateTables8Component {
     details:[{
 
       Name:'IMP 999 RTGS(TCS)',
-      Value:74,},{
+    },{
 
         Name:'LOCAL RTGS(TCS)',
-        Value:44,
       },
-      {
-
-        Name:'LOCAL RTGS(TCS)',
-        Value:44,
-      }]
+      ]
     },
     {
-      headerName:'GOLD PRODUCT',
+      headerName:'SILVER PRODUCT',
       details:[{
   
-        Name:'IMP 999 RTGS(TCS)',
-        Value:74,},{
-  
-          Name:'LOCAL RTGS(TCS)',
-          Value:44,
+        Name:'PETI 30KG RTGS(TCS)',
         },{
-
-          Name:'LOCAL RTGS(TCS)',
-          Value:44,
+  
+          Name:'CHORSA RTGS(TCS)',
         }]
       },
-      {
-        headerName:'GOLD PRODUCT',
-        details:[{
     
-          Name:'IMP 999 RTGS(TCS)',
-          Value:74,},{
-    
-            Name:'LOCAL RTGS(TCS)',
-            Value:44,
-          },{
-
-            Name:'LOCAL RTGS(TCS)',
-            Value:44,
-          },{
-
-            Name:'LOCAL RTGS(TCS)',
-            Value:44,
-          }]
-        },
+        
         
   ]
 }
