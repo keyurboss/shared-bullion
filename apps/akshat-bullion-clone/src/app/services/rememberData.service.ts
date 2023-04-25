@@ -18,4 +18,5 @@ export class UserDataService {
     SignupUserPassword: '',
     SignupUserCPassword: '',
   }
+  otp = ''
 }

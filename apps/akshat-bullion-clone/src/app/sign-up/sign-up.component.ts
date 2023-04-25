@@ -26,6 +26,7 @@ export class SignUpComponent {
       this.Users = data;
     });
   }
+  generatedOTP: string;
   show_Password = true;
   show_CPassword = true;
   submitted = false;
@@ -77,14 +78,14 @@ export class SignUpComponent {
   }
 
   OnSignUpUserSubmit() {
-    const sahil = {
-      Name: this.Name.value,
-      FirmName: this.FirmName.value,
-      MobileNumber: this.MobileNumber.value,
-      EmailId: this.EmailId.value,
-      City: this.City.value,
-      Password: this.Password.value,
-    }
+    // const sahil = {
+    //   Name: this.Name.value,
+    //   FirmName: this.FirmName.value,
+    //   MobileNumber: this.MobileNumber.value,
+    //   EmailId: this.EmailId.value,
+    //   City: this.City.value,
+    //   Password: this.Password.value,
+    // }
     this.submitted = true;
     for (const key in this.SignForm.controls) {
       const iterator: FormControl = this.SignForm.controls[key];
@@ -116,8 +117,11 @@ export class SignUpComponent {
           'warning'
         );
       } else {
+        this.generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+        this.userData.otp = this.generatedOTP;
+        console.log(`Generated OTP: ${this.generatedOTP}`);
         this.router.navigate(['/otp']);
-        this.usersdata.saveusersdata(sahil).subscribe()
+        // this.usersdata.saveusersdata(sahil).subscribe()
       }
     }
   }

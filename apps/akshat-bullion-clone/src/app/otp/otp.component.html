@@ -12,28 +12,13 @@
       </div>
       <form>
         <div class="wrapper_inputs flex justify-center items-center flex-col">
-          <div id="otp" class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row">
-            <input
+          <div class="input flex items-center my-[80px] h-[60px] w-full justify-evenly flex-row" #otpParent>
+            <input *ngFor="let itee of [].constructor(4); let i = index" type="tel" maxlength="1"
               class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
-              type="tel" id="first" maxlength="1" autofocus />
-            <input
-              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
-              type="tel" id="second" maxlength="1" />
-            <input
-              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
-              type="tel" id="third" maxlength="1" />
-            <input
-              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
-              type="tel" id="fourth" maxlength="1" />
-            <input
-              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
-              type="tel" id="fifth" maxlength="1" />
-            <input
-              class="m-2 text-center form-control rounded focus:outline-none yellow_gradient flex justify-center items-center h-[45px] w-[45px] text-[25px] font-semibold text-[#a9481b]"
-              type="tel" id="sixth" maxlength="1" />
+              (keyup)="onKeyUpEvent(i, $event)" (keydown)="NotNumber($event)" />
           </div>
-          <input type="submit" value="Submit" placeholder="Enter Password"
-            class="yellow_gradient text-[#a9481b] font-semibold min-w-[270px] text-[16px] p-[15px] rounded-[25px] focus:outline-none" />
+          <button type="submit"
+            class="yellow_gradient text-[#a9481b] font-semibold min-w-[270px] text-[16px] p-[15px] rounded-[25px] focus:outline-none">Submit</button>
         </div>
       </form>
       <div class="options text-[#ccc] my-[20px]"></div>
