@@ -36,10 +36,10 @@ export class RateTables8Component {
     headerName:'GOLD PRODUCT',
     details:[{
 
-      Name:'IMP 999 RTGS(TCS)',
+      Name:'IMP 999 RTGS (TCS)',
     },{
 
-        Name:'LOCAL RTGS(TCS)',
+        Name:'LOCAL RTGS (TCS)',
       },
       ]
     },
@@ -47,10 +47,10 @@ export class RateTables8Component {
       headerName:'SILVER PRODUCT',
       details:[{
   
-        Name:'PETI 30KG RTGS(TCS)',
+        Name:'PETI 30KG RTGS (TCS)',
         },{
   
-          Name:'CHORSA RTGS(TCS)',
+          Name:'CHORSA RTGS (TCS)',
         }]
       },
     
