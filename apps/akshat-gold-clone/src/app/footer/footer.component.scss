@@ -41,6 +41,8 @@
   }
   .nav {
     display: flex;
+    position: fixed;
+    bottom: 0;
   }
   .line {
     display: flex;

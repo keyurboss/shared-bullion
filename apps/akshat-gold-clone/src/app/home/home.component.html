@@ -1,15 +1,102 @@
-<section class="h-screen">
+<section class="h-screen relative">
   <akshat-gold-header></akshat-gold-header>
-  <router-outlet>
-    <div class="dragable_div left-[15px]">
-      <div class="img1"></div>
+  <router-outlet></router-outlet>
+  <div class="dragable_div left-[15px]">
+    <div
+      class="img"
+      *ngIf="menu === false"
+      (mousedown)="menu = true"
+      (click)="popup = true"
+      style="
+        -webkit-mask: url(../../assets/images/apps-outline.svg) no-repeat center;
+      "
+    ></div>
+    <div
+      class="img"
+      *ngIf="menu === true"
+      (mousedown)="menu = false"
+      (click)="popup = false"
+      style="
+        -webkit-mask: url(../../assets/images/close-outline.svg) no-repeat
+          center;
+      "
+    ></div>
+  </div>
 
-      <div class="dragable_div right-[15px]">
-        <a href="https://api.whatsapp.com/send/?phone=919510179542" target="_blank"
-          ><div class="img2"></div
-        ></a>
-      </div>
-    </div>
-  </router-outlet>
+  <!-- <***************w'App********************> -->
+
+  <div class="dragable_div right-[15px]">
+    <a href="https://api.whatsapp.com/send/?phone=919510179542" target="_blank">
+      <div
+        class="img"
+        style="
+          -webkit-mask: url(../../assets/images/logo-whatsapp.svg) no-repeat
+            center;
+        "
+      ></div>
+    </a>
+  </div>
+
   <akshat-gold-clone-footer></akshat-gold-clone-footer>
+  <div *ngIf="popup === true">
+    <div class="other_buttons">
+      <div class="other_buttons_1">
+        <div class="other_buttons_1_data">
+          <div class="other_buttons_1_data_button">
+            <button class="img_container">
+              <div
+                class="img1"
+                style="-webkit-mask: url(../../assets/images/solo-logo.svg)"
+              ></div>
+            </button>
+          </div>
+          <div class="other_buttons_1_data_text">
+            <h4>About Us</h4>
+          </div>
+        </div>
+        <div class="other_buttons_1_data">
+          <div class="other_buttons_1_data_button">
+            <button class="img_container">
+              <div
+                class="img1"
+                style="-webkit-mask-image: url(../../assets/images/mail.svg)"
+              ></div>
+            </button>
+          </div>
+          <div class="other_buttons_1_data_text">
+            <h4>Updates</h4>
+          </div>
+        </div>
+        <label for="Eco. Calender">
+          <div class="other_buttons_1_data" (click)="popup = false">
+            <div class="other_buttons_1_data_button">
+              <button class="img_container">
+                <div
+                  class="img1"
+                  style="
+                    -webkit-mask-image: url(../../assets/images/calendar.svg);
+                  "
+                ></div>
+              </button>
+            </div>
+            <div class="other_buttons_1_data_text">
+              <h4 id="Eco. Calender">Eco. Calender</h4>
+            </div>
+          </div></label>
+          <!-- <div class="other_buttons_1_data" (click)="popup = false">
+            <div class="other_buttons_1_data_button">
+              <button class="img_container">
+                <div
+                  class="img1"
+                  style="
+                    -webkit-mask-image: url(../../assets/images/close-outline.svg);
+                  "
+                ></div>
+              </button>
+            </div>
+        </div> -->
+        </div>
+    </div>
+    <div class="h-full w-full opacity-75 bg-white top-0 absolute"></div>
+  </div>
 </section>
