@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {
   FormControl,
   FormGroup,
@@ -22,7 +22,7 @@ import { UsersDataService } from '../services/users-data.service';
 export class LoginComponent {
   Name: string;
   Password: string;
-  constructor(public userData: UserDataService, private usersdata: UsersDataService) { }
+  constructor(private router: Router, public userData: UserDataService, private usersdata: UsersDataService) { }
   show_Password = true;
   submitted = false;
   LoginForm = new FormGroup({
@@ -50,12 +50,22 @@ export class LoginComponent {
     } else {
       this.usersdata.users().subscribe((sahil: any[]) => {
         const user = sahil.find((user) => user.Name === this.UserId.value);
-        if (user && user.Password === this.password.value) {
-          Swal.fire(
-            '',
-            'User Found',
-            'success'
-          );
+        if (user) {
+          if (user.Password === this.password.value) {
+            this.router.navigate(['app/home/live-rate'])
+            Swal.fire(
+              '',
+              'successfully logged in',
+              'success'
+            );
+
+          } else {
+            Swal.fire(
+              '',
+              'Incorrect password',
+              'warning'
+            );
+          }
         } else {
           Swal.fire(
             '',

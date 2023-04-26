@@ -4,7 +4,9 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { UserDataService } from '../services/rememberData.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
+import { UsersDataService } from '../services/users-data.service';
 
 @Component({
   selector: 'akshat-bull-app-otp',
@@ -14,8 +16,16 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./otp.component.scss'],
 })
 export class OtpComponent {
+  Users: any;
+  otp: string;
+  generatedOTP: string;
+
   @Output() OTP = new EventEmitter<string[]>();
-  constructor(public userData: UserDataService) { }
+  constructor(private router: Router, public userData: UserDataService, private usersdata: UsersDataService) {
+    this.usersdata.users().subscribe((data) => {
+      this.Users = data;
+    });
+  }
   otp_string: string[] = [];
 
   @ViewChild('otpParent') otpParent!: ElementRef<HTMLElement>;
@@ -31,7 +41,6 @@ export class OtpComponent {
     if (inputElement instanceof HTMLInputElement === false) {
       return;
     }
-    event.preventDefault();
     if (event.key === 'Backspace') {
       if (inputElement.value === '' && index !== 0) {
         const previousElement = this.otpParent.nativeElement.children.item(
@@ -70,6 +79,7 @@ export class OtpComponent {
           nextElement.select();
         }
       } else {
+        this.otp = this.otp_string[0] + this.otp_string[1] + this.otp_string[2] + this.otp_string[3]+this.otp_string[4]+this.otp_string[5]
         inputElement.blur();
       }
     }
@@ -84,6 +94,32 @@ export class OtpComponent {
     }
     if ((typeof input !== 'undefined' && isNaN(+input)) || input === ' ') {
       event.preventDefault();
+    }
+  }
+  ReSendOTP() {
+    this.generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+    this.userData.otp = this.generatedOTP;
+    console.log(`Generated OTP: ${this.generatedOTP}`);
+  }
+  change() {
+    this.userData.signup.SignupUserMobileNumber = '',
+      this.router.navigate(['/sign-up'])
+  }
+  usersubmitotp() {
+    if (this.otp == this.userData.otp) {
+      Swal.fire(
+        'Congratulations!',
+        'You have successfully signed up',
+        'success'
+      );
+      this.router.navigate(['/login'])
+      this.usersdata.saveusersdata(this.userData.sahil).subscribe()
+    } else {
+      Swal.fire(
+        'OTP is invalid',
+        'Please enter correct password',
+        'warning'
+      );
     }
   }
 }

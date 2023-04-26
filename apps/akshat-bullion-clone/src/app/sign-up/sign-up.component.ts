@@ -78,14 +78,13 @@ export class SignUpComponent {
   }
 
   OnSignUpUserSubmit() {
-    // const sahil = {
-    //   Name: this.Name.value,
-    //   FirmName: this.FirmName.value,
-    //   MobileNumber: this.MobileNumber.value,
-    //   EmailId: this.EmailId.value,
-    //   City: this.City.value,
-    //   Password: this.Password.value,
-    // }
+    this.userData.sahil.Name = this.Name.value;
+    this.userData.sahil.FirmName = this.FirmName.value;
+    this.userData.sahil.MobileNumber = this.MobileNumber.value;
+    this.userData.sahil.EmailId = this.EmailId.value;
+    this.userData.sahil.City = this.City.value;
+    this.userData.sahil.Password = this.Password.value;
+    this.userData.signup.Terms_Conditions = this.checkbox.value;
     this.submitted = true;
     for (const key in this.SignForm.controls) {
       const iterator: FormControl = this.SignForm.controls[key];
@@ -117,11 +116,10 @@ export class SignUpComponent {
           'warning'
         );
       } else {
-        this.generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+        this.generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
         this.userData.otp = this.generatedOTP;
         console.log(`Generated OTP: ${this.generatedOTP}`);
         this.router.navigate(['/otp']);
-        // this.usersdata.saveusersdata(sahil).subscribe()
       }
     }
   }

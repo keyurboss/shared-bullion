@@ -15,12 +15,14 @@
           <div class="input flex justify-center items-center w-full">
             <input placeholder="Name" formControlName="Name" autofocus (keydown)="startingspace($event)"
               onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
+              [(ngModel)]="this.userData.signup.SignupUserName"
               class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
 
           <!--  FirmName field  -->
           <div class="input flex justify-center items-center w-full">
             <input placeholder="FirmName" formControlName="FirmName" (keydown)="startingspace($event)"
+              [(ngModel)]="this.userData.signup.SignupUserFirmName"
               onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
               class="input_field my-[10px] min-w-[270px] py-[12px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
           </div>
@@ -28,7 +30,8 @@
           <!--  MobileNumber field  -->
           <div class="input flex justify-center items-center w-full">
             <input id="mobilenumber" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"
-              formControlName="MobileNumber" (keydown)="formatPhone($event)" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
+              [(ngModel)]="this.userData.signup.SignupUserMobileNumber" formControlName="MobileNumber"
+              (keydown)="formatPhone($event)" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
                 const pastedText = document.getElementById('mobilenumber').value;
                 let trimmedText = pastedText.trim();
                 const hasSpacesInMiddle = /\s/.test(trimmedText);
@@ -44,7 +47,7 @@
           <!--  EmailId field  -->
           <div class="input flex justify-center items-center w-full">
             <input id="email" placeholder="Email Id" type="email" formControlName="EmailId" (keydown)="nospace($event)"
-              onpaste="setTimeout(() => { 
+              [(ngModel)]="this.userData.signup.SignupUserEmailid" onpaste="setTimeout(() => { 
                 const pastedText = document.getElementById('email').value;
                 let trimmedText = pastedText.trim();
                 const hasSpacesInMiddle = /\s/.test(trimmedText);
@@ -59,8 +62,9 @@
 
           <!--  City Name field  -->
           <div class="input flex justify-center items-center w-full">
-            <input id="city" placeholder="City" formControlName="City" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
-                const pastedText = document.getElementById('city').value;
+            <input id="city" placeholder="City" formControlName="City" (keydown)="nospace($event)"
+              [(ngModel)]="this.userData.signup.SignupUserCity" onpaste="setTimeout(() => { 
+              const pastedText = document.getElementById('city').value;
                 let trimmedText = pastedText.trim();
                 const hasSpacesInMiddle = /\s/.test(trimmedText);
                 if (hasSpacesInMiddle===true){
@@ -75,8 +79,9 @@
           <!--  Password field  -->
           <div class="input input_change flex justify-center items-center w-full">
             <input id="signuppassword" [type]="show_Password ? 'password' : 'text'" placeholder="Password"
-              formControlName="Password" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
-                const pastedText = document.getElementById('signuppassword').value;
+              [(ngModel)]="this.userData.signup.SignupUserPassword" formControlName="Password"
+              (keydown)="nospace($event)" onpaste="setTimeout(() => { 
+              const pastedText = document.getElementById('signuppassword').value;
                 let trimmedText = pastedText.trim();
                 const hasSpacesInMiddle = /\s/.test(trimmedText);
                 if (hasSpacesInMiddle===true){
@@ -97,7 +102,8 @@
           <!--  Confirm Password field  -->
           <div class="input input_change flex justify-center items-center w-full">
             <input id="ConfirmPassword" [type]="show_CPassword ? 'password' : 'text'" placeholder="Confirm Password"
-              formControlName="ConfirmPassword" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
+              [(ngModel)]="this.userData.signup.SignupUserCPassword" formControlName="ConfirmPassword"
+              (keydown)="nospace($event)" onpaste="setTimeout(() => { 
                 const pastedText = document.getElementById('ConfirmPassword').value;
                 let trimmedText = pastedText.trim();
                 const hasSpacesInMiddle = /\s/.test(trimmedText);
@@ -119,8 +125,9 @@
           <!--  checkbox field  -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
             <input type="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]"
-              formControlName="checkbox" /><span routerLink="/termsNpolicy/tnc"
-              class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms & Conditions</span>
+              [(ngModel)]="this.userData.signup.Terms_Conditions" formControlName="checkbox" /><span
+              routerLink="/termsNpolicy/tnc" class="ml-[5px] text-[#fff] font-semibold text-[16px]">Terms &
+              Conditions</span>
           </div>
 
           <!-- submit button -->
