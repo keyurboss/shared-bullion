@@ -2,7 +2,6 @@
   width: 0;
   height: 0;
 }
-
 .dragable_div {
   z-index: 10;
   position: fixed;
@@ -18,33 +17,21 @@
   top: 0;
   height: 100%;
   width: 100%;
-  // left: -100%;
   position: fixed;
-  // transition: all .5s ease-out;
   background-color: #fffffff2;
   z-index: 10;
-  // &.open {
-  // left: 0%;
-  // }
 }
 .other_buttons_1 {
   width: 100%;
   bottom: 90px;
   padding: 0 16px;
   position: absolute;
-  // transition: all .5s ease-out;
 }
 .other_buttons_1_data {
   margin: 10px 0;
   display: flex;
   align-items: center;
   gap: 10px;
-
-  // &:hover{
-  //   transition: all ease-in-out 2s;
-  //   color: rgb(255, 0, 0);
-  //   width: 300px;
-  // }
 }
 .other_buttons_1_data_button {
   position: relative;
@@ -100,12 +87,13 @@
   background-color: #fff;
   width: 250px;
 }
-
 .img {
   height: 100%;
   width: 100%;
   background-color: #fff;
 }
+
+// <**********************media-quaary*******************>
 
 @media screen and (min-width: 801px) {
   .dragable_div {
