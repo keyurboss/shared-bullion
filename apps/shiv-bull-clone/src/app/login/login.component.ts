@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginForm = new FormGroup({
     user: new FormControl('', [Validators.required, Validators.email]),
-    checkbox:new FormControl(false),
+    checkbox: new FormControl(false),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
     ]),
   });
-  
+
   get user() {
     return this.loginForm.get('user');
   }
@@ -59,65 +59,52 @@ export class LoginComponent implements OnInit {
       this.usersdata.users().subscribe((sahil: any[]) => {
         const user = sahil.find(
           (user) => user.Email_id === this.loginForm.controls.user.value
-          );
-          if (user) {
-            if (user.password1 === this.loginForm.controls.password.value) {
-              Swal.fire('', 'successfully logged in', 'success');
-              this.router.navigate(['/home/live-rate']);
-            } else {
-              Swal.fire('', 'Incorrect password', 'warning');
-            }
+        );
+        if (user) {
+          if (user.password1 === this.loginForm.controls.password.value) {
+            Swal.fire('', 'successfully logged in', 'success');
+            this.router.navigate(['/home/live-rate']);
+            this.usersdata.newuser = false
           } else {
-            Swal.fire('', 'User Not Found', 'error');
+            Swal.fire('', 'Incorrect password', 'warning');
           }
-        });
-      }
-      
-//  const data= {Email_id:this.user.value ,pass:this.password.value};
-//  localStorage.setItem('loginInfo', JSON.stringify(data));
+        } else {
+          Swal.fire('', 'User Not Found', 'error');
+        }
+      });
+    }
 
+    //  const data= {Email_id:this.user.value ,pass:this.password.value};
+    //  localStorage.setItem('loginInfo', JSON.stringify(data));
 
+    // 1. and 2. where `items` is always an array of item-objects with 0..n elements
+    if (this.checkbox.value === true) {
+      const items = (() => {
+        const fieldValue = localStorage.getItem('loginInfo');
+        return fieldValue === null ? [] : JSON.parse(fieldValue);
+      })();
 
+      // 3.
+      items.push({ Email_id: this.user.value, pass: this.password.value });
 
-
-
-
-
-// 1. and 2. where `items` is always an array of item-objects with 0..n elements
-if(this.checkbox.value === true)
-{
-
-const items = (() => {
-  const fieldValue = localStorage.getItem('loginInfo');
-  return fieldValue === null
-  ? []
-  : JSON.parse(fieldValue);
-})();
-
-// 3.
-items.push({"Email_id":this.user.value ,"pass":this.password.value});
-
-// 4.
-localStorage.setItem('loginInfo', JSON.stringify(items));
-}
-
-
-}
-// abc(){
+      // 4.
+      localStorage.setItem('loginInfo', JSON.stringify(items));
+    }
+  }
+  // abc(){
   ngOnInit(): void {
-    
     const recivedData = localStorage.getItem('loginInfo');
     this.loginInfo = JSON.parse(recivedData);
     console.log(this.loginInfo);
-    if(this.loginInfo)
-    {
-      
-       
-      //  this.router.navigate(['/home/live-rate']);
-       Swal.fire('', 'you are already logged in', 'success');
-    
+    if (this.usersdata.newuser === false) {
+      return;
+    } else {
+      if (this.loginInfo) {
+        this.router.navigate(['/home/live-rate']);
+        Swal.fire('', 'you are already logged in', 'success');
+      }
     }
   }
-  
-// }
+
+  // }
 }
