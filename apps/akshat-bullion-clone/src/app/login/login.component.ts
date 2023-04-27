@@ -58,7 +58,7 @@ export class LoginComponent {
               'successfully logged in',
               'success'
             );
-
+            this.userData.userlogin = true;
           } else {
             Swal.fire(
               '',

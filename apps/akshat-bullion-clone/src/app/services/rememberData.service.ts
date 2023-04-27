@@ -7,7 +7,7 @@ export class UserDataService {
   login = {
     LoginUserId: '',
   }
-
+  userlogin = false
   signup = {
     SignupUserName: '',
     SignupUserFirmName: '',

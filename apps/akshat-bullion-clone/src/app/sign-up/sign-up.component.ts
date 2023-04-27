@@ -119,6 +119,7 @@ export class SignUpComponent {
         this.generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
         this.userData.otp = this.generatedOTP;
         console.log(`Generated OTP: ${this.generatedOTP}`);
+        this.userData.userlogin = true;
         this.router.navigate(['/otp']);
       }
     }

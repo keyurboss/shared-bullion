@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 export const appRoutes: Route[] = [
   {
@@ -19,7 +20,7 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        redirectTo: 'app/home/live-rate',
+        redirectTo: 'app/home/about-us',
         pathMatch: 'full',
       },
       {
@@ -31,6 +32,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'app/home/live-rate',
+        canActivate: [AuthGuard],
         loadComponent: () =>
           import('./live-rate/live-rate.component').then(
             (a) => a.LiveRateComponent
@@ -50,6 +52,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'app/home/bank-details',
+        canActivate: [AuthGuard],
         loadComponent: () =>
           import('./bank-details/bank-details.component').then(
             (a) => a.BankdetailsComponent
@@ -73,6 +76,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'otp',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./otp/otp.component').then((a) => a.OtpComponent),
   },

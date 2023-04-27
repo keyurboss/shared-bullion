@@ -79,7 +79,7 @@ export class OtpComponent {
           nextElement.select();
         }
       } else {
-        this.otp = this.otp_string[0] + this.otp_string[1] + this.otp_string[2] + this.otp_string[3]+this.otp_string[4]+this.otp_string[5]
+        this.otp = this.otp_string[0] + this.otp_string[1] + this.otp_string[2] + this.otp_string[3] + this.otp_string[4] + this.otp_string[5]
         inputElement.blur();
       }
     }
@@ -113,6 +113,7 @@ export class OtpComponent {
         'success'
       );
       this.router.navigate(['/login'])
+      this.userData.userlogin = false;
       this.usersdata.saveusersdata(this.userData.sahil).subscribe()
     } else {
       Swal.fire(
