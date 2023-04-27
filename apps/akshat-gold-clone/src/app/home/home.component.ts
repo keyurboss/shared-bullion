@@ -3,7 +3,7 @@ import { CommonModule, NgStyle } from '@angular/common';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { popupServices } from '../service/pop-upmenu.service';
+import { loginServices } from '../service/login.service';
 
 @Component({
   selector: 'akshat-gold-home',
@@ -23,7 +23,7 @@ export class HomeComponent {
   menu = false;
   popup = false;
 
-  constructor(public _testService: popupServices) {}
+  constructor(public _testService: loginServices) {}
 
   popupfn1() {
     this.menu = true;

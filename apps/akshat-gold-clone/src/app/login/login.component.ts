@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'akshat-gold-login',
@@ -19,26 +20,15 @@ import Swal from 'sweetalert2';
     RouterOutlet,
     ReactiveFormsModule,
     RouterLink,
+    HttpClientModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   submitted = false;
-  users = [
-    { id: 'sahil@gmail.com', password: 'sahil' },
-    { id: 'Sahil@gmail.com', password: 'sahil' },
-    { id: 'harsh@gmail.com', password: 'harsh' },
-    { id: 'Harsh@gmail.com', password: 'harsh' },
-    { id: 'vraj@gmail.com', password: 'vraj' },
-    { id: 'Vraj@gmail.com', password: 'vraj' },
-    { id: 'bhavya@gmail.com', password: 'bhavya' },
-    { id: 'Bhavya@gmail.com', password: 'bhavya' },
-    { id: 'pratham@gmail.com', password: 'pratham' },
-    { id: 'Pratham@gmail.com', password: 'pratham' },
-    { id: 'alay@gmail.com', password: 'alay' },
-    { id: 'Alay@gmail.com', password: 'alay' },
-  ];
+ 
+  
   LoginForm = new FormGroup({
     UserId: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -64,22 +54,21 @@ export class LoginComponent {
     } else if (this.password?.invalid) {
       Swal.fire('', 'enter valid password', 'error');
     } else {
-      let found = false;
-      for (let i = 0; i < this.users.length; i++) {
-        if (
-          this.users[i].id === this.UserId?.value &&
-          this.users[i].password === this.password?.value
-        ) {
-          found = true;
-          break;
-        }
-      }
-      if (found) {
-        Swal.fire('', 'Login successful', 'success');
-      } else {
-        Swal.fire('Error', 'User not found', 'error');
-      }
-      console.log(this.LoginForm.value);
+      // this.usersdata.users().subscribe((sahil: any[]) => {
+      //   const user = sahil.find(
+      //     (user) => user.email === this.loginForm.controls.user.value
+      //   );
+      //   if (user) {
+      //     if (user.pass === this.loginForm.controls.password.value) {
+      //       Swal.fire('', 'successfully logged in', 'success');
+      //       this.router.navigate(['/home/live-rate']);
+      //     } else {
+      //       Swal.fire('', 'Incorrect password', 'warning');
+      //     }
+      //   } else {
+      //     Swal.fire('', 'User Not Found', 'error');
+      //   }
+      // });
     }
   }
   ForgotPassword() {

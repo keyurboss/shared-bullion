@@ -1,26 +1,16 @@
-<div class="flex justify-center items-center w-[100vw] h-[100vh]">
-  <div
-    class="flex main justify-center text-16px items-center h-full py-[40px] px-[15%] relative"
-  >
+<div class="flex justify-center items-center w-full h-[100vh]">
+  <div class="flex main justify-center text-16px items-center h-full py-[40px] px-[15%] relative">
     <div class="about_us h-full">
       <div>
-        <img
-          class="absolute left-[50%] top-[50%] opacity-20 h-[635px]"
-          src="../../assets/images/solo-logo.svg"
-        />
+        <img class="absolute left-[50%] top-[75%] opacity-20 h-[635px]" src="../../assets/images/solo-logo.svg"/>
       </div>
       <div class="flex flex-col w-full px-4 mb-[85px] h-[90%]">
         <div class="header text-center font-bold text-[28px]"></div>
-        <div
-          *ngFor="let item of data"
-          class="welcome font-sans pb-[10px] text-[#282828]"
-        >
+        <div *ngFor="let item of data" class="welcome font-sans pb-[10px] text-[#282828]">
           <h2 class="text-[24px] border-b-[2px] border-[#bc9039]">
             {{ item.tittle }}
           </h2>
-          <hr
-            class="w-[15%] max-w-[90px] border-[#bc9039] border-b-[2px] mb-6"
-          />
+          <hr class="w-[15%] max-w-[90px] border-[#bc9039] border-b-[2px] mb-6" />
           <p *ngFor="let para of item.content" class="pb-1 mb-1">
             {{ para }}
           </p>

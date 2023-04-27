@@ -1,0 +1,19 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "body": "sdrgfgd",
+      "postId": 1
+    },
+    {
+      "email": "pr2gmail.com",
+      "pass": "123456",
+      "id": 2
+    },
+    {
+      "email": "pr@gmail.com",
+      "pass": "123456",
+      "id": 3
+    }
+  ]
+}
