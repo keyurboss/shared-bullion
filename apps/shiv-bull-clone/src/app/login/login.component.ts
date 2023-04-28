@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
           if (user.password1 === this.loginForm.controls.password.value) {
             Swal.fire('', 'successfully logged in', 'success');
             this.router.navigate(['/home/live-rate']);
-            this.usersdata.newuser = false
+            this.usersdata.newuser = true;
           } else {
             Swal.fire('', 'Incorrect password', 'warning');
           }
@@ -91,17 +91,38 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('loginInfo', JSON.stringify(items));
     }
   }
-  // abc(){
   ngOnInit(): void {
     const recivedData = localStorage.getItem('loginInfo');
     this.loginInfo = JSON.parse(recivedData);
-    console.log(this.loginInfo);
+  
     if (this.usersdata.newuser === false) {
       return;
     } else {
       if (this.loginInfo) {
         this.router.navigate(['/home/live-rate']);
-        Swal.fire('', 'you are already logged in', 'success');
+        Swal.fire({
+          title: 'you are already logged in',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'New User',
+          denyButtonText: `LogOut`,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Swal.fire('Saved!', '', 'success')
+            this.router.navigate(['/login']);
+            this.usersdata.newuser = false;
+          } else if (result.isDenied) {
+            Swal.fire('You are logged Out', '', 'info');
+            this.usersdata.newuser = false;
+
+            const delitems = (() => {
+              const fieldValue = localStorage.getItem('loginInfo');
+              return fieldValue === null ? [] : JSON.parse(fieldValue);
+            })();
+            delitems.pop();
+            localStorage.setItem('loginInfo', JSON.stringify(delitems));
+          }
+        });
       }
     }
   }
