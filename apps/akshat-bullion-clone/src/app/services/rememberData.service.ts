@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
 export class UserDataService {
   login = {
     LoginUserId: '',
-  }
-  userlogin = false
+  };
+  userlogin = false;
+  newuser = true;
   signup = {
     SignupUserName: '',
     SignupUserFirmName: '',
@@ -17,8 +18,8 @@ export class UserDataService {
     SignupUserPassword: '',
     SignupUserCPassword: '',
     Terms_Conditions: null,
-  }
-  otp = ''
+  };
+  otp = '';
   sahil = {
     Name: '',
     FirmName: '',
@@ -26,5 +27,5 @@ export class UserDataService {
     EmailId: '',
     City: '',
     Password: '',
-  }
+  };
 }

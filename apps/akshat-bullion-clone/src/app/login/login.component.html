@@ -12,7 +12,7 @@
         <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
           <!-- User id field -->
           <div class="input flex justify-center items-center w-full">
-            <input id="loginuserid" placeholder="Enter User id" formControlName="UserId"
+            <input id="loginuserid" placeholder="Enter Emailid/Number" formControlName="UserId"
               [(ngModel)]="this.userData.login.LoginUserId" (keydown)="startingspace($event)"
               onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
               class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
@@ -42,8 +42,9 @@
 
           <!-- checkbox field -->
           <div class="checkbox flex_center flex justify-center items-center cursor-default">
-            <input type="checkbox" id="checkbox" class="ng-untouched ng-pristine ng-valid my-[10px]" /><label
-              for="checkbox" class="ml-[5px] text-[#fff] font-semibold text-[16px]">
+            <input type="checkbox" id="checkbox" formControlName="checkbox"
+              class="ng-untouched ng-pristine ng-valid my-[10px]" /><label for="checkbox"
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]">
               Remember Me</label>
           </div>
 

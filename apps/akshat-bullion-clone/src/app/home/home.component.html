@@ -1,4 +1,4 @@
-<div class="app-home bg-[#0006]">
+<div class="app-home bg-[#0006] relative">
   <div class="app-home-header">
     <akshat-bull-app-header></akshat-bull-app-header>
   </div>
@@ -8,6 +8,8 @@
   <div class="app-footer w-full">
     <akshat-bull-app-footer class="window-footer"></akshat-bull-app-footer>
   </div>
+
+  <!-- ******************************mobile app sidebar**************************** -->
   <div class="sidebar Roboto h-[87%] top-0 bg-black" [class.open]="_testService.status">
     <div class="wrapper flex flex-col justify-end text-[#fff] items-center h-full w-full">
       <div routerLink="app/home/bank-details" (click)="_testService.status = !_testService.status"
@@ -37,4 +39,5 @@
       </div>
     </div>
   </div>
+  <!-- ******************************login alert**************************** -->
 </div>
