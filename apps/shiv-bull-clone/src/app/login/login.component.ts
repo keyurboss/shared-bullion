@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
             Swal.fire('', 'successfully logged in', 'success');
             this.router.navigate(['/home/live-rate']);
             this.usersdata.newuser = true;
+            this.usersdata.isUserLogin = true;
           } else {
             Swal.fire('', 'Incorrect password', 'warning');
           }
@@ -111,9 +112,12 @@ export class LoginComponent implements OnInit {
             // Swal.fire('Saved!', '', 'success')
             this.router.navigate(['/login']);
             this.usersdata.newuser = false;
+            // this.usersdata.isUserLogin = false;
+          
           } else if (result.isDenied) {
             Swal.fire('You are logged Out', '', 'info');
             this.usersdata.newuser = false;
+            this.usersdata.isUserLogin = false;
 
             const delitems = (() => {
               const fieldValue = localStorage.getItem('loginInfo');

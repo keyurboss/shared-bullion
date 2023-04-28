@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 // import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 export const appRoutes: Route[] = [
   {
@@ -14,7 +15,7 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        redirectTo: 'live-rate',
+        redirectTo: 'about',
         pathMatch: 'full',
       },
       {
@@ -41,6 +42,7 @@ export const appRoutes: Route[] = [
           import('./bank-details/bank-details.component').then(
             (a) => a.BankDetailsComponent
           ),
+          canActivate:[AuthGuard]
       },
       {
         path: 'eco-calendar',
@@ -48,6 +50,7 @@ export const appRoutes: Route[] = [
           import('./eco-calendar/eco-calendar.component').then(
             (a) => a.EcoCalendarComponent
           ),
+          canActivate:[AuthGuard]
       },
       {
         path: 'contact-us',
@@ -65,7 +68,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: '**',
-    redirectTo: 'home/live-rate',
+    redirectTo: 'home/about',
     pathMatch: 'full',
   },
 ];

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class loginServices {
+  isUserLogin = false;
   newuser = true;
   url = 'http://localhost:3000/users';
   constructor(private http: HttpClient) {}
