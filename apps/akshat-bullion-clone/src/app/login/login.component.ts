@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public userData: UserDataService,
     private usersdata: UsersDataService
-  ) { }
+  ) {}
   show_Password = true;
   submitted = false;
   LoginForm = new FormGroup({
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
   OnLoginuserSubmit() {
     this.submitted = true;
-    if (this.UserId.dirty === false || this.password.dirty === false) {
+    if (this.UserId.touched === false || this.password.touched === false) {
       Swal.fire(
         'All details are required!',
         'Please fill out all fields!!',
