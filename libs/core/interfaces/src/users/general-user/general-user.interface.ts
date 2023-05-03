@@ -9,12 +9,13 @@ export enum DeviceType {
 }
 export interface GeneralUserType {
   id: GeneralUserId;
-//   bullionId?:str
+  //   bullionId?:str
   firstName?: string;
   lastName?: string;
   firmName?: string;
   contactNumber?: string;
   gstNumber?: string;
+  os?: string;
   deviceId: DeviceId;
   deviceType: DeviceType;
   isAuto: boolean;
