@@ -19,9 +19,12 @@ import { UsersDataService } from '../services/users-data.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
-
   Users: any;
-  constructor(private router: Router, public userData: UserDataService, private usersdata: UsersDataService) {
+  constructor(
+    private router: Router,
+    public userData: UserDataService,
+    private usersdata: UsersDataService
+  ) {
     this.usersdata.users().subscribe((data) => {
       this.Users = data;
     });
@@ -40,9 +43,7 @@ export class SignUpComponent {
     ]),
     EmailId: new FormControl('', [Validators.required, Validators.email]),
     City: new FormControl('', [Validators.required]),
-    Password: new FormControl('', [
-      Validators.required,
-    ]),
+    Password: new FormControl('', [Validators.required]),
     ConfirmPassword: new FormControl(''),
     checkbox: new FormControl(false),
   });
@@ -98,11 +99,7 @@ export class SignUpComponent {
     }
     if (this.SignForm.valid) {
       if (this.Password.value.length < 8) {
-        Swal.fire(
-          'Error',
-          'Plese Enter Min 8 Digit Long Password',
-          'warning'
-        );
+        Swal.fire('Error', 'Plese Enter Min 8 Digit Long Password', 'warning');
       } else if (this.Password.value !== this.ConfirmPassword.value) {
         Swal.fire(
           'Error',
@@ -116,9 +113,15 @@ export class SignUpComponent {
           'warning'
         );
       } else {
-        this.generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+        this.generatedOTP = Math.floor(
+          100000 + Math.random() * 900000
+        ).toString();
         this.userData.otp = this.generatedOTP;
-        alert(`Generated OTP: ${this.generatedOTP}`);
+        Swal.fire(
+          'OTP',
+          `${this.generatedOTP} is your one time password to signup Akshat Bullion.`,
+          'info'
+        );
         this.userData.userlogin = true;
         this.router.navigate(['/otp']);
       }
@@ -129,7 +132,12 @@ export class SignUpComponent {
     if (input === 'Backspace') {
       return;
     }
-    if ((typeof input !== 'undefined' && isNaN(+input)) && event.keyCode != 9 && event.keyCode != 13) {
+    if (
+      typeof input !== 'undefined' &&
+      isNaN(+input) &&
+      event.keyCode != 9 &&
+      event.keyCode != 13
+    ) {
       event.preventDefault();
     }
   }

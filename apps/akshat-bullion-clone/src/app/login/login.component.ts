@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public userData: UserDataService,
     private usersdata: UsersDataService
-  ) { }
+  ) {}
   show_Password = true;
   submitted = false;
   LoginForm = new FormGroup({
@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['app/home/live-rate']);
               Swal.fire('', 'successfully logged in', 'success');
               this.userData.userlogin = true;
+              this.userData.newuser = true;
               if (this.checkbox.value === true) {
                 const items = (() => {
                   const fieldValue = localStorage.getItem('loginInfo');
@@ -94,6 +95,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['app/home/live-rate']);
               Swal.fire('', 'successfully logged in', 'success');
               this.userData.userlogin = true;
+              this.userData.newuser = true;
               if (this.checkbox.value === true) {
                 const items = (() => {
                   const fieldValue = localStorage.getItem('loginInfo');
@@ -120,7 +122,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const recivedData = localStorage.getItem('loginInfo');
     this.loginInfo = JSON.parse(recivedData);
-    console.log(this.loginInfo);
     if (this.userData.newuser === false) {
       return;
     } else {
@@ -134,13 +135,12 @@ export class LoginComponent implements OnInit {
           denyButtonText: `LogOut`,
         }).then((result) => {
           if (result.isConfirmed) {
-            // Swal.fire('Saved!', '', 'success')
             this.router.navigate(['/login']);
             this.userData.newuser = false;
           } else if (result.isDenied) {
             Swal.fire('You are logged Out', '', 'info');
             this.userData.newuser = false;
-
+            this.userData.userlogin = false;
             const delitems = (() => {
               const fieldValue = localStorage.getItem('loginInfo');
               return fieldValue === null ? [] : JSON.parse(fieldValue);

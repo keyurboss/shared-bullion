@@ -1,8 +1,12 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
-  ReactiveFormsModule,
-} from '@angular/forms';
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserDataService } from '../services/rememberData.service';
 import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -21,7 +25,11 @@ export class OtpComponent {
   generatedOTP: string;
 
   @Output() OTP = new EventEmitter<string[]>();
-  constructor(private router: Router, public userData: UserDataService, private usersdata: UsersDataService) {
+  constructor(
+    private router: Router,
+    public userData: UserDataService,
+    private usersdata: UsersDataService
+  ) {
     this.usersdata.users().subscribe((data) => {
       this.Users = data;
     });
@@ -58,7 +66,10 @@ export class OtpComponent {
       inputElement.value = '';
       return;
     }
-    if ((typeof event.key !== 'undefined' && isNaN(+event.key)) || event.key === ' ') {
+    if (
+      (typeof event.key !== 'undefined' && isNaN(+event.key)) ||
+      event.key === ' '
+    ) {
       event.preventDefault();
       return;
     }
@@ -66,7 +77,6 @@ export class OtpComponent {
       if (inputElement.value === '') {
         inputElement.value = event.key;
         this.otp_string[index] = event.key;
-
       } else {
         this.otp_string[index] = inputElement.value;
       }
@@ -79,7 +89,13 @@ export class OtpComponent {
           nextElement.select();
         }
       } else {
-        this.otp = this.otp_string[0] + this.otp_string[1] + this.otp_string[2] + this.otp_string[3] + this.otp_string[4] + this.otp_string[5]
+        this.otp =
+          this.otp_string[0] +
+          this.otp_string[1] +
+          this.otp_string[2] +
+          this.otp_string[3] +
+          this.otp_string[4] +
+          this.otp_string[5];
         inputElement.blur();
       }
     }
@@ -99,11 +115,15 @@ export class OtpComponent {
   ReSendOTP() {
     this.generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
     this.userData.otp = this.generatedOTP;
-    console.log(`Generated OTP: ${this.generatedOTP}`);
+    Swal.fire(
+      'NEW OTP',
+      `${this.generatedOTP} is your one time password to signup Akshat Bullion.`,
+      'info'
+    );
   }
   change() {
-    this.userData.signup.SignupUserMobileNumber = '',
-      this.router.navigate(['/sign-up'])
+    (this.userData.signup.SignupUserMobileNumber = ''),
+      this.router.navigate(['/sign-up']);
   }
   usersubmitotp() {
     if (this.otp == this.userData.otp) {
@@ -112,16 +132,11 @@ export class OtpComponent {
         'You have successfully signed up',
         'success'
       );
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
       this.userData.userlogin = false;
-      this.usersdata.saveusersdata(this.userData.sahil).subscribe()
+      this.usersdata.saveusersdata(this.userData.sahil).subscribe();
     } else {
-      Swal.fire(
-        'OTP is invalid',
-        'Please enter correct password',
-        'warning'
-      );
+      Swal.fire('OTP is invalid', 'Please enter correct password', 'warning');
     }
   }
 }
-

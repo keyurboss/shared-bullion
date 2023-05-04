@@ -32,7 +32,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'app/home/live-rate',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         loadComponent: () =>
           import('./live-rate/live-rate.component').then(
             (a) => a.LiveRateComponent
@@ -52,7 +52,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: 'app/home/bank-details',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         loadComponent: () =>
           import('./bank-details/bank-details.component').then(
             (a) => a.BankdetailsComponent
