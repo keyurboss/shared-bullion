@@ -6,6 +6,7 @@ import { RateTables2Component } from '@rps/bullion-rate-tables/table2';
 import { RateTables4Component } from '@rps/bullion-rate-tables/table4';
 import { RateTables5Component } from '@rps/bullion-rate-tables/table5';
 import { RateTables6Component } from '@rps/bullion-rate-tables/table6';
+// import { RateTables11Component } from '@rps/bullion-rate-tables/table11';
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 
@@ -20,6 +21,7 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
     RateTables4Component,
     RateTables5Component,
     RateTables6Component,
+    // RateTables11Component,
   ],
   providers: [
     {
