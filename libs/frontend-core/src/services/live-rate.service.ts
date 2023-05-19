@@ -46,6 +46,7 @@ export abstract class LiveRateService {
     return this._RatesReady;
   }
   protected set RatesReady(value) {
+    // debugger;
     this._RatesReady = value;
     this.RatesReadyBehaviourSubject.next(value);
   }
@@ -53,8 +54,9 @@ export abstract class LiveRateService {
   constructor(
     lastRate: SymboleWiseRate,
     envvariable: EnvInterface,
-    protected initialiseRemoteConnection = true
+    initialiseService = true
   ) {
+    this.CreatSubjects();
     if (lastRate !== null && typeof lastRate !== 'undefined') {
       this.LastRate = new Map(JsonToItrable(lastRate));
       this.RatesReady = true;
@@ -66,8 +68,20 @@ export abstract class LiveRateService {
     ) {
       return;
     }
-    this.init();
+    if (initialiseService) {
+      this.init();
+    }
   }
+  private async init() {
+    if (this.RatesReady === false) {
+      await this.getLastRates().then((rate) => {
+        this.LastRate = new Map(JsonToItrable(rate));
+        this.RatesReady = true;
+      });
+    }
+    this.InitRemoteConnection();
+  }
+
   setRate(Rate: Map<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>) {
     for (const [symb, current_rate] of Rate) {
       if (typeof this._LastRate.get(symb) === 'undefined') {
@@ -81,7 +95,7 @@ export abstract class LiveRateService {
       for (const [rateType, new_rate] of JsonToItrable<number, RateTypeKeys>(
         current_rate
       )) {
-        if (typeof old[rateType] === 'undefined') {
+        if (typeof old[rateType] === 'undefined' || old[rateType].rate === 0) {
           old[rateType] = {
             rate: new_rate,
             color: HighLowColorType.Default,
@@ -106,6 +120,7 @@ export abstract class LiveRateService {
         old[rateType].timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
           cro1[rateType].color = HighLowColorType.Default;
+          cro1[rateType].timeOutRef = null;
           this.RateObser$[symb]?.next(cro1);
         }, 900);
       }
@@ -114,18 +129,6 @@ export abstract class LiveRateService {
       if (typeof obj !== 'undefined') {
         Object.assign(obj, current_rate);
       }
-    }
-  }
-  private async init() {
-    this.CreatSubjects();
-    if (this.RatesReady === false) {
-      await this.getLastRates().then((rate) => {
-        this.LastRate = new Map(JsonToItrable(rate));
-        this.RatesReady = true;
-      });
-    }
-    if(this.initialiseRemoteConnection){
-      this.InitRemoteConnection();
     }
   }
 

@@ -9,7 +9,6 @@
   --rate-low-back-color: #008000;
   --font-family: Roboto, Helvetica Neue, sans-serif;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +32,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .column {
   display: flex !important;
   flex-direction: column !important;
@@ -108,7 +106,6 @@
   color: var(--rate-high-font-color) !important;
   background-color: var(--rate-high-back-color) !important;
 }
-
 .rate_low {
   color: var(--rate-low-font-color) !important;
   background-color: var(--rate-low-back-color) !important;
@@ -122,7 +119,6 @@
 
   .header_left_name {
     margin-left: 6px;
-
   }
 
   .footer_price_uper {
@@ -131,7 +127,6 @@
 
   .header {
     font-size: 15px;
-    ;
   }
 }
 
@@ -143,12 +138,10 @@
 
   .header {
     font-size: 14px;
-    ;
   }
 
   .header_left_name {
     margin-left: 6px;
-
   }
 
   .footer_price_uper {
