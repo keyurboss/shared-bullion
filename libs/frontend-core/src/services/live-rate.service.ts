@@ -28,13 +28,13 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
-  protected _LastRate: Record<RateBaseSymboles, BaseSymbolePriceInterface> =
-    {} as never;
-  get LastRate(): Record<RateBaseSymboles, BaseSymbolePriceInterface> {
+  protected _LastRate: Map<RateBaseSymboles, BaseSymbolePriceInterface> =
+    new Map();
+  get LastRate(): Map<RateBaseSymboles, BaseSymbolePriceInterface> {
     return this._LastRate;
   }
   protected set LastRate(
-    value: Record<RateBaseSymboles, BaseSymbolePriceInterface>
+    value: Map<RateBaseSymboles, BaseSymbolePriceInterface>
   ) {
     this._LastRate = value;
     this.setRate(value);
@@ -46,6 +46,7 @@ export abstract class LiveRateService {
     return this._RatesReady;
   }
   protected set RatesReady(value) {
+    // debugger;
     this._RatesReady = value;
     this.RatesReadyBehaviourSubject.next(value);
   }
@@ -53,10 +54,11 @@ export abstract class LiveRateService {
   constructor(
     lastRate: SymboleWiseRate,
     envvariable: EnvInterface,
-    protected initialiseRemoteConnection = true
+    initialiseService = true
   ) {
+    this.CreatSubjects();
     if (lastRate !== null && typeof lastRate !== 'undefined') {
-      this.LastRate = lastRate;
+      this.LastRate = new Map(JsonToItrable(lastRate));
       this.RatesReady = true;
     }
     if (
@@ -66,68 +68,67 @@ export abstract class LiveRateService {
     ) {
       return;
     }
-    this.init();
+    if (initialiseService) {
+      this.init();
+    }
   }
-  setRate(
-    Rate: Partial<Record<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>>
-  ) {
-    for (const [symb, current_rate] of JsonToItrable<
-      BaseSymbolePriceInterface,
-      RateBaseSymboles
-    >(Rate)) {
-      if (typeof this._LastRate[symb] === 'undefined') {
-        this._LastRate[symb] = current_rate;
+  private async init() {
+    if (this.RatesReady === false) {
+      await this.getLastRates().then((rate) => {
+        this.LastRate = new Map(JsonToItrable(rate));
+        this.RatesReady = true;
+      });
+    }
+    this.InitRemoteConnection();
+  }
+
+  setRate(Rate: Map<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>) {
+    for (const [symb, current_rate] of Rate) {
+      if (typeof this._LastRate.get(symb) === 'undefined') {
+        this._LastRate.set(symb, current_rate as BaseSymbolePriceInterface);
         continue;
       }
-      let cro = this.RateObser$[symb]?.value;
-
-      if (cro === null || typeof cro === 'undefined') {
-        cro = {} as never;
+      let old = this.RateObser$[symb]?.value;
+      if (old === null || typeof old === 'undefined') {
+        old = {} as never;
       }
       for (const [rateType, new_rate] of JsonToItrable<number, RateTypeKeys>(
         current_rate
       )) {
-        if (typeof cro[rateType] === 'undefined') {
-          cro[rateType] = {
+        if (typeof old[rateType] === 'undefined' || old[rateType].rate === 0) {
+          old[rateType] = {
             rate: new_rate,
             color: HighLowColorType.Default,
             timeOutRef: null,
           };
           continue;
         }
-        if (cro[rateType].rate === current_rate[rateType]) {
+        const old_rate = old[rateType].rate;
+        if (old_rate === new_rate) {
           continue;
         }
-        if (cro[rateType].rate < current_rate[rateType]) {
-          cro[rateType].color = HighLowColorType.Green;
-        } else if (this._LastRate[symb][rateType] > current_rate[rateType]) {
-          cro[rateType].color = HighLowColorType.Red;
+        if (old_rate < new_rate) {
+          old[rateType].color = HighLowColorType.Green;
+        } else if (old_rate > new_rate) {
+          old[rateType].color = HighLowColorType.Red;
         }
-        if (cro[rateType].timeOutRef !== null) {
-          clearTimeout(cro[rateType].timeOutRef);
-          cro[rateType].timeOutRef = null;
+        if (old[rateType].timeOutRef !== null) {
+          clearTimeout(old[rateType].timeOutRef);
+          old[rateType].timeOutRef = null;
         }
-        cro[rateType].rate = current_rate[rateType];
-        cro[rateType].timeOutRef = setTimeout(() => {
+        old[rateType].rate = new_rate;
+        old[rateType].timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
           cro1[rateType].color = HighLowColorType.Default;
+          cro1[rateType].timeOutRef = null;
           this.RateObser$[symb]?.next(cro1);
         }, 900);
       }
-      this.RateObser$[symb]?.next(cro);
-      Object.assign(this._LastRate[symb], current_rate);
-    }
-  }
-  private async init() {
-    this.CreatSubjects();
-    if (this.RatesReady === false) {
-      await this.getLastRates().then((rate) => {
-        this.LastRate = rate;
-        this.RatesReady = true;
-      });
-    }
-    if(this.initialiseRemoteConnection){
-      this.InitRemoteConnection();
+      this.RateObser$[symb]?.next(old);
+      const obj = this._LastRate.get(symb);
+      if (typeof obj !== 'undefined') {
+        Object.assign(obj, current_rate);
+      }
     }
   }
 
