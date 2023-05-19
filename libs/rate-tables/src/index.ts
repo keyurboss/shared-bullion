@@ -8,3 +8,4 @@ export * from './lib/rate-tables-7/rate-tables-7.component';
 export * from './lib/rate-tables-8/rate-tables-8.component';
 export * from './lib/rate-tables-9/rate-tables-9.component';
 export * from './lib/rate-tables-10/rate-tables-10.component';
+export * from './lib/rate-tables-11/rate-tables-11.component';
