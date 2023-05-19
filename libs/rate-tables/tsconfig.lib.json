@@ -13,5 +13,5 @@
     "jest.config.ts",
     "src/**/*.test.ts"
   ],
-  "include": ["src/**/*.ts", "src/lib/rate-tables-4/rate-tables-4.component.ts"]
+  "include": ["src/**/*.ts"]
 }
