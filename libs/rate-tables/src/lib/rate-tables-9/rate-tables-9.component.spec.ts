@@ -1,15 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RateTables6Component } from './rate-tables-6.component';
+import { RateTables9Component } from './rate-tables-9.component';
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 
 describe('RateTablesComponent', () => {
-  let component: RateTables6Component;
-  let fixture: ComponentFixture<RateTables6Component>;
+  let component: RateTables9Component;
+  let fixture: ComponentFixture<RateTables9Component>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RateTables6Component],
+      imports: [RateTables9Component],
       providers: [
         {
           provide: LiveRateService,
@@ -18,7 +19,7 @@ describe('RateTablesComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RateTables6Component);
+    fixture = TestBed.createComponent(RateTables9Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
