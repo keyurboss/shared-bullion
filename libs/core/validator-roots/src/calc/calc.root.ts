@@ -1,42 +1,45 @@
 import {
-  GenerateExchangeBackwordCalcString,
-  GenerateExchangeForwordCalcString,
   CshGenStrings,
   CshID,
   CshPremiumBuySellSnapshot,
-  CshType,
+  GenerateExchangeBackwordCalcString,
+  GenerateExchangeForwordCalcString,
 } from '@rps/bullion-interfaces';
-import { Expose, Type, instanceToPlain } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import {
   IsEnum,
   IsNotEmptyObject,
   IsNumber,
-  IsUUID,
   ValidateNested,
 } from 'class-validator';
+import {
+  CalculatedOnPriceof,
+  CshVariableSnapshot,
+} from '@rps/bullion-interfaces';
 import { groupDbToPlain, groupToPlain } from '../core.interface';
+import { BaseEntity } from '../core/base.entity';
+import { v4 } from 'uuid';
+import { DeepOmit } from 'ts-essentials';
 
-export class CshPremiumBuySellEntity {
+export class CshPremiumBuySellEntity implements CshPremiumBuySellSnapshot {
+  tcs = 0;
+  tds = 0;
   @Expose()
   @IsNumber()
   tax!: number;
-  @Expose()
-  @IsNumber()
-  tcs!: number;
-  @Expose()
-  @IsNumber()
-  tds!: number;
+
   @Expose()
   @IsNumber()
   premium!: number;
 }
 
-export class CshVariableSnapshotEntity {
+export class CshVariableSnapshotEntity implements CshVariableSnapshot {
   @Expose()
   @IsNotEmptyObject()
   @ValidateNested()
   @Type(() => CshPremiumBuySellEntity)
   buy!: CshPremiumBuySellSnapshot;
+
   @Expose()
   @IsNotEmptyObject()
   @ValidateNested()
@@ -44,34 +47,34 @@ export class CshVariableSnapshotEntity {
   sell!: CshPremiumBuySellSnapshot;
 }
 
-export class CalcEntity {
+export type CalcEntityOptions = Pick<
+  CalcEntity,
+  'id' | 'type' | 'variableSnapshot' | 'createdAt' | 'modifiedAt'
+>;
+export class CalcEntity extends BaseEntity<CshID> {
   @Expose()
-  @IsUUID()
-  CshId!: CshID;
-
-  @Expose()
-  @IsEnum(CshType)
-  CshType!: CshType;
+  @IsEnum(CalculatedOnPriceof)
+  type!: CalculatedOnPriceof;
 
   @Expose()
   @IsNotEmptyObject()
   @ValidateNested()
   @Type(() => CshVariableSnapshotEntity)
-  CshVariableSnapshot!: CshVariableSnapshotEntity;
+  variableSnapshot!: CshVariableSnapshotEntity;
 
   @Expose({
     groups: [groupDbToPlain, groupToPlain],
   })
-  get CshForwordGenStrings(): CshGenStrings {
-    if (this.CshType === CshType.fixed) {
+  get ForwordGenStrings(): CshGenStrings {
+    if (this.type === CalculatedOnPriceof.FIX) {
       return {
-        buy: this.CshVariableSnapshot.buy.premium.toString(),
-        sell: this.CshVariableSnapshot.sell.premium.toString(),
+        buy: this.variableSnapshot.buy.premium.toString(),
+        sell: this.variableSnapshot.sell.premium.toString(),
       };
     } else {
       return {
-        buy: GenerateExchangeForwordCalcString(this.CshVariableSnapshot.buy),
-        sell: GenerateExchangeForwordCalcString(this.CshVariableSnapshot.sell),
+        buy: GenerateExchangeForwordCalcString(this.variableSnapshot.buy),
+        sell: GenerateExchangeForwordCalcString(this.variableSnapshot.sell),
       };
     }
   }
@@ -79,24 +82,63 @@ export class CalcEntity {
   @Expose({
     groups: [groupDbToPlain, groupToPlain],
   })
-  get CshBackwordGenStrings(): CshGenStrings {
-    if (this.CshType === CshType.exec) {
+  get BackwordGenStrings(): CshGenStrings {
+    if (this.type === CalculatedOnPriceof.FIX) {
       return {
-        buy: GenerateExchangeBackwordCalcString(this.CshVariableSnapshot.buy),
-        sell: GenerateExchangeBackwordCalcString(this.CshVariableSnapshot.sell),
+        buy: this.variableSnapshot.buy.premium.toString(),
+        sell: this.variableSnapshot.sell.premium.toString(),
       };
     }
+
     return {
-      buy: this.CshVariableSnapshot.buy.premium.toString(),
-      sell: this.CshVariableSnapshot.sell.premium.toString(),
+      buy: GenerateExchangeBackwordCalcString(this.variableSnapshot.buy),
+      sell: GenerateExchangeBackwordCalcString(this.variableSnapshot.sell),
     };
   }
+  static generateID() {
+    return v4() as CshID;
+  }
 
-  toJson() {
-    return instanceToPlain(this, {
-      excludeExtraneousValues: true,
-      exposeUnsetFields: false,
-      groups: [groupDbToPlain, groupToPlain],
+  static from({
+    id = v4() as CshID,
+    type,
+    variableSnapshot,
+    createdAt,
+    modifiedAt,
+  }: CalcEntityOptions) {
+    const entity = new CalcEntity();
+    entity.id = id;
+    entity.type = type;
+    entity.variableSnapshot = variableSnapshot;
+    entity.createdAt = createdAt;
+    entity.modifiedAt = modifiedAt;
+    return entity;
+  }
+  static updateEntity(
+    options: Omit<CalcEntityOptions, 'modifiedAt'>,
+    modifiedAt = new Date()
+  ) {
+    return CalcEntity.from({
+      ...options,
+      modifiedAt,
+    });
+  }
+  static createEntity(
+    options: DeepOmit<
+      CalcEntityOptions,
+      {
+        createdAt: true;
+        modifiedAt: true;
+        Id: true;
+      }
+    >,
+    createdAt = new Date(),
+    id = CalcEntity.generateID()
+  ) {
+    return CalcEntity.updateEntity({
+      ...options,
+      createdAt,
+      id,
     });
   }
 }
