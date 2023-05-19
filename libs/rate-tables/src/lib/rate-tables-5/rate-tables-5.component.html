@@ -1,12 +1,1 @@
-<div class="main_div">
-    <div class="box">
-        <div class="box_header">
-            <h3 class="">{{Product_name}}</h3>
-        </div>
-        <div class="box_footer" *ngIf="GOLD | async; let gold">
-            <div class="box_footer_uperitem" [class.rate_high]="gold['bid'].color === 'Green'"
-                [class.rate_low]="gold['bid'].color === 'Red'">{{gold['ask'].rate}}</div>
-            <div class="box_footer_loewritem">{{gold['last-high'].rate}} / {{gold['last-low'].rate}}</div>
-        </div>
-    </div>
-</div>
+<p>rate-tables works!</p>
