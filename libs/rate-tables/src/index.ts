@@ -5,3 +5,4 @@ export * from './lib/rate-tables-4/rate-tables-4.component';
 export * from './lib/rate-tables-5/rate-tables-5.component';
 export * from './lib/rate-tables-6/rate-tables-6.component';
 export * from './lib/rate-tables-7/rate-tables-7.component';
+export * from './lib/rate-tables-9/rate-tables-9.component';
