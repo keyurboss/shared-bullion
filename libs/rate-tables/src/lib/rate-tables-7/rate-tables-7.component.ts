@@ -23,7 +23,7 @@ export class RateTables7Component {
   }
   silver_data=[
       {
-        name: "SILVER. BAR 99 TCS",
+        name: "SILVER. BARTCS",
       },
       {
         name: "Silver Peti RJT TCS",
