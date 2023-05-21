@@ -27,7 +27,7 @@ describe('ABS LiveRateService', () => {
     });
     test('New Value is Hight It Should Be Green', async () => {
       const GOLD = service.LastRate.get(RateBaseSymboles.GOLD);
-      const newValue = +faker.random.numeric(1) + (GOLD?.ask ?? 0);
+      const newValue = +faker.string.numeric(1) + (GOLD?.ask ?? 0);
       // service.RateObser$.GOLD.subscribe(console.log);
       const next1 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(1)));
       const next2 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(2)));
@@ -41,7 +41,7 @@ describe('ABS LiveRateService', () => {
           ],
         ])
       );
-      expect(await next1).toStrictEqual(
+      expect(next1).resolves.toStrictEqual(
         expect.objectContaining({
           ask: expect.objectContaining({
             rate: newValue,
@@ -50,7 +50,7 @@ describe('ABS LiveRateService', () => {
           }),
         })
       );
-      expect(await next2).toStrictEqual(
+      expect(next2).resolves.toStrictEqual(
         expect.objectContaining({
           ask: expect.objectContaining({
             rate: newValue,
@@ -59,10 +59,11 @@ describe('ABS LiveRateService', () => {
           }),
         })
       );
+      await Promise.all([next1,next2])
     });
     test('New Value is Hight It Should Be Red', async () => {
       const GOLD = service.LastRate.get(RateBaseSymboles.GOLD);
-      const newValue = (GOLD?.ask ?? 0) - +faker.random.numeric(1);
+      const newValue = (GOLD?.ask ?? 0) - +faker.string.numeric(1);
       // service.RateObser$.GOLD.subscribe(console.log);
       const next1 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(1)));
       const next2 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(2)));
@@ -76,16 +77,16 @@ describe('ABS LiveRateService', () => {
           ],
         ])
       );
-      expect(await next1).toStrictEqual(
+      expect(next1).resolves.toStrictEqual(
         expect.objectContaining({
           ask: expect.objectContaining({
             rate: newValue,
             color: HighLowColorType.Red,
-            timeOutRef: expect.anything(),
+            timeOutRef: expect.any(Number),
           }),
         })
       );
-      expect(await next2).toStrictEqual(
+      expect(next2).resolves.toStrictEqual(
         expect.objectContaining({
           ask: expect.objectContaining({
             rate: newValue,
@@ -94,6 +95,7 @@ describe('ABS LiveRateService', () => {
           }),
         })
       );
+      await Promise.all([next1,next2])
     });
   });
   describe('Auto Connect to Server and Get Last Rate', () => {
@@ -105,8 +107,6 @@ describe('ABS LiveRateService', () => {
       getLastRates(): Promise<
         Record<RateBaseSymboles, BaseSymbolePriceInterface>
       > {
-        console.log('oughsadiouaghsd');
-        
         return mockMethods.getLastRates();
       }
       InitRemoteConnection(): void {
@@ -134,8 +134,7 @@ describe('ABS LiveRateService', () => {
         null as never,
         true
       );
-      console.log('asdhuo');
-      service.RatesReady$.subscribe(console.log)
+      // service.RatesReady$.subscribe(console.log)
       expect(service.RatesReady).toStrictEqual(false);
       const initialValue =  firstValueFrom(service.RatesReady$);
       const afterLastRate = firstValueFrom(
