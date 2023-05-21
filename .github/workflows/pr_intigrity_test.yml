@@ -30,13 +30,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        id: set-shas
-        uses: nrwl/nx-set-shas@v3
-        with:
-          main-branch-name: main
-
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -44,6 +37,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: set-shas
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
 
       - name: Yarn Affected ${{ matrix.target }}
         run: yarn nx affected --target=${TARGET} --base=${{ steps.set-shas.outputs.base }} --head=${{ steps.set-shas.outputs.head }}
@@ -67,17 +66,16 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        id: set-shas
-        uses: nrwl/nx-set-shas@v3
-        with:
-          main-branch-name: main
-
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+     - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: set-shas
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
 
       - name: Install dependencies
         run: yarn install
