@@ -7,7 +7,7 @@ describe(CalcEntity.name, () => {
   let options: CalcEntityOptions;
   beforeEach(() => {
     options = {
-      id: faker.datatype.uuid() as CshID,
+      id: faker.string.uuid() as CshID,
       createdAt: faker.date.past(),
       modifiedAt: faker.date.recent(),
       variableSnapshot: {
@@ -66,7 +66,7 @@ describe(CalcEntity.name, () => {
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
     test('Id is Passed', () => {
-      const id = faker.datatype.uuid() as CshID;
+      const id = faker.string.uuid() as CshID;
       const entity = CalcEntity.createEntity(options, undefined, id);
       expect(entity).toBeInstanceOf(CalcEntity);
       expect(entity.type).toStrictEqual(options.type);
@@ -76,7 +76,7 @@ describe(CalcEntity.name, () => {
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
     test('Created Date and Id is Passed', () => {
-      const id = faker.datatype.uuid() as CshID;
+      const id = faker.string.uuid() as CshID;
       const entity = CalcEntity.createEntity(options, options.createdAt, id);
       expect(entity).toBeInstanceOf(CalcEntity);
       expect(entity.type).toStrictEqual(options.type);
