@@ -3,13 +3,13 @@ import {
     DeviceId,
     DeviceType,
     GeneralUserId,
+    GstNumber,
     GeneralUserType,
 } from '@rps/bullion-interfaces';
 import { Expose } from 'class-transformer';
 import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { GstNumber } from '../../../interfaces/src/users/general-user/general-user.interface';
 import { BaseEntity } from '../core/base.entity';
 
 // eslint-disable-next-line @typescript-eslint/ban-types

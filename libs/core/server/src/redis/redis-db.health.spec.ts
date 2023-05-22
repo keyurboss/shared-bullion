@@ -1,7 +1,6 @@
 import { HealthIndicatorResult, TimeoutError } from '@nestjs/terminus';
-import { faker } from '@faker-js/faker';
-
 import { RedisDbHealthIndicator } from './redis-db.health';
+import { randUserName } from '@ngneat/falso';
 
 describe(RedisDbHealthIndicator.name, () => {
   let redisDbHealthIndicator: RedisDbHealthIndicator;
@@ -18,7 +17,7 @@ describe(RedisDbHealthIndicator.name, () => {
         redisDbServiceMock as never
       );
 
-      key = faker.internet.userName();
+      key = randUserName();
       resultPromise = redisDbHealthIndicator.isHealthy(key);
     });
 
@@ -46,7 +45,7 @@ describe(RedisDbHealthIndicator.name, () => {
         redisDbServiceMock as never
       );
 
-      key = faker.internet.userName();
+      key = randUserName();
       resultPromise = redisDbHealthIndicator.isHealthy(key);
     });
 

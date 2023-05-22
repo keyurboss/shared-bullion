@@ -70,6 +70,7 @@
     "@nestjs/core": "9.4.1",
     "@nestjs/platform-express": "9.4.1",
     "@nestjs/terminus": "^9.2.2",
+    "@ngneat/falso": "^6.4.0",
     "@nx/angular": "16.2.1",
     "@rps/angular-nav-bars": "^1.0.3",
     "axios": "^1.4.0",

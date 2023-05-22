@@ -1,36 +1,36 @@
 import { beforeEach, describe } from '@jest/globals';
-import { CalcEntity, CalcEntityOptions } from './calc.root';
-import { faker } from '@faker-js/faker';
+import { rand, randNumber, randPastDate, randRecentDate, randUuid } from '@ngneat/falso';
 import { CalculatedOnPriceof, CshID } from '@rps/bullion-interfaces';
+import { CalcEntity, CalcEntityOptions } from './calc.root';
 
 describe(CalcEntity.name, () => {
   let options: CalcEntityOptions;
   beforeEach(() => {
     options = {
-      id: faker.string.uuid() as CshID,
-      createdAt: faker.date.past(),
-      modifiedAt: faker.date.recent(),
+      id: randUuid() as CshID,
+      createdAt:  randPastDate(),
+      modifiedAt: randRecentDate(),
       variableSnapshot: {
         buy: {
-          tcs: faker.number.int(),
-          tds: faker.number.int(),
-          premium: faker.number.int(),
-          tax: faker.number.int({
+          tcs: randNumber(),
+          tds: randNumber(),
+          premium: randNumber(),
+          tax: randNumber({
             max: 10,
             min: 3,
           }),
         },
         sell: {
-          tcs: faker.number.int(),
-          tds: faker.number.int(),
-          premium: faker.number.int(),
-          tax: faker.number.int({
+          tcs: randNumber(),
+          tds: randNumber(),
+          premium: randNumber(),
+          tax: randNumber({
             max: 10,
             min: 3,
           }),
         },
       },
-      type: faker.helpers.arrayElement<CalculatedOnPriceof>(
+      type: rand(
         Object.values(CalculatedOnPriceof)
       ),
     };
@@ -66,7 +66,7 @@ describe(CalcEntity.name, () => {
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
     test('Id is Passed', () => {
-      const id = faker.string.uuid() as CshID;
+      const id = randUuid() as CshID;
       const entity = CalcEntity.createEntity(options, undefined, id);
       expect(entity).toBeInstanceOf(CalcEntity);
       expect(entity.type).toStrictEqual(options.type);
@@ -76,7 +76,7 @@ describe(CalcEntity.name, () => {
       expect(entity.modifiedAt).not.toStrictEqual(options.modifiedAt);
     });
     test('Created Date and Id is Passed', () => {
-      const id = faker.string.uuid() as CshID;
+      const id = randUuid() as CshID;
       const entity = CalcEntity.createEntity(options, options.createdAt, id);
       expect(entity).toBeInstanceOf(CalcEntity);
       expect(entity.type).toStrictEqual(options.type);
