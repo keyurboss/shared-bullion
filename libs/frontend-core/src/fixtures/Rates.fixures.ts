@@ -19,14 +19,14 @@ export class RatesFixture {
     },
     previous: Partial<BaseSymbolePriceInterface> = {}
   ): BaseSymbolePriceInterface {
-    const ask = faker.datatype.number({
+    const ask = faker.number.float({
       max: range.top,
       min: range.bottom,
       precision: range.points,
     });
     const bid =
       ask -
-      faker.datatype.number({
+      faker.number.float({
         max: bidAskDiff.top,
         min: bidAskDiff.bottom,
         precision: bidAskDiff.points,
@@ -54,14 +54,14 @@ export class RatesFixture {
       bid,
       close:
         previous.close ??
-        faker.datatype.number({
+        faker.number.float({
           max: range.top,
           min: range.bottom,
           precision: range.points,
         }),
       open:
         previous.open ??
-        faker.datatype.number({
+        faker.number.float({
           max: range.top,
           min: range.bottom,
           precision: range.points,
