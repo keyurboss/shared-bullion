@@ -1,21 +1,21 @@
-import {JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { JsonPipe, AsyncPipe, NgClass, NgFor, NgIf, CommonModule } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { 
+import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core/services/live-rate.service';
 import { Observable } from 'rxjs';
- interface data{
-  headerName:string;
-  details:{
+interface data {
+  headerName: string;
+  details: {
 
-    Name:string;
+    Name: string;
   }[]
- }
+}
 @Component({
   selector: 'rps-bull-rate-tables-8',
   standalone: true,
-  imports: [NgClass, NgFor, AsyncPipe, NgIf, JsonPipe],
+  imports: [NgClass, NgFor, AsyncPipe, NgIf, JsonPipe, CommonModule],
   encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-8.component.html',
   styleUrls: ['./rate-tables-8.component.scss'],
@@ -31,31 +31,31 @@ export class RateTables8Component {
     red: true,
     green: false,
   };
- table : data[]=[
-  {
-    headerName:'GOLD PRODUCT',
-    details:[{
+  table: data[] = [
+    {
+      headerName: 'GOLD PRODUCT',
+      details: [{
 
-      Name:'IMP 999 RTGS (TCS)',
-    },{
+        Name: 'IMP 999 RTGS (TCS)',
+      }, {
 
-        Name:'LOCAL RTGS (TCS)',
+        Name: 'LOCAL RTGS (TCS)',
       },
       ]
     },
     {
-      headerName:'SILVER PRODUCT',
-      details:[{
-  
-        Name:'PETI 30KG RTGS (TCS)',
-        },{
-  
-          Name:'CHORSA RTGS (TCS)',
-        }]
-      },
-    
-        
-        
+      headerName: 'SILVER PRODUCT',
+      details: [{
+
+        Name: 'PETI 30KG RTGS (TCS)',
+      }, {
+
+        Name: 'CHORSA RTGS (TCS)',
+      }]
+    },
+
+
+
   ]
 }
 //   {
