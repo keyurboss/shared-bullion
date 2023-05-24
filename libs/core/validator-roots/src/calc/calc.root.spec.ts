@@ -12,19 +12,19 @@ describe(CalcEntity.name, () => {
       modifiedAt: faker.date.recent(),
       variableSnapshot: {
         buy: {
-          tcs: faker.datatype.number(),
-          tds: faker.datatype.number(),
-          premium: faker.datatype.number(),
-          tax: faker.datatype.number({
+          tcs: faker.number.int(),
+          tds: faker.number.int(),
+          premium: faker.number.int(),
+          tax: faker.number.int({
             max: 10,
             min: 3,
           }),
         },
         sell: {
-          tcs: faker.datatype.number(),
-          tds: faker.datatype.number(),
-          premium: faker.datatype.number(),
-          tax: faker.datatype.number({
+          tcs: faker.number.int(),
+          tds: faker.number.int(),
+          premium: faker.number.int(),
+          tax: faker.number.int({
             max: 10,
             min: 3,
           }),

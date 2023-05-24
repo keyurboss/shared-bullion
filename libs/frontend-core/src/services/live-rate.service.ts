@@ -95,7 +95,9 @@ export abstract class LiveRateService {
       for (const [rateType, new_rate] of JsonToItrable<number, RateTypeKeys>(
         current_rate
       )) {
-        if (typeof old[rateType] === 'undefined' || old[rateType].rate === 0) {
+        const old_rateObject = old[rateType];
+
+        if (typeof old_rateObject === 'undefined' || old_rateObject.rate === 0) {
           old[rateType] = {
             rate: new_rate,
             color: HighLowColorType.Default,
@@ -103,24 +105,28 @@ export abstract class LiveRateService {
           };
           continue;
         }
-        const old_rate = old[rateType].rate;
-        if (old_rate === new_rate) {
+        if (old_rateObject.rate === new_rate) {
           continue;
         }
-        if (old_rate < new_rate) {
-          old[rateType].color = HighLowColorType.Green;
-        } else if (old_rate > new_rate) {
-          old[rateType].color = HighLowColorType.Red;
+        if (old_rateObject.rate < new_rate) {
+          old_rateObject.color = HighLowColorType.Green;
+        } else if (old_rateObject.rate > new_rate) {
+          old_rateObject.color = HighLowColorType.Red;
         }
-        if (old[rateType].timeOutRef !== null) {
-          clearTimeout(old[rateType].timeOutRef);
-          old[rateType].timeOutRef = null;
+        if (old_rateObject.timeOutRef !== null) {
+          clearTimeout(old_rateObject.timeOutRef);
+          old_rateObject.timeOutRef = null;
         }
-        old[rateType].rate = new_rate;
-        old[rateType].timeOutRef = setTimeout(() => {
+        
+        old_rateObject.rate = new_rate;
+
+        old_rateObject.timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
-          cro1[rateType].color = HighLowColorType.Default;
-          cro1[rateType].timeOutRef = null;
+          // debugger
+          const rateTypeObject = Object.assign({}, cro1[rateType]);
+          rateTypeObject.color = HighLowColorType.Default;
+          rateTypeObject.timeOutRef = null;
+          cro1[rateType] = rateTypeObject;
           this.RateObser$[symb]?.next(cro1);
         }, 900);
       }

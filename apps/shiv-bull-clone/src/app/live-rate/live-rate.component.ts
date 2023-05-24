@@ -1,5 +1,3 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RateTables1Component } from '@rps/bullion-rate-tables/table1';
 import { RateTables3Component } from '@rps/bullion-rate-tables/table3';
 import { RateTables2Component } from '@rps/bullion-rate-tables/table2';
@@ -9,6 +7,14 @@ import { RateTables6Component } from '@rps/bullion-rate-tables/table6';
 import { RateTables7Component } from '@rps/bullion-rate-tables/table7';
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  RateTables10Component,
+  RateTables11Component,
+  RateTables8Component,
+  RateTables9Component,
+} from '@rps/bullion-rate-tables';
 
 @Component({
   selector: 'shiv-bull-app-live-rate',
@@ -22,6 +28,10 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
     RateTables5Component,
     RateTables6Component,
     RateTables7Component,
+    RateTables8Component,
+    RateTables9Component,
+    RateTables10Component,
+    RateTables11Component,
   ],
   providers: [
     {
