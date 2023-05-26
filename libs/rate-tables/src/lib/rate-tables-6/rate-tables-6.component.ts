@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation ,Inject,Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
-import { AsyncPipe, JsonPipe,NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule, JsonPipe,NgIf } from '@angular/common';
 
 @Component({
   selector: 'rps-bull-rate-tables-6',
   standalone: true,
-  imports: [AsyncPipe, JsonPipe,NgIf],
+  imports: [AsyncPipe,CommonModule, JsonPipe,NgIf],
   encapsulation:ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-6.component.html',
   styleUrls: ['./rate-tables-6.component.scss'],
@@ -21,7 +21,7 @@ export class RateTables6Component {
   GOLD:Observable<RateObserDataType>;
   SILVER:Observable<RateObserDataType>;
   constructor(@Inject(LiveRateService) sahil:LiveRateService){
-    this.GOLD= sahil.RateObser$.GOLD_MCX.asObservable();
-    this.SILVER= sahil.RateObser$.SILVER_MCX.asObservable();
+    this.GOLD= sahil.RateObser$.GOLD_SPOT.asObservable();
+    this.SILVER= sahil.RateObser$.SILVER_SPOT.asObservable();
   }
 }

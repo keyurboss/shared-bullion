@@ -12,13 +12,7 @@ import { AsyncPipe, JsonPipe, NgFor, NgIf,CommonModule } from '@angular/common';
   styleUrls: ['./rate-tables-5.component.scss'],
 })
 export class RateTables5Component {
-  GOLD:Observable<RateObserDataType>;
-  SILVER:Observable<RateObserDataType>;
-  INR:Observable<RateObserDataType>;
-  constructor(@Inject(LiveRateService) sahil:LiveRateService){
-    this.GOLD= sahil.RateObser$.GOLD_SPOT.asObservable();
-    this.SILVER= sahil.RateObser$.SILVER_SPOT.asObservable();
-    this.INR= sahil.RateObser$.INR.asObservable();
-  }
+
+  @Input() rate!:Observable<RateObserDataType>;
   @Input() Product_name = 'GOLD SPOT';
 }
