@@ -1,53 +1,47 @@
-import { Optional } from '@nestjs/common';
 import {
-    DeviceId,
-    DeviceType,
-    GeneralUserId,
-    GstNumber,
-    GeneralUserType,
+  DeviceId,
+  DeviceType,
+  GeneralUserId,
+  GeneralUserType,
+  GstNumber,
 } from '@rps/bullion-interfaces';
-import { Expose } from 'class-transformer';
+import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
+import { validateSyncOrFail } from '../core.interface';
 import { BaseEntity } from '../core/base.entity';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export type GeneralUserDocument = OmitProperties<GeneralUserRoot, Function>;
+export type GeneralUserOptions = OmitProperties<GeneralUserRoot, Function>;
 
 export class GeneralUserRoot
   extends BaseEntity<GeneralUserId>
   implements GeneralUserType
 {
   @Expose()
-  @Optional()
   @IsString()
-  firstName?: string;
+  firstName: string;
 
   @Expose()
-  @Optional()
   @IsString()
-  lastName?: string;
+  lastName: string;
 
   @Expose()
-  @Optional()
   @IsString()
-  firmName?: string;
+  firmName: string;
 
   @Expose()
-  @Optional()
   @IsNumber()
-  contactNumber?: number;
+  contactNumber: number;
 
   @Expose()
-  @Optional()
   @IsString()
-  gstNumber?: GstNumber;
+  gstNumber: GstNumber;
 
   @Expose()
-  @Optional()
   @IsString()
-  os?: string;
+  os: string;
 
   @Expose()
   @IsString()
@@ -69,7 +63,7 @@ export class GeneralUserRoot
     createdAt = new Date(),
     deviceId,
     deviceType,
-    id,
+    id = GeneralUserRoot.generateID(),
     isAuto,
     modifiedAt = new Date(),
     contactNumber,
@@ -78,7 +72,7 @@ export class GeneralUserRoot
     gstNumber,
     lastName,
     os,
-  }: GeneralUserDocument) {
+  }: GeneralUserOptions) {
     const entity = new GeneralUserRoot();
     entity.id = id;
     entity.createdAt = createdAt;
@@ -93,6 +87,14 @@ export class GeneralUserRoot
     entity.gstNumber = gstNumber;
     entity.lastName = lastName;
     entity.os = os;
+    return entity;
+  }
+
+  static fromJson(data: Record<string, unknown>) {
+    const entity = plainToInstance(GeneralUserRoot, data, {
+      excludeExtraneousValues: true,
+    });
+    validateSyncOrFail(entity);
     return entity;
   }
 }
