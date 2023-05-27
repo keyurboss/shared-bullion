@@ -1,5 +1,4 @@
 import { Inject, Injectable, Optional } from '@nestjs/common';
-import { hasProp } from '@rps/bullion-functions';
 import { readFile } from 'fs/promises';
 import { Db, OptionalUnlessRequiredId } from 'mongodb';
 import { resolve } from 'path';
@@ -8,6 +7,7 @@ import * as uuid from 'uuid';
 import { LoggerFactory } from '../logger';
 import { MongoDbService } from '../mongo';
 import { FIXTURES_PATH, FixturesPath } from './fixtures-path.token';
+import { hasProp } from '@rps/bullion-interfaces';
 
 
 @Injectable()

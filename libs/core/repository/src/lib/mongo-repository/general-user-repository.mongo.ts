@@ -1,0 +1,70 @@
+import { GeneralUserId } from '@rps/bullion-interfaces';
+import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
+import { GeneralUserRoot } from '@rps/bullion-validator-roots';
+import {
+  GeneralUserFilter,
+  GeneralUserRepository,
+} from '../interface/general-user-repository.interface';
+
+export const generalUserCollection = 'GeneralUser';
+
+export type GeneralUserDocument = GeneralUserRoot & {
+  _id: GeneralUserId;
+};
+
+export class GeneralUserMongoRepository
+  extends GeneralUserRepository
+  // implements OnModuleInit
+{
+  private readonly collection;
+  private readonly logger;
+
+  constructor({ db }: MongoDbService, loggerFactory: LoggerFactory) {
+    super();
+    this.collection = db.collection<GeneralUserRoot>(generalUserCollection);
+    this.logger = loggerFactory.create(this.constructor.name);
+  }
+  // onModuleInit() {
+  //   throw new Error('Method not implemented.');
+  // }
+
+  async find(filter?: GeneralUserFilter): Promise<GeneralUserRoot[]> {
+    const cursor = filter? this.collection.find(filter):this.collection.find();
+    const users = await cursor.toArray();
+    return users.map((user) => GeneralUserRoot.fromJson(user));
+  }
+
+  async findByIds(ids: Array<GeneralUserId>): Promise<GeneralUserRoot[]> {
+    const users = await this.collection
+      .find({
+        id: {
+          $in: ids,
+        },
+      })
+      .toArray();
+    return users.map((user) => GeneralUserRoot.fromJson(user));
+  }
+
+  async findOne(id: GeneralUserId): Promise<GeneralUserRoot | undefined> {
+    const user = await this.collection.findOne({
+      id,
+    });
+    return typeof user !== 'undefined' && user !== null
+      ? GeneralUserRoot.fromJson(user)
+      : undefined;
+  }
+
+  async save(entity: GeneralUserRoot): Promise<void> {
+    const data = entity.toJson();
+
+    await this.collection.updateOne(
+      { id: entity.id },
+      { $set: data },
+      { upsert: true }
+    );
+
+    this.logger.debug(
+      `Persisted GeneralUser (${entity.id}): ${JSON.stringify(data)}`
+    );
+  }
+}
