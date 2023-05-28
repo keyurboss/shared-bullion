@@ -14,7 +14,6 @@ export type GeneralUserDocument = GeneralUserRoot & {
 
 export class GeneralUserMongoRepository
   extends GeneralUserRepository
-  // implements OnModuleInit
 {
   private readonly collection;
   private readonly logger;
@@ -24,9 +23,6 @@ export class GeneralUserMongoRepository
     this.collection = db.collection<GeneralUserRoot>(generalUserCollection);
     this.logger = loggerFactory.create(this.constructor.name);
   }
-  // onModuleInit() {
-  //   throw new Error('Method not implemented.');
-  // }
 
   async find(filter?: GeneralUserFilter): Promise<GeneralUserRoot[]> {
     const cursor = filter? this.collection.find(filter):this.collection.find();

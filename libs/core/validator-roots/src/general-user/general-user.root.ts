@@ -21,39 +21,39 @@ export class GeneralUserRoot
 {
   @Expose()
   @IsString()
-  firstName: string;
+  firstName!: string;
 
   @Expose()
   @IsString()
-  lastName: string;
+  lastName!: string;
 
   @Expose()
   @IsString()
-  firmName: string;
+  firmName!: string;
 
   @Expose()
   @IsNumber()
-  contactNumber: number;
+  contactNumber!: number;
 
   @Expose()
   @IsString()
-  gstNumber: GstNumber;
+  gstNumber!: GstNumber;
 
   @Expose()
   @IsString()
-  os: string;
+  os!: string;
 
   @Expose()
   @IsString()
-  deviceId: DeviceId;
+  deviceId!: DeviceId;
 
   @Expose()
   @IsEnum(DeviceType)
-  deviceType: DeviceType;
+  deviceType!: DeviceType;
 
   @Expose()
   @IsBoolean()
-  isAuto: boolean;
+  isAuto!: boolean;
 
   static generateID() {
     return v4() as GeneralUserId;

@@ -36,39 +36,39 @@ export class ProductRoot extends BaseEntity<ProductID> implements Product {
   @Expose()
   @IsString()
   @Length(1)
-  name: string;
+  name!: string;
 
   @Expose()
   @IsEnum(SourceSymboleValues)
-  sourceSymbole: SourceSymbole;
+  sourceSymbole!: SourceSymbole;
 
   @Expose()
   @IsEnum(CaculationSymboleValue)
-  calculationSymbole: CaculationSymbole;
+  calculationSymbole!: CaculationSymbole;
 
   @Expose()
   @IsBoolean()
-  isActive: boolean;
+  isActive!: boolean;
 
   @Expose()
   @IsBoolean()
-  isHedging: boolean;
+  isHedging!: boolean;
 
   @Expose()
   @IsEnum(ProductShowLocation)
-  showLocation: ProductShowLocation;
+  showLocation!: ProductShowLocation;
 
   @Expose()
   @IsEnum(CalculatedOnPriceof)
-  calculatedOnPriceof: CalculatedOnPriceof;
+  calculatedOnPriceof!: CalculatedOnPriceof;
 
   @Expose()
   @IsEnum(CalculatedOnPriceType)
-  calculatedOnPriceType: CalculatedOnPriceType;
+  calculatedOnPriceType!: CalculatedOnPriceType;
 
   @Expose()
   @IsEnum(CshVariableSnapshotEntity)
-  calcSnapshot: CshVariableSnapshotEntity;
+  calcSnapshot!: CshVariableSnapshotEntity;
 
   static generateID() {
     return v4() as ProductID;

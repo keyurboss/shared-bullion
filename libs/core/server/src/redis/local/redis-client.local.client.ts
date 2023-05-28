@@ -3,7 +3,7 @@ import { RedisClient } from '../redis.token';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class RedisLocalClient extends RedisClient {
   async PING(message?: RedisCommandArgument): Promise<string> {
-    return message.toString() ?? 'ok';
+    return message?.toString() ?? 'ok';
   }
   async SET(key: string | number, value: any) {
     this.DATA[key] = value;

@@ -1,7 +1,8 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nrwl/nx", "unused-imports", "lodash-fp"],
+  "extends": ["plugin:lodash-fp/recommended"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -13,26 +14,53 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:client",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:libs"]
+                "sourceTag": "service",
+                "onlyDependOnLibsWithTags": ["library", "core"]
               },
               {
-                "sourceTag": "scope:libs",
-                "onlyDependOnLibsWithTags": ["scope:libs"]
-              },
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "library",
+                "onlyDependOnLibsWithTags": ["core"]
               }
             ]
           }
-        ]
+        ],
+        "object-shorthand": "warn",
+        "camelcase": "warn",
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": ["apps/*"]
+          }
+        ],
+        "require-await": "off",
+        "consistent-return": "warn",
+        "no-console": "warn"
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "rules": {
+        "unused-imports/no-unused-imports": "error",
+        "no-unused-private-class-members": "error",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/lines-between-class-members": [
+          "warn",
+          "always",
+          {
+            "exceptAfterSingleLine": true
+          }
+        ],
+        "no-duplicate-imports": "off",
+        "@typescript-eslint/no-duplicate-imports": "error",
+        "lodash-fp/prefer-constant": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
