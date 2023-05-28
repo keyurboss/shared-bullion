@@ -1,17 +1,16 @@
-import {JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { 
+import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core/services/live-rate.service';
 import { Observable } from 'rxjs';
- interface data{
-  headerName:string;
-  details:{
-
-    Name:string;
-  }[]
- }
+interface data {
+  headerName: string;
+  details: {
+    Name: string;
+  }[];
+}
 @Component({
   selector: 'rps-bull-rate-tables-8',
   standalone: true,
@@ -23,40 +22,40 @@ import { Observable } from 'rxjs';
 export class RateTables8Component {
   gold: Observable<RateObserDataType>;
   // silver: Observable<RateObserDataType>;
+  rateClass = {
+    red: true,
+    green: false,
+  };
+
+  table: data[] = [
+    {
+      headerName: 'GOLD PRODUCT',
+      details: [
+        {
+          Name: 'IMP 999 RTGS (TCS)',
+        },
+        {
+          Name: 'LOCAL RTGS (TCS)',
+        },
+      ],
+    },
+    {
+      headerName: 'SILVER PRODUCT',
+      details: [
+        {
+          Name: 'PETI 30KG RTGS (TCS)',
+        },
+        {
+          Name: 'CHORSA RTGS (TCS)',
+        },
+      ],
+    },
+  ];
+
   constructor(@Inject(LiveRateService) Alay: LiveRateService) {
     this.gold = Alay.RateObser$.GOLD.asObservable();
     this.gold = Alay.RateObser$.SILVER.asObservable();
   }
-  rate_class = {
-    red: true,
-    green: false,
-  };
- table : data[]=[
-  {
-    headerName:'GOLD PRODUCT',
-    details:[{
-
-      Name:'IMP 999 RTGS (TCS)',
-    },{
-
-        Name:'LOCAL RTGS (TCS)',
-      },
-      ]
-    },
-    {
-      headerName:'SILVER PRODUCT',
-      details:[{
-  
-        Name:'PETI 30KG RTGS (TCS)',
-        },{
-  
-          Name:'CHORSA RTGS (TCS)',
-        }]
-      },
-    
-        
-        
-  ]
 }
 //   {
 //     headerName:'SILVER PRODUCT',
