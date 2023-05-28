@@ -12,6 +12,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./rate-tables-9.component.scss'],
 })
 export class RateTables9Component {
-  @Input() rate!: Observable<RateObserDataType>;
-  @Input() product_name = '';
+  rate: Observable<RateObserDataType>;
+  @Input() productName = '';
+  
+  constructor(@Inject(LiveRateService) sahil: LiveRateService) {
+    this.rate = sahil.RateObser$.GOLD_SPOT.asObservable();
+  }
 }
