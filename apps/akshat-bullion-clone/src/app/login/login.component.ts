@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UserDataService } from '../services/rememberData.service';
 import { UsersDataService } from '../services/users-data.service';
-import { contains } from 'class-validator';
 
 @Component({
   selector: 'akshat-bull-app-login',

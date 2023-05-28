@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import {
   LiveRateService,

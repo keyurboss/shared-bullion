@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavBar3Component } from '@rps/angular-nav-bars'
 import { MAppComponent } from '../app/app.component';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { popupServices } from '../services/pop-upmenu.service';
 
 // interface navigationBar {
