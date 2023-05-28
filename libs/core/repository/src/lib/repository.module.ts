@@ -1,7 +1,8 @@
-import { GeneralUserRepository } from './interface/general-user-repository.interface';
-import { GeneralUserMongoRepository } from './mongo-repository/general-user-repository.mongo';
+import { Module } from '@nestjs/common';
+import { GeneralUserRepoProvider } from './repository.index';
 
-export const UserRepoProvider = {
-  provide: GeneralUserRepository,
-  useClass: GeneralUserMongoRepository,
-};
+const repositoryPorvider = [GeneralUserRepoProvider];
+@Module({
+  providers: [...repositoryPorvider],
+})
+export class RepositoryModule {}

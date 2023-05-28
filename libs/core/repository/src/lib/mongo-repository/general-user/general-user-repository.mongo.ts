@@ -1,10 +1,8 @@
 import { GeneralUserId } from '@rps/bullion-interfaces';
 import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
 import { GeneralUserRoot } from '@rps/bullion-validator-roots';
-import {
-  GeneralUserFilter,
-  GeneralUserRepository,
-} from '../interface/general-user-repository.interface';
+import { GeneralUserFilter, GeneralUserRepository } from '../../interface';
+import { Inject } from '@nestjs/common';
 
 export const generalUserCollection = 'GeneralUser';
 
@@ -12,20 +10,23 @@ export type GeneralUserDocument = GeneralUserRoot & {
   _id: GeneralUserId;
 };
 
-export class GeneralUserMongoRepository
-  extends GeneralUserRepository
-{
+export class GeneralUserMongoRepository extends GeneralUserRepository {
   private readonly collection;
   private readonly logger;
 
-  constructor({ db }: MongoDbService, loggerFactory: LoggerFactory) {
+  constructor(
+    @Inject(MongoDbService) { db }: MongoDbService,
+    @Inject(LoggerFactory) loggerFactory: LoggerFactory
+  ) {
     super();
     this.collection = db.collection<GeneralUserRoot>(generalUserCollection);
     this.logger = loggerFactory.create(this.constructor.name);
   }
 
   async find(filter?: GeneralUserFilter): Promise<GeneralUserRoot[]> {
-    const cursor = filter? this.collection.find(filter):this.collection.find();
+    const cursor = filter
+      ? this.collection.find(filter)
+      : this.collection.find();
     const users = await cursor.toArray();
     return users.map((user) => GeneralUserRoot.fromJson(user));
   }
