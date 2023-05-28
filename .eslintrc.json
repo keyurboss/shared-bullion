@@ -1,8 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "unused-imports", "lodash-fp"],
-  "extends": ["plugin:lodash-fp/recommended"],
+  "plugins": ["@nx", "unused-imports"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -15,11 +14,19 @@
             "depConstraints": [
               {
                 "sourceTag": "service",
-                "onlyDependOnLibsWithTags": ["library", "core"]
+                "onlyDependOnLibsWithTags": [
+                  "library",
+                  "core",
+                  "shared:library"
+                ]
+              },
+              {
+                "sourceTag": "shared:library",
+                "onlyDependOnLibsWithTags": ["core","shared:library"]
               },
               {
                 "sourceTag": "library",
-                "onlyDependOnLibsWithTags": ["core"]
+                "onlyDependOnLibsWithTags": ["core", "shared:library"]
               }
             ]
           }

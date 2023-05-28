@@ -3,8 +3,8 @@ import { RatesFixture } from '../fixtures';
 import { firstValueFrom, skip, timeout } from 'rxjs';
 import { DemoLiveRateService } from '../mock';
 import { JsonToItrable } from '../core';
-import { RateBaseSymboles } from '@rps/bullion-interfaces/core';
 import {
+  RateBaseSymboles,
   BaseSymbolePriceInterface,
   HighLowColorType,
 } from '@rps/bullion-interfaces';
@@ -106,6 +106,7 @@ describe('ABS LiveRateService', () => {
       > {
         return mockMethods.getLastRates();
       }
+      
       InitRemoteConnection(): void {
         return mockMethods.InitRemoteConnection();
       }

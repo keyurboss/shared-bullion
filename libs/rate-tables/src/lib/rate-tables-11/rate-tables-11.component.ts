@@ -1,10 +1,5 @@
-import { JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import {
-  LiveRateService,
-  RateObserDataType,
-} from '@rps/buillion-frontend-core/services/live-rate.service';
-import { Observable } from 'rxjs';
+import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'rps-bull-rate-tables-11',

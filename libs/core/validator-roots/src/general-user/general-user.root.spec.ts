@@ -1,26 +1,26 @@
 import { describe } from '@jest/globals';
-import { GeneralUserOptions, GeneralUserRoot } from './general-user.root';
 import {
-  randPastDate,
-  randRecentDate,
-  randWord,
   rand,
-  randUuid,
   randBoolean,
-  randNumber,
-  randPhoneNumber,
-  randFullName,
-  randFlightNumber,
-  randSportsTeam,
   randCompanyName,
+  randFullName,
+  randPastDate,
+  randPhoneNumber,
+  randRecentDate,
+  randSportsTeam,
+  randUuid,
+  randWord
 } from '@ngneat/falso';
+import { FakeOptions } from '@ngneat/falso/lib/core/core';
+
 import {
   DeviceId,
   DeviceType,
   GeneralUserId,
   GstNumber,
-} from '../../../interfaces/src';
-import { FakeOptions } from '../../../../../node_modules/@ngneat/falso/lib/core/core';
+} from '@rps/bullion-interfaces';
+
+import { GeneralUserOptions, GeneralUserRoot } from './general-user.root';
 
 describe(GeneralUserRoot.name, () => {
   let options: GeneralUserOptions;

@@ -11,12 +11,15 @@ export abstract class RedisClient {
   }
   abstract PING(message?: RedisCommandArgument): Promise<string>;
   abstract SET(key: string | number, value: any): Promise<void>;
+
   async set(key: string | number, value: any) {
     this.SET(key, value);
   }
+
   async get<T extends string>(key: string | number): Promise<T> {
     return this.GET<T>(key);
   }
+  
   abstract GET<T extends string>(key: string | number): Promise<T>;
 
   async hSet(key: string | number, field: string | number, value: any) {
