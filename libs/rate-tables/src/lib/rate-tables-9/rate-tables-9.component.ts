@@ -13,8 +13,9 @@ import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core'
 })
 export class RateTables9Component {
   rate: Observable<RateObserDataType>;
+  @Input() productName = 'GOLD';
+  
   constructor(@Inject(LiveRateService) sahil: LiveRateService) {
     this.rate = sahil.RateObser$.GOLD_SPOT.asObservable();
   }
-  @Input() product_name = 'GOLD';
 }

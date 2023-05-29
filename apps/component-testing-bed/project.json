@@ -15,6 +15,7 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/component-testing-bed/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "allowedCommonJsDependencies": ["seedrandom"],
         "assets": [
           "apps/component-testing-bed/src/favicon.ico",
           "apps/component-testing-bed/src/assets"
@@ -81,5 +82,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["service"]
 }

@@ -3,8 +3,8 @@ import {
   RateBaseSymboles,
   RateTypeKeys,
 } from '@rps/bullion-interfaces';
-import { faker } from '@faker-js/faker';
 import { JsonToItrable } from '../core';
+import {randNumber} from '@ngneat/falso';
 export class RatesFixture {
   static Generate(
     range: {
@@ -19,14 +19,14 @@ export class RatesFixture {
     },
     previous: Partial<BaseSymbolePriceInterface> = {}
   ): BaseSymbolePriceInterface {
-    const ask = faker.number.float({
+    const ask = randNumber({
       max: range.top,
       min: range.bottom,
       precision: range.points,
     });
     const bid =
       ask -
-      faker.number.float({
+      randNumber({
         max: bidAskDiff.top,
         min: bidAskDiff.bottom,
         precision: bidAskDiff.points,
@@ -54,14 +54,14 @@ export class RatesFixture {
       bid,
       close:
         previous.close ??
-        faker.number.float({
+        randNumber({
           max: range.top,
           min: range.bottom,
           precision: range.points,
         }),
       open:
         previous.open ??
-        faker.number.float({
+        randNumber({
           max: range.top,
           min: range.bottom,
           precision: range.points,

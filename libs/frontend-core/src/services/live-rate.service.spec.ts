@@ -1,15 +1,15 @@
 import { LiveRateService } from './live-rate.service';
-// import faker from '@faker-js/faker';
 import { RatesFixture } from '../fixtures';
 import { firstValueFrom, skip, timeout } from 'rxjs';
 import { DemoLiveRateService } from '../mock';
 import { JsonToItrable } from '../core';
-import { RateBaseSymboles } from '@rps/bullion-interfaces/core';
 import {
+  RateBaseSymboles,
   BaseSymbolePriceInterface,
   HighLowColorType,
 } from '@rps/bullion-interfaces';
-import { faker } from '@faker-js/faker';
+import { randNumber } from '@ngneat/falso';
+import { RandomNumberOptions } from '@ngneat/falso/lib/number';
 
 describe('ABS LiveRateService', () => {
   let service: LiveRateService;
@@ -27,7 +27,8 @@ describe('ABS LiveRateService', () => {
     });
     it('New Value is Hight It Should Be Green', async () => {
       const GOLD = service.LastRate.get(RateBaseSymboles.GOLD);
-      const newValue = +faker.string.numeric(1) + (GOLD?.ask ?? 0);
+      const newValue =
+        randNumber<RandomNumberOptions>({ length: 1 }) + (GOLD?.ask ?? 0);
       // service.RateObser$.GOLD.subscribe(console.log);
       const next1 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(1)));
       const next2 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(2)));
@@ -61,7 +62,8 @@ describe('ABS LiveRateService', () => {
     });
     it('New Value is Hight It Should Be Red', async () => {
       const GOLD = service.LastRate.get(RateBaseSymboles.GOLD);
-      const newValue = (GOLD?.ask ?? 0) - +faker.string.numeric(1);
+      const newValue =
+        (GOLD?.ask ?? 0) - randNumber<RandomNumberOptions>({ length: 1 });
       // service.RateObser$.GOLD.subscribe(console.log);
       const next1 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(1)));
       const next2 = firstValueFrom(service.RateObser$.GOLD.pipe(skip(2)));
@@ -104,6 +106,7 @@ describe('ABS LiveRateService', () => {
       > {
         return mockMethods.getLastRates();
       }
+      
       InitRemoteConnection(): void {
         return mockMethods.InitRemoteConnection();
       }
