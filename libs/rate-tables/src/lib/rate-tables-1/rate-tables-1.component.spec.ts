@@ -7,6 +7,7 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 describe('RateTablesComponent', () => {
   let component: RateTables1Component;
   let fixture: ComponentFixture<RateTables1Component>;
+let comp:ShadowRoot;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,10 +22,19 @@ describe('RateTablesComponent', () => {
 
     fixture = TestBed.createComponent(RateTables1Component);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    comp=(fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should display the product name', () => {
+    const productName = 'GOLD 999 IMP WITH TDS';
+    // component.data = [{ name: productName }];
+    fixture.detectChanges();
+    const productNameElement = comp.querySelector('.child_left')?.textContent;
+    expect(productNameElement?.trim()).toContain(productName.trim());
   });
 });
