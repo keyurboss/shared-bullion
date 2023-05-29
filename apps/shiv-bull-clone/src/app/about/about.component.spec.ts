@@ -19,4 +19,11 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('first', () => {
+    expect(2+2).toBe(4);
+  });
+  it('second', () => {
+    expect(2+2).toBe(5);
+  });
+
 });

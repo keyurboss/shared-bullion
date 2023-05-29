@@ -27,4 +27,12 @@ describe('RateTablesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('first', () => {
+    expect(2+2).toBe(4);
+  });
+
+  it('should have html', () => {
+    const element=fixture.nativeElement
+    expect(element.querySelector('.main_div').textontent).toContain('Gold')
+  });
 });
