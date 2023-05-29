@@ -9,6 +9,9 @@ import {
 } from '@rps/bullion-server-core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import {EnvConfigModule} from '../config/env.config.module';
+import { defaultValidationSchema } from '../config/validation.schema';
+import * as Joi from 'joi';
 export type AuthServerAppModuleOptions = {
   appEnv: AppEnvName;
 };
@@ -27,11 +30,17 @@ export class AuthServerAppModule implements NestModule {
           ...imports,
           MongoRepositoryLocalModule,
           RedisRepositoryLocalModule,
+          EnvConfigModule,
         ];
         break;
       case 'production':
         imports = [
           ...imports,
+          EnvConfigModule.forRoot({
+            ...defaultValidationSchema,
+            AUTH_DB_URL: Joi.string().uri().required(),
+            AUTH_REDIS_URL: Joi.string().uri().required(),
+          }),
           MongoRepositoryProductionModule.forRoot({
             urlKey: 'AUTH_DB_URL',
             tlsCaKey: 'AUTH_DB_TLS_CA',
