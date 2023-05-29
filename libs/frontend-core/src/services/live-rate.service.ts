@@ -1,4 +1,5 @@
 import { InjectionToken } from '@angular/core';
+
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
@@ -9,6 +10,7 @@ import {
   RateTypeKeysArray,
   SymboleWiseRate,
 } from '@rps/bullion-interfaces';
+
 import { BehaviorSubject } from 'rxjs';
 import { JsonToItrable } from '../core';
 
@@ -28,23 +30,28 @@ export const InjectableRate = new InjectionToken<SymboleWiseRate>(
 export abstract class LiveRateService {
   RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
     {} as never;
+
   protected _LastRate: Map<RateBaseSymboles, BaseSymbolePriceInterface> =
     new Map();
+    
   get LastRate(): Map<RateBaseSymboles, BaseSymbolePriceInterface> {
     return this._LastRate;
   }
+
   protected set LastRate(
     value: Map<RateBaseSymboles, BaseSymbolePriceInterface>
   ) {
     this._LastRate = value;
     this.setRate(value);
   }
+
   protected RatesReadyBehaviourSubject = new BehaviorSubject(false);
   RatesReady$ = this.RatesReadyBehaviourSubject.asObservable();
   private _RatesReady = false;
   get RatesReady() {
     return this._RatesReady;
   }
+  
   protected set RatesReady(value) {
     // debugger;
     this._RatesReady = value;
@@ -72,6 +79,7 @@ export abstract class LiveRateService {
       this.init();
     }
   }
+  
   private async init() {
     if (this.RatesReady === false) {
       await this.getLastRates().then((rate) => {
@@ -83,51 +91,57 @@ export abstract class LiveRateService {
   }
 
   setRate(Rate: Map<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>) {
-    for (const [symb, current_rate] of Rate) {
+    for (const [symb, currentRate] of Rate) {
       if (typeof this._LastRate.get(symb) === 'undefined') {
-        this._LastRate.set(symb, current_rate as BaseSymbolePriceInterface);
+        this._LastRate.set(symb, currentRate as BaseSymbolePriceInterface);
         continue;
       }
       let old = this.RateObser$[symb]?.value;
       if (old === null || typeof old === 'undefined') {
         old = {} as never;
       }
-      for (const [rateType, new_rate] of JsonToItrable<number, RateTypeKeys>(
-        current_rate
+      for (const [rateType, newRate] of JsonToItrable<number, RateTypeKeys>(
+        currentRate
       )) {
-        if (typeof old[rateType] === 'undefined' || old[rateType].rate === 0) {
+        const oldRateObject = old[rateType];
+
+        if (typeof oldRateObject === 'undefined' || oldRateObject.rate === 0) {
           old[rateType] = {
-            rate: new_rate,
+            rate: newRate,
             color: HighLowColorType.Default,
             timeOutRef: null,
           };
           continue;
         }
-        const old_rate = old[rateType].rate;
-        if (old_rate === new_rate) {
+        if (oldRateObject.rate === newRate) {
           continue;
         }
-        if (old_rate < new_rate) {
-          old[rateType].color = HighLowColorType.Green;
-        } else if (old_rate > new_rate) {
-          old[rateType].color = HighLowColorType.Red;
+        if (oldRateObject.rate < newRate) {
+          oldRateObject.color = HighLowColorType.Green;
+        } else if (oldRateObject.rate > newRate) {
+          oldRateObject.color = HighLowColorType.Red;
         }
-        if (old[rateType].timeOutRef !== null) {
-          clearTimeout(old[rateType].timeOutRef);
-          old[rateType].timeOutRef = null;
+        if (oldRateObject.timeOutRef !== null) {
+          clearTimeout(oldRateObject.timeOutRef);
+          oldRateObject.timeOutRef = null;
         }
-        old[rateType].rate = new_rate;
-        old[rateType].timeOutRef = setTimeout(() => {
+        
+        oldRateObject.rate = newRate;
+
+        oldRateObject.timeOutRef = setTimeout(() => {
           const cro1 = this.RateObser$[symb]?.value;
-          cro1[rateType].color = HighLowColorType.Default;
-          cro1[rateType].timeOutRef = null;
+          // debugger
+          const rateTypeObject = Object.assign({}, cro1[rateType]);
+          rateTypeObject.color = HighLowColorType.Default;
+          rateTypeObject.timeOutRef = null;
+          cro1[rateType] = rateTypeObject;
           this.RateObser$[symb]?.next(cro1);
         }, 900);
       }
       this.RateObser$[symb]?.next(old);
       const obj = this._LastRate.get(symb);
       if (typeof obj !== 'undefined') {
-        Object.assign(obj, current_rate);
+        Object.assign(obj, currentRate);
       }
     }
   }

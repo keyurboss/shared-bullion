@@ -1,5 +1,5 @@
 import { HealthIndicatorResult, TimeoutError } from '@nestjs/terminus';
-import { faker } from '@faker-js/faker';
+import { randUserName } from '@ngneat/falso';
 
 import { MongoDbHealthIndicator } from './mongo-db.health';
 
@@ -18,7 +18,7 @@ describe(MongoDbHealthIndicator.name, () => {
         mongoDbServiceMock as never
       );
 
-      key = faker.internet.userName();
+      key = randUserName();
       resultPromise = mongoDbHealthIndicator.isHealthy(key);
     });
 
@@ -46,7 +46,7 @@ describe(MongoDbHealthIndicator.name, () => {
         mongoDbServiceMock as never
       );
 
-      key = faker.internet.userName();
+      key = randUserName();
       resultPromise = mongoDbHealthIndicator.isHealthy(key);
     });
 

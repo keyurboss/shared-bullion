@@ -9,11 +9,12 @@ import {
   SourceSymbole,
   SourceSymboleValues,
 } from '@rps/bullion-interfaces';
-import { Expose } from 'class-transformer';
+import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsString, Length } from 'class-validator';
 import { CshVariableSnapshotEntity } from '../calc/calc.root';
 import { BaseEntity } from '../core/base.entity';
 import { v4 } from 'uuid';
+import { validateSyncOrFail } from '../core.interface';
 
 export type ProductDocument = Pick<
   ProductRoot,
@@ -35,39 +36,39 @@ export class ProductRoot extends BaseEntity<ProductID> implements Product {
   @Expose()
   @IsString()
   @Length(1)
-  name: string;
+  name!: string;
 
   @Expose()
   @IsEnum(SourceSymboleValues)
-  sourceSymbole: SourceSymbole;
+  sourceSymbole!: SourceSymbole;
 
   @Expose()
   @IsEnum(CaculationSymboleValue)
-  calculationSymbole: CaculationSymbole;
+  calculationSymbole!: CaculationSymbole;
 
   @Expose()
   @IsBoolean()
-  isActive: boolean;
+  isActive!: boolean;
 
   @Expose()
   @IsBoolean()
-  isHedging: boolean;
+  isHedging!: boolean;
 
   @Expose()
   @IsEnum(ProductShowLocation)
-  showLocation: ProductShowLocation;
+  showLocation!: ProductShowLocation;
 
   @Expose()
   @IsEnum(CalculatedOnPriceof)
-  calculatedOnPriceof: CalculatedOnPriceof;
+  calculatedOnPriceof!: CalculatedOnPriceof;
 
   @Expose()
   @IsEnum(CalculatedOnPriceType)
-  calculatedOnPriceType: CalculatedOnPriceType;
+  calculatedOnPriceType!: CalculatedOnPriceType;
 
   @Expose()
   @IsEnum(CshVariableSnapshotEntity)
-  calcSnapshot: CshVariableSnapshotEntity;
+  calcSnapshot!: CshVariableSnapshotEntity;
 
   static generateID() {
     return v4() as ProductID;
@@ -101,6 +102,14 @@ export class ProductRoot extends BaseEntity<ProductID> implements Product {
     entity.calculatedOnPriceof = calculatedOnPriceof;
     entity.createdAt = createdAt;
     entity.calculationSymbole = calculationSymbole;
+    return entity;
+  }
+
+  static fromJson(data: Record<string, unknown>) {
+    const entity = plainToInstance(ProductRoot, data, {
+      excludeExtraneousValues: true,
+    });
+    validateSyncOrFail(entity);
     return entity;
   }
 }

@@ -1,4 +1,11 @@
-import { JsonPipe, AsyncPipe, NgClass, NgFor, NgIf, CommonModule } from '@angular/common';
+import {
+  AsyncPipe,
+  DecimalPipe,
+  JsonPipe,
+  NgClass,
+  NgFor,
+  NgIf,
+} from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import {
   LiveRateService,
@@ -8,14 +15,13 @@ import { Observable } from 'rxjs';
 interface data {
   headerName: string;
   details: {
-
     Name: string;
-  }[]
+  }[];
 }
 @Component({
   selector: 'rps-bull-rate-tables-8',
   standalone: true,
-  imports: [NgClass, NgFor, AsyncPipe, NgIf, JsonPipe, CommonModule],
+  imports: [NgClass, NgFor, AsyncPipe, NgIf, JsonPipe, DecimalPipe],
   encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-8.component.html',
   styleUrls: ['./rate-tables-8.component.scss'],
@@ -23,40 +29,40 @@ interface data {
 export class RateTables8Component {
   gold: Observable<RateObserDataType>;
   // silver: Observable<RateObserDataType>;
+  rateClass = {
+    red: true,
+    green: false,
+  };
+
+  table: data[] = [
+    {
+      headerName: 'GOLD PRODUCT',
+      details: [
+        {
+          Name: 'IMP 999 RTGS (TCS)',
+        },
+        {
+          Name: 'LOCAL RTGS (TCS)',
+        },
+      ],
+    },
+    {
+      headerName: 'SILVER PRODUCT',
+      details: [
+        {
+          Name: 'PETI 30KG RTGS (TCS)',
+        },
+        {
+          Name: 'CHORSA RTGS (TCS)',
+        },
+      ],
+    },
+  ];
+
   constructor(@Inject(LiveRateService) Alay: LiveRateService) {
     this.gold = Alay.RateObser$.GOLD.asObservable();
     this.gold = Alay.RateObser$.SILVER.asObservable();
   }
-  rate_class = {
-    red: true,
-    green: false,
-  };
-  table: data[] = [
-    {
-      headerName: 'GOLD PRODUCT',
-      details: [{
-
-        Name: 'IMP 999 RTGS (TCS)',
-      }, {
-
-        Name: 'LOCAL RTGS (TCS)',
-      },
-      ]
-    },
-    {
-      headerName: 'SILVER PRODUCT',
-      details: [{
-
-        Name: 'PETI 30KG RTGS (TCS)',
-      }, {
-
-        Name: 'CHORSA RTGS (TCS)',
-      }]
-    },
-
-
-
-  ]
 }
 //   {
 //     headerName:'SILVER PRODUCT',
