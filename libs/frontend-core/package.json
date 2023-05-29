@@ -1,4 +1,12 @@
 {
   "name": "@rps/buillion-frontend-core",
-  "version": "0.0.1"
+  "author": {
+    "email": "rpsoftechindia@gmail.com",
+    "name": "RP Softech",
+    "url": "https://rpsoftech.net"
+  },
+  "version": "0.0.1",
+  "devDependencies": {
+    "@rps/buillion-frontend-core": "latest"
+  }
 }

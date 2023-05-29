@@ -1,0 +1,72 @@
+:host {
+  --header-back-color: #41241c;
+  --header-font-color: #ffffff;
+  --header-border-color: ;
+  --data-back-color: ;
+  --data-font-color: ;
+  --rate-high-back-color: ;
+  --rate-low-back-color: ;
+  --rate-high-font-color: ;
+  --rate-low-font-color: ;
+  --data-border-color: ;
+}
+
+.main {
+  grid-auto-flow: column;
+  display: grid;
+}
+
+.main0 {
+  display: flex;
+  justify-content: center;
+}
+.type_1 {
+  position: relative;
+  min-height: 90px;
+  max-height: 90px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  top: 5px;
+}
+.type_1_cont {
+  height: 100%;
+  width: 30%;
+  position: relative;
+  border-radius: 8px;
+  padding: 2px;
+  background-color: var(--header-back-color);
+}
+.details {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--header-font-color);
+
+  div {
+    padding: 5px 0;
+  }
+}
+.bg_img {
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  img {
+    height: inherit;
+    width: auto;
+    max-width: 100%;
+    border: 0;
+  }
+}

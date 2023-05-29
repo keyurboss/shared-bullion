@@ -1,7 +1,8 @@
 /* eslint-disable */
 export default {
-  displayName: 'core-validator-roots',
+  displayName: 'validator-roots',
   preset: '../../../jest.preset.js',
+  setupFilesAfterEnv: ['./jest.setup.ts'],
   globals: {},
   testEnvironment: 'node',
   transform: {

@@ -1,9 +1,9 @@
-import {JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { JsonPipe, AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { 
+import {
   LiveRateService,
   RateObserDataType,
-} from '@rps/buillion-frontend-core/services/live-rate.service';
+} from '@rps/buillion-frontend-core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,29 +16,31 @@ import { Observable } from 'rxjs';
 })
 export class RateTables1Component {
   rate: Observable<RateObserDataType>;
-  constructor(@Inject(LiveRateService) Pratham: LiveRateService) {
-    this.rate = Pratham.RateObser$.GOLD.asObservable();
-  }
-  rate_class = {
+  rateClass = {
     red: true,
     green: false,
   };
-  data=[
+
+  data = [
     {
-      "name": "GOLD 999 IMP WITH TDS",
-      "value":"58860"
+      name: 'GOLD 999 IMP WITH TDS',
+      value: '58860',
     },
     {
-      "name": "GOLD 999 IMP WITH TCS",
-      "value":"58915"
+      name: 'GOLD 999 IMP WITH TCS',
+      value: '58915',
     },
     {
-      "name": "GOLD 999 LOCAL WITH TDS",
-      "value":"58790"
+      name: 'GOLD 999 LOCAL WITH TDS',
+      value: '58790',
     },
     {
-      "name": "GOLD 999 LOCAL WITH TCS",
-      "value":"58845"
+      name: 'GOLD 999 LOCAL WITH TCS',
+      value: '58845',
     },
-  ]
+  ];
+
+  constructor(@Inject(LiveRateService) Pratham: LiveRateService) {
+    this.rate = Pratham.RateObser$.GOLD.asObservable();
+  }
 }
