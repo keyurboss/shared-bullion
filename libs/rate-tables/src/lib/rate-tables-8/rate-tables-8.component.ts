@@ -6,9 +6,9 @@ import {
 } from '@rps/buillion-frontend-core/services/live-rate.service';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
-interface data {
+export interface data {
   headerName: string;
-  symbole:RateBaseSymboles
+  symbole: RateBaseSymboles
   details: {
     Name: string;
   }[]
@@ -29,15 +29,12 @@ export class RateTables8Component {
   }
   public set table(value: data[]) {
     value.forEach(({ symbole }) => {
-      this.RateObser$[symbole] = this.Alay.RateObser$[symbole].asObservable()
+      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
     })
     this._table = value;
   }
   RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
-  // gold: Observable<RateObserDataType>;
-  // silver: Observable<RateObserDataType>;
-  constructor(@Inject(LiveRateService) private readonly Alay: LiveRateService) {
-    // this.gold = Alay.RateObser$.GOLD.asObservable();
+  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
   }
 }
 
