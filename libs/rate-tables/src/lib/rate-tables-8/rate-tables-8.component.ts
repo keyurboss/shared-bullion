@@ -28,7 +28,7 @@ export class RateTables8Component {
     return this._table;
   }
   public set table(value: data[]) {
-    value.forEach(({symbole})=>{
+    value.forEach(({ symbole }) => {
       this.RateObser$[symbole] = this.Alay.RateObser$[symbole].asObservable()
     })
     this._table = value;
@@ -38,25 +38,6 @@ export class RateTables8Component {
   // silver: Observable<RateObserDataType>;
   constructor(@Inject(LiveRateService) private readonly Alay: LiveRateService) {
     // this.gold = Alay.RateObser$.GOLD.asObservable();
-    // this.gold = Alay.RateObser$.SILVER.asObservable();
   }
-  // rate_class = {
-  //   red: true,
-  //   green: false,
-  // };
 }
-//   {
-//     headerName:'SILVER PRODUCT',
-//     leftSideName:'PETI 30KG RTGS(TCS)',
-//     leftValue:77772,
-//     rightSideName:'CHORSA RTGS(TCS)',
-//     rightValue:4456521,
-//   },
-//   {
-//     headerName:'SILVER PRODUCT',
-//     leftSideName:'PETI 30KG RTGS(TCS)',
-//     leftValue:77772,
-//     rightSideName:'CHORSA RTGS(TCS)',
-//     rightValue:4456521,
-//   },
-//  ]
+

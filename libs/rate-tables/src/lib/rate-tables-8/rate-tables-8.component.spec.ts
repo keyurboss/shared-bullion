@@ -2,13 +2,12 @@ import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core
 import { MockLiveRateService } from '@rps/buillion-frontend-core/mock';
 
 import { faker } from '@faker-js/faker';
+import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 import {
   LiveRateService,
 } from '@rps/buillion-frontend-core/services/live-rate.service';
 import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
 import { RateTables8Component } from './rate-tables-8.component';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
-import { describe, it, test } from 'node:test';
 
 describe('RateTablesComponent', () => {
   let component: RateTables8Component;
@@ -30,8 +29,8 @@ describe('RateTablesComponent', () => {
     fixture.detectChanges();
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
   });
-  describe('Rate Table 8 TestCase', () => {
-    it('first', fakeAsync(() => {
+  describe('Rate Table 8 1st TestCase', () => {
+    test('check table length & products Name', fakeAsync(() => {
       component.table = [
         {
           headerName: 'GOLD PRODUCT',
@@ -73,16 +72,16 @@ describe('RateTablesComponent', () => {
       })
     }));
   })
-  describe('', () => {
+  describe('Rate Table 8 2nd TestCase', () => {
     let liveRateServiceRef !: LiveRateService
     let rate: BaseSymbolePriceInterface;
     beforeEach(() => {
       liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
       component.table = [
         {
-          headerName: faker.random.word(),
+          headerName: faker.lorem.word(),
           symbole: RateBaseSymboles.GOLD,
-          details: [{ Name: faker.random.word() }],
+          details: [{ Name: faker.lorem.word() }],
         }
       ]
       rate = RatesFixture.Generate({
@@ -102,7 +101,7 @@ describe('RateTablesComponent', () => {
       ]))
       fixture.detectChanges();
     })
-    it('first', fakeAsync(() => {
+    it('check table & class according rates', fakeAsync(() => {
       fixture.detectChanges();
       tick()
       const tableElements = componentHtml.querySelectorAll('.table');
@@ -114,25 +113,38 @@ describe('RateTablesComponent', () => {
       const ratenode = detaileEle.childNodes[1]
       expect(ratenode.textContent?.trim()).toStrictEqual(rate.ask.toString());
     }));
-    it('Rate Default No class', fakeAsync(() => {
+    it('Rate Default No class', () => {
       const tableElements = componentHtml.querySelectorAll('.table');
       const rateNode = tableElements[0].querySelectorAll('.body .details')[0].querySelector('h3');
       expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
       expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
       // rateNode.
-    }))
-    it('Rate Green No high', fakeAsync(() => {
+    })
+    it('Rate Low color Red class rate_low not rate_high', fakeAsync(() => {
       liveRateServiceRef.setRate(new Map([
         [RateBaseSymboles.GOLD, {
           ask: rate.ask + 10
         }]
       ]))
       fixture.detectChanges()
-      // tick()
       flush()
       const tableElements = componentHtml.querySelectorAll('.table');
       const rateNode = tableElements[0].querySelectorAll('.body .details')[0].querySelector('h3');
       expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
+      expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+    }))
+    it('Rate High color Green class rate_high not rate_low', fakeAsync(() => {
+      liveRateServiceRef.setRate(new Map([
+        [RateBaseSymboles.GOLD, {
+          ask: rate.ask - 10
+        }]
+      ]))
+      fixture.detectChanges()
+      flush()
+      const tableElements = componentHtml.querySelectorAll('.table');
+      const rateNode = tableElements[0].querySelectorAll('.body .details')[0].querySelector('h3');
+      expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
+      expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
     }))
   })
 
