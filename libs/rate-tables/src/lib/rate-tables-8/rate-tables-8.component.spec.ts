@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
-import { MockLiveRateService } from '@rps/buillion-frontend-core/mock';
 
 import { faker } from '@faker-js/faker';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
@@ -8,6 +7,7 @@ import {
 } from '@rps/buillion-frontend-core/services/live-rate.service';
 import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
 import { RateTables8Component } from './rate-tables-8.component';
+import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';
 
 describe('RateTablesComponent', () => {
   let component: RateTables8Component;
@@ -20,8 +20,12 @@ describe('RateTablesComponent', () => {
       providers: [
         {
           provide: LiveRateService,
-          useClass: MockLiveRateService,
+          useClass: DemoLiveRateService,
         },
+        {
+          provide: InitialiseRemoteConnection,
+          useValue: false,
+        }
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(RateTables8Component);
@@ -118,7 +122,6 @@ describe('RateTablesComponent', () => {
       const rateNode = tableElements[0].querySelectorAll('.body .details')[0].querySelector('h3');
       expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
       expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
-      // rateNode.
     })
     it('Rate Low color Red class rate_low not rate_high', fakeAsync(() => {
       liveRateServiceRef.setRate(new Map([
