@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RateTables1Component } from './rate-tables-1.component';
 import { LiveRateService } from '@rps/buillion-frontend-core';
-import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';
 
 describe('RateTablesComponent', () => {
   let component: RateTables1Component;
@@ -17,6 +17,10 @@ describe('RateTablesComponent', () => {
           provide: LiveRateService,
           useClass: DemoLiveRateService,
         },
+        {
+          provide:InitialiseRemoteConnection,
+          useValue: false,
+        }
       ],
     }).compileComponents();
 
