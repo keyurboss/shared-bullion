@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core
 import { faker } from '@faker-js/faker';
 import { RateTables2Component } from './rate-tables-2.component';
 import { LiveRateService } from '@rps/buillion-frontend-core';
-import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';
 import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 
@@ -19,6 +19,10 @@ describe('RateTablesComponent', () => {
           provide: LiveRateService,
           useClass: DemoLiveRateService,
         },
+        {
+          provide: InitialiseRemoteConnection,
+          useValue: false,
+        }
       ],
     }).compileComponents();
 
@@ -31,7 +35,7 @@ describe('RateTablesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  describe('Rate Table 8 1st TestCase', () => {
+  describe('Rate Table 8 1st TestCase For Name', () => {
     test('check Header & all products Name', fakeAsync(() => {
       component.table = [
         {
@@ -53,7 +57,7 @@ describe('RateTablesComponent', () => {
       expect(productsname[3].querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0].LOW);
     }))
 
-    describe('Rate Table 8 2nd TestCase', () => {
+    describe('Rate Table 8 2nd TestCase For classes', () => {
       let liveRateServiceRef !: LiveRateService
       let rate: BaseSymbolePriceInterface;
       beforeEach(() => {
@@ -92,36 +96,42 @@ describe('RateTablesComponent', () => {
         expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
         expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
       })
-      // it('Rate Low color Red class rate_low not rate_high', fakeAsync(() => {
-      //   liveRateServiceRef.setRate(new Map([
-      //     [RateBaseSymboles.GOLD, {
-      //       ask: rate.ask + 10,
-      //       // bid: rate.bid + 10,
-      //       // "last-high": rate['last-high'] + 10,
-      //       // "last-low": rate['last-low'] + 10,
-
-      //     }]
-      //   ]))
-      //   fixture.detectChanges()
-      //   flush()
-      //   const tableElements = componentHtml.querySelectorAll('.table');
-      //   const rateNode = tableElements[0].querySelectorAll('.body .details')[0].querySelector('h2');
-      //   expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
-      //   expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
-      // }))
-      // it('Rate High color Green class rate_high not rate_low', fakeAsync(() => {
-      //   liveRateServiceRef.setRate(new Map([
-      //     [RateBaseSymboles.GOLD, {
-      //       ask: rate.ask - 10
-      //     }]
-      //   ]))
-      //   fixture.detectChanges()
-      //   flush()
-      //   const tableElements = componentHtml.querySelectorAll('.table');
-      //   const rateNode = tableElements[0].querySelectorAll('.body .details')[0].querySelector('h2');
-      //   expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
-      //   expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
-      // }))
+      it('Rate Low color Red class contains rate_low not rate_high', fakeAsync(() => {
+        liveRateServiceRef.setRate(new Map([
+          [RateBaseSymboles.GOLD, {
+            ask: rate.ask + 10,
+            bid: rate.bid + 10,
+            "last-high": rate['last-high'] + 10,
+            "last-low": rate['last-low'] + 10,
+          }]
+        ]))
+        fixture.detectChanges()
+        flush()
+        const tableElements = componentHtml.querySelectorAll('.product_data_column');
+        for (let i = 0; i < 4; i++) {
+          const rateNode = tableElements[i].querySelector('p');
+          expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
+          expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+        }
+      }))
+      it('Rate High color Green class contains rate_high not rate_low', fakeAsync(() => {
+        liveRateServiceRef.setRate(new Map([
+          [RateBaseSymboles.GOLD, {
+            ask: rate.ask - 10,
+            bid: rate.bid - 10,
+            "last-high": rate['last-high'] - 10,
+            "last-low": rate['last-low'] - 10,
+          }]
+        ]))
+        fixture.detectChanges()
+        flush()
+        const tableElements = componentHtml.querySelectorAll('.product_data_column');
+        for (let i = 0; i < 4; i++) {
+          const rateNode = tableElements[i].querySelector('p');
+          expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
+          expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
+        }
+      }))
     })
   });
 });
