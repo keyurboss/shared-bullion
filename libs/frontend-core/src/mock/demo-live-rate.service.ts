@@ -10,6 +10,8 @@ import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
 
+export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +20,7 @@ export class DemoLiveRateService extends LiveRateService {
     @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
     @Optional() @Inject(Env) envvariable: EnvInterface,
     @Optional()
-    @Inject('initialiseRemoteConnection')
+    @Inject(InitialiseRemoteConnection)
     initialiseRemoteConnection: boolean
   ) {
     super(lastRate, envvariable, initialiseRemoteConnection ?? true);
