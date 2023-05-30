@@ -1,6 +1,6 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterModule, NavigationEnd } from '@angular/router';
+import { Router, RouterModule, } from '@angular/router';
 import { NavBar3Component } from '@rps/angular-nav-bars';
 interface navigationBar {
   // uid: string;

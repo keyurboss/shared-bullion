@@ -7,7 +7,7 @@ import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 describe('RateTablesComponent', () => {
   let component: RateTables1Component;
   let fixture: ComponentFixture<RateTables1Component>;
-let comp:ShadowRoot;
+  let comp: ShadowRoot;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,18 +23,23 @@ let comp:ShadowRoot;
     fixture = TestBed.createComponent(RateTables1Component);
     component = fixture.componentInstance;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    comp=(fixture.nativeElement as HTMLElement).shadowRoot!;
+    comp = (fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should display the product name', () => {
-    const productName = 'GOLD 999 IMP WITH TDS';
-    // component.data = [{ name: productName }];
-    fixture.detectChanges();
-    const productNameElement = comp.querySelector('.child_left')?.textContent;
-    expect(productNameElement?.trim()).toContain(productName.trim());
+
+  it(`name of data should be corrected`, () => {
+    const dataL = comp.querySelectorAll('.child').length;
+    for (let i = 0; i < dataL; i++) {
+      const data = comp
+        .querySelectorAll('.child')
+        [i].querySelector('.child_left')
+        ?.textContent?.trim();
+      expect(data).toBe(component.data[i].name);
+    }
   });
+
 });
