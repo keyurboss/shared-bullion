@@ -1,0 +1,20 @@
+<div class="w-full flex justify-center pb-6">
+
+    <div class="main w-[90%] flex flex-col justify-center items-center my-16">
+        
+        <div *ngFor="let item of data" class="box flex flex-col bg-[var(--header-bg)] w-[90%] p-[10px] mb-[10px] border-solid border-[2px] border-black rounded-[7px]">
+            <p class="tittle text-[18px] border-b-2 pb-[4px] border-black">{{item.tittle}}</p>
+            <p class="info text-[16px] pt-[4px]">{{item.details}}</p>
+            <p class="time text-[13px] pr-1 pt-3 text-right">
+                <span>
+                    {{item.date}}
+
+                </span>
+                <span>
+                    {{item.time}}
+
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

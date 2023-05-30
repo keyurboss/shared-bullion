@@ -1,0 +1,46 @@
+.color {
+  position: fixed;
+  bottom: 0%;
+}
+.nav {
+  --indicator-border-color: var(--header-bg);
+  --bg-color: #543e12;
+  --icon-bg: black !important;
+  --icon-heigh-width: 23px;
+  --menu-border-radius: 0px;
+
+  
+}
+.line{
+  background-color: var(--header-bg);
+  bottom: 0px;
+  position: fixed;
+  height: 80px;  
+  font-family: Roboto,helvetica Neue,sans-serif;
+}
+
+
+
+
+@media screen and (min-width: 769px) {
+  .nav{
+    display: none;
+  }
+  .line{
+    display: none;
+  }
+}
+  
+  @media screen and (max-width: 768px) {
+    .color {
+      display: none;
+    }
+    .nav{
+      display: box;
+    
+
+    }
+    .line{
+      display: flex;
+    }
+  }

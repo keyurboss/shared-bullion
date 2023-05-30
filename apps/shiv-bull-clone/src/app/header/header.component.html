@@ -1,0 +1,72 @@
+<div class="relative">
+
+  <div class="main">
+    <div class="color block h-8 w-full bg-[var(--primary-dark)]"></div>
+    <div class="headerMain flex justify-center w-full bg-[var(--header-bg)]">
+      <div class="childheader w-[70%] flex justify-between">
+        <div
+        class="logoheader flex items-center justify-center w-2/6"
+      >
+      <!--logo header-->
+      <a (dblclick)="expression()">
+        <img
+        src="../../../assets/images/shivbuliionLogo.png"
+        class="imageLogo w-3/4 pt-2 pb-2"
+        />
+      </a>
+    </div>
+
+    <div class="middleheader w-1/3 flex flex-col justify-evenly items-center">
+        <h4
+          style="color: var(--primary-dark)"
+          class="heading text-[28px] font-bold font-sans"
+          >
+          BOOKING NUMBER
+        </h4>
+        <div class="contact flex justify-center">
+          <img class="h-6 w-6" src="../../../assets/images/smartphone.png" />
+          <span class="font-semibold font-sans h-7 text-[var(--primary-dark)]"
+          >9904280700 | 0281-2702324</span
+          >
+        </div>
+      </div>
+      <div class="flex justify-center items-center">
+        <div 
+        class="downloadlogo flex relative justify-center items-center h-[50px]"
+        >
+          <a href="{{link.androrid_link}}" class="p-[5px] border-black border rounded-[5px] m-[5px]">
+            <img
+            class="icon flex justify-center items-center content-around h-[39px] rounded-[5px]"
+            src="../../../assets/images/playstoricon.png"
+            />
+          </a>
+          <a href="{{link.ios_link}}" class="p-[5px] border-black border rounded-[5px]">
+            <img
+              class="icon flex justify-center items-center h-[39px] rounded-[5px]"
+              src="../../../assets/images/appstoreicon.png"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+    class="color1 h-[35%] flex justify-center items-center w-full bg-[var(--primary-dark)]"
+    >
+    <ul
+    class="ul font-[500] text-[14px] font-sans flex flex-row justify-center items-center w-[80%]"
+    >
+    <li *ngFor="let item of data" class="py-2 my-0.5 mx-1">
+      <a
+      [routerLink]="item.router_link"
+      routerLinkActive="click"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="transition py-2 px-5 my-0.5 mx-1 flex-1 rounded-md bg-[--primary-dark] text-[var(--primary-medium)] hover:bg-[var(--header-bg)] hover:text-[#543e12]"
+          >{{ item.name }}</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+

@@ -1,0 +1,27 @@
+.address{
+    
+    box-shadow: 1px 1px 4px #00000059;
+    margin: 0 0 10px;    
+}
+.phone{
+        box-shadow: 1px 1px 4px #00000059;
+
+}
+.main{
+    font-family: Roboto,Helvetica Neue,sans-serif;}
+
+
+
+@media screen and (max-width:768px){
+    .text{
+        font-size: 14px;
+    }
+    .fulladdres{
+        font-size: 12px;
+        text-align: center;
+    }
+    .info{
+        margin-bottom: 100px;
+    }
+    
+}

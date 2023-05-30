@@ -1,0 +1,23 @@
+<section class="home_main h-screen flex flex-col">
+  <shiv-bull-app-header class="flex-initial"></shiv-bull-app-header>
+  <div class="main flex-auto ">
+    <router-outlet (activate)="activate()" ></router-outlet>
+  </div>
+  <shiv-bull-app-footer class="footer"></shiv-bull-app-footer>
+
+
+<!-- 
+  <div class="PopupMain z-10 top-32 w-full backdrop-blur-sm flex justify-center h-full items-center fixed flex-row " >
+    <div class="bg-white grid justify-center self-center w-[530px]">
+
+      <div class="w-full flex justify-center">
+        <img src="/assets/images/checkmark-circle-outline.svg" class="w-[90px] h-[90px]" alt="">
+      </div>
+      <div class="mb-1 mt-7 text-[18px] mx-3 w-full">You are already logged in</div>
+      <div class="w-full flex flex-col justify-around">
+        <button class="px-[17px] py-[10px] m-[5px] bg-[var(--primary-dark)] text-[var(--primary-gold)] "> Ok</button>
+        <button class="px-[17px] py-[10px] m-[5px] bg-[var(--primary-dark)] text-[var(--primary-gold)]">Log-Out</button>
+      </div>
+    </div>
+  </div> -->
+</section>
