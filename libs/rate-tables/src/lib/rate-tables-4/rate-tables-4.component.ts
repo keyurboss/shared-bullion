@@ -1,10 +1,15 @@
-import { Component, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, Input } from '@angular/core';
 import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core';
 import { Observable } from 'rxjs';
 import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { RateBaseSymboles } from '@rps/bullion-interfaces';
+export interface data {
+  symbole: RateBaseSymboles
+  product_name: string;
+}
 
 @Component({
   selector: 'rps-bull-rate-tables-4',
@@ -15,11 +20,18 @@ import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
   styleUrls: ['./rate-tables-4.component.scss'],
 })
 export class RateTables4Component {
-  GOLD: Observable<RateObserDataType>;
-  SILVER: Observable<RateObserDataType>;
-
-  constructor(@Inject(LiveRateService) pr: LiveRateService) {
-    this.GOLD = pr.RateObser$.GOLD_SPOT.asObservable();
-    this.SILVER = pr.RateObser$.SILVER_SPOT.asObservable();
+  @Input()
+  private _table: data[] = [];
+  public get table(): data[] {
+    return this._table;
+  }
+  public set table(value: data[]) {
+    value.forEach(({ symbole }) => {
+      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
+    })
+    this._table = value;
+  }
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
+  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
   }
 }
