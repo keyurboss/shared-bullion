@@ -94,6 +94,9 @@ describe('RateTablesComponent', () => {
         liveRateServiceRef.setRate(new Map([
           [RateBaseSymboles.GOLD, rate]
         ]))
+        liveRateServiceRef.setRate(new Map([
+          [RateBaseSymboles.GOLD, rate]
+        ]))
         fixture.detectChanges();
       })
       it('Rate Default No class', () => {
