@@ -92,9 +92,11 @@ describe('RateTablesComponent', () => {
       })
       it('Rate Default No class', () => {
         const tableElements = componentHtml.querySelectorAll('.product_data_column');
-        const rateNode = tableElements[0].querySelector('p');
-        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
-        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+        for (let i = 0; i < 4; i++) {
+          const rateNode = tableElements[i].querySelector('p');
+          expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
+          expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+        }
       })
       it('Rate Low color Red class contains rate_low not rate_high', fakeAsync(() => {
         liveRateServiceRef.setRate(new Map([
