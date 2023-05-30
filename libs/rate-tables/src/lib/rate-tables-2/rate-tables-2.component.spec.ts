@@ -35,7 +35,7 @@ describe('RateTablesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  describe('Rate Table 8 1st TestCase For Name', () => {
+  describe('Rate Table 2 1st TestCase For Name', () => {
     test('check Header & all products Name', fakeAsync(() => {
       component.table = [
         {
@@ -57,7 +57,7 @@ describe('RateTablesComponent', () => {
       expect(productsname[3].querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0].LOW);
     }))
 
-    describe('Rate Table 8 2nd TestCase For classes', () => {
+    describe('Rate Table 2 2nd TestCase For classes', () => {
       let liveRateServiceRef !: LiveRateService
       let rate: BaseSymbolePriceInterface;
       beforeEach(() => {
