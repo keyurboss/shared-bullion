@@ -38,11 +38,11 @@ describe('RateTablesComponent', () => {
   });
   describe('Rate Table 3 1st TestCase For Name', () => {
     test('check Header & all products Name', fakeAsync(() => {
+      component.Header = 'GOLD PRODUCTS';
+      component.sell = 'SELL';
       component.table = [
         {
           symbole: RateBaseSymboles.GOLD,
-          Header: 'GOLD PRODUCTS',
-          sell: 'SELL',
           productname: [{
             "name": "GOLD 999 IMP WITH TDS",
           },
@@ -59,9 +59,9 @@ describe('RateTablesComponent', () => {
       ];
       fixture.detectChanges();
       const headername = componentHtml.querySelector('.header h3')?.textContent?.trim();
-      expect(headername).toStrictEqual(component.table[0].Header)
+      expect(headername).toStrictEqual(component.Header)
       const Shellname = componentHtml.querySelector('.header p')?.textContent?.trim();
-      expect(Shellname).toStrictEqual(component.table[0].sell)
+      expect(Shellname).toStrictEqual(component.sell)
       for (let i = 0; i < 4; i++) {
         const productsname = componentHtml.querySelectorAll('.Items h3')[i].textContent?.trim();
         expect(productsname).toStrictEqual(component.table[0].productname[i].name.trim())
@@ -73,11 +73,11 @@ describe('RateTablesComponent', () => {
       let rate: BaseSymbolePriceInterface;
       beforeEach(() => {
         liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
+        component.Header = faker.lorem.word();
+        component.sell = faker.lorem.word();
         component.table = [
           {
             symbole: RateBaseSymboles.GOLD,
-            Header: faker.lorem.word(),
-            sell: faker.lorem.word(),
             productname: [{ name: faker.lorem.word() }],
           }
         ]

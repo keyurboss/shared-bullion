@@ -8,8 +8,6 @@ import {
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 export interface data {
   symbole: RateBaseSymboles
-  Header: string;
-  sell: string;
   productname: { name: string }[]
 }
 
@@ -22,6 +20,9 @@ export interface data {
   styleUrls: ['./rate-tables-3.component.scss'],
 })
 export class RateTables3Component {
+  @Input() Header = '';
+  @Input() sell = '';
+
   @Input()
   private _table: data[] = [];
   public get table(): data[] {

@@ -1,9 +1,9 @@
 <div class="table" *ngFor="let item of table">
   <div class="header">
-    <h3 class="product_header_left">{{ item.Header }}</h3>
-    <p class="product_header_right">{{ item.sell }}</p>
+    <h3 class="product_header_left">{{ Header }}</h3>
+    <p class="product_header_right">{{ sell }}</p>
   </div>
-  <div class="product">
+  <div class="product" *ngFor="let item of table">
     <div *ngFor="let info of item.productname" class=" Items">
       <h3 class="product_name">{{ info.name }}</h3>
       <div class="product_price">
