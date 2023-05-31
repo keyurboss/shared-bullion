@@ -1,16 +1,21 @@
-import { Component, ViewEncapsulation, Inject, Input } from '@angular/core';
+import {
+  AsyncPipe,
+  CommonModule,
+  JsonPipe,
+  NgFor,
+  NgIf,
+} from '@angular/common';
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
 import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core';
+import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
-import {
-  AsyncPipe,
-  JsonPipe,
-  NgFor,
-  NgIf,
-  CommonModule,
-} from '@angular/common';
+export interface data {
+  symbole: RateBaseSymboles;
+  productName: string;
+}
 
 @Component({
   selector: 'rps-bull-rate-tables-5',
@@ -21,14 +26,18 @@ import {
   styleUrls: ['./rate-tables-5.component.scss'],
 })
 export class RateTables5Component {
-  GOLD: Observable<RateObserDataType>;
-  SILVER: Observable<RateObserDataType>;
-  INR: Observable<RateObserDataType>;
-  @Input() productName = 'GOLD SPOT';
-
-  constructor(@Inject(LiveRateService) sahil: LiveRateService) {
-    this.GOLD = sahil.RateObser$.GOLD_SPOT.asObservable();
-    this.SILVER = sahil.RateObser$.SILVER_SPOT.asObservable();
-    this.INR = sahil.RateObser$.INR.asObservable();
+  @Input()
+  private _table: data[] = [];
+  public get table(): data[] {
+    return this._table;
+  }
+  public set table(value: data[]) {
+    value.forEach(({ symbole }) => {
+      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
+    })
+    this._table = value;
+  }
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
+  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
   }
 }
