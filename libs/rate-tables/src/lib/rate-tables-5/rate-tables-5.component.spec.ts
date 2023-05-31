@@ -122,7 +122,7 @@ describe('RateTablesComponent', () => {
         fixture.detectChanges()
         flush()
         // CHECK FOR SMALL TABLE
-        const rateNode = componentHtml.querySelector('.box_footer_uperitem')?.querySelector('span');;
+        const rateNode = componentHtml.querySelector('.box_footer_uperitem')?.querySelector('span');
         expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
         expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
 
@@ -136,4 +136,3 @@ describe('RateTablesComponent', () => {
     })
   });
 });
-
