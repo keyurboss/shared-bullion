@@ -21,7 +21,14 @@ export interface data {
 })
 export class RateTables4Component {
   @Input()
-  private _table: data[] = [];
+  public _table: data[] = [{
+    symbole: RateBaseSymboles.GOLD,
+    product_name: 'GOLD PRODUCTS'
+  },
+  {
+    symbole: RateBaseSymboles.SILVER,
+    product_name: 'SILVER PRODUCTS'
+  }];
   public get table(): data[] {
     return this._table;
   }

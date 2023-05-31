@@ -8,12 +8,12 @@
     <div class="product_group_name flex_center center">High</div>
     <div class="product_group_name flex_center center">Low</div>
   </div>
-  <div class="footer" *ngFor="let item of table">
+  <div class="footer" *ngFor="let item of _table">
     <div class="product" *ngIf="RateObser$[item.symbole] | async; let rate">
       <div class="product_name center right_border">{{item.product_name}}</div>
       <div class="product_price upper_margin right_border center">
-        <div class="hii" [class.rate_high]="rate['ask'].color === 'Green'"
-          [class.rate_low]="rate['ask'].color === 'Red'">
+        <div class="hii" [class.rate_high]="rate['bid'].color === 'Green'"
+          [class.rate_low]="rate['bid'].color === 'Red'">
           {{ rate['bid'].rate }}
         </div>
       </div>

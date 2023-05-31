@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { faker } from '@faker-js/faker';
 
 import { RateTables4Component } from './rate-tables-4.component';
 import { LiveRateService } from '@rps/buillion-frontend-core';
-import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';
 import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 
@@ -20,6 +20,10 @@ describe('RateTablesComponent', () => {
           provide: LiveRateService,
           useClass: DemoLiveRateService,
         },
+        {
+          provide: InitialiseRemoteConnection,
+          useValue: false,
+        }
       ],
     }).compileComponents();
 
@@ -82,9 +86,46 @@ describe('RateTablesComponent', () => {
       fixture.detectChanges();
     })
     it('Rate Default No class', () => {
-      const rateNode = componentHtml.querySelectorAll('.span')[0];
-      expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
-      expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+      for (let i = 0; i < 2; i++) {
+        const rateNode = componentHtml.querySelectorAll('.product_price')[i].querySelector('.hii');
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+      }
+      for (let i = 2; i < 4; i++) {
+        const rateNode = componentHtml.querySelectorAll('.product_price')[i];
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+      }
     })
+    it('Rate Low color Red class contains rate_low not rate_high', fakeAsync(() => {
+      liveRateServiceRef.setRate(new Map([
+        [RateBaseSymboles.GOLD, {
+          ask: rate.ask + 10,
+          bid: rate.bid + 10,
+        }]
+      ]))
+      fixture.detectChanges()
+      flush()
+      for (let i = 0; i < 2; i++) {
+        const rateNode = componentHtml.querySelectorAll('.product_price')[i].querySelector('div');
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+      }
+    }))
+    it('Rate High color Green class contains rate_high not rate_low', fakeAsync(() => {
+      liveRateServiceRef.setRate(new Map([
+        [RateBaseSymboles.GOLD, {
+          ask: rate.ask - 10,
+          bid: rate.bid - 10,
+        }]
+      ]))
+      fixture.detectChanges()
+      flush()
+      for (let i = 0; i < 2; i++) {
+        const rateNode = componentHtml.querySelectorAll('.hii')[0];
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
+      }
+    }))
   });
 });
