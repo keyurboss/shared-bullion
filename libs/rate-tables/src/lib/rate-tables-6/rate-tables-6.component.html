@@ -1,9 +1,9 @@
 <div class="main">
   <div class="header">
-    <div class="w_40 header_name header_left_name">{{ headers.HeaderName}}</div>
-    <div class="w_20 header_name header_right_name center">{{ headers.bid }}</div>
-    <div class="w_20 header_name header_right_name center">{{ headers.diff }}</div>
-    <div class="w_20 header_name header_right_name center">{{ headers.ask }}</div>
+    <div class="w_40 header_left_name">{{ headers.HeaderName}}</div>
+    <div class="w_20 header_right_name center">{{ headers.bid }}</div>
+    <div class="w_20 header_right_name center">{{ headers.diff }}</div>
+    <div class="w_20 header_right_name center">{{ headers.ask }}</div>
   </div>
   <div class="footer" *ngFor="let item of table">
     <div class="footer_item" *ngIf=" RateObser$[item.symbole] | async; let rate">
