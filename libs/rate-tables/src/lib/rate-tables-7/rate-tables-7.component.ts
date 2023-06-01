@@ -64,6 +64,7 @@ export class RateTables7Component {
 
   RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
     {} as never;
+
   constructor(
     @Inject(LiveRateService) private readonly rateObservar: LiveRateService
   ) {

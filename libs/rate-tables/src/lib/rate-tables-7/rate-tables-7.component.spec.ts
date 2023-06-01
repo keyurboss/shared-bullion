@@ -1,13 +1,13 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush, } from '@angular/core/testing';
 
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
-import { RateBaseSymboles } from '@rps/bullion-interfaces';
+import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
 import { RateTables7Component } from './rate-tables-7.component';
-// import { faker } from '@faker-js/faker';
-// import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
+import { faker } from '@faker-js/faker';
+import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 
 describe('RateTablesComponent', () => {
@@ -62,7 +62,7 @@ describe('RateTablesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  describe('Rate Table 1 1st TestCase For Name', () => {
+  describe('Rate Table 7 1st TestCase For Name', () => {
     test('check Header & all products Name', () => {
       fixture.detectChanges();
       const headername = comp.querySelector('.product_group_header_1');
@@ -84,5 +84,84 @@ describe('RateTablesComponent', () => {
       }
     });
   });
+
+
+  describe('Rate Table 7 2nd TestCase For classes', () => {
+    let liveRateServiceRef!: LiveRateService;
+    let rate: BaseSymbolePriceInterface;
+    beforeEach(() => {
+      liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
+      component.table = [
+        {
+          symbole: RateBaseSymboles.SILVER,
+          productname: [{ name: faker.lorem.word() }],
+        },
+      ];
+
+      rate = RatesFixture.Generate(
+        {
+          top: 1500,
+          bottom: 1000,
+        },
+        {
+          bottom: 1,
+          top: 15,
+        }
+      );
+      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.SILVER, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.SILVER, rate]]));
+      fixture.detectChanges();
+    });
+    it('Rate Default No class', () => {
+      const length = comp.querySelectorAll('.rate').length;
+      for (let i = 0; i < length; i++) {
+        
+        const rateNode = comp.querySelectorAll('.rate')[i];
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false);
+      }
+    });
+    it('Rate Low color Red class contains rate_low not rate_high', fakeAsync(() => {
+      liveRateServiceRef.setRate(
+        new Map([
+          [
+            RateBaseSymboles.SILVER,
+            {
+              ask: rate.ask + 10,
+            },
+          ],
+        ])
+      );
+      fixture.detectChanges();
+      flush();
+      const length = comp.querySelectorAll('.price_buy').length;
+      for (let i = 0; i < length; i++) {
+        const rateNode = comp.querySelectorAll('.price_buy')[i];
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false);
+      }
+    }));
+    it('Rate High color Green class contains rate_high not rate_low', fakeAsync(() => {
+      liveRateServiceRef.setRate(
+        new Map([
+          [
+            RateBaseSymboles.SILVER,
+            {
+              ask: rate.ask - 10,
+            },
+          ],
+        ])
+      );
+      fixture.detectChanges();
+      flush();
+      const length = comp.querySelectorAll('.price_buy').length;
+      for (let i = 0; i < length; i++) {
+        const rateNode = comp.querySelectorAll('.price_buy')[i];
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true);
+      }
+    }));
+  });
+
 
 });
