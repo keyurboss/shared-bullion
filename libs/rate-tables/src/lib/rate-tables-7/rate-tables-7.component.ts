@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
 import {
@@ -8,8 +9,8 @@ import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
 
 export interface data {
-  symbole: RateBaseSymboles
-  productname: { name: string }[]
+  symbole: RateBaseSymboles;
+  productname: { name: string }[];
 }
 
 @Component({
@@ -37,29 +38,35 @@ export class RateTables7Component {
   // ];
 
   // constructor(@Inject(LiveRateService) alay: LiveRateService) {
-    //   this.SILVER = alay.RateObser$.SILVER_SPOT.asObservable();
-    
-  @Input() Header = '';
-  @Input() sell = '';
-  @Input()   gold= '';
-  @Input() buy = '';
-  
+  //   this.SILVER = alay.RateObser$.SILVER_SPOT.asObservable();
+
+  @Input() Table_title = {
+    Header: '',
+    sell: '',
+    gold: '',
+    buy: '',
+  };
+
   @Input()
   private _table: data[] = [];
+
   public get table(): data[] {
     return this._table;
   }
+
   public set table(value: data[]) {
     value.forEach(({ symbole }) => {
-      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
-    })
+      this.RateObser$[symbole] =
+        this.rateObservar.RateObser$[symbole].asObservable();
+    });
     this._table = value;
   }
-  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
-  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
+
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
+    {} as never;
+  constructor(
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+  ) {
     this.GOLD = rateObservar.RateObser$.GOLD_SPOT.asObservable();
   }
-
-
 }
-
