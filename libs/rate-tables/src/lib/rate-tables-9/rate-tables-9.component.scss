@@ -8,10 +8,12 @@
     --high-low-value-size: 14px;
     --rate-low-font-color: #ff0000;
     --rate-high-font-color: #008000;
-    --table-border: 1px solid #fce975;
-    --table-background-color: black;
+    --table-border-top: 1px solid #fce975;
+    --table-border-bottom: 1px solid #fce975;
+    --table-border-left: 1px solid #fce975;
+    --table-border-right: 1px solid #fce975;
+    --table-border-radius: 4px;
     --table-max-width: 800px;
-    --font-family: Roboto, Helvetica Neue, sans-serif;
 }
 
 * {
@@ -31,10 +33,13 @@
     position: relative;
     height: 100%;
     width: 100%;
-    border: var(--table-border);
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: var(--table-border-radius);
+    border-top: var(--table-border-top);
+    border-bottom: var(--table-border-bottom);
+    border-left: var(--table-border-left);
+    border-right: var(--table-border-right);
 }
+
 
 .flex_center {
     display: flex;
@@ -101,6 +106,10 @@
             display: inline-block;
         }
     }
+}
+
+.type_1_container {
+    padding: 10px;
 }
 
 .product {
