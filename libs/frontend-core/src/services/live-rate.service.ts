@@ -33,7 +33,7 @@ export abstract class LiveRateService {
 
   protected _LastRate: Map<RateBaseSymboles, BaseSymbolePriceInterface> =
     new Map();
-    
+
   get LastRate(): Map<RateBaseSymboles, BaseSymbolePriceInterface> {
     return this._LastRate;
   }
@@ -51,7 +51,7 @@ export abstract class LiveRateService {
   get RatesReady() {
     return this._RatesReady;
   }
-  
+
   protected set RatesReady(value) {
     // debugger;
     this._RatesReady = value;
@@ -79,7 +79,7 @@ export abstract class LiveRateService {
       this.init();
     }
   }
-  
+
   private async init() {
     if (this.RatesReady === false) {
       await this.getLastRates().then((rate) => {
@@ -125,7 +125,7 @@ export abstract class LiveRateService {
           clearTimeout(oldRateObject.timeOutRef);
           oldRateObject.timeOutRef = null;
         }
-        
+
         oldRateObject.rate = newRate;
 
         oldRateObject.timeOutRef = setTimeout(() => {
