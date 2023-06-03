@@ -29,6 +29,7 @@ describe('RateTablesComponent', () => {
 
     fixture = TestBed.createComponent(RateTables4Component);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
@@ -41,11 +42,11 @@ describe('RateTablesComponent', () => {
       component.table = [
         {
           symbole: RateBaseSymboles.GOLD,
-          product_name: 'GOLD PRODUCTS'
+          productName: 'GOLD PRODUCTS'
         },
         {
           symbole: RateBaseSymboles.SILVER,
-          product_name: 'SILVER PRODUCTS'
+          productName: 'SILVER PRODUCTS'
         }
       ];
       fixture.detectChanges();
@@ -53,7 +54,7 @@ describe('RateTablesComponent', () => {
       expect(productlength).toStrictEqual(component.table.length);
       for (let i = 0; i < productlength; i++) {
         const productname = componentHtml.querySelectorAll('.product_name')[i]?.textContent?.trim();
-        expect(productname).toStrictEqual(component.table[i].product_name)
+        expect(productname).toStrictEqual(component.table[i].productName)
       }
     }))
   })
@@ -65,7 +66,7 @@ describe('RateTablesComponent', () => {
       component.table = [
         {
           symbole: RateBaseSymboles.GOLD,
-          product_name: faker.lorem.word(),
+          productName: faker.lorem.word(),
         }
       ]
       rate = RatesFixture.Generate({
