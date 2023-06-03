@@ -1,5 +1,4 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { faker } from '@faker-js/faker';
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
@@ -9,6 +8,7 @@ import {
 import { Env, JsonToItrable } from '../core';
 import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
+import { randNumber } from '@ngneat/falso';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +31,7 @@ export class DemoLiveRateService extends LiveRateService {
     this.INR();
   }
   private Silver() {
-    const timeout = faker.datatype.number({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -60,7 +60,7 @@ export class DemoLiveRateService extends LiveRateService {
     }, timeout * 10000);
   }
   private Gold() {
-    const timeout = faker.datatype.number({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -89,7 +89,7 @@ export class DemoLiveRateService extends LiveRateService {
     }, timeout * 10000);
   }
   private SilverSpot() {
-    const timeout = faker.datatype.number({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -120,7 +120,7 @@ export class DemoLiveRateService extends LiveRateService {
   }
 
   private GoldSpot() {
-    const timeout = faker.datatype.number({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -151,7 +151,7 @@ export class DemoLiveRateService extends LiveRateService {
   }
 
   private INR() {
-    const timeout = faker.datatype.number({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
