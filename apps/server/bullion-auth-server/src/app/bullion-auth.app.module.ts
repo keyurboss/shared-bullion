@@ -6,7 +6,7 @@ import {
   MongoRepositoryProductionModule,
   RedisRepositoryLocalModule,
   RedisRepositoryProductionModule,
-} from '@rps/server-core';
+} from '@rps/bullion-server-core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 export type AuthServerAppModuleOptions = {

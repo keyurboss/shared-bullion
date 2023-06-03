@@ -1,7 +1,9 @@
 import {
+  CalculatedOnPriceof,
   CshGenStrings,
   CshID,
   CshPremiumBuySellSnapshot,
+  CshVariableSnapshot,
   GenerateExchangeBackwordCalcString,
   GenerateExchangeForwordCalcString,
 } from '@rps/bullion-interfaces';
@@ -12,14 +14,11 @@ import {
   IsNumber,
   ValidateNested,
 } from 'class-validator';
-import {
-  CalculatedOnPriceof,
-  CshVariableSnapshot,
-} from '@rps/bullion-interfaces';
+
+import { DeepOmit } from 'ts-essentials';
+import { v4 } from 'uuid';
 import { groupDbToPlain, groupToPlain } from '../core.interface';
 import { BaseEntity } from '../core/base.entity';
-import { v4 } from 'uuid';
-import { DeepOmit } from 'ts-essentials';
 
 export class CshPremiumBuySellEntity implements CshPremiumBuySellSnapshot {
   tcs = 0;

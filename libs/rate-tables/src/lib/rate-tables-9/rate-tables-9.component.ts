@@ -1,6 +1,6 @@
 import { AsyncPipe, CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
-import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { RateObserDataType } from '@rps/buillion-frontend-core';
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
+import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,6 +12,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./rate-tables-9.component.scss'],
 })
 export class RateTables9Component {
-  @Input() rate!: Observable<RateObserDataType>;
-  @Input() product_name = '';
+  rate: Observable<RateObserDataType>;
+  @Input() productName = 'GOLD';
+  
+  constructor(@Inject(LiveRateService) sahil: LiveRateService) {
+    this.rate = sahil.RateObser$.GOLD_SPOT.asObservable();
+  }
 }

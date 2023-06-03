@@ -1,42 +1,77 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nx", "unused-imports"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
+        "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "scope:client",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:libs"]
+                "sourceTag": "service",
+                "onlyDependOnLibsWithTags": [
+                  "library",
+                  "core",
+                  "shared:library"
+                ]
               },
               {
-                "sourceTag": "scope:libs",
-                "onlyDependOnLibsWithTags": ["scope:libs"]
+                "sourceTag": "shared:library",
+                "onlyDependOnLibsWithTags": ["core","shared:library"]
               },
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "library",
+                "onlyDependOnLibsWithTags": ["core", "shared:library"]
               }
             ]
           }
-        ]
+        ],
+        "object-shorthand": "warn",
+        "camelcase": "warn",
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": ["apps/*"]
+          }
+        ],
+        "require-await": "off",
+        "consistent-return": "warn",
+        "no-console": "warn"
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "unused-imports/no-unused-imports": "error",
+        "no-unused-private-class-members": "error",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/lines-between-class-members": [
+          "warn",
+          "always",
+          {
+            "exceptAfterSingleLine": true
+          }
+        ],
+        "no-duplicate-imports": "off",
+        "@typescript-eslint/no-duplicate-imports": "error",
+        "lodash-fp/prefer-constant": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     },
     {
