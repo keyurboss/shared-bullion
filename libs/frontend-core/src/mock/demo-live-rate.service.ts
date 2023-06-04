@@ -9,6 +9,7 @@ import { Env, JsonToItrable } from '../core';
 import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
+export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 
