@@ -12,7 +12,7 @@ import {
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
-export interface data {
+export interface table4DataInterface {
   symbole: RateBaseSymboles;
   productName: string;
 }
@@ -26,7 +26,7 @@ export interface data {
   styleUrls: ['./rate-tables-4.component.scss'],
 })
 export class RateTables4Component {
-  private _table: data[] = [
+  private _table: table4DataInterface[] = [
     {
       symbole: RateBaseSymboles.GOLD,
       productName: 'GOLD PRODUCTS',
@@ -38,11 +38,11 @@ export class RateTables4Component {
   ];
 
   @Input()
-  public get table(): data[] {
+  public get table(): table4DataInterface[] {
     return this._table;
   }
 
-  public set table(value: data[]) {
+  public set table(value: table4DataInterface[]) {
     value.forEach(({ symbole }) => {
       this.RateObser$[symbole] =
         this.rateObservar.RateObser$[symbole].asObservable();
