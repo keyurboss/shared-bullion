@@ -14,10 +14,11 @@
     --font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 
- *{
+* {
     margin: 0;
     padding: 0;
- }
+}
+
 %flex-row {
     display: flex;
     flex-direction: row;
@@ -29,20 +30,20 @@
 }
 
 .main-div {
-    width: 268px;
+    display: flex;
+    flex-direction: column;
     font-family: var(--font-family);
     letter-spacing: .5px;
     margin: 10px 10px;
 }
 
 .header {
-    width: 258px;
+    max-width: 500px;
     border: 1px solid var(--header-border-color);
     background-color: var(--header-back-color);
     display: flex;
     height: 36px;
     justify-content: center;
-    padding: 0 10px;
     text-transform: uppercase;
     align-items: center;
     font-size: 16px;
@@ -53,8 +54,7 @@
 .Data {
     @extend %flex-column;
     border: 1px solid var(--data-border-color);
-    padding: 0 5px;
-    width: 268px;
+    max-width: 500px;
     align-items: center;
     font-size: 18px;
     border-radius: 5px;
@@ -90,7 +90,6 @@
         font-weight: 600;
         padding: 2px 4px;
         font-size: 15px;
-        margin: 0 5px 0 0;
     }
 
     p {
@@ -104,7 +103,7 @@
 
 .none {
     position: relative;
-    margin-left: 10px;
+    margin-left: 5px;
     background-color: var(--data-back-color) !important;
 }
 
