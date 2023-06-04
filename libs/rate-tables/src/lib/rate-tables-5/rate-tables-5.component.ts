@@ -12,7 +12,7 @@ import {
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
-export interface data {
+export interface table5DataInterface {
   symbole: RateBaseSymboles;
   productName: string;
 }
@@ -27,17 +27,21 @@ export interface data {
 })
 export class RateTables5Component {
   @Input()
-  private _table: data[] = [];
-  public get table(): data[] {
+  private _table: table5DataInterface[] = [];
+  
+  public get table(): table5DataInterface[] {
     return this._table;
   }
-  public set table(value: data[]) {
+  
+  public set table(value: table5DataInterface[]) {
     value.forEach(({ symbole }) => {
       this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
     })
     this._table = value;
   }
+  
   RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
+  
   constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
   }
 }
