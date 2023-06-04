@@ -9,13 +9,15 @@ import {
   randRecentDate,
   randSportsTeam,
   randUuid,
-  randWord
+  randWord,
 } from '@ngneat/falso';
 import { FakeOptions } from '@ngneat/falso/lib/core/core';
 
 import {
+  BullionId,
   DeviceId,
   DeviceType,
+  GeneralUserAuthStatus,
   GeneralUserId,
   GstNumber,
 } from '@rps/bullion-interfaces';
@@ -30,6 +32,8 @@ describe(GeneralUserRoot.name, () => {
       isAuto: randBoolean(),
       firmName: randFullName(),
       firstName: randFullName(),
+      bullionId: randUuid() as BullionId,
+      status: rand(Object.values(GeneralUserAuthStatus)),
       gstNumber: randCompanyName() as GstNumber,
       lastName: randFullName(),
       os: randSportsTeam(),
@@ -47,7 +51,7 @@ describe(GeneralUserRoot.name, () => {
     expect(entity).toStrictEqual(expect.objectContaining({ ...options }));
   });
   test(GeneralUserRoot.fromJson.name, () => {
-    const entity = GeneralUserRoot.from(options);
+    const entity = GeneralUserRoot.fromJson(options);
     expect(entity).toStrictEqual(expect.objectContaining({ ...options }));
   });
 });

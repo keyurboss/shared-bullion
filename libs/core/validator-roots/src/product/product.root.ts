@@ -12,9 +12,8 @@ import {
 import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsString, Length } from 'class-validator';
 import { CshVariableSnapshotEntity } from '../calc/calc.root';
-import { BaseEntity } from '../core/base.entity';
 import { v4 } from 'uuid';
-import { validateSyncOrFail } from '../core.interface';
+import { BaseEntity } from '../core/base.entity';
 
 export type ProductDocument = Pick<
   ProductRoot,
@@ -31,7 +30,6 @@ export type ProductDocument = Pick<
   | 'createdAt'
   | 'modifiedAt'
 >;
-
 export class ProductRoot extends BaseEntity<ProductID> implements Product {
   @Expose()
   @IsString()
@@ -109,7 +107,7 @@ export class ProductRoot extends BaseEntity<ProductID> implements Product {
     const entity = plainToInstance(ProductRoot, data, {
       excludeExtraneousValues: true,
     });
-    validateSyncOrFail(entity);
+    entity.validate();
     return entity;
   }
 }

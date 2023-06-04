@@ -1,0 +1,59 @@
+import {
+  BullionGeneralUserConfig,
+  BullionId,
+  BullionSiteInfo,
+} from '@rps/bullion-interfaces';
+import { Expose, Type, plainToInstance } from 'class-transformer';
+import { IsArray, Length, ValidateNested } from 'class-validator';
+import { OmitProperties } from 'ts-essentials';
+import { v4 } from 'uuid';
+import { BullionGeneralUserConfigRoot } from './bullion-general-user-config';
+import { BaseEntity } from '../core/base.entity';
+
+export type BullionSiteInfoOptions = OmitProperties<
+  BullionSiteInfoRoot,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  Function
+>;
+export class BullionSiteInfoRoot
+  extends BaseEntity<BullionId>
+  implements BullionSiteInfo
+{
+  @Expose()
+  @IsArray()
+  @Length(1)
+  domains: string[];
+
+  @Expose()
+  @ValidateNested()
+  @Type(() => BullionGeneralUserConfigRoot)
+  generalUserInfo: BullionGeneralUserConfig;
+
+  static generateID() {
+    return v4() as BullionId;
+  }
+
+  static from({
+    domains,
+    generalUserInfo,
+    createdAt = new Date(),
+    id = BullionSiteInfoRoot.generateID(),
+    modifiedAt = new Date(),
+  }: BullionSiteInfoOptions) {
+    const entity = new BullionSiteInfoRoot();
+    entity.id = id;
+    entity.domains = domains;
+    entity.generalUserInfo = generalUserInfo;
+    entity.createdAt = createdAt;
+    entity.modifiedAt = modifiedAt;
+    return entity;
+  }
+
+  static fromJson(data: Record<string, unknown>) {
+    const entity = plainToInstance(BullionSiteInfoRoot, data, {
+      excludeExtraneousValues: true,
+    });
+    entity.validate();
+    return entity;
+  }
+}
