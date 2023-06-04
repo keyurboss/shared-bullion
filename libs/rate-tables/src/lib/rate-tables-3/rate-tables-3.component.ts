@@ -6,9 +6,9 @@ import {
   RateObserDataType,
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
-export interface data {
-  symbole: RateBaseSymboles
-  productname: { name: string }[]
+export interface table3DataInterface {
+  symbole: RateBaseSymboles;
+  productname: { name: string }[];
 }
 
 @Component({
@@ -24,17 +24,24 @@ export class RateTables3Component {
   @Input() sell = '';
 
   @Input()
-  private _table: data[] = [];
-  public get table(): data[] {
+  private _table: table3DataInterface[] = [];
+
+  public get table(): table3DataInterface[] {
     return this._table;
   }
-  public set table(value: data[]) {
+
+  public set table(value: table3DataInterface[]) {
     value.forEach(({ symbole }) => {
-      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
-    })
+      this.RateObser$[symbole] =
+        this.rateObservar.RateObser$[symbole].asObservable();
+    });
     this._table = value;
   }
-  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
-  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
-  }
+
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
+    {} as never;
+
+  constructor(
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+  ) {}
 }
