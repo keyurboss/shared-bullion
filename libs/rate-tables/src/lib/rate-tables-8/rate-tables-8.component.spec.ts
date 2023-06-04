@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 import {
   LiveRateService,
-} from '@rps/buillion-frontend-core/services/live-rate.service';
+} from '@rps/buillion-frontend-core';
 import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
 import { RateTables8Component } from './rate-tables-8.component';
 import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';

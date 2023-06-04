@@ -3,7 +3,7 @@ import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
 import {
   LiveRateService,
   RateObserDataType,
-} from '@rps/buillion-frontend-core/services';
+} from '@rps/buillion-frontend-core';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
 export interface table8DataInterface {
