@@ -1,12 +1,14 @@
 import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
 import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core/services';
+import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
-interface data {
+export interface table8DataInterface {
   headerName: string;
+  symbole: RateBaseSymboles;
   details: {
     Name: string;
   }[];
@@ -20,55 +22,25 @@ interface data {
   styleUrls: ['./rate-tables-8.component.scss'],
 })
 export class RateTables8Component {
-  gold: Observable<RateObserDataType>;
-  // silver: Observable<RateObserDataType>;
-  rateClass = {
-    red: true,
-    green: false,
-  };
+  @Input()
+  private _table: table8DataInterface[] = [];
 
-  table: data[] = [
-    {
-      headerName: 'GOLD PRODUCT',
-      details: [
-        {
-          Name: 'IMP 999 RTGS (TCS)',
-        },
-        {
-          Name: 'LOCAL RTGS (TCS)',
-        },
-      ],
-    },
-    {
-      headerName: 'SILVER PRODUCT',
-      details: [
-        {
-          Name: 'PETI 30KG RTGS (TCS)',
-        },
-        {
-          Name: 'CHORSA RTGS (TCS)',
-        },
-      ],
-    },
-  ];
-
-  constructor(@Inject(LiveRateService) Alay: LiveRateService) {
-    this.gold = Alay.RateObser$.GOLD.asObservable();
-    this.gold = Alay.RateObser$.SILVER.asObservable();
+  public get table(): table8DataInterface[] {
+    return this._table;
   }
+
+  public set table(value: table8DataInterface[]) {
+    value.forEach(({ symbole }) => {
+      this.RateObser$[symbole] =
+        this.rateObservar.RateObser$[symbole].asObservable();
+    });
+    this._table = value;
+  }
+
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
+    {} as never;
+
+  constructor(
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+  ) {}
 }
-//   {
-//     headerName:'SILVER PRODUCT',
-//     leftSideName:'PETI 30KG RTGS(TCS)',
-//     leftValue:77772,
-//     rightSideName:'CHORSA RTGS(TCS)',
-//     rightValue:4456521,
-//   },
-//   {
-//     headerName:'SILVER PRODUCT',
-//     leftSideName:'PETI 30KG RTGS(TCS)',
-//     leftValue:77772,
-//     rightSideName:'CHORSA RTGS(TCS)',
-//     rightValue:4456521,
-//   },
-//  ]
