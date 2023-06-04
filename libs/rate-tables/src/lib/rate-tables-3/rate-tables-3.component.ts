@@ -1,11 +1,11 @@
-import { NgFor, NgIf, AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, Inject, ViewEncapsulation, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
 import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
+import { Observable } from 'rxjs';
 export interface table3DataInterface {
   symbole: RateBaseSymboles;
   productname: { name: string }[];
