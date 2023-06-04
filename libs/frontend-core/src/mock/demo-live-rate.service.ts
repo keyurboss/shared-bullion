@@ -9,10 +9,9 @@ import { Env, JsonToItrable } from '../core';
 import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
-export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
+
 
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +25,7 @@ export class DemoLiveRateService extends LiveRateService {
   ) {
     super(lastRate, envvariable, initialiseRemoteConnection ?? true);
   }
+
   InitRemoteConnection(): void {
     this.Gold();
     this.Silver();
@@ -33,6 +33,7 @@ export class DemoLiveRateService extends LiveRateService {
     this.GoldSpot();
     this.INR();
   }
+  
   private Silver() {
     const timeout = randNumber({
       max: 0.15,
@@ -62,6 +63,7 @@ export class DemoLiveRateService extends LiveRateService {
       this.Silver();
     }, timeout * 10000);
   }
+  
   private Gold() {
     const timeout = randNumber({
       max: 0.15,
@@ -91,6 +93,7 @@ export class DemoLiveRateService extends LiveRateService {
       this.Gold();
     }, timeout * 10000);
   }
+
   private SilverSpot() {
     const timeout = randNumber({
       max: 0.15,
@@ -183,6 +186,7 @@ export class DemoLiveRateService extends LiveRateService {
       this.INR();
     }, timeout * 10000);
   }
+  
   async getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   > {

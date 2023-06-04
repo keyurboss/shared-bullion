@@ -29,6 +29,7 @@ describe('RateTablesComponent', () => {
 
     fixture = TestBed.createComponent(RateTables3Component);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
