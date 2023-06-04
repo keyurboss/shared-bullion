@@ -6,12 +6,12 @@ import {
 } from '@rps/buillion-frontend-core/services/live-rate.service';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
-export interface data {
+export interface table8DataInterface {
   headerName: string;
-  symbole: RateBaseSymboles
+  symbole: RateBaseSymboles;
   details: {
     Name: string;
-  }[]
+  }[];
 }
 @Component({
   selector: 'rps-bull-rate-tables-8',
@@ -23,18 +23,24 @@ export interface data {
 })
 export class RateTables8Component {
   @Input()
-  private _table: data[] = [];
-  public get table(): data[] {
+  private _table: table8DataInterface[] = [];
+
+  public get table(): table8DataInterface[] {
     return this._table;
   }
-  public set table(value: data[]) {
+
+  public set table(value: table8DataInterface[]) {
     value.forEach(({ symbole }) => {
-      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
-    })
+      this.RateObser$[symbole] =
+        this.rateObservar.RateObser$[symbole].asObservable();
+    });
     this._table = value;
   }
-  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
-  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
-  }
-}
 
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
+    {} as never;
+
+  constructor(
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+  ) {}
+}
