@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { faker } from '@faker-js/faker';
-import { RateTables2Component } from './rate-tables-2.component';
 import { LiveRateService } from '@rps/buillion-frontend-core';
+import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';
 import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
+import { RateTables2Component } from './rate-tables-2.component';
 
 describe('RateTablesComponent', () => {
   let component: RateTables2Component;
@@ -28,6 +28,7 @@ describe('RateTablesComponent', () => {
 
     fixture = TestBed.createComponent(RateTables2Component);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
