@@ -64,8 +64,8 @@ describe('RateTablesComponent', () => {
       const Shellname = componentHtml.querySelector('.header p')?.textContent?.trim();
       expect(Shellname).toStrictEqual(component.sell)
       for (let i = 0; i < 4; i++) {
-        const productsname = componentHtml.querySelectorAll('.Items h3')[i].textContent?.trim();
-        expect(productsname).toStrictEqual(component.table[0].productname[i].name.trim())
+        const productsname = componentHtml.querySelectorAll('.Items h3')[i]?.textContent?.trim();
+        expect(productsname).toStrictEqual(component.table[0]?.productname[i]?.name.trim())
       }
     }))
 
@@ -113,7 +113,7 @@ describe('RateTablesComponent', () => {
         ]))
         fixture.detectChanges()
         flush()
-        const rateNode = componentHtml.querySelectorAll('.product_price')[0].querySelector('.span');
+        const rateNode = componentHtml.querySelectorAll('.product_price')[0]?.querySelector('.span');
         expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
         expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
       }))
@@ -125,7 +125,7 @@ describe('RateTablesComponent', () => {
         ]))
         fixture.detectChanges()
         flush()
-        const rateNode = componentHtml.querySelectorAll('.product_price')[0].querySelector('.span');
+        const rateNode = componentHtml.querySelectorAll('.product_price')[0]?.querySelector('.span');
         expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
         expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
       }))

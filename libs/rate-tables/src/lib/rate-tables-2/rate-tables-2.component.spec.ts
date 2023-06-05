@@ -50,12 +50,12 @@ describe('RateTablesComponent', () => {
       ];
       fixture.detectChanges();
       const headerName = componentHtml.querySelector('.header .gold')?.textContent;
-      expect(headerName).toStrictEqual(component.table[0].productName);
+      expect(headerName).toStrictEqual(component.table[0]?.productName);
       const productsname = componentHtml.querySelectorAll('.product_data_column');
-      expect(productsname[0].querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0].BID);
-      expect(productsname[1].querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0].ASK);
-      expect(productsname[2].querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0].HIGH);
-      expect(productsname[3].querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0].LOW);
+      expect(productsname[0]?.querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0]?.BID);
+      expect(productsname[1]?.querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0]?.ASK);
+      expect(productsname[2]?.querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0]?.HIGH);
+      expect(productsname[3]?.querySelector('h3')?.textContent?.trim()).toStrictEqual(component.table[0]?.LOW);
     }))
 
     describe('Rate Table 2 2nd TestCase For classes', () => {
@@ -94,7 +94,7 @@ describe('RateTablesComponent', () => {
       it('Rate Default No class', () => {
         const tableElements = componentHtml.querySelectorAll('.product_data_column');
         for (let i = 0; i < 4; i++) {
-          const rateNode = tableElements[i].querySelector('p');
+          const rateNode = tableElements[i]?.querySelector('p');
           expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
           expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
         }
@@ -112,7 +112,7 @@ describe('RateTablesComponent', () => {
         flush()
         const tableElements = componentHtml.querySelectorAll('.product_data_column');
         for (let i = 0; i < 4; i++) {
-          const rateNode = tableElements[i].querySelector('p');
+          const rateNode = tableElements[i]?.querySelector('p');
           expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
           expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
         }
@@ -130,7 +130,7 @@ describe('RateTablesComponent', () => {
         flush()
         const tableElements = componentHtml.querySelectorAll('.product_data_column');
         for (let i = 0; i < 4; i++) {
-          const rateNode = tableElements[i].querySelector('p');
+          const rateNode = tableElements[i]?.querySelector('p');
           expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
           expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
         }
