@@ -1,0 +1,101 @@
+// *******************// routerLinkActive class//************************
+.click_1 {
+    color: #fce975;
+
+    li {
+        border-bottom: 2px solid #fce975;
+    }
+}
+
+.Underline {
+
+    &::after {
+        display: block;
+        content: "";
+        border-bottom: solid 2px #fce975;
+        transform: scaleX(0);
+        transition: transform 0.25s ease-out;
+    }
+
+    &:hover {
+        color: #fce975;
+
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+}
+
+// *******************// media query//************************
+@media screen and (min-width: 800px) {
+    .cancle {
+        display: none;
+    }
+
+    .download_img {
+        left: 80%;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .menu_nav {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .marquee {
+        width: 94%;
+    }
+
+    .main {
+        height: 225px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .download_img {
+        top: 0;
+        width: 94%;
+        transform: none;
+        background-color: #000;
+    }
+
+    .main {
+        height: 162px !important;
+    }
+
+    .img {
+        height: 90px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .marquee {
+        padding: 8px 0;
+    }
+
+    .img {
+        height: 85px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .marquee {
+        padding: 6px 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .marquee {
+        padding: 4px 0;
+    }
+}
+
+@media (max-width:800px) {
+    .menu_nav {
+        display: none;
+    }
+}

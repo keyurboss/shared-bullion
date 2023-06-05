@@ -1,0 +1,82 @@
+<div class="margin h-full Roboto relative">
+  <div class="main flex flex-wrap justify-center items-center py-[30px] px-[10%]">
+    <div *ngFor="let item of data"
+      class="main_container_data shadow-white max-w-[472px] my-[15px] mx-[20px] py-[2vh] px-0 rounded-[12px]">
+      <div class="main_container_data_logo w-full py-[5px] px-[5%] flex justify-center">
+        <img class="inline-block min-w-[70%] max-w-[70%] max-h-[130px] h-auto p-[4px]" alt="Bank_Logo"
+          src="{{ item.img }}" />
+      </div>
+      <div class="main_container_data_details w-full py-[5px] px-[5%] text-[14px]">
+        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
+          <h5 class="w-[45%] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.account_name }}
+          </h5>
+          <span class="flex items-center w-[55%] text-[#fff]">
+            :
+            <p class="ml-[10px]">{{ item.accountname }}</p>
+          </span>
+        </div>
+        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
+          <h5 class="w-[45%] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.bank_name }}
+          </h5>
+          <span class="flex items-center w-[55%] text-[#fff]">
+            :
+            <p class="ml-[10px]">{{ item.bankname }}</p>
+          </span>
+        </div>
+        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
+          <h5 class="w-[45%] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.account_no }}
+          </h5>
+          <span class="flex items-center w-[55%] text-[#fff]">
+            :
+            <p class="bank-account ml-[10px]">
+              {{ item.accountnumber }}
+              <button class="w-[16px] ml-[10px] mt-[2px]" [cdkCopyToClipboard]="removeHyphens(item.accountnumber)"
+                (click)="restartTimeout(item.accountnumber)">
+                <img src="../../assets/images/copy.svg" alt="" />
+              </button>
+            </p>
+          </span>
+        </div>
+        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
+          <h5 class="w-[45%] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.isfc_code }}
+          </h5>
+          <span class="flex items-center w-[55%] text-[#fff]">
+            :
+            <p class="ml-[10px]">
+              {{ item.IFSCCode }}
+              <button class="w-[16px] ml-[10px]" [cdkCopyToClipboard]="removeHyphens(item.IFSCCode)"
+                (click)="restartTimeout(item.IFSCCode)">
+                <img src="../../assets/images/copy.svg" alt="" />
+              </button>
+            </p>
+          </span>
+        </div>
+        <div class="bank_detais w-full font-semibold flex pt-[1px] justify-center items-center">
+          <h5 class="w-[45%] m-0 inline-block font-semibold text-[#fce975]">
+            {{ bank_data_tittle.branch_name }}
+          </h5>
+          <span class="flex items-center w-[55%] text-[#fff]">
+            :
+            <p class="ml-[10px]">{{ item.branchname }}</p>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full flex justify-center items-center">
+    <div *ngIf="showMessage"
+      class="fixed bottom-0 rounded-md flex m-[24px] z-10 max-w-[30vw] min-w-[320px] py-[8px] px-[16px] min-h-[48px] origin-center bg text-[14px] Roboto items-center justify-center">
+      <div class="w-[75%] flex items-center">
+        <span class="!w-full">{{message}}</span>
+      </div>
+      <div
+        class="w-[25%] text-[black] flex items-center justify-center bg-white rounded-[3px] leading-[36px] font-medium">
+        <button (click)="showMessage = false">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>

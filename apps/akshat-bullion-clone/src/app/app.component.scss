@@ -1,0 +1,51 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.main {
+    height: 100vh;
+    // width: 100vw;
+    overflow: auto;
+    position: relative;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-repeat: no-repeat;
+
+}
+
+.backgroundimg {
+    position: fixed;
+    z-index: -5;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('/assets/images/background.png') no-repeat;
+}
+
+.img_parent {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #000;
+
+    img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+        object-fit: cover;
+    }
+}
+
+.main {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+}

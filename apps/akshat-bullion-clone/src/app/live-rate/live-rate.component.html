@@ -1,0 +1,46 @@
+<div class="main-live-rate relative w-full h-[100%]">
+    <div class="web w-full   
+     py-[40px] px-[10%] bg-[rgba(0,0,0,.4)]">
+        <div class="data">
+            <div class="upper change">
+                <rps-bull-rate-tables-8></rps-bull-rate-tables-8>
+            </div>
+            <div class="lower">
+                <div class="lower_upper">
+                    <div class="lower_upper_data">
+                        <rps-bull-rate-tables-9 product_name="GOLD" [rate]="Gold_rate"></rps-bull-rate-tables-9>
+                    </div>
+                    <div class="lower_upper_data">
+                        <rps-bull-rate-tables-9 product_name="SILVER" [rate]="Silver_rate"></rps-bull-rate-tables-9>
+                    </div>
+                    <div class="lower_upper_data">
+                        <rps-bull-rate-tables-9 product_name="INR" [rate]="Inr_rate"></rps-bull-rate-tables-9>
+                    </div>
+                </div>
+                <div class="lower_lower">
+                    <div class="lower_data w-full">
+                        <rps-bull-rate-tables-4></rps-bull-rate-tables-4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile">
+        <div class="products">
+            <rps-bull-rate-tables-8></rps-bull-rate-tables-8>
+        </div>
+        <div class="table">
+            <rps-bull-rate-tables-4></rps-bull-rate-tables-4>
+        </div>
+        <div class="comex">
+            <div class="comex_table">
+                <rps-bull-rate-tables-9 product_name="GOLD" [rate]="Gold_rate"
+                    class="removemborder"></rps-bull-rate-tables-9>
+                <rps-bull-rate-tables-9 product_name="SILVER" [rate]="Silver_rate"
+                    class="removeleftrightborder"></rps-bull-rate-tables-9>
+                <rps-bull-rate-tables-9 product_name="INR" [rate]="Inr_rate"
+                    class="removemborder"></rps-bull-rate-tables-9>
+            </div>
+        </div>
+    </div>
+</div>

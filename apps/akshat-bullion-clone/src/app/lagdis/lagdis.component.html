@@ -1,0 +1,52 @@
+<div class="font-bold Roboto mt-[5px] mb-[30px]">
+  <div class="lagdi flex justify-center items-center flex-col">
+    <div class="header flex justify-center items-center w-full">
+      <h2
+        class="mt-[10px] max-w-[350px] bg-[#5b5c5d] rounded-[45px] text-[var(--primary-light)] w-1/2 text-center py-[2px] text-[18px]">
+        {{ header_data.header }}
+      </h2>
+    </div>
+    <div class="container w-full flex justify-center items-center">
+      <div class="table w-full max-w-[550px]">
+        <div class="thead grid mt-[10px]">
+          <div class="h-full w-full">
+            <h4 class="flex justify-center items-center text-center text-[var(--primary-light)]"></h4>
+          </div>
+          <div class="h-full w-full">
+            <h4 class="flex justify-center items-center text-center text-[var(--primary-light)]">
+              {{ header_data.gold }}
+            </h4>
+          </div>
+          <div class="h-full w-full">
+            <h4 class="flex justify-center items-center text-center text-[var(--primary-light)]">
+              {{ header_data.silver }}
+            </h4>
+          </div>
+        </div>
+        <div *ngFor="let item of data" class="tbody">
+          <div class="com_row w-full h-[32px] grid {{ item.bg_color_class }}">
+            <div class="com_prop">
+              <h5
+                class="flex justify-center items-center text-[16px] w-full h-full text-[var(--primary-light)] text-center">
+                {{ item.leftdata }}
+              </h5>
+            </div>
+            <div class="com_prop">
+              <h5
+                class="flex justify-center items-center text-[16px] w-full h-full text-[var(--primary-light)] text-center">
+                {{ item.centerdata }}
+              </h5>
+            </div>
+            <div class="com_prop">
+              <h5
+                class="flex justify-center items-center text-[16px] w-full h-full text-[var(--primary-light)] text-center">
+                {{ item.rightdata }}
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

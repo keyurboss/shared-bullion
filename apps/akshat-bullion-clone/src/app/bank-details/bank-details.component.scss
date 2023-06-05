@@ -1,0 +1,70 @@
+.main_container_data {
+    box-shadow: 0 0 15px 5px #fff;
+}
+
+@media screen and (max-width: 1150px) {
+    .main {
+
+        padding: 20px 5% !important;
+    }
+
+    .bank_detais {
+        margin-left: 20px;
+
+        h5 {
+            width: 40%;
+        }
+
+        span {
+            width: 60%;
+        }
+    }
+
+    .main_container_data {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .main {
+
+        padding: 10px 15px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main_container_data_details {
+        padding: 0px !important;
+    }
+
+    .bank_detais {
+        margin-left: 0px !important;
+
+        h5 {
+            width: 35%;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .main_container_data_details {
+        font-size: 12px !important;
+    }
+
+    .main_container_data {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .margin {
+        padding-bottom: 110px;
+    }
+}
+
+.bg {
+    color: #ffffffb3;
+    background: #323232;
+    box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+}

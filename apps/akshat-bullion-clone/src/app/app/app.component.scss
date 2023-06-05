@@ -1,0 +1,20 @@
+@media screen and (max-width: 750px) {
+  .mapp_container_data {
+    flex-direction: column;
+  }
+
+  .mapp {
+    padding: 40px 5% 90px !important;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1150px) {
+  .mapp {
+    padding: 40px 5% !important;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mapp {
+    padding-bottom: 110px !important;
+  }
+}

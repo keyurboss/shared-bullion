@@ -38,6 +38,7 @@
       "@rps/bullion-interfaces/calc": [
         "libs/core/interfaces/src/calc/index.ts"
       ],
+      "@rps/bullion-interfaces/calc/*": ["libs/core/interfaces/src/calc/*"],
       "@rps/bullion-interfaces/core": [
         "libs/core/interfaces/src/core/index.ts"
       ],

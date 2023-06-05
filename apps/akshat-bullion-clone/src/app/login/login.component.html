@@ -1,0 +1,72 @@
+<div class="flex justify-center Roboto h-full">
+  <div class="relative flex justify-center items-center w-full">
+    <div class="login_input w-full">
+      <h1 class="font-medium text-center text-[var(--primary-light)] text-[32px]">
+        Login
+      </h1>
+      <h4 class="text-[#fff] text-center my-[6px] font-medium text-[16px]">
+        Add your details to login
+      </h4>
+      <form [formGroup]="LoginForm" (ngSubmit)="OnLoginuserSubmit()">
+        <!-- ReactiveForm -->
+        <div class="inputs flex_center my-[25px] flex justify-center items-center flex-col">
+          <!-- User id field -->
+          <div class="input flex justify-center items-center w-full">
+            <input id="loginuserid" placeholder="Enter Emailid/Number" formControlName="UserId"
+              [(ngModel)]="this.userData.login.LoginUserId" (keydown)="startingspace($event)"
+              onpaste="setTimeout(() => {  this.value=this.value.trim(); },0)"
+              class="input_field my-[10px] min-w-[270px] py-[15px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+          </div>
+
+          <!-- password field -->
+          <div class="input input_change flex justify-center items-center">
+            <input id="loginpassword" [type]="show_Password ? 'password' : 'text'" placeholder="Enter Password"
+              formControlName="password" (keydown)="nospace($event)" onpaste="setTimeout(() => { 
+                const pastedText = document.getElementById('loginpassword').value;
+                let trimmedText = pastedText.trim();
+                const hasSpacesInMiddle = /\s/.test(trimmedText);
+                if (hasSpacesInMiddle===true){
+                  this.value = '';
+                } else {
+                  this.value = trimmedText;
+                }
+              },0)"
+              class="input_field input_field_change my-[10px] py-[15px] min-w-[270px] pr-0 pl-[30px] text-[16px] rounded-[25px] border-none focus:outline-none" />
+            <span class="eyeimg_change bg-white absolute ml-[210px] h-[25px] w-[25px] cursor-pointer"><img
+                id="toggle-password" *ngIf="show_Password === true" (click)="show_Password = false"
+                src="../../assets/svg/eye-off-outline.svg" alt="eye-off-outline" />
+              <img id="toggle-password" *ngIf="show_Password === false" (click)="show_Password = true"
+                src="../../assets/svg/eye-outline.svg" alt="eye-outline" />
+            </span>
+          </div>
+
+          <!-- checkbox field -->
+          <div class="checkbox flex_center flex justify-center items-center cursor-default">
+            <input type="checkbox" id="checkbox" formControlName="checkbox"
+              class="ng-untouched ng-pristine ng-valid my-[10px]" /><label for="checkbox"
+              class="ml-[5px] text-[#fff] font-semibold text-[16px]">
+              Remember Me</label>
+          </div>
+
+          <!--Login button -->
+          <div class="sumbit_btn">
+            <button
+              class="yellow_gradient my-[10px] font-semibold min-w-[270px] text-[16px] p-[15px] border-none rounded-[25px] focus:outline-none"
+              id="submit" type="submit">
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="flex justify-center items-center flex-col text-[#ccc] cursor-default">
+        <h5 class="text-center my-[10px] font-semibold text-[13px]" (click)="ForgotPassword()">
+          Forgot Password
+        </h5>
+        <h5 class="text-center my-[10px] font-semibold text-[13px]">
+          Don't have an Account?
+          <a class="text-[13px] font-semibold text-[#fc6011] underline" routerLink="/sign-up">Sign Up</a>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>

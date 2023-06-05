@@ -1,0 +1,100 @@
+{
+  "name": "akshat-bullion-clone",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/akshat-bullion-clone/src",
+  "prefix": "Akshat-bull-app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/akshat-bullion-clone",
+        "index": "apps/akshat-bullion-clone/src/index.html",
+        "main": "apps/akshat-bullion-clone/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/akshat-bullion-clone/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/akshat-bullion-clone/src/favicon.ico",
+          "apps/akshat-bullion-clone/src/assets"
+        ],
+        "styles": ["apps/akshat-bullion-clone/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "akshat-bullion-clone:build:production"
+        },
+        "development": {
+          "browserTarget": "akshat-bullion-clone:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 5554,
+        "host": "0.0.0.0"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "akshat-bullion-clone:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/akshat-bullion-clone/**/*.ts",
+          "apps/akshat-bullion-clone/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/akshat-bullion-clone/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": ["service"]
+}

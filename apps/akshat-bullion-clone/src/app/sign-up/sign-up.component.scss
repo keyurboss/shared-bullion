@@ -1,0 +1,46 @@
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// *******************// media query//************************
+@media screen and (max-width: 900px) {
+    .Signup_input {
+        h1 {
+            font-size: 30px;
+        }
+
+        h4 {
+            font-size: 15px;
+
+        }
+    }
+
+    .input_change {
+        width: 65% !important;
+        background-color: #fff;
+        border-radius: 25px;
+        height: 48px;
+        position: relative;
+        margin-bottom: 9px;
+        margin-top: 9px;
+    }
+
+    .input_field_change {
+        width: 100% !important;
+    }
+
+    .eyeimg_change {
+        right: 1.4rem;
+    }
+
+    .input {
+        input {
+            width: 65%;
+        }
+    }
+
+    .inputs {
+        margin: 0;
+    }
+}

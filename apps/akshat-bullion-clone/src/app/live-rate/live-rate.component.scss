@@ -1,0 +1,133 @@
+@media screen and (max-width:1250px) {
+    .lower_upper {
+        margin: 10px 0;
+    }
+
+}
+
+@media screen and (max-width:1150px) {
+    .main {
+        padding: 20px 5% !important;
+    }
+
+    .web {
+        padding: 20px 5% !important;
+    }
+
+    .lower_upper_data {
+        flex: 1 1 50%;
+        padding: 5px 20px;
+    }
+}
+
+@media screen and (max-width:950px) {
+    .main {
+        padding: 10px 15px !important;
+    }
+
+    .web {
+        padding: 10px 15px !important;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .main-live-rate {
+        padding: 0px 0px 80px !important;
+        padding-bottom: 10px;
+    }
+
+    .topborder {
+        --table-border: unset;
+    }
+
+    .mobile {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .web {
+        display: none !important;
+    }
+}
+
+
+.data {
+    // margin: 0 auto;
+    display: grid;
+    flex-direction: row;
+    row-gap: 15px;
+}
+
+.lower {
+    width: 100%;
+    margin-top: 10px;
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 15px;
+}
+
+.lower_upper {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.lower_upper_data {
+    flex: 1 1 33%;
+    max-width: 50%;
+    flex-wrap: wrap;
+    padding: 5px 10px;
+}
+
+.lower_lower {
+    grid-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    border: 1px solid #fce975;
+}
+
+.mobile {
+    padding: 0px 15px 0px;
+    background: rgba(0, 0, 0, .4);
+}
+
+.products {
+    margin: 10px 0;
+}
+
+.table {
+    margin-top: 15px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 1px solid #fce975;
+    border-radius: 8px;
+}
+
+.comex {
+    margin: 30px 0;
+}
+
+.removemborder {
+    --table-border-top: unset;
+    --table-border-bottom: unset;
+    --table-border-left: unset;
+    --table-border-right: unset;
+}
+
+.removeleftrightborder {
+    --table-border-left: unset;
+    --table-border-right: unset;
+    --table-border-radius: 0px;
+}
+
+.mobile {
+    display: none;
+}
+
+.web {
+    display: flex;
+    flex-direction: column;
+}

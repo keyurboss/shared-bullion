@@ -1,4 +1,21 @@
 :host {
+<<<<<<< HEAD
+    --product-font-color: #ffffff;
+    --product-font-size: 16px;
+    --product-value-color: #ffffff;
+    --product-value-size: 15px;
+    --high-low-name-font-color: #ffffff;
+    --high-low-value-color: #ffffff;
+    --high-low-value-size: 14px;
+    --rate-low-font-color: #ff0000;
+    --rate-high-font-color: #008000;
+    --table-border-top: 1px solid #fce975;
+    --table-border-bottom: 1px solid #fce975;
+    --table-border-left: 1px solid #fce975;
+    --table-border-right: 1px solid #fce975;
+    --table-border-radius: 4px;
+    --table-max-width: 800px;
+=======
   --product-font-color: #ffffff;
   --product-font-size: 16px;
   --product-value-color: #ffffff;
@@ -18,6 +35,7 @@
   --table-background-color: black;
   --table-max-width: 800px;
   --font-family: Roboto, Helvetica Neue, sans-serif;
+>>>>>>> 473e86c1f7bd1e0fb586702c34c5b687cc3b4c06
 }
 
 * {
@@ -33,6 +51,17 @@
 }
 
 .type_1 {
+<<<<<<< HEAD
+    background-color: var(--table-background-color);
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--table-border-radius);
+    border-top: var(--table-border-top);
+    border-bottom: var(--table-border-bottom);
+    border-left: var(--table-border-left);
+    border-right: var(--table-border-right);
+=======
   background-color: var(--table-background-color);
   position: relative;
   height: 100%;
@@ -42,7 +71,9 @@
   border-bottom: var(--table-border-bottom);
   border-left: var(--table-border-left);
   border-right: var(--table-border-right);
+>>>>>>> 473e86c1f7bd1e0fb586702c34c5b687cc3b4c06
 }
+
 
 .flex_center {
   display: flex;
@@ -113,6 +144,10 @@
 
 .type_1_container {
   padding: 10px;
+}
+
+.type_1_container {
+    padding: 10px;
 }
 
 .product {

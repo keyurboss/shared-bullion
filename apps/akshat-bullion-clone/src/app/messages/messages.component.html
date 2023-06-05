@@ -1,0 +1,16 @@
+<div class="main py-[40px] px-[10%] Roboto">
+    <div class="main_cotainer">
+        <div *ngFor="let item of data"
+            class="main_container_data pl-[22px] pr-[18px] pt-[12px] pb-[6px] rounded-[12px] my-[15px] shadow-">
+            <div class="main_container_data_header relative pb-[5px]">
+                <h2 class="text-[24px] pb-[8px] border-b border-b-[#fce975] text-[#fff]">{{item.tittle}}</h2>
+                <hr class="w-[10%] border border-[#fce975] pb-[1.2px] top-[40px] mb-[20px] max-w-[80px] bg-[#fce975]">
+            </div>
+            <div class="main_container_data_contant text-[#fff]"> {{item.content}}</div>
+            <div class="main_container_data_timestamp w-full relative h-[26px]">
+                <p class="text-[#fff] float-right font-normal text-justify text-[12px] leading-[20px] mb-[5px]">
+                    {{item.updated_time}}</p>
+            </div>
+        </div>
+    </div>
+</div>
