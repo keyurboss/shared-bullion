@@ -45,7 +45,6 @@
       "@rps/bullion-interfaces/core": [
         "libs/core/interfaces/src/core/index.ts"
       ],
-      "@rps/bullion-interfaces/core/*": ["libs/core/interfaces/src/core/*"],
       "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
       "@rps/bullion-rate-tables/table1": [
         "libs/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"

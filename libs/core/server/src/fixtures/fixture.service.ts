@@ -31,6 +31,7 @@ export class FixtureService {
   }
 
   async loadJson<T>(path: string) {
+    // debugger;
     const fileBuffer = await readFile(resolve(this.fixturesPath, path));
 
     return JSON.parse(fileBuffer.toString()).data as Array<T>;

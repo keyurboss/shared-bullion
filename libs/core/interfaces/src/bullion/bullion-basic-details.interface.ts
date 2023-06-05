@@ -9,6 +9,7 @@ export type BullionGeneralUserConfig = {
 
 export type BullionSiteInfo = {
   id: BullionId;
+  name: string;
   domains: string[];
   generalUserInfo: BullionGeneralUserConfig;
 };

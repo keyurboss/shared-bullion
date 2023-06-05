@@ -1,8 +1,8 @@
 import { Global, Module } from '@nestjs/common';
 import {
-  GeneralUserRepoProvider,
   BullionSiteInfoRepoProvider,
-} from './repository.index';
+  GeneralUserRepoProvider,
+} from '@rps/buillion-server-repository';
 
 const repositoryPorvider = [
   GeneralUserRepoProvider,

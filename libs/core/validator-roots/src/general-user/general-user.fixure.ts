@@ -23,7 +23,7 @@ import { GeneralUserOptions, GeneralUserRoot } from './general-user.root';
 
 export class GeneralUserFixtureFactory {
   static createMany(
-    partialsOrCount: Array<PartialGeneralUserOptions> | number
+    partialsOrCount: Array<PartialGeneralUserOptions> | number = 5,
   ): Array<GeneralUserRoot> {
     if (isNumber(partialsOrCount)) {
       return Array(partialsOrCount)

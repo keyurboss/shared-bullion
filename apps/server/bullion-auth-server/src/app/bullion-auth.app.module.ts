@@ -2,6 +2,8 @@ import { DynamicModule, Module, NestModule } from '@nestjs/common';
 
 import { AppEnvName } from '@rps/bullion-interfaces/core';
 import {
+  FixturesModule,
+  LoggerModule,
   MongoRepositoryLocalModule,
   MongoRepositoryProductionModule,
   RedisRepositoryLocalModule,
@@ -9,14 +11,17 @@ import {
 } from '@rps/bullion-server-core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {EnvConfigModule} from '../config/env.config.module';
+import { EnvConfigModule } from '../config/env.config.module';
 import { defaultValidationSchema } from '../config/validation.schema';
-import * as Joi from 'joi';
+import Joi from 'joi';
+import { resolve } from 'path';
+import { RepositoryModule } from './repo/repo.module';
+
 export type AuthServerAppModuleOptions = {
   appEnv: AppEnvName;
 };
 @Module({
-  imports: [],
+  imports: [LoggerModule, RepositoryModule],
   controllers: [AppController],
   providers: [AppService],
 })
@@ -30,7 +35,8 @@ export class AuthServerAppModule implements NestModule {
           ...imports,
           MongoRepositoryLocalModule,
           RedisRepositoryLocalModule,
-          EnvConfigModule,
+          FixturesModule.forRoot(resolve(__dirname, 'assets', 'fixtures')),
+          EnvConfigModule.forRoot(),
         ];
         break;
       case 'production':

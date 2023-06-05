@@ -1,6 +1,10 @@
-import { Inject } from '@nestjs/common';
+import { Inject, OnModuleInit, Optional } from '@nestjs/common';
 import { BullionId } from '@rps/bullion-interfaces';
-import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
+import {
+  LoggerFactory,
+  MongoDbService,
+  FixtureService,
+} from '@rps/bullion-server-core';
 import {
   BullionSiteInfoOptions,
   BullionSiteInfoRoot,
@@ -9,26 +13,48 @@ import {
   BullionSiteInfoFilter,
   BullionSiteInfoRepository,
 } from '../../interface';
+import { generalUserCollection } from '../general-user/general-user-repository.mongo';
 
 export const bullionSiteInfoCollection = 'BullionSiteInfo';
+export const BullionSiteInfoCollectionSeedFileName =
+  'BullionSiteInfoCollectionSeedFileName';
 
 export type BullionSiteInfoDocument = BullionSiteInfoOptions & {
   _id: BullionId;
 };
 
-export class BullionSiteInfoMongoRepository extends BullionSiteInfoRepository {
+export class BullionSiteInfoMongoRepository
+  extends BullionSiteInfoRepository
+  implements OnModuleInit
+{
   private readonly collection;
   private readonly logger;
 
   constructor(
     @Inject(MongoDbService) { db }: MongoDbService,
-    @Inject(LoggerFactory) loggerFactory: LoggerFactory
+    @Inject(LoggerFactory) loggerFactory: LoggerFactory,
+    @Inject(FixtureService)
+    @Optional()
+    private readonly fixtureService: FixtureService,
+    @Inject(BullionSiteInfoCollectionSeedFileName)
+    @Optional()
+    private readonly fileName = 'bullion-site-info.data.json'
   ) {
     super();
     this.collection = db.collection<BullionSiteInfoRoot>(
       bullionSiteInfoCollection
     );
     this.logger = loggerFactory.create(this.constructor.name);
+  }
+
+  async onModuleInit() {
+    if (this.fixtureService !== null) {
+      await this.fixtureService
+        .seedFixtures(generalUserCollection, this.fileName)
+        .catch((e) => {
+          this.logger.error(e.message, e);
+        });
+    }
   }
 
   async find(filter?: BullionSiteInfoFilter): Promise<BullionSiteInfoRoot[]> {

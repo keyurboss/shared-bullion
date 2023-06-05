@@ -7,7 +7,8 @@ import { Expose, Type, plainToInstance } from 'class-transformer';
 import {
   ArrayMinSize,
   IsArray,
-  ValidateNested
+  IsString,
+  ValidateNested,
 } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
@@ -23,6 +24,10 @@ export class BullionSiteInfoRoot
   extends BaseEntity<BullionId>
   implements BullionSiteInfo
 {
+  @Expose()
+  @IsString()
+  name!: string;
+
   @Expose()
   @IsArray()
   @ArrayMinSize(1)
@@ -40,12 +45,14 @@ export class BullionSiteInfoRoot
   static from({
     domains,
     generalUserInfo,
+    name,
     createdAt = new Date(),
     id = BullionSiteInfoRoot.generateID(),
     modifiedAt = new Date(),
   }: BullionSiteInfoOptions) {
     const entity = new BullionSiteInfoRoot();
     entity.id = id;
+    entity.name = name;
     entity.domains = domains;
     entity.generalUserInfo = generalUserInfo;
     entity.createdAt = createdAt;
