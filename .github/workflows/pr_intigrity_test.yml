@@ -23,6 +23,7 @@ jobs:
         target:
           - lint
           - test
+          - test-integration 
 
     steps:
       - uses: actions/checkout@v3

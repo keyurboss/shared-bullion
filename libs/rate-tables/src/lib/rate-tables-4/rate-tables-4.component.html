@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="table py-[10-0px] px-[5px]">
   <div class="header">
     <div class="product_group_header"> Future </div>
@@ -38,6 +39,43 @@
     </div>
     <div class="product_price remove_border">
       <div class="rate_div"> {{ silver['last-low'].rate | number:'1.0-0' }} </div>
+=======
+<div class="table py-[10px] px-[5px]">
+  <div class="header">
+    <div class="product_group_header">Future</div>
+    <div class="product_group_name flex_center">Sell</div>
+    <div class="product_group_name flex_center">buy</div>
+    <div class="product_group_name flex_center">High</div>
+    <div class="product_group_name flex_center">Low</div>
+  </div>
+  <div class="footer" *ngFor="let item of table">
+    <div class="product" *ngIf="RateObser$[item.symbole] | async; let rate">
+      <div class="product_name center right_border">{{ item.productName }}</div>
+      <div class="product_price upper_margin right_border center">
+        <div
+          class="hii"
+          [class.rate_high]="rate['bid'].color === 'Green'"
+          [class.rate_low]="rate['bid'].color === 'Red'"
+        >
+          {{ rate['bid'].rate }}
+        </div>
+      </div>
+      <div class="product_price upper_margin right_border center">
+        <div
+          class="hii"
+          [class.rate_high]="rate['ask'].color === 'Green'"
+          [class.rate_low]="rate['ask'].color === 'Red'"
+        >
+          {{ rate['ask'].rate }}
+        </div>
+      </div>
+      <div class="product_price upper_margin right_border center">
+        {{ rate['last-high'].rate }}
+      </div>
+      <div class="product_price remove_border upper_margin center">
+        {{ rate['last-low'].rate }}
+      </div>
+>>>>>>> 473e86c1f7bd1e0fb586702c34c5b687cc3b4c06
     </div>
   </div>
 </div>

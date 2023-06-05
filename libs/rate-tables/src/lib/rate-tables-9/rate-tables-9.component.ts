@@ -1,8 +1,18 @@
 import { AsyncPipe, CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
+<<<<<<< HEAD
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { RateObserDataType } from '@rps/buillion-frontend-core';
+=======
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
+import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
+import { RateBaseSymboles } from '@rps/bullion-interfaces';
+>>>>>>> 473e86c1f7bd1e0fb586702c34c5b687cc3b4c06
 import { Observable } from 'rxjs';
 
+export interface table9dataInrterface {
+  symbole: RateBaseSymboles
+  productName: string;
+}
 @Component({
   selector: 'rps-bull-rate-tables-9',
   standalone: true,
@@ -12,6 +22,27 @@ import { Observable } from 'rxjs';
   styleUrls: ['./rate-tables-9.component.scss'],
 })
 export class RateTables9Component {
+<<<<<<< HEAD
   @Input() rate!: Observable<RateObserDataType>;
   @Input() product_name = '';
+=======
+  @Input()
+  private _table: table9dataInrterface[] = [];
+
+  public get table(): table9dataInrterface[] {
+    return this._table;
+  }
+  
+  public set table(value: table9dataInrterface[]) {
+    value.forEach(({ symbole }) => {
+      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
+    })
+    this._table = value;
+  }
+  
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
+  
+  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
+  }
+>>>>>>> 473e86c1f7bd1e0fb586702c34c5b687cc3b4c06
 }

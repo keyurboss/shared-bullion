@@ -1,5 +1,4 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { faker } from '@faker-js/faker';
 import {
   BaseSymbolePriceInterface,
   EnvInterface,
@@ -9,7 +8,10 @@ import {
 import { Env, JsonToItrable } from '../core';
 import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
+import { randNumber } from '@ngneat/falso';
 
+
+export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,11 +20,12 @@ export class DemoLiveRateService extends LiveRateService {
     @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
     @Optional() @Inject(Env) envvariable: EnvInterface,
     @Optional()
-    @Inject('initialiseRemoteConnection')
+    @Inject(InitialiseRemoteConnection)
     initialiseRemoteConnection: boolean
   ) {
     super(lastRate, envvariable, initialiseRemoteConnection ?? true);
   }
+
   InitRemoteConnection(): void {
     this.Gold();
     this.Silver();
@@ -30,8 +33,9 @@ export class DemoLiveRateService extends LiveRateService {
     this.GoldSpot();
     this.INR();
   }
+  
   private Silver() {
-    const timeout = faker.number.float({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -59,8 +63,9 @@ export class DemoLiveRateService extends LiveRateService {
       this.Silver();
     }, timeout * 10000);
   }
+  
   private Gold() {
-    const timeout = faker.number.float({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -88,8 +93,9 @@ export class DemoLiveRateService extends LiveRateService {
       this.Gold();
     }, timeout * 10000);
   }
+
   private SilverSpot() {
-    const timeout = faker.number.float({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -120,7 +126,7 @@ export class DemoLiveRateService extends LiveRateService {
   }
 
   private GoldSpot() {
-    const timeout = faker.number.float({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -151,7 +157,7 @@ export class DemoLiveRateService extends LiveRateService {
   }
 
   private INR() {
-    const timeout = faker.number.float({
+    const timeout = randNumber({
       max: 0.15,
       min: 0.05,
       precision: 0.01,
@@ -180,6 +186,7 @@ export class DemoLiveRateService extends LiveRateService {
       this.INR();
     }, timeout * 10000);
   }
+  
   async getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   > {

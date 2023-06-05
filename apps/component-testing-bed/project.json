@@ -12,9 +12,10 @@
         "outputPath": "dist/apps/component-testing-bed",
         "index": "apps/component-testing-bed/src/index.html",
         "main": "apps/component-testing-bed/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": ["zone.js","apps/component-testing-bed/src/polyfils.ts"],
         "tsConfig": "apps/component-testing-bed/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "allowedCommonJsDependencies": ["seedrandom"],
         "assets": [
           "apps/component-testing-bed/src/favicon.ico",
           "apps/component-testing-bed/src/assets"
@@ -81,5 +82,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["service"]
 }

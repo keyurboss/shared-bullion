@@ -18,12 +18,15 @@ export class TokenService {
       });
     }
   }
+
   signData(payload: string | Buffer | object, options?: SignOptions) {
     return sign(payload, this.key, options);
   }
+  
   verifyData(token: string, options?: VerifyOptions): string {
     return verify(token, this.key, options).toString();
   }
+  
   verifyJson<T extends never>(token: string, options?: VerifyOptions) {
     try {
       const O = JSON.parse(this.verifyData(token, options));
