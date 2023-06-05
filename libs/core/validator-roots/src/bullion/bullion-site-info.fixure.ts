@@ -11,6 +11,7 @@ import {
   BullionSiteInfoOptions,
   BullionSiteInfoRoot,
 } from './bullion-site-info.root';
+import { BullionGeneralUserConfigRoot } from './bullion-general-user-config';
 
 export class BullionSiteInfoFixtureFactory {
   static createMany(
@@ -31,10 +32,10 @@ export class BullionSiteInfoFixtureFactory {
       domains: randUrl({
         length: 10,
       }),
-      generalUserInfo: {
+      generalUserInfo: BullionGeneralUserConfigRoot.from({
         autoApprove: randBoolean(),
         autoLogin: randBoolean(),
-      },
+      }),
       createdAt: randPastDate(),
       modifiedAt: randRecentDate(),
       ...partial,
