@@ -46,7 +46,7 @@ describe('RateTablesComponent', () => {
       ];
       fixture.detectChanges();
       const headername = componentHtml.querySelector('.product h2')?.textContent?.trim();
-      expect(headername).toStrictEqual(component.table[0].productName)
+      expect(headername).toStrictEqual(component.table[0]?.productName)
     }))
   })
   describe('Rate Table 9 2nd TestCase For classes', () => {

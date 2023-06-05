@@ -57,9 +57,9 @@ describe('RateTablesComponent', () => {
 
       // check Header values
       const HeaderName = componentHtml.querySelector('.header_left_name')?.textContent?.trim();
-      const BIDName = componentHtml.querySelectorAll('.header_right_name')[0].textContent?.trim()
-      const DIFFName = componentHtml.querySelectorAll('.header_right_name')[1].textContent?.trim();
-      const ASKName = componentHtml.querySelectorAll('.header_right_name')[2].textContent?.trim();
+      const BIDName = componentHtml.querySelectorAll('.header_right_name')[0]?.textContent?.trim()
+      const DIFFName = componentHtml.querySelectorAll('.header_right_name')[1]?.textContent?.trim();
+      const ASKName = componentHtml.querySelectorAll('.header_right_name')[2]?.textContent?.trim();
       expect(HeaderName).toStrictEqual(component.headers.HeaderName)
       expect(ASKName).toStrictEqual(component.headers.ask)
       expect(BIDName).toStrictEqual(component.headers.bid)
@@ -71,8 +71,8 @@ describe('RateTablesComponent', () => {
 
       // Check Footer Details(Product Name)
       for (let i = 0; i < footerlength; i++) {
-        const productname = componentHtml.querySelectorAll('.footer_name')[i].textContent?.trim();
-        expect(productname).toStrictEqual(component.table[i].ProductName)
+        const productname = componentHtml.querySelectorAll('.footer_name')[i]?.textContent?.trim();
+        expect(productname).toStrictEqual(component.table[i]?.ProductName)
       }
     }))
     describe('Rate Table 3 2nd TestCase For classes', () => {
