@@ -17,11 +17,11 @@ export type BullionGeneralUserConfigOption = OmitProperties<
 export class BullionGeneralUserConfigRoot implements BullionGeneralUserConfig {
   @Expose()
   @IsBoolean()
-  autoApprove: boolean;
+  autoApprove!: boolean;
 
   @Expose()
   @IsBoolean()
-  autoLogin: boolean;
+  autoLogin!: boolean;
 
   static from({ autoApprove, autoLogin }: BullionGeneralUserConfigOption) {
     const entity = new BullionGeneralUserConfigRoot();

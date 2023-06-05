@@ -26,12 +26,12 @@ export class BullionSiteInfoRoot
   @Expose()
   @IsArray()
   @ArrayMinSize(1)
-  domains: string[];
+  domains!: string[];
 
   @Expose()
   @ValidateNested()
   @Type(() => BullionGeneralUserConfigRoot)
-  generalUserInfo: BullionGeneralUserConfig;
+  generalUserInfo!: BullionGeneralUserConfig;
 
   static generateID() {
     return v4() as BullionId;

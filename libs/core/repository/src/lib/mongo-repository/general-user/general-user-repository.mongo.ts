@@ -1,12 +1,15 @@
 import { GeneralUserId } from '@rps/bullion-interfaces';
 import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
-import { GeneralUserRoot } from '@rps/bullion-validator-roots';
+import {
+  GeneralUserOptions,
+  GeneralUserRoot,
+} from '@rps/bullion-validator-roots';
 import { GeneralUserFilter, GeneralUserRepository } from '../../interface';
 import { Inject } from '@nestjs/common';
 
 export const generalUserCollection = 'GeneralUser';
 
-export type GeneralUserDocument = GeneralUserRoot & {
+export type GeneralUserDocument = GeneralUserOptions & {
   _id: GeneralUserId;
 };
 

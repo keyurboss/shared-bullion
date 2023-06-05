@@ -1,18 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { randUuid } from '@ngneat/falso';
-import { DeviceId, GeneralUserId } from '@rps/bullion-interfaces';
+import { BullionId, DeviceId } from '@rps/bullion-interfaces';
 import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
-import { Collection } from 'mongodb';
-import { GeneralUserFilter, GeneralUserRepository } from '../../interface';
-import { GeneralUserMongoRepository } from './general-user-repository.mongo';
 import {
-  GeneralUserFixtureFactory,
-  GeneralUserRoot,
+  BullionSiteInfoFixtureFactory,
+  BullionSiteInfoRoot
 } from '@rps/bullion-validator-roots';
+import { Collection } from 'mongodb';
+import { BullionSiteInfoFilter, BullionSiteInfoRepository } from '../../interface';
+import { BullionSiteInfoMongoRepository } from './bullion-site-info-repository.mongo';
+BullionSiteInfoRoot
 
-describe(GeneralUserRepository.name, () => {
+describe(BullionSiteInfoRepository.name, () => {
   let collectionMock: Partial<Record<keyof Collection, jest.Mock>>;
-  let generalUserRepository: GeneralUserRepository;
+  let bullionSiteInfoRepository: BullionSiteInfoRepository;
   let module: TestingModule;
 
   beforeEach(async () => {
@@ -33,8 +34,8 @@ describe(GeneralUserRepository.name, () => {
     module = await Test.createTestingModule({
       providers: [
         {
-          provide: GeneralUserRepository,
-          useClass: GeneralUserMongoRepository,
+          provide: BullionSiteInfoRepository,
+          useClass: BullionSiteInfoMongoRepository,
         },
       ],
     })
@@ -51,12 +52,12 @@ describe(GeneralUserRepository.name, () => {
       })
       .compile();
 
-    generalUserRepository = module.get(GeneralUserRepository);
+    bullionSiteInfoRepository = module.get(BullionSiteInfoRepository);
   });
-  describe(GeneralUserMongoRepository.prototype.find.name, () => {
+  describe(BullionSiteInfoMongoRepository.prototype.find.name, () => {
     describe('With Filters', () => {
       beforeEach(() => {
-        generalUserRepository.find();
+        bullionSiteInfoRepository.find();
       });
       it(`calls collection's find without any filter`, () => {
         expect(collectionMock.find).toBeCalledTimes(1);
@@ -64,60 +65,60 @@ describe(GeneralUserRepository.name, () => {
       });
     });
     describe('With out Filters', () => {
-      let userFilter: GeneralUserFilter;
+      let bullionFilter: BullionSiteInfoFilter;
       beforeEach(() => {
-        userFilter = {
+        bullionFilter = {
           deviceId: randUuid() as DeviceId,
         };
-        generalUserRepository.find(userFilter);
+        bullionSiteInfoRepository.find(bullionFilter);
       });
       it(`calls collection's find with passed filter`, () => {
         expect(collectionMock.find).toBeCalledTimes(1);
-        expect(collectionMock.find).toBeCalledWith(userFilter);
+        expect(collectionMock.find).toBeCalledWith(bullionFilter);
       });
     });
   });
-  describe(GeneralUserMongoRepository.prototype.findOne.name, () => {
-    let userId: GeneralUserId;
+  describe(BullionSiteInfoMongoRepository.prototype.findOne.name, () => {
+    let bullionId: BullionId;
     beforeEach(() => {
-      userId = randUuid() as GeneralUserId;
-      generalUserRepository.findOne(userId);
+      bullionId = randUuid() as BullionId;
+      bullionSiteInfoRepository.findOne(bullionId);
     });
     it(`calls collection's findOne with Id`, () => {
       expect(collectionMock.findOne).toBeCalledTimes(1);
       expect(collectionMock.findOne).toHaveBeenCalledWith({
-        id: userId,
+        id: bullionId,
       });
     });
   });
-  describe(GeneralUserMongoRepository.prototype.findByIds.name, () => {
-    let userIds: Array<GeneralUserId>;
+  describe(BullionSiteInfoMongoRepository.prototype.findByIds.name, () => {
+    let bullionIds: Array<BullionId>;
     beforeEach(() => {
-      userIds = Array(5)
+      bullionIds = Array(5)
         .fill(null)
-        .map(() => randUuid() as GeneralUserId);
-      generalUserRepository.findByIds(userIds);
+        .map(() => randUuid() as BullionId);
+      bullionSiteInfoRepository.findByIds(bullionIds);
     });
     it(`calls collection's find with Ids`, () => {
       expect(collectionMock.find).toBeCalledTimes(1);
       expect(collectionMock.find).toHaveBeenCalledWith({
         id: {
-          $in: userIds,
+          $in: bullionIds,
         },
       });
     });
   });
-  describe(GeneralUserMongoRepository.prototype.save.name, () => {
-    let user: GeneralUserRoot;
+  describe(BullionSiteInfoMongoRepository.prototype.save.name, () => {
+    let entity: BullionSiteInfoRoot;
     beforeEach(() => {
-      user = GeneralUserFixtureFactory.create();
-      generalUserRepository.save(user);
+      entity = BullionSiteInfoFixtureFactory.create();
+      bullionSiteInfoRepository.save(entity);
     });
-    it(`calls collection's updateOne with user`, () => {
+    it(`calls collection's updateOne with entity`, () => {
       expect(collectionMock.updateOne).toBeCalledTimes(1);
       expect(collectionMock.updateOne).toHaveBeenCalledWith(
-        { id: user.id },
-        { $set: user.toJson() },
+        { id: entity.id },
+        { $set: entity.toJson() },
         { upsert: true }
       );
     });
