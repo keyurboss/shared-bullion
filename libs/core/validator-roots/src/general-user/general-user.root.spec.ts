@@ -4,14 +4,13 @@ import {
   randBoolean,
   randCompanyName,
   randFullName,
+  randNumber,
   randPastDate,
-  randPhoneNumber,
   randRecentDate,
   randSportsTeam,
   randUuid,
-  randWord,
+  randWord
 } from '@ngneat/falso';
-import { FakeOptions } from '@ngneat/falso/lib/core/core';
 
 import {
   BullionId,
@@ -37,9 +36,7 @@ describe(GeneralUserRoot.name, () => {
       gstNumber: randCompanyName() as GstNumber,
       lastName: randFullName(),
       os: randSportsTeam(),
-      contactNumber: +randPhoneNumber<FakeOptions>({
-        length: 10,
-      }),
+      contactNumber: randNumber(),
       deviceType: rand(Object.values(DeviceType)),
       deviceId: randWord() as DeviceId,
       createdAt: randPastDate(),

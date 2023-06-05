@@ -4,11 +4,15 @@ import {
   BullionSiteInfo,
 } from '@rps/bullion-interfaces';
 import { Expose, Type, plainToInstance } from 'class-transformer';
-import { IsArray, Length, ValidateNested } from 'class-validator';
+import {
+  ArrayMinSize,
+  IsArray,
+  ValidateNested
+} from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { BullionGeneralUserConfigRoot } from './bullion-general-user-config';
 import { BaseEntity } from '../core/base.entity';
+import { BullionGeneralUserConfigRoot } from './bullion-general-user-config';
 
 export type BullionSiteInfoOptions = OmitProperties<
   BullionSiteInfoRoot,
@@ -21,7 +25,7 @@ export class BullionSiteInfoRoot
 {
   @Expose()
   @IsArray()
-  @Length(1)
+  @ArrayMinSize(1)
   domains: string[];
 
   @Expose()

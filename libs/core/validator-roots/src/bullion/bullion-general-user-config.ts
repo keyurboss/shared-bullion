@@ -1,7 +1,18 @@
 import { BullionGeneralUserConfig } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance, instanceToPlain } from 'class-transformer';
 import { IsBoolean } from 'class-validator';
-import { groupDbToPlain, groupToPlain, validateSyncOrFail } from '../core.interface';
+import {
+  groupDbToPlain,
+  groupToPlain,
+  validateSyncOrFail,
+} from '../core.interface';
+import { OmitProperties } from 'ts-essentials';
+
+export type BullionGeneralUserConfigOption = OmitProperties<
+  BullionGeneralUserConfigRoot,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  Function
+>;
 
 export class BullionGeneralUserConfigRoot implements BullionGeneralUserConfig {
   @Expose()
@@ -12,7 +23,7 @@ export class BullionGeneralUserConfigRoot implements BullionGeneralUserConfig {
   @IsBoolean()
   autoLogin: boolean;
 
-  static from({ autoApprove, autoLogin }: BullionGeneralUserConfigRoot) {
+  static from({ autoApprove, autoLogin }: BullionGeneralUserConfigOption) {
     const entity = new BullionGeneralUserConfigRoot();
     entity.autoApprove = autoApprove;
     entity.autoLogin = autoLogin;
