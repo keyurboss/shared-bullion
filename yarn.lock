@@ -18278,6 +18278,8 @@ __metadata:
 "webpack@npm:^5.75.0, webpack@npm:^5.80.0":
   version: 5.85.0
   resolution: "webpack@npm:5.85.0"
+  version: 5.84.1
+  resolution: "webpack@npm:5.84.1"
   dependencies:
     "@types/eslint-scope": ^3.7.3
     "@types/estree": ^1.0.0
