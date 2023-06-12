@@ -1,9 +1,9 @@
 import { Inject, OnModuleInit, Optional } from '@nestjs/common';
 import { BullionId } from '@rps/bullion-interfaces';
 import {
+  FixtureService,
   LoggerFactory,
   MongoDbService,
-  FixtureService,
 } from '@rps/bullion-server-core';
 import {
   BullionSiteInfoOptions,
@@ -13,7 +13,6 @@ import {
   BullionSiteInfoFilter,
   BullionSiteInfoRepository,
 } from '../../interface';
-import { generalUserCollection } from '../general-user/general-user-repository.mongo';
 
 export const bullionSiteInfoCollection = 'BullionSiteInfo';
 export const BullionSiteInfoCollectionSeedFileName =
@@ -50,7 +49,7 @@ export class BullionSiteInfoMongoRepository
   async onModuleInit() {
     if (this.fixtureService !== null) {
       await this.fixtureService
-        .seedFixtures(generalUserCollection, this.fileName)
+        .seedFixtures(bullionSiteInfoCollection, this.fileName)
         .catch((e) => {
           this.logger.error(e.message, e);
         });
