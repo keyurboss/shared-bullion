@@ -1,15 +1,15 @@
 <div class="main">
   <div class="type_1">
-    <div class="type_1_cont">
+    <div *ngFor="let items of data" class="type_1_cont">
       <div class="details">
-        <div>GOLD</div>
-        <div>1997.50</div>
+        <div>{{items.name}}</div>
+        <div>{{items.rate}}</div>
       </div>
       <div class="bg_img">
-        <img src="https://akshatgold.com/assets/img/gold_bar_back.png" alt="product logo" />
+        <img src={{items.imageLink}} alt="product logo" />
       </div>
     </div>
-    <div class="type_1_cont">
+    <!-- <div class="type_1_cont">
       <div class="details">
         <div>SILVER</div>
         <div>25.40</div>
@@ -26,6 +26,6 @@
       <div class="bg_img">
         <img src="https://akshatgold.com/assets/img/rabi_logo.png" alt="product logo" />
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
