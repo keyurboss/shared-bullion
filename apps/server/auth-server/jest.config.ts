@@ -7,5 +7,5 @@ export default {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/apps/server/bullion-auth-server',
+  coverageDirectory: '../../../coverage/apps/server/auth-server',
 };

@@ -1,5 +1,5 @@
 {
-  "name": "bullion-auth-server-e2e",
+  "name": "auth-server-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "implicitDependencies": ["auth-server"],
   "targets": {
@@ -7,7 +7,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
       "options": {
-        "jestConfig": "apps/server/server-bullion-auth-server-e2e/jest.config.ts",
+        "jestConfig": "apps/server/auth-server-e2e/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -16,7 +16,7 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "apps/server/server-bullion-auth-server-e2e/**/*.{js,ts}"
+          "apps/server/auth-server-e2e/**/*.{js,ts}"
         ]
       }
     }
