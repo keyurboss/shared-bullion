@@ -14,7 +14,14 @@
         "outputPath": "dist/apps/server/auth-server",
         "main": "apps/server/auth-server/src/main.ts",
         "tsConfig": "apps/server/auth-server/tsconfig.app.json",
-        "assets": ["apps/server/auth-server/src/assets"],
+        "assets": [
+          "apps/server/auth-server/src/assets",
+          {
+            "glob": "*",
+            "input": "fixtures",
+            "output": "assets/fixtures/"
+          }
+        ],
         "isolatedConfig": true,
         "webpackConfig": "apps/server/auth-server/webpack.config.js"
       },

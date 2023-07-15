@@ -8,13 +8,11 @@ export const JWT_KEY = 'JWT_KEY';
 export class JwtService {
   private _key = '';
 
-  public set key(value: string) {
-    this._key = value;
-  }
-
   constructor(@Optional() @Inject(JWT_KEY) k: string) {
     if (isNotNullish(k)) {
       this._key = k;
+    } else {
+      throw 'Please Pass Valid Key';
     }
   }
 
