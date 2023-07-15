@@ -16,7 +16,7 @@ export class RedisClientProductionConfig {
     passwordKey,
     userNameKey,
   }: RedisClientProductionConfigOptions) {
-    const url = process.env[urlKey]??"";
+    const url = process.env[urlKey] ?? '';
     // assert(url, `${urlKey} must be set`);
     requireNotNullish(url);
     this.url = url;

@@ -33,7 +33,7 @@ export class GeneralUserMongoRepository
     private readonly fixtureService: FixtureService,
     @Inject(GeneralUserSeedFileName)
     @Optional()
-    private readonly fileName = 'general-user.data.json'
+    private readonly fileName = 'general-user.data.json',
   ) {
     super();
     this.collection = db.collection<GeneralUserRoot>(generalUserCollection);
@@ -84,11 +84,11 @@ export class GeneralUserMongoRepository
     await this.collection.updateOne(
       { id: entity.id },
       { $set: data },
-      { upsert: true }
+      { upsert: true },
     );
 
     this.logger.debug(
-      `Persisted GeneralUser (${entity.id}): ${JSON.stringify(data)}`
+      `Persisted GeneralUser (${entity.id}): ${JSON.stringify(data)}`,
     );
   }
 }

@@ -9,7 +9,7 @@ import {
   randRecentDate,
   randSportsTeam,
   randUuid,
-  randWord
+  randWord,
 } from '@ngneat/falso';
 
 import {

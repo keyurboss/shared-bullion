@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/component-testing-bed",
         "index": "apps/component-testing-bed/src/index.html",
         "main": "apps/component-testing-bed/src/main.ts",
-        "polyfills": ["zone.js","apps/component-testing-bed/src/polyfils.ts"],
+        "polyfills": ["zone.js", "apps/component-testing-bed/src/polyfils.ts"],
         "tsConfig": "apps/component-testing-bed/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "allowedCommonJsDependencies": ["seedrandom"],

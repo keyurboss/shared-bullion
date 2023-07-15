@@ -5,8 +5,8 @@ import { ConfigService } from '@nestjs/config';
 export class AppConfig {
   constructor(private configService: ConfigService) {
     console.log('Created');
-    
   }
+
   get port() {
     return this.configService.get('AUTH_PORT');
   }

@@ -19,7 +19,7 @@ export class DatabaseConfig {
   get authRedisUsername() {
     return this.configService.get('AUTH_REDIS_USERNAME');
   }
-  
+
   get authRedisPassword() {
     return this.configService.get('AUTH_REDIS_PASSWORD');
   }

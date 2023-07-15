@@ -4,7 +4,7 @@ import {
   RateTypeKeys,
 } from '@rps/bullion-interfaces';
 import { JsonToItrable } from '../core';
-import {randNumber} from '@ngneat/falso';
+import { randNumber } from '@ngneat/falso';
 export class RatesFixture {
   static Generate(
     range: {
@@ -17,7 +17,7 @@ export class RatesFixture {
       top: number;
       bottom: number;
     },
-    previous: Partial<BaseSymbolePriceInterface> = {}
+    previous: Partial<BaseSymbolePriceInterface> = {},
   ): BaseSymbolePriceInterface {
     const ask = randNumber({
       max: range.top,
@@ -68,9 +68,10 @@ export class RatesFixture {
         }),
     };
   }
+
   static GetDiffRate(
     current: BaseSymbolePriceInterface,
-    previous: BaseSymbolePriceInterface
+    previous: BaseSymbolePriceInterface,
   ): Partial<BaseSymbolePriceInterface> {
     const o: Partial<BaseSymbolePriceInterface> = {};
     for (const [k, v] of JsonToItrable<number, RateTypeKeys>(current)) {
@@ -80,7 +81,11 @@ export class RatesFixture {
     }
     return o;
   }
-  static GenerateForAllSymboles():Record<RateBaseSymboles, BaseSymbolePriceInterface> {
+
+  static GenerateForAllSymboles(): Record<
+    RateBaseSymboles,
+    BaseSymbolePriceInterface
+  > {
     const GOLD = RatesFixture.Generate(
       {
         bottom: 56000,
@@ -89,7 +94,7 @@ export class RatesFixture {
       {
         top: 15,
         bottom: 0,
-      }
+      },
     );
     const SILVER = RatesFixture.Generate(
       {
@@ -99,7 +104,7 @@ export class RatesFixture {
       {
         top: 15,
         bottom: 0,
-      }
+      },
     );
     const SILVER_SPOT = RatesFixture.Generate(
       {
@@ -111,7 +116,7 @@ export class RatesFixture {
         top: 2,
         bottom: 0,
         points: 0.01,
-      }
+      },
     );
     const INR = RatesFixture.Generate(
       {
@@ -123,7 +128,7 @@ export class RatesFixture {
         top: 1,
         bottom: 0,
         points: 0.0001,
-      }
+      },
     );
     const GOLD_SPOT = RatesFixture.Generate(
       {
@@ -135,7 +140,7 @@ export class RatesFixture {
         top: 2,
         bottom: 1,
         points: 0.01,
-      }
+      },
     );
     return {
       GOLD,

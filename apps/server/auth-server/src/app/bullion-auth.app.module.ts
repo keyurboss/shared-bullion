@@ -3,7 +3,7 @@ import {
   Inject,
   Module,
   NestModule,
-  Provider
+  Provider,
 } from '@nestjs/common';
 
 import { AppEnvName } from '@rps/bullion-interfaces/core';

@@ -10,7 +10,6 @@ import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
 
-
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 @Injectable({
   providedIn: 'root',
@@ -21,7 +20,7 @@ export class DemoLiveRateService extends LiveRateService {
     @Optional() @Inject(Env) envvariable: EnvInterface,
     @Optional()
     @Inject(InitialiseRemoteConnection)
-    initialiseRemoteConnection: boolean
+    initialiseRemoteConnection: boolean,
   ) {
     super(lastRate, envvariable, initialiseRemoteConnection ?? true);
   }
@@ -33,7 +32,7 @@ export class DemoLiveRateService extends LiveRateService {
     this.GoldSpot();
     this.INR();
   }
-  
+
   private Silver() {
     const timeout = randNumber({
       max: 0.15,
@@ -49,21 +48,21 @@ export class DemoLiveRateService extends LiveRateService {
         top: 15,
         bottom: 0,
       },
-      this._LastRate.get(RateBaseSymboles.SILVER)
+      this._LastRate.get(RateBaseSymboles.SILVER),
     );
     this.setRate(
       new Map(
         JsonToItrable({
           SILVER,
           SILVER_MCX: SILVER,
-        })
-      )
+        }),
+      ),
     );
     setTimeout(() => {
       this.Silver();
     }, timeout * 10000);
   }
-  
+
   private Gold() {
     const timeout = randNumber({
       max: 0.15,
@@ -79,15 +78,15 @@ export class DemoLiveRateService extends LiveRateService {
         top: 15,
         bottom: 0,
       },
-      this._LastRate.get(RateBaseSymboles.GOLD)
+      this._LastRate.get(RateBaseSymboles.GOLD),
     );
     this.setRate(
       new Map(
         JsonToItrable({
           GOLD,
           GOLD_MCX: GOLD,
-        })
-      )
+        }),
+      ),
     );
     setTimeout(() => {
       this.Gold();
@@ -111,14 +110,14 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 0,
         points: 0.01,
       },
-      this._LastRate.get(RateBaseSymboles.SILVER_SPOT)
+      this._LastRate.get(RateBaseSymboles.SILVER_SPOT),
     );
     this.setRate(
       new Map(
         JsonToItrable({
           SILVER_SPOT,
-        })
-      )
+        }),
+      ),
     );
     setTimeout(() => {
       this.SilverSpot();
@@ -142,14 +141,14 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 1,
         points: 0.01,
       },
-      this._LastRate.get(RateBaseSymboles.GOLD_SPOT)
+      this._LastRate.get(RateBaseSymboles.GOLD_SPOT),
     );
     this.setRate(
       new Map(
         JsonToItrable({
           GOLD_SPOT,
-        })
-      )
+        }),
+      ),
     );
     setTimeout(() => {
       this.GoldSpot();
@@ -173,20 +172,20 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 0,
         points: 0.0001,
       },
-      this._LastRate.get(RateBaseSymboles.INR)
+      this._LastRate.get(RateBaseSymboles.INR),
     );
     this.setRate(
       new Map(
         JsonToItrable({
           INR,
-        })
-      )
+        }),
+      ),
     );
     setTimeout(() => {
       this.INR();
     }, timeout * 10000);
   }
-  
+
   async getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   > {

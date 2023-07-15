@@ -11,10 +11,11 @@ import { AppConfig } from './app/env/app.config';
 import { appEnvNameKey } from '@rps/bullion-interfaces/core';
 
 async function bootstrap() {
-
-  const app = await NestFactory.create(DataServerAppModule.register({
-    appEnv: process.env[appEnvNameKey] as never
-  }));
+  const app = await NestFactory.create(
+    DataServerAppModule.register({
+      appEnv: process.env[appEnvNameKey] as never,
+    }),
+  );
   const globalPrefix = 'api';
   const config = app.get(AppConfig);
 
@@ -22,7 +23,7 @@ async function bootstrap() {
   const port = config.port;
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
   );
 }
 

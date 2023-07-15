@@ -66,7 +66,7 @@ describe(BullionSiteInfoRepository.name, () => {
     describe(BullionSiteInfoMongoRepository.prototype.findOne.name, () => {
       it('returns undefined', async () => {
         const result = await bullionSiteInfoRepository.findOne(
-          randUuid() as BullionId
+          randUuid() as BullionId,
         );
         return expect(result).toBe(undefined);
       });
@@ -77,13 +77,13 @@ describe(BullionSiteInfoRepository.name, () => {
       () => {
         it('returns an error, given non-existing Bullion Id', async () => {
           const resultPromise = bullionSiteInfoRepository.findOneOrFail(
-            randUuid() as BullionId
+            randUuid() as BullionId,
           );
           return expect(resultPromise).rejects.toBeInstanceOf(
-            EntityNotFoundError
+            EntityNotFoundError,
           );
         });
-      }
+      },
     );
 
     describe(BullionSiteInfoMongoRepository.prototype.findByIds.name, () => {
@@ -113,8 +113,8 @@ describe(BullionSiteInfoRepository.name, () => {
           (bullionSiteInfo) =>
             ({
               ...bullionSiteInfo.toJson(),
-            } as BullionSiteInfoDocument)
-        )
+            } as BullionSiteInfoDocument),
+        ),
       );
     });
 
@@ -145,20 +145,20 @@ describe(BullionSiteInfoRepository.name, () => {
           const resultPromise =
             bullionSiteInfoRepository.findOneOrFail(bullionId);
           return expect(resultPromise).resolves.toBeInstanceOf(
-            BullionSiteInfoRoot
+            BullionSiteInfoRoot,
           );
         });
-      }
+      },
     );
 
     describe(BullionSiteInfoMongoRepository.prototype.findByIds.name, () => {
       it('returns no results, given non-existing Bullion ids', async () => {
         const result = await bullionSiteInfoRepository.findByIds(
-          bullionSiteInfos.map(({ id }) => id)
+          bullionSiteInfos.map(({ id }) => id),
         );
         expect(result).toHaveLength(bullionSiteInfos.length);
         return expect(result).toStrictEqual(
-          expect.arrayContaining(bullionSiteInfos)
+          expect.arrayContaining(bullionSiteInfos),
         );
       });
     });

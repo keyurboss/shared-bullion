@@ -16,4 +16,4 @@ export type WS_URLs = Opaque<string, 'WS_URLs'>;
 export const BooleanNumberCheckRegex = /^[01]$/;
 export const validAppEnvNames = ['local', 'ci', 'production'] as const;
 export const appEnvNameKey = 'APP_ENV';
-export type AppEnvName = typeof validAppEnvNames[number];
+export type AppEnvName = (typeof validAppEnvNames)[number];

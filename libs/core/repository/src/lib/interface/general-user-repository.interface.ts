@@ -5,7 +5,7 @@ import { Filter } from 'mongodb';
 export type GeneralUserFilter = Filter<GeneralUserRoot>;
 
 export abstract class GeneralUserRepository {
-  abstract find(filter?:GeneralUserFilter): Promise<GeneralUserRoot[]>;
+  abstract find(filter?: GeneralUserFilter): Promise<GeneralUserRoot[]>;
   abstract findByIds(ids: Array<GeneralUserId>): Promise<GeneralUserRoot[]>;
 
   abstract findOne(id: GeneralUserId): Promise<GeneralUserRoot | undefined>;
