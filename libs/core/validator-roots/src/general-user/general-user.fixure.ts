@@ -11,10 +11,8 @@ import {
   randUuid,
 } from '@ngneat/falso';
 import {
-  BullionId,
   DeviceId,
   DeviceType,
-  GeneralUserAuthStatus,
   GeneralUserId,
   GstNumber,
 } from '@rps/bullion-interfaces';
@@ -37,8 +35,8 @@ export class GeneralUserFixtureFactory {
   static create(partial?: PartialGeneralUserOptions): GeneralUserRoot {
     return GeneralUserRoot.from({
       contactNumber: randNumber(),
-      bullionId: randUuid() as BullionId,
-      status: rand(Object.values(GeneralUserAuthStatus)),
+      // bullionId: randUuid() as BullionId,
+      // status: rand(Object.values(GeneralUserAuthStatus)),
       createdAt: randPastDate(),
       deviceId: randUuid() as DeviceId,
       deviceType: rand(Object.values(DeviceType)),

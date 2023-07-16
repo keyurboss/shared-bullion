@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
+    "test:local": "yarn nx affected --target=lint,test,build,test-integration --base=origin/main --parallel=6",
+    "run:all": "yarn nx run-many --target=lint,test,build,test-integration --parallel=6",
     "test": "nx test"
   },
   "devDependencies": {
