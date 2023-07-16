@@ -5,7 +5,7 @@ export type UseHttpsOptions = Pick<HttpsOptions, 'key' | 'cert'>;
 
 export function useHttps(
   options: UseHttpsOptions,
-  logger: Logger = new Logger('UseHttps')
+  logger: Logger = new Logger('UseHttps'),
 ): HttpsOptions | undefined {
   const { key, cert } = options;
 

@@ -19,7 +19,7 @@ export abstract class RedisClient {
   async get<T extends string>(key: string | number): Promise<T> {
     return this.GET<T>(key);
   }
-  
+
   abstract GET<T extends string>(key: string | number): Promise<T>;
 
   async hSet(key: string | number, field: string | number, value: any) {
@@ -28,6 +28,6 @@ export abstract class RedisClient {
   abstract HSET(
     key: string | number,
     field: string | number,
-    value: any
+    value: any,
   ): Promise<void>;
 }

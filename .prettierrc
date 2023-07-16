@@ -2,12 +2,9 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "all",
-  "importOrder": [
-    "reflect-metadata",
-    "<THIRD_PARTY_MODULES>",
-    "^@rps/(.*)$",
-    "^[./]"
-  ],
-  "importOrderSeparation": true,
-  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
+  "endOfLine": "crlf",
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "semi": true
 }

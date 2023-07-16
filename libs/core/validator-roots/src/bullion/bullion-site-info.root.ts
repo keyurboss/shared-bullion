@@ -1,7 +1,7 @@
 import {
   BullionGeneralUserConfig,
   BullionId,
-  BullionSiteInfo,
+  IBullionSiteInfo,
 } from '@rps/bullion-interfaces';
 import { Expose, Type, plainToInstance } from 'class-transformer';
 import {
@@ -22,7 +22,7 @@ export type BullionSiteInfoOptions = OmitProperties<
 >;
 export class BullionSiteInfoRoot
   extends BaseEntity<BullionId>
-  implements BullionSiteInfo
+  implements IBullionSiteInfo
 {
   @Expose()
   @IsString()

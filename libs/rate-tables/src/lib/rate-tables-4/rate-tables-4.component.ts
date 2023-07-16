@@ -54,6 +54,6 @@ export class RateTables4Component {
     {} as never;
 
   constructor(
-    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService,
   ) {}
 }

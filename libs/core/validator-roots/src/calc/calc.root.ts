@@ -116,7 +116,7 @@ export class CalcEntity extends BaseEntity<CshID> {
 
   static updateEntity(
     options: Omit<CalcEntityOptions, 'modifiedAt'>,
-    modifiedAt = new Date()
+    modifiedAt = new Date(),
   ) {
     return CalcEntity.from({
       ...options,
@@ -134,7 +134,7 @@ export class CalcEntity extends BaseEntity<CshID> {
       }
     >,
     createdAt = new Date(),
-    id = CalcEntity.generateID()
+    id = CalcEntity.generateID(),
   ) {
     return CalcEntity.updateEntity({
       ...options,

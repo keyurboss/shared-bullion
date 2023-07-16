@@ -37,11 +37,11 @@ export class BullionSiteInfoMongoRepository
     private readonly fixtureService: FixtureService,
     @Inject(BullionSiteInfoCollectionSeedFileName)
     @Optional()
-    private readonly fileName = 'bullion-site-info.data.json'
+    private readonly fileName = 'bullion-site-info.data.json',
   ) {
     super();
     this.collection = db.collection<BullionSiteInfoRoot>(
-      bullionSiteInfoCollection
+      bullionSiteInfoCollection,
     );
     this.logger = loggerFactory.create(this.constructor.name);
   }
@@ -90,7 +90,7 @@ export class BullionSiteInfoMongoRepository
     await this.collection.updateOne(
       { id: entity.id },
       { $set: data },
-      { upsert: true }
+      { upsert: true },
     );
 
     this.logger.debug(

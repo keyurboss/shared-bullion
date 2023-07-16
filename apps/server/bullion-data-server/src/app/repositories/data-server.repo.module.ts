@@ -1,3 +1,1 @@
-
-
-export class  DataServerRepoModule{}
+export class DataServerRepoModule {}

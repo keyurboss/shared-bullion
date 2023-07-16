@@ -1,14 +1,12 @@
 import {
-  BullionId,
   DeviceId,
   DeviceType,
-  GeneralUserAuthStatus,
   GeneralUserId,
-  GeneralUserType,
+  IGeneralUserType,
   GstNumber,
 } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance } from 'class-transformer';
-import { IsBoolean, IsEnum, IsNumber, IsString, IsUUID } from 'class-validator';
+import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
 import { BaseEntity } from '../core/base.entity';
@@ -18,7 +16,7 @@ export type GeneralUserOptions = OmitProperties<GeneralUserRoot, Function>;
 
 export class GeneralUserRoot
   extends BaseEntity<GeneralUserId>
-  implements GeneralUserType
+  implements IGeneralUserType
 {
   @Expose()
   @IsString()
@@ -37,10 +35,6 @@ export class GeneralUserRoot
   contactNumber!: number;
 
   @Expose()
-  @IsUUID()
-  bullionId!: BullionId;
-
-  @Expose()
   @IsString()
   gstNumber!: GstNumber;
 
@@ -57,10 +51,6 @@ export class GeneralUserRoot
   deviceType!: DeviceType;
 
   @Expose()
-  @IsEnum(GeneralUserAuthStatus)
-  status!: GeneralUserAuthStatus;
-
-  @Expose()
   @IsBoolean()
   isAuto!: boolean;
 
@@ -75,8 +65,6 @@ export class GeneralUserRoot
     id = GeneralUserRoot.generateID(),
     isAuto,
     modifiedAt = new Date(),
-    bullionId,
-    status,
     contactNumber,
     firmName,
     firstName,
@@ -88,9 +76,7 @@ export class GeneralUserRoot
     entity.id = id;
     entity.os = os;
     entity.deviceId = deviceId;
-    entity.status = status;
     entity.deviceType = deviceType;
-    entity.bullionId = bullionId;
     entity.isAuto = isAuto;
     entity.modifiedAt = modifiedAt;
     entity.contactNumber = contactNumber;

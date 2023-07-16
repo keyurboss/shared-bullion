@@ -6,6 +6,6 @@ export class RedisDbService {
   readonly db: RedisClient;
 
   constructor(@Inject(RedisClient) client: RedisClient) {
-    this.db = client
+    this.db = client;
   }
 }

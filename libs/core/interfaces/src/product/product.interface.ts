@@ -17,6 +17,7 @@ export type CaculationSymbole =
   | RateBaseSymboles.SILVER
   | RateBaseSymboles.GOLD_MCX
   | RateBaseSymboles.SILVER_MCX;
+
 export const CaculationSymboleValue = [
   RateBaseSymboles.GOLD,
   RateBaseSymboles.SILVER,
@@ -38,7 +39,7 @@ export enum CalculatedOnPriceType {
 
 export type ProductID = Opaque<string, 'ProductID'>;
 
-export interface Product {
+export interface IProduct {
   id: ProductID;
   name: string;
   sourceSymbole: SourceSymbole;

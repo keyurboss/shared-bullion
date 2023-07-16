@@ -7,9 +7,11 @@ export type BullionGeneralUserConfig = {
   autoLogin: boolean;
 };
 
-export type BullionSiteInfo = {
+export type IBullionSiteInfo = {
   id: BullionId;
   name: string;
   domains: string[];
   generalUserInfo: BullionGeneralUserConfig;
+  createdAt: Date;
+  modifiedAt: Date;
 };

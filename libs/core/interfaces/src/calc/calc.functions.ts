@@ -16,23 +16,23 @@ export function GenerateExchangeBackwordCalcString(d: Record<string, number>) {
 
 export abstract class CalcFunctionClass {
   abstract ExchangePriceCalculation(
-    base_price: number,
-    snapshot: CshPremiumBuySellSnapshot
+    basePrice: number,
+    snapshot: CshPremiumBuySellSnapshot,
   ): number;
   abstract FixedPriceCalculation(snapshot: CshPremiumBuySellSnapshot): number;
   abstract BankPricePriceCalculation(
-    base_price: number,
-    snapshot: CshPremiumBuySellSnapshot
+    basePrice: number,
+    snapshot: CshPremiumBuySellSnapshot,
   ): // INR_PRICE:
   number;
 }
 
 export class DefaultCalcFunction extends CalcFunctionClass {
   ExchangePriceCalculation(
-    base_price: number,
-    snapshot: CshPremiumBuySellSnapshot
+    basePrice: number,
+    snapshot: CshPremiumBuySellSnapshot,
   ): number {
-    let price = base_price ?? 0;
+    let price = basePrice ?? 0;
     if (snapshot.premium) {
       price += snapshot.premium;
     }
@@ -41,14 +41,15 @@ export class DefaultCalcFunction extends CalcFunctionClass {
     }
     return price;
   }
+
   FixedPriceCalculation(snapshot: CshPremiumBuySellSnapshot): number {
     return this.ExchangePriceCalculation(0, snapshot);
   }
 
-  BankPricePriceCalculation(
-    // base_price: number,
-    // snapshot: CshPremiumBuySellSnapshot
-  ): number {
+  // TODO: Complete this function
+  BankPricePriceCalculation(): // base_price: number,
+  // snapshot: CshPremiumBuySellSnapshot
+  number {
     return 0;
   }
 }

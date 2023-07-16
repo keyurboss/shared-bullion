@@ -66,7 +66,7 @@ describe(GeneralUserRepository.name, () => {
     describe(GeneralUserMongoRepository.prototype.findOne.name, () => {
       it('returns undefined', async () => {
         const result = await generalUserRepository.findOne(
-          randUuid() as GeneralUserId
+          randUuid() as GeneralUserId,
         );
         return expect(result).toBe(undefined);
       });
@@ -75,10 +75,10 @@ describe(GeneralUserRepository.name, () => {
     describe(GeneralUserMongoRepository.prototype.findOneOrFail.name, () => {
       it('returns an error, given non-existing GeneralUser Id', async () => {
         const resultPromise = generalUserRepository.findOneOrFail(
-          randUuid() as GeneralUserId
+          randUuid() as GeneralUserId,
         );
         return expect(resultPromise).rejects.toBeInstanceOf(
-          EntityNotFoundError
+          EntityNotFoundError,
         );
       });
     });
@@ -110,8 +110,8 @@ describe(GeneralUserRepository.name, () => {
           (generalUser) =>
             ({
               ...generalUser.toJson(),
-            } as GeneralUserDocument)
-        )
+            } as GeneralUserDocument),
+        ),
       );
     });
 
@@ -146,11 +146,11 @@ describe(GeneralUserRepository.name, () => {
     describe(GeneralUserMongoRepository.prototype.findByIds.name, () => {
       it('returns no results, given non-existing GeneralUser ids', async () => {
         const result = await generalUserRepository.findByIds(
-          generalUsers.map(({ id }) => id)
+          generalUsers.map(({ id }) => id),
         );
         expect(result).toHaveLength(generalUsers.length);
         return expect(result).toStrictEqual(
-          expect.arrayContaining(generalUsers)
+          expect.arrayContaining(generalUsers),
         );
       });
     });

@@ -4,12 +4,15 @@ import { BullionId, DeviceId } from '@rps/bullion-interfaces';
 import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
 import {
   BullionSiteInfoFixtureFactory,
-  BullionSiteInfoRoot
+  BullionSiteInfoRoot,
 } from '@rps/bullion-validator-roots';
 import { Collection } from 'mongodb';
-import { BullionSiteInfoFilter, BullionSiteInfoRepository } from '../../interface';
+import {
+  BullionSiteInfoFilter,
+  BullionSiteInfoRepository,
+} from '../../interface';
 import { BullionSiteInfoMongoRepository } from './bullion-site-info-repository.mongo';
-BullionSiteInfoRoot
+BullionSiteInfoRoot;
 
 describe(BullionSiteInfoRepository.name, () => {
   let collectionMock: Partial<Record<keyof Collection, jest.Mock>>;
@@ -119,7 +122,7 @@ describe(BullionSiteInfoRepository.name, () => {
       expect(collectionMock.updateOne).toHaveBeenCalledWith(
         { id: entity.id },
         { $set: entity.toJson() },
-        { upsert: true }
+        { upsert: true },
       );
     });
   });

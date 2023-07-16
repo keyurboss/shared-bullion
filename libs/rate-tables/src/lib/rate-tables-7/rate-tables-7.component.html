@@ -105,7 +105,7 @@
 
       <div class="buy_name" *ngIf="SILVER | async; let silver">
         <div class="price">
-          <span 
+          <span
             class="rate price_buy"
             [class.rate_high]="silver['ask'].color === 'Green'"
             [class.rate_low]="silver['ask'].color === 'Red'"
@@ -118,7 +118,7 @@
 
       <div class="two_name" *ngIf="SILVER | async; let silver">
         <div class="price">
-          <span 
+          <span
             class="rate price_sell"
             [class.rate_high]="silver['bid'].color === 'Green'"
             [class.rate_low]="silver['bid'].color === 'Red'"

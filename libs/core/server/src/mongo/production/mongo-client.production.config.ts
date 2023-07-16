@@ -1,4 +1,4 @@
-import { requireNotNullish } from "@rps/bullion-interfaces";
+import { requireNotNullish } from '@rps/bullion-interfaces';
 
 export type MongoClientProductionConfigOptions = {
   urlKey: string;

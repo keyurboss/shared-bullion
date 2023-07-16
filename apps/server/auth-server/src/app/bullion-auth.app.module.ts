@@ -50,6 +50,13 @@ export class AuthServerAppModule implements NestModule {
     let imports: DynamicModule['imports'] = [];
     const providers: DynamicModule['providers'] = [
       {
+        provide: REFRESH_TOKEN_SERVICE,
+        useFactory: (config: AppConfig) => {
+          return new JwtService(config.accessTokenKey);
+        },
+        inject: [AppConfig],
+      },
+      {
         provide: ACCESS_TOKEN_SERVICE,
         useFactory: (config: AppConfig) => {
           return new JwtService(config.accessTokenKey);

@@ -14,7 +14,7 @@ describe(RedisDbHealthIndicator.name, () => {
       const redisDbServiceMock = { db: redisDbMock };
 
       redisDbHealthIndicator = new RedisDbHealthIndicator(
-        redisDbServiceMock as never
+        redisDbServiceMock as never,
       );
 
       key = randUserName();
@@ -27,7 +27,7 @@ describe(RedisDbHealthIndicator.name, () => {
       return expect(resultPromise).resolves.toStrictEqual(
         expect.objectContaining({
           [key]: expect.objectContaining({ response: { ok: 1 }, status: 'up' }),
-        })
+        }),
       );
     });
   });
@@ -42,7 +42,7 @@ describe(RedisDbHealthIndicator.name, () => {
       const redisDbServiceMock = { db: redisDbMock };
 
       redisDbHealthIndicator = new RedisDbHealthIndicator(
-        redisDbServiceMock as never
+        redisDbServiceMock as never,
       );
 
       key = randUserName();

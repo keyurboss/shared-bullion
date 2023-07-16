@@ -3,7 +3,7 @@ import {
   CaculationSymboleValue,
   CalculatedOnPriceType,
   CalculatedOnPriceof,
-  Product,
+  IProduct,
   ProductID,
   ProductShowLocation,
   SourceSymbole,
@@ -30,7 +30,7 @@ export type ProductDocument = Pick<
   | 'createdAt'
   | 'modifiedAt'
 >;
-export class ProductRoot extends BaseEntity<ProductID> implements Product {
+export class ProductRoot extends BaseEntity<ProductID> implements IProduct {
   @Expose()
   @IsString()
   @Length(1)

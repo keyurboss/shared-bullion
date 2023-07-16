@@ -11,7 +11,7 @@ on:
       - bugfix/*
       - hotfix/**
       - release/**
-      
+
 jobs:
   lint-test:
     timeout-minutes: 15
@@ -23,7 +23,7 @@ jobs:
         target:
           - lint
           - test
-          - test-integration 
+          - test-integration
 
     steps:
       - uses: actions/checkout@v3
