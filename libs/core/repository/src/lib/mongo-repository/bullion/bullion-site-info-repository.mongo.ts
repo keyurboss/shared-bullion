@@ -94,7 +94,7 @@ export class BullionSiteInfoMongoRepository
     );
 
     this.logger.debug(
-      `Persisted Bullion Site Info (${entity.id}): ${JSON.stringify(data)}`
+      `Persisted Bullion Site Info (${entity.id}): ${JSON.stringify(data)}`,
     );
   }
 }

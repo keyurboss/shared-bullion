@@ -1,9 +1,4 @@
-import {
-  DynamicModule,
-  Module,
-  NestModule,
-  Provider
-} from '@nestjs/common';
+import { DynamicModule, Module, NestModule, Provider } from '@nestjs/common';
 
 import { AppEnvName } from '@rps/bullion-interfaces/core';
 import {
