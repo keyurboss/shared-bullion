@@ -3,10 +3,8 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppConfig {
-  constructor(private configService: ConfigService) {
-    console.log('Created');
-    
-  }
+  constructor(private configService: ConfigService) {}
+
   get port() {
     return this.configService.get('AUTH_PORT');
   }
@@ -16,7 +14,6 @@ export class AppConfig {
   }
 
   get accessTokenKey() {
-    console.log(process.env);
     return this.configService.get('ACCESS_TOKEN_KEY');
   }
 }

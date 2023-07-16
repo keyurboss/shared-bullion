@@ -1,6 +1,5 @@
 import {
   DynamicModule,
-  Inject,
   Module,
   NestModule,
   Provider
@@ -47,25 +46,20 @@ const services: Provider[] = [
   providers: [...services],
 })
 export class AuthServerAppModule implements NestModule {
-  constructor(
-    @Inject(ACCESS_TOKEN_SERVICE) accessTokenService: JwtService,
-    @Inject(REFRESH_TOKEN_SERVICE) refreshTokenService: JwtService,
-    config: AppConfig,
-    // logger: Logger,
-  ) {
-    console.log(config.accessTokenKey);
-    // accessTokenService.key = config.accessTokenKey;
-    refreshTokenService.key = config.refreshTokenKey;
-  }
-
   static register({ appEnv }: AuthServerAppModuleOptions): DynamicModule {
     let imports: DynamicModule['imports'] = [];
     const providers: DynamicModule['providers'] = [
       {
         provide: ACCESS_TOKEN_SERVICE,
         useFactory: (config: AppConfig) => {
-          console.log(config.accessTokenKey);
           return new JwtService(config.accessTokenKey);
+        },
+        inject: [AppConfig],
+      },
+      {
+        provide: REFRESH_TOKEN_SERVICE,
+        useFactory: (config: AppConfig) => {
+          return new JwtService(config.refreshTokenKey);
         },
         inject: [AppConfig],
       },
