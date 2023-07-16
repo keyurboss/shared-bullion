@@ -1,12 +1,14 @@
 import { Global, Module } from '@nestjs/common';
 import {
-  GeneralUserRepoProvider,
   BullionSiteInfoRepoProvider,
+  GeneralUserRepoProvider,
+  GeneralUserReqRepoProvider,
 } from './repository.index';
 
 const repositoryPorvider = [
   GeneralUserRepoProvider,
   BullionSiteInfoRepoProvider,
+  GeneralUserReqRepoProvider,
 ];
 
 @Global()

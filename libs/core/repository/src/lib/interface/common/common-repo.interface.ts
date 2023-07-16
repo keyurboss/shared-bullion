@@ -18,7 +18,7 @@ export abstract class CommonRepository<
 
     if (!entity) {
       throw new EntityNotFoundError({
-        message: `${this.rootName} identified by serial ${id} not found`,
+        message: `${this.rootName} identified by id ${id} not found`,
       });
     }
 
