@@ -5,19 +5,26 @@
     </div>
     <div class="body">
       <div class="details" *ngFor="let info of item.details">
-        <h2 style="
-              font-size: var(--product-name-font-size);
-              padding: 5px;
-              margin: 0px;
-            ">
+        <h2
+          style="
+            font-size: var(--product-name-font-size);
+            padding: 5px;
+            margin: 0px;
+          "
+        >
           {{ info.Name }}
         </h2>
-        <h3  *ngIf="RateObser$[item.symbole] | async; let rate" style="
-              font-size: var(--product-value-font-size);
-              padding: 10px 0 0;
-              margin: 0px;
-              font-weight: 800;
-              " [class.rate_high]="rate['ask'].color === 'Green'" [class.rate_low]="rate['ask'].color === 'Red'">
+        <h3
+          *ngIf="RateObser$[item.symbole] | async; let rate"
+          style="
+            font-size: var(--product-value-font-size);
+            padding: 10px 0 0;
+            margin: 0px;
+            font-weight: 800;
+          "
+          [class.rate_high]="rate['ask'].color === 'Green'"
+          [class.rate_low]="rate['ask'].color === 'Red'"
+        >
           {{ rate['ask'].rate }}
         </h3>
       </div>
