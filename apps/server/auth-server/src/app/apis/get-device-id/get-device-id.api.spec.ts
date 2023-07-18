@@ -17,7 +17,6 @@ describe(GetDeviceIdController.name, () => {
         GetDeviceIdController,
       );
       const id = appController.getDeviceId();
-      expect(id).toBe(String);
       expect(id).toHaveLength(32);
     });
   });
