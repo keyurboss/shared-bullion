@@ -1,10 +1,18 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { ComponentFixture, TestBed, fakeAsync, flush, } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  flush,
+} from '@angular/core/testing';
 
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
-import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
+import {
+  BaseSymbolePriceInterface,
+  RateBaseSymboles,
+} from '@rps/bullion-interfaces';
 import { RateTables7Component } from './rate-tables-7.component';
 import { faker } from '@faker-js/faker';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
@@ -74,17 +82,16 @@ describe('RateTablesComponent', () => {
 
       const tableobj = comp.querySelectorAll('.Table');
       for (let i = 0; i < tableobj.length; i++) {
-        const PrObject = component.table[i].productname;
+        const PrObject = component.table[i]?.productname || [];
         for (let j = 0; j < PrObject.length; j++) {
           const productsname = comp.querySelectorAll('.productname');
-          expect(productsname[j].textContent?.trim()).toStrictEqual(
-            PrObject[j].name
+          expect(productsname[j]?.textContent?.trim()).toStrictEqual(
+            PrObject[j]?.name
           );
         }
       }
     });
   });
-
 
   describe('Rate Table 7 2nd TestCase For classes', () => {
     let liveRateServiceRef!: LiveRateService;
@@ -115,7 +122,6 @@ describe('RateTablesComponent', () => {
     it('Rate Default No class', () => {
       const length = comp.querySelectorAll('.rate').length;
       for (let i = 0; i < length; i++) {
-        
         const rateNode = comp.querySelectorAll('.rate')[i];
         expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false);
         expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false);
@@ -162,6 +168,4 @@ describe('RateTablesComponent', () => {
       }
     }));
   });
-
-
 });
