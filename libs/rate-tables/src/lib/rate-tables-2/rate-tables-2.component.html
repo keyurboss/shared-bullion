@@ -10,7 +10,7 @@
           [class.rate_high]="rate['bid'].color === 'Green'"
           [class.rate_low]="rate['bid'].color === 'Red'"
         >
-          {{ rate['bid'].rate | number : '1.2-2' }}
+          {{ rate['bid'].rate }}
         </p>
       </div>
       <div class="product_data_column">
@@ -19,7 +19,7 @@
           [class.rate_high]="rate['ask'].color === 'Green'"
           [class.rate_low]="rate['ask'].color === 'Red'"
         >
-          {{ rate['ask'].rate | number : '1.2-2' }}
+          {{ rate['ask'].rate }}
         </p>
       </div>
     </div>
@@ -31,7 +31,7 @@
           [class.rate_high]="rate['last-high'].color === 'Green'"
           [class.rate_low]="rate['last-high'].color === 'Red'"
         >
-          {{ rate['last-high'].rate | number : '1.2-2' }}
+          {{ rate['last-high'].rate }}
         </p>
       </div>
       <div class="product_data_column">
@@ -41,7 +41,7 @@
           [class.rate_high]="rate['last-low'].color === 'Green'"
           [class.rate_low]="rate['last-low'].color === 'Red'"
         >
-          {{ rate['last-low'].rate | number : '1.2-2' }}
+          {{ rate['last-low'].rate }}
         </p>
       </div>
     </div>

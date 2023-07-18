@@ -1,19 +1,21 @@
 <section class="main-div">
   <section class="justify_content border parent flex">
-    <h3 class="parent_left white">GOLD PRODUCTS</h3>
-    <p class="parent_right white">SELL</p>
+    <h3 class="parent_left white">{{ header }}</h3>
+    <p class="parent_right white">{{ sell }}</p>
   </section>
 
-  <section *ngFor="let item of data" class="justify_content border child flex">
-    <h3 class="child_left">{{ item.name }}</h3>
-    <p
-      class="child_right"
-      *ngIf="rate | async; let rate"
-      style="padding: 5px"
-      [class.rate_high]="rate['ask'].color === 'Green'"
-      [class.rate_low]="rate['ask'].color === 'Red'"
-    >
-      {{ rate['ask'].rate }}
-    </p>
+  <section class="justify_content border child flex" *ngFor="let item of table">
+    <section *ngFor="let para of item.productname">
+      <h3 class="child_left">{{ para.name }}</h3>
+      <p
+        class="child_right"
+        *ngIf="RateObser$[item.symbole] | async; let rate"
+        style="padding: 5px"
+        [class.rate_high]="rate['ask'].color === 'Green'"
+        [class.rate_low]="rate['ask'].color === 'Red'"
+      >
+        {{ rate['ask'].rate }}
+      </p>
+    </section>
   </section>
 </section>

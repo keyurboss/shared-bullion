@@ -9,13 +9,14 @@
         border: 1px solid #543e12;
       "
     >
-      <div class="product_group_header_1">Products</div>
-      <div class="product_group_left_header_1">SELL</div>
+      <h1 class="product_group_header_1">{{ Table_title.Header }}</h1>
+      >
+      <div class="product_group_left_header_1">{{ Table_title.sell }}</div>
     </div>
     <!-- body -->
     <div class="product_1">
       <div class="two_name">
-        <div class="name_1" text-align="left">Gold Bar</div>
+        <div class="name_01" text-align="left">{{ Table_title.gold }}</div>
 
         <div class="time">Time-05:38:48 AM</div>
       </div>
@@ -30,9 +31,15 @@
         </span>
       </div>
     </div>
-    <div class="product_1" *ngFor="let item of silverData">
+    <div class="product_1 Table" *ngFor="let item of table">
       <div class="two_name">
-        <div class="name_1" text-align="left">{{ item.name }}</div>
+        <div
+          class="productname"
+          text-align="left"
+          *ngFor="let child of item.productname"
+        >
+          {{ child.name }}
+        </div>
 
         <div class="time">Time-05:38:48 AM</div>
       </div>
@@ -40,11 +47,11 @@
       <div class="price">
         <span
           class="rate"
-          [class.rate_high]="silver['ask'].color === 'Green'"
-          [class.rate_low]="silver['ask'].color === 'Red'"
-          *ngIf="SILVER | async; let silver"
+          [class.rate_high]="rate['ask'].color === 'Green'"
+          [class.rate_low]="rate['ask'].color === 'Red'"
+          *ngIf="RateObser$[item.symbole] | async; let rate"
         >
-          {{ silver['ask'].rate }}
+          {{ rate['ask'].rate }}
         </span>
       </div>
     </div>
@@ -60,14 +67,14 @@
         border: 1px solid #543e12;
       "
     >
-      <div class="product_group_header_2">Products</div>
-      <div class="product_group_middle_header_2">BUY</div>
-      <div class="product_group_left_header_2">SELL</div>
+      <div class="product_group_header_2">{{ Table_title.Header }}</div>
+      <div class="product_group_middle_header_2">{{ Table_title.buy }}</div>
+      <div class="product_group_left_header_2">{{ Table_title.sell }}</div>
     </div>
     <!-- body -->
     <div class="product_2">
       <div class="two_name">
-        <div class="name_2" text-align="left">Gold Bar</div>
+        <div class="name_02" text-align="left">{{ Table_title.gold }}</div>
         <div class="time">Time-05:38:48 AM</div>
       </div>
 
@@ -97,36 +104,42 @@
         <div class="high_low_price_sell">H-{{ gold['last-high'].rate }}</div>
       </div>
     </div>
-    <div class="product_2" *ngFor="let item of silverData">
+    <div class="product_2" *ngFor="let item of table">
       <div class="two_name">
-        <div class="name_2" text-align="left">{{ item.name }}</div>
+        <div
+          class="name_2"
+          text-align="left"
+          *ngFor="let child of item.productname"
+        >
+          {{ child.name }}
+        </div>
         <div class="time">Time-05:38:48 AM</div>
       </div>
 
-      <div class="buy_name" *ngIf="SILVER | async; let silver">
+      <div class="buy_name" *ngIf="RateObser$[item.symbole] | async; let rate">
         <div class="price">
           <span
             class="rate price_buy"
-            [class.rate_high]="silver['ask'].color === 'Green'"
-            [class.rate_low]="silver['ask'].color === 'Red'"
+            [class.rate_high]="rate['ask'].color === 'Green'"
+            [class.rate_low]="rate['ask'].color === 'Red'"
           >
-            {{ silver['ask'].rate }}
+            {{ rate['ask'].rate }}
           </span>
         </div>
-        <div class="high_low_price_buy">H-{{ silver['last-high'].rate }}</div>
+        <div class="high_low_price_buy">H-{{ rate['last-high'].rate }}</div>
       </div>
 
-      <div class="two_name" *ngIf="SILVER | async; let silver">
+      <div class="two_name" *ngIf="RateObser$[item.symbole] | async; let rate">
         <div class="price">
           <span
             class="rate price_sell"
-            [class.rate_high]="silver['bid'].color === 'Green'"
-            [class.rate_low]="silver['bid'].color === 'Red'"
+            [class.rate_high]="rate['bid'].color === 'Green'"
+            [class.rate_low]="rate['bid'].color === 'Red'"
           >
-            {{ silver['bid'].rate }}
+            {{ rate['bid'].rate }}
           </span>
         </div>
-        <div class="high_low_price_sell">H-{{ silver['last-high'].rate }}</div>
+        <div class="high_low_price_sell">H-{{ rate['last-high'].rate }}</div>
       </div>
     </div>
   </div>
