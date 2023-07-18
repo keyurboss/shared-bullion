@@ -3,10 +3,7 @@ import { randUuid } from '@ngneat/falso';
 import { DeviceId, GeneralUserId } from '@rps/bullion-interfaces';
 import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
 import { Collection } from 'mongodb';
-import {
-  GeneralUserFilter,
-  GeneralUserRepository,
-} from '../../interface/general-user/general-user-repository.interface';
+import { GeneralUserFilter, GeneralUserRepository } from '../../interface';
 import { GeneralUserMongoRepository } from './general-user-repository.mongo';
 import {
   GeneralUserFixtureFactory,

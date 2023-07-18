@@ -14,11 +14,10 @@ import {
   IsNumber,
   ValidateNested,
 } from 'class-validator';
-
+import { BaseEntity } from '../core/base.entity';
 import { DeepOmit } from 'ts-essentials';
 import { v4 } from 'uuid';
 import { groupDbToPlain, groupToPlain } from '../core.interface';
-import { BaseEntity } from '../core/base.entity';
 
 export class CshPremiumBuySellEntity implements CshPremiumBuySellSnapshot {
   tcs = 0;
@@ -94,6 +93,7 @@ export class CalcEntity extends BaseEntity<CshID> {
       sell: GenerateExchangeBackwordCalcString(this.variableSnapshot.sell),
     };
   }
+
   static generateID() {
     return v4() as CshID;
   }
@@ -113,6 +113,7 @@ export class CalcEntity extends BaseEntity<CshID> {
     entity.modifiedAt = modifiedAt;
     return entity;
   }
+
   static updateEntity(
     options: Omit<CalcEntityOptions, 'modifiedAt'>,
     modifiedAt = new Date()
@@ -122,6 +123,7 @@ export class CalcEntity extends BaseEntity<CshID> {
       modifiedAt,
     });
   }
+
   static createEntity(
     options: DeepOmit<
       CalcEntityOptions,

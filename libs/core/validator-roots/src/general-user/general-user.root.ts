@@ -1,15 +1,16 @@
 import {
+  BullionId,
   DeviceId,
   DeviceType,
+  GeneralUserAuthStatus,
   GeneralUserId,
   GeneralUserType,
   GstNumber,
 } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance } from 'class-transformer';
-import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsEnum, IsNumber, IsString, IsUUID } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { validateSyncOrFail } from '../core.interface';
 import { BaseEntity } from '../core/base.entity';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -36,6 +37,10 @@ export class GeneralUserRoot
   contactNumber!: number;
 
   @Expose()
+  @IsUUID()
+  bullionId!: BullionId;
+
+  @Expose()
   @IsString()
   gstNumber!: GstNumber;
 
@@ -52,6 +57,10 @@ export class GeneralUserRoot
   deviceType!: DeviceType;
 
   @Expose()
+  @IsEnum(GeneralUserAuthStatus)
+  status!: GeneralUserAuthStatus;
+
+  @Expose()
   @IsBoolean()
   isAuto!: boolean;
 
@@ -66,6 +75,8 @@ export class GeneralUserRoot
     id = GeneralUserRoot.generateID(),
     isAuto,
     modifiedAt = new Date(),
+    bullionId,
+    status,
     contactNumber,
     firmName,
     firstName,
@@ -75,10 +86,11 @@ export class GeneralUserRoot
   }: GeneralUserOptions) {
     const entity = new GeneralUserRoot();
     entity.id = id;
-    entity.createdAt = createdAt;
+    entity.os = os;
     entity.deviceId = deviceId;
+    entity.status = status;
     entity.deviceType = deviceType;
-    entity.id = id;
+    entity.bullionId = bullionId;
     entity.isAuto = isAuto;
     entity.modifiedAt = modifiedAt;
     entity.contactNumber = contactNumber;
@@ -86,7 +98,7 @@ export class GeneralUserRoot
     entity.firstName = firstName;
     entity.gstNumber = gstNumber;
     entity.lastName = lastName;
-    entity.os = os;
+    entity.createdAt = createdAt;
     return entity;
   }
 
@@ -94,7 +106,7 @@ export class GeneralUserRoot
     const entity = plainToInstance(GeneralUserRoot, data, {
       excludeExtraneousValues: true,
     });
-    validateSyncOrFail(entity);
+    entity.validate();
     return entity;
   }
 }

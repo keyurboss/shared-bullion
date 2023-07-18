@@ -6,17 +6,17 @@ import {
   MongoDbService,
   MongoRepositoryLocalModule,
 } from '@rps/bullion-server-core';
-import { GeneralUserRepository } from '../../interface/general-user/general-user-repository.interface';
-import {
-  GeneralUserDocument,
-  GeneralUserMongoRepository,
-  generalUserCollection,
-} from './general-user-repository.mongo';
 import {
   GeneralUserFixtureFactory,
   GeneralUserRoot,
 } from '@rps/bullion-validator-roots';
 import { Collection } from 'mongodb';
+import { GeneralUserRepository } from '../../interface';
+import {
+  GeneralUserDocument,
+  GeneralUserMongoRepository,
+  generalUserCollection,
+} from './general-user-repository.mongo';
 
 describe(GeneralUserRepository.name, () => {
   let generalUserRepository: GeneralUserRepository;
@@ -94,7 +94,7 @@ describe(GeneralUserRepository.name, () => {
       });
     });
   });
-  describe('given prior state of kiosks', () => {
+  describe('given prior state of GeneralUsers', () => {
     let generalUsers: Array<GeneralUserRoot>;
     let generalUserId: GeneralUserId;
 

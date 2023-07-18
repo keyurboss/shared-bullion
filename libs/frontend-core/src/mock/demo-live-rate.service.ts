@@ -11,19 +11,31 @@ import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 
+
+export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 @Injectable({
   providedIn: 'root',
 })
 export class DemoLiveRateService extends LiveRateService {
+
+  get timeout(){
+    return randNumber({
+      max: 2,
+      min: 0.2,
+      precision: 0.01,
+    }) * 1000;
+  }
+
   constructor(
     @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
     @Optional() @Inject(Env) envvariable: EnvInterface,
     @Optional()
-    @Inject('initialiseRemoteConnection')
+    @Inject(InitialiseRemoteConnection)
     initialiseRemoteConnection: boolean
   ) {
     super(lastRate, envvariable, initialiseRemoteConnection ?? true);
   }
+
   InitRemoteConnection(): void {
     this.Gold();
     this.Silver();
@@ -31,12 +43,8 @@ export class DemoLiveRateService extends LiveRateService {
     this.GoldSpot();
     this.INR();
   }
+  
   private Silver() {
-    const timeout = randNumber({
-      max: 0.15,
-      min: 0.05,
-      precision: 0.01,
-    });
     const SILVER = RatesFixture.Generate(
       {
         bottom: 65000,
@@ -58,14 +66,10 @@ export class DemoLiveRateService extends LiveRateService {
     );
     setTimeout(() => {
       this.Silver();
-    }, timeout * 10000);
+    }, this.timeout);
   }
+  
   private Gold() {
-    const timeout = randNumber({
-      max: 0.15,
-      min: 0.05,
-      precision: 0.01,
-    });
     const GOLD = RatesFixture.Generate(
       {
         bottom: 56000,
@@ -87,14 +91,10 @@ export class DemoLiveRateService extends LiveRateService {
     );
     setTimeout(() => {
       this.Gold();
-    }, timeout * 10000);
+    }, this.timeout);
   }
+
   private SilverSpot() {
-    const timeout = randNumber({
-      max: 0.15,
-      min: 0.05,
-      precision: 0.01,
-    });
     const SILVER_SPOT = RatesFixture.Generate(
       {
         top: 25,
@@ -117,15 +117,10 @@ export class DemoLiveRateService extends LiveRateService {
     );
     setTimeout(() => {
       this.SilverSpot();
-    }, timeout * 10000);
+    }, this.timeout);
   }
 
   private GoldSpot() {
-    const timeout = randNumber({
-      max: 0.15,
-      min: 0.05,
-      precision: 0.01,
-    });
     const GOLD_SPOT = RatesFixture.Generate(
       {
         bottom: 1800,
@@ -148,15 +143,10 @@ export class DemoLiveRateService extends LiveRateService {
     );
     setTimeout(() => {
       this.GoldSpot();
-    }, timeout * 10000);
+    }, this.timeout);
   }
 
   private INR() {
-    const timeout = randNumber({
-      max: 0.15,
-      min: 0.05,
-      precision: 0.01,
-    });
     const INR = RatesFixture.Generate(
       {
         top: 82,
@@ -179,8 +169,9 @@ export class DemoLiveRateService extends LiveRateService {
     );
     setTimeout(() => {
       this.INR();
-    }, timeout * 10000);
+    }, this.timeout);
   }
+  
   async getLastRates(): Promise<
     Record<RateBaseSymboles, BaseSymbolePriceInterface>
   > {
