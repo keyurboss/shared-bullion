@@ -7,6 +7,6 @@ import { randomBytes } from 'crypto';
 export class GetDeviceIdController {
   @Get('deviceId')
   getDeviceId(): DeviceId {
-    return randomBytes(32).toString('hex') as DeviceId;
+    return randomBytes(16).toString('hex') as DeviceId;
   }
 }
