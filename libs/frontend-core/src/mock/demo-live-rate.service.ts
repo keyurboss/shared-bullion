@@ -10,7 +10,6 @@ import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
 
-
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 @Injectable({
   providedIn: 'root',

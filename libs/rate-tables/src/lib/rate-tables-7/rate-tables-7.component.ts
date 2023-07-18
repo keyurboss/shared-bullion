@@ -8,7 +8,7 @@ import {
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
 
-export interface data {
+export interface IRateTable7Data {
   symbole: RateBaseSymboles;
   productname: { name: string }[];
 }
@@ -48,13 +48,13 @@ export class RateTables7Component {
   };
 
   @Input()
-  private _table: data[] = [];
+  private _table: IRateTable7Data[] = [];
 
-  public get table(): data[] {
+  public get table(): IRateTable7Data[] {
     return this._table;
   }
 
-  public set table(value: data[]) {
+  public set table(value: IRateTable7Data[]) {
     value.forEach(({ symbole }) => {
       this.RateObser$[symbole] =
         this.rateObservar.RateObser$[symbole].asObservable();
