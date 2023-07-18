@@ -1,7 +1,13 @@
 import { Module } from '@nestjs/common';
-import { GeneralUserRepoProvider } from './repository.index';
+import {
+  GeneralUserRepoProvider,
+  BullionSiteInfoRepoProvider,
+} from './repository.index';
 
-const repositoryPorvider = [GeneralUserRepoProvider];
+const repositoryPorvider = [
+  GeneralUserRepoProvider,
+  BullionSiteInfoRepoProvider,
+];
 @Module({
   providers: [...repositoryPorvider],
 })

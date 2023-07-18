@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { Env } from '@rps/buillion-frontend-core/core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
-import { RateTables10Component, RateTables5Component, RateTables6Component } from '@rps/bullion-rate-tables';
+import { RateBaseSymboles } from '@rps/bullion-interfaces';
+import { RateTables6Component, RateTables7Component, RateTables11Component, RateTables2Component } from '@rps/bullion-rate-tables';
 @Component({
   standalone: true,
-  imports: [RateTables5Component, RateTables6Component, RateTables10Component],
+  imports: [RateTables7Component, RateTables6Component, RateTables11Component,RateTables2Component],
   selector: 'shared-bullion-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -22,5 +23,16 @@ import { RateTables10Component, RateTables5Component, RateTables6Component } fro
   ],
 })
 export class AppComponent {
+  d=[
+    {
+      symbole: RateBaseSymboles.GOLD,
+      productName: 'GOLD',
+      BID: 'BID',
+      ASK: 'ASK',
+      HIGH: 'High',
+      LOW: 'Low',
+    },
+  ];
+  
   title = 'component-testing-bed';
 }

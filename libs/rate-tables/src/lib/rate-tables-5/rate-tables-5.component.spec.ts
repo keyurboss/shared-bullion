@@ -46,8 +46,8 @@ describe('RateTablesComponent', () => {
       ];
       fixture.detectChanges();
       for (let i = 0; i < 2; i++) {
-        const productname = componentHtml.querySelectorAll('.productname')[i].textContent?.trim();
-        expect(productname).toStrictEqual(component.table[0].productName)
+        const productname = componentHtml.querySelectorAll('.productname')[i]?.textContent?.trim();
+        expect(productname).toStrictEqual(component.table[0]?.productName)
       }
     }))
     describe('Rate Table 3 2nd TestCase For classes', () => {
