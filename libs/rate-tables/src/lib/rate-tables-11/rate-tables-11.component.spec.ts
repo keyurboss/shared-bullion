@@ -6,7 +6,7 @@ import {
 } from '@angular/core/testing';
 
 import { RateTables11Component } from './rate-tables-11.component';
-import { LiveRateService } from '@rps/buillion-frontend-core/services';
+import { LiveRateService } from '@rps/buillion-frontend-core';
 import {
   DemoLiveRateService,
   InitialiseRemoteConnection,
@@ -41,6 +41,7 @@ describe('RateTablesComponent', () => {
     fixture = TestBed.createComponent(RateTables11Component);
     component = fixture.componentInstance;
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
 
     component.Header = 'GOLD PRODUCTS';
