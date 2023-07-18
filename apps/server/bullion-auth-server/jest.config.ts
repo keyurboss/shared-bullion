@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'server-bullion-auth-server',
+  displayName: 'auth-server',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

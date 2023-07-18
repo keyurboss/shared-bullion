@@ -1,7 +1,7 @@
 {
   "name": "bullion-auth-server-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["server-bullion-auth-server"],
+  "implicitDependencies": ["auth-server"],
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",

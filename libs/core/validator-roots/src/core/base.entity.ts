@@ -25,6 +25,7 @@ export class BaseEntity<T> {
       groups: [groupDbToPlain, groupToPlain],
     });
   }
+  
   validate() {
     validateSyncOrFail(this);
   }

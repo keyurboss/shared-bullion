@@ -14,6 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@rps/buillion-frontend-core": ["libs/frontend-core/src/index.ts"],
       "@rps/buillion-frontend-core/core": [
@@ -69,6 +73,9 @@
       ],
       "@rps/bullion-rate-tables/table7": [
         "libs/rate-tables/src/lib/rate-tables-7/rate-tables-7.component.ts"
+      ],
+      "@rps/bullion-rate-tables/table8": [
+        "libs/rate-tables/src/lib/rate-tables-8/rate-tables-8.component.ts"
       ],
       "@rps/bullion-rate-tables/table9": [
         "libs/rate-tables/src/lib/rate-tables-9/rate-tables-9.component.ts"

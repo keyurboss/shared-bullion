@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
-import { RateTables10Component } from './rate-tables-10.component';
-import { LiveRateService } from '@rps/buillion-frontend-core/services/live-rate.service';
+import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { RateTables10Component } from './rate-tables-10.component';
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 
 describe('RateTablesComponent', () => {
@@ -27,6 +27,7 @@ describe('RateTablesComponent', () => {
 
     fixture = TestBed.createComponent(RateTables10Component);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
@@ -58,15 +59,15 @@ describe('RateTablesComponent', () => {
       for (let i = 0; i < 3; i++) {
         const productsname = componentHtml
           .querySelectorAll('.name')
-          [i].textContent?.trim();
-        expect(productsname).toStrictEqual(component.data[i].name);
+          [i]?.textContent?.trim();
+        expect(productsname).toStrictEqual(component.data[i]?.name);
         const productsrate = componentHtml
           .querySelectorAll('.rate')
-          [i].textContent?.trim();
-        expect(productsrate).toStrictEqual(component.data[i].rate);
+          [i]?.textContent?.trim();
+        expect(productsrate).toStrictEqual(component.data[i]?.rate);
         // const shadow = fixture.debugElement.nativeElement.shadowRoot;
         const productsimg = componentHtml.querySelectorAll('img');
-        expect(productsimg[i].src).toStrictEqual(component.data[i].imageLink);
+        expect(productsimg[i]?.src).toStrictEqual(component.data[i]?.imageLink);
       }
     }));
   });

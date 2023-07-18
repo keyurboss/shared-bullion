@@ -1,8 +1,16 @@
 import { Provider } from '@nestjs/common';
-import { GeneralUserRepository } from './interface/general-user/general-user-repository.interface';
-import { GeneralUserMongoRepository } from './mongo-repository/general-user/general-user-repository.mongo';
+import { BullionSiteInfoRepository, GeneralUserRepository } from './interface';
+
+import {
+  BullionSiteInfoMongoRepository,
+  GeneralUserMongoRepository,
+} from './mongo-repository';
 
 export const GeneralUserRepoProvider: Provider = {
   provide: GeneralUserRepository,
   useClass: GeneralUserMongoRepository,
+};
+export const BullionSiteInfoRepoProvider: Provider = {
+  provide: BullionSiteInfoRepository,
+  useClass: BullionSiteInfoMongoRepository,
 };
