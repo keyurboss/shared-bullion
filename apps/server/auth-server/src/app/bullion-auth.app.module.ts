@@ -19,8 +19,7 @@ import {
   REFRESH_TOKEN_SERVICE,
 } from '../config/service.token';
 import { defaultValidationSchema } from '../config/validation.schema';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { APIModule } from './apis/api.module';
 import { RepositoryModule } from './repo/repo.module';
 
 export type AuthServerAppModuleOptions = {
@@ -28,7 +27,6 @@ export type AuthServerAppModuleOptions = {
 };
 
 const services: Provider[] = [
-  AppService,
   {
     provide: REFRESH_TOKEN_SERVICE,
     useClass: JwtService,
@@ -36,8 +34,7 @@ const services: Provider[] = [
 ];
 
 @Module({
-  imports: [LoggerModule, RepositoryModule],
-  controllers: [AppController],
+  imports: [LoggerModule, RepositoryModule, APIModule],
   providers: [...services],
 })
 export class AuthServerAppModule implements NestModule {

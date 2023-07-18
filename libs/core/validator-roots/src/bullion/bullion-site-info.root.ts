@@ -1,5 +1,5 @@
 import {
-  BullionGeneralUserConfig,
+  IBullionGeneralUserConfig,
   BullionId,
   IBullionSiteInfo,
 } from '@rps/bullion-interfaces';
@@ -36,7 +36,7 @@ export class BullionSiteInfoRoot
   @Expose()
   @ValidateNested()
   @Type(() => BullionGeneralUserConfigRoot)
-  generalUserInfo!: BullionGeneralUserConfig;
+  generalUserInfo!: IBullionGeneralUserConfig;
 
   static generateID() {
     return v4() as BullionId;

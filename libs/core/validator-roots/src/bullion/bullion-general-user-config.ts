@@ -1,4 +1,4 @@
-import { BullionGeneralUserConfig } from '@rps/bullion-interfaces';
+import { IBullionGeneralUserConfig } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance, instanceToPlain } from 'class-transformer';
 import { IsBoolean } from 'class-validator';
 import {
@@ -14,7 +14,7 @@ export type BullionGeneralUserConfigOption = OmitProperties<
   Function
 >;
 
-export class BullionGeneralUserConfigRoot implements BullionGeneralUserConfig {
+export class BullionGeneralUserConfigRoot implements IBullionGeneralUserConfig {
   @Expose()
   @IsBoolean()
   autoApprove!: boolean;
