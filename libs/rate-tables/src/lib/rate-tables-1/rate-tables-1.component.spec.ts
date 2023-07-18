@@ -4,7 +4,9 @@ import {
   fakeAsync,
   flush,
 } from '@angular/core/testing';
+import { faker } from '@faker-js/faker';
 import { LiveRateService } from '@rps/buillion-frontend-core';
+import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 import {
   DemoLiveRateService,
   InitialiseRemoteConnection,
@@ -14,8 +16,6 @@ import {
   RateBaseSymboles,
 } from '@rps/bullion-interfaces';
 import { RateTables1Component } from './rate-tables-1.component';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
-import { faker } from '@faker-js/faker';
 
 describe('RateTablesComponent', () => {
   let component: RateTables1Component;
@@ -39,6 +39,7 @@ describe('RateTablesComponent', () => {
 
     fixture = TestBed.createComponent(RateTables1Component);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     componentHtml = (fixture.nativeElement as HTMLElement).shadowRoot!;
     fixture.detectChanges();
   });
@@ -78,8 +79,8 @@ describe('RateTablesComponent', () => {
       expect(Sellname).toStrictEqual(component.sell)
       const lengthR = componentHtml.querySelectorAll('.child_left').length;
       for (let i = 0; i < lengthR; i++) {
-        const productsname = componentHtml.querySelectorAll('.child_left')[i].textContent?.trim();
-        expect(productsname).toStrictEqual(component.table[0].productname[i].name.trim())
+        const productsname = componentHtml.querySelectorAll('.child_left')[i]?.textContent?.trim();
+        expect(productsname).toStrictEqual(component.table[0]?.productname[i]?.name.trim())
       }
     }));
   });
