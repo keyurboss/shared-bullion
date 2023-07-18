@@ -1,5 +1,5 @@
 {
-  "name": "server-bullion-auth-server",
+  "name": "auth-server",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/server/bullion-auth-server/src",
   "projectType": "application",
@@ -27,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "server-bullion-auth-server:build"
+        "buildTarget": "auth-server:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "server-bullion-auth-server:build:development"
+          "buildTarget": "auth-server:build:development"
         },
         "production": {
-          "buildTarget": "server-bullion-auth-server:build:production"
+          "buildTarget": "auth-server:build:production"
         }
       }
     },

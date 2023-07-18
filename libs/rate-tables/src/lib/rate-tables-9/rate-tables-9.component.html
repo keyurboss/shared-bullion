@@ -1,28 +1,21 @@
 <div class="main_container">
-  <div class="type_1">
-    <div class="type_1_container flex_center" *ngIf="rate | async; let rate">
+  <div class="type_1" *ngFor="let item of table">
+    <div class="type_1_container flex_center" *ngIf="RateObser$[item.symbole] | async; let rate">
       <div class="product">
-        <h2>{{ productName }}</h2>
+        <h2>{{ item.productName }}</h2>
       </div>
-      <div class="bid flex_center">
-        <h4
-          class="flex_center"
-          [class.rate_high]="rate['bid'].color === 'Green'"
-          [class.rate_low]="rate['bid'].color === 'Red'"
-        >
+      <div class="rate bid flex_center">
+        <h4 class="flex_center" [class.rate_high]="rate['bid'].color === 'Green'"
+          [class.rate_low]="rate['bid'].color === 'Red'">
           {{ rate['bid'].rate | number : '1.2-2' }}
         </h4>
         <h6 class="flex_center">
-          <span class="half"> HI&nbsp;&nbsp;:&nbsp;&nbsp; </span
-          >{{ rate['last-high'].rate | number : '1.2-2' }}
+          <span class="half"> HI&nbsp;&nbsp;:&nbsp;&nbsp; </span>{{ rate['last-high'].rate | number : '1.2-2' }}
         </h6>
       </div>
-      <div class="ask flex_center">
-        <h4
-          class="flex_center"
-          [class.rate_high]="rate['ask'].color === 'Green'"
-          [class.rate_low]="rate['ask'].color === 'Red'"
-        >
+      <div class="rate ask flex_center">
+        <h4 class="flex_center" [class.rate_high]="rate['ask'].color === 'Green'"
+          [class.rate_low]="rate['ask'].color === 'Red'">
           {{ rate['ask'].rate | number : '1.2-2' }}
         </h4>
         <h6 class="flex_center">
