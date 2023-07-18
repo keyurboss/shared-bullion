@@ -30,9 +30,9 @@ export interface table2DataInterface {
   styleUrls: ['./rate-tables-2.component.scss'],
 })
 export class RateTables2Component {
-  @Input()
   private _table: table2DataInterface[] = [];
-
+  
+  @Input()
   public get table(): table2DataInterface[] {
     return this._table;
   }
