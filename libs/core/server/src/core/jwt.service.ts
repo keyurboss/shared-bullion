@@ -16,7 +16,7 @@ export class JwtService {
     }
   }
 
-  VerifyToken<T = unknown>(token: string) {
+  VerifyToken<T = Record<string, unknown>>(token: string) {
     return verify(token, this._key, {}) as T;
   }
 

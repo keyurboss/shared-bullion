@@ -26,6 +26,9 @@ async function bootstrap() {
     AuthServerAppModule.register({
       appEnv: process.env[appEnvNameKey] as AppEnvName,
     }),
+    {
+      cors: true,
+    },
   );
 
   const config = app.get(AppConfig);

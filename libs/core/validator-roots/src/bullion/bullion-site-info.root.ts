@@ -12,7 +12,7 @@ import {
 } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { BaseEntity } from '../core/base.entity';
+import { BaseEntity } from '../core';
 import { BullionGeneralUserConfigRoot } from './bullion-general-user-config';
 
 export type BullionSiteInfoOptions = OmitProperties<

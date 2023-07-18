@@ -14,7 +14,7 @@ import {
   IsNumber,
   ValidateNested,
 } from 'class-validator';
-import { BaseEntity } from '../core/base.entity';
+import { BaseEntity } from '../core';
 import { DeepOmit } from 'ts-essentials';
 import { v4 } from 'uuid';
 import { groupDbToPlain, groupToPlain } from '../core.interface';

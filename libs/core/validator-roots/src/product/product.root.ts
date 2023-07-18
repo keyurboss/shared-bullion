@@ -13,7 +13,7 @@ import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsString, Length } from 'class-validator';
 import { CshVariableSnapshotEntity } from '../calc/calc.root';
 import { v4 } from 'uuid';
-import { BaseEntity } from '../core/base.entity';
+import { BaseEntity } from '../core';
 
 export type ProductDocument = Pick<
   ProductRoot,

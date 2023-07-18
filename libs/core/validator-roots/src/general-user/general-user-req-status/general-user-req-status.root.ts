@@ -9,7 +9,7 @@ import { Expose, plainToInstance } from 'class-transformer';
 import { IsEnum, IsUUID } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { BaseEntity } from '../../core/base.entity';
+import { BaseEntity } from '../../core';
 
 export type GeneralUserReqOptions = OmitProperties<
   GeneralUserReqRoot,

@@ -9,7 +9,7 @@ import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { BaseEntity } from '../core/base.entity';
+import { BaseEntity } from '../core';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type GeneralUserOptions = OmitProperties<GeneralUserRoot, Function>;
