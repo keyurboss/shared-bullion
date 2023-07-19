@@ -32,7 +32,6 @@ async function bootstrap() {
   );
 
   const config = app.get(AppConfig);
-
   await app
     // .useGlobalPipes(
     //   new ValidationPipe({ transform: true, forbidUnknownValues: false })

@@ -5,7 +5,7 @@ export abstract class CommonRepository<
   TRoot extends object,
   TId extends string,
 > {
-  abstract rootName: string;
+  rootName = this.constructor.name;
   abstract find(filter?: TFilter): Promise<TRoot[]>;
   abstract findByIds(ids: Array<TId>): Promise<TRoot[]>;
 

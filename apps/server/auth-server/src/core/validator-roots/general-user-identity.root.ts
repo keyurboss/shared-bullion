@@ -1,8 +1,16 @@
 import { GeneralUserId } from '@rps/bullion-interfaces';
-import { BaseEntity, GeneralUserRoot } from '@rps/bullion-validator-roots';
+import {
+  BaseEntity,
+  GeneralUserRoot,
+  TypeNameProp,
+} from '@rps/bullion-validator-roots';
 import { plainToInstance } from 'class-transformer';
 
-export class IGeneralUserIdentityRoot extends BaseEntity<GeneralUserId> {
+export class IGeneralUserIdentityRoot
+  extends BaseEntity<GeneralUserId>
+  implements TypeNameProp
+{
+  readonly typeName = IGeneralUserIdentityRoot.name;
   static from({
     createdAt = new Date(),
     id = GeneralUserRoot.generateID(),

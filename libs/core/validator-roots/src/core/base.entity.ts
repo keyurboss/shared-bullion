@@ -22,6 +22,7 @@ export class BaseEntity<T> {
     return instanceToPlain(this, {
       excludeExtraneousValues: true,
       exposeUnsetFields: false,
+      exposeDefaultValues: true,
       groups: [groupDbToPlain, groupToPlain],
     });
   }

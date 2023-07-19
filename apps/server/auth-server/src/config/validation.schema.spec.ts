@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { describe, it } from '@jest/globals';
-
-import { defaultValidationSchema, JwtKeyLenght } from './validation.schema';
+import { JwtKeyLenght } from '@rps/bullion-server-core';
 import Joi from 'joi';
+import { defaultValidationSchema } from './validation.schema';
 
 const validationSchema = Joi.object(defaultValidationSchema);
 describe('Env Validation Schema', () => {
