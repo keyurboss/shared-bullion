@@ -24,6 +24,10 @@ export class GeneralUserRoot
 
   @Expose()
   @IsString()
+  randomPass!: string;
+
+  @Expose()
+  @IsString()
   lastName!: string;
 
   @Expose()
@@ -66,6 +70,7 @@ export class GeneralUserRoot
     isAuto,
     modifiedAt = new Date(),
     contactNumber,
+    randomPass,
     firmName,
     firstName,
     gstNumber,
@@ -77,6 +82,7 @@ export class GeneralUserRoot
     entity.os = os;
     entity.deviceId = deviceId;
     entity.deviceType = deviceType;
+    entity.randomPass = randomPass;
     entity.isAuto = isAuto;
     entity.modifiedAt = modifiedAt;
     entity.contactNumber = contactNumber;

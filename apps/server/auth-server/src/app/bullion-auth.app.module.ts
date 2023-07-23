@@ -16,6 +16,7 @@ import { defaultValidationSchema } from '../config/validation.schema';
 import { TokenModule } from '../core/token.module';
 import { APIModule } from './apis/api.module';
 import { RepositoryModule } from './repo/repo.module';
+import { InterActorModule } from './interactor/interactor.module';
 
 export type AuthServerAppModuleOptions = {
   appEnv: AppEnvName;
@@ -24,7 +25,13 @@ export type AuthServerAppModuleOptions = {
 const services: Provider[] = [];
 
 @Module({
-  imports: [TokenModule, LoggerModule, RepositoryModule, APIModule],
+  imports: [
+    TokenModule,
+    LoggerModule,
+    RepositoryModule,
+    APIModule,
+    InterActorModule,
+  ],
   providers: [...services],
 })
 export class AuthServerAppModule implements NestModule {

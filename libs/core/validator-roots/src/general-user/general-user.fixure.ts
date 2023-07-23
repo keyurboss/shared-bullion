@@ -4,6 +4,7 @@ import {
   randFirstName,
   randLastName,
   randNumber,
+  randPassword,
   randPastDate,
   randRecentDate,
   randText,
@@ -35,6 +36,7 @@ export class GeneralUserFixtureFactory {
   static create(partial?: PartialGeneralUserOptions): GeneralUserRoot {
     return GeneralUserRoot.from({
       contactNumber: randNumber(),
+      randomPass: randPassword(),
       // bullionId: randUuid() as BullionId,
       // status: rand(Object.values(GeneralUserAuthStatus)),
       createdAt: randPastDate(),

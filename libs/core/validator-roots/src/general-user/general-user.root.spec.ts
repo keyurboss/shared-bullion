@@ -5,6 +5,7 @@ import {
   randCompanyName,
   randFullName,
   randNumber,
+  randPassword,
   randPastDate,
   randRecentDate,
   randSportsTeam,
@@ -27,6 +28,7 @@ describe(GeneralUserRoot.name, () => {
     options = {
       id: randUuid() as GeneralUserId,
       isAuto: randBoolean(),
+      randomPass: randPassword(),
       firmName: randFullName(),
       firstName: randFullName(),
       // bullionId: randUuid() as BullionId,

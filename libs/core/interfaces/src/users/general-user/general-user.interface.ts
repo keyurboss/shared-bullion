@@ -11,6 +11,7 @@ export enum DeviceType {
 
 export interface IGeneralUserType {
   id: GeneralUserId;
+  randomPass: string;
   firstName: string;
   lastName: string;
   firmName: string;
