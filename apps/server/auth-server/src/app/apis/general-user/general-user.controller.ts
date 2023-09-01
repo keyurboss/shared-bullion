@@ -22,5 +22,4 @@ export class GeneralUserController {
     }
     return this.generalUserRepo.findGeneralUserByid(details.id);
   }
-  // @Post("")
 }
