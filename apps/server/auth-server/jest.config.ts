@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'auth-server',
+  displayName: 'auth',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

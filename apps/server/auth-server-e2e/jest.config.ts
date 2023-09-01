@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'auth-server-e2e',
+  displayName: 'auth-e2e',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {

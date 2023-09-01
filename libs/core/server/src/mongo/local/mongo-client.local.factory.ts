@@ -6,7 +6,6 @@ export const mongoClientLocalFactory = async (
   mongoMemoryServer: MongoMemoryServer,
 ) => {
   const logger = new Logger('MongoClient');
-
   const url = mongoMemoryServer.getUri();
 
   const client = new MongoClient(url, {

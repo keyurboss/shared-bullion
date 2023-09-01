@@ -42,6 +42,12 @@ export class FixtureService {
   >(collectionName: string, path: string, dropCollection = true) {
     const fixtures = await this.loadJson<Fixture>(path);
     const collection = this.db.collection<UuidDocument>(collectionName);
+    if (fixtures.length === 0) {
+      this.logger.verbose(
+        `seeding stopped for collection:${collectionName} because there are no fixtures`,
+      );
+      return;
+    }
     if (dropCollection) {
       this.logger.verbose(`dropping ${collectionName} collection`);
       try {
