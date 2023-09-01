@@ -12,7 +12,8 @@
         "tsConfig": "libs/functions/tsconfig.lib.json",
         "packageJson": "libs/functions/package.json",
         "main": "libs/functions/src/index.ts",
-        "assets": ["libs/functions/*.md"]
+        "assets": ["libs/functions/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

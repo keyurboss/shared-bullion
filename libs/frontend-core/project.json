@@ -12,7 +12,8 @@
         "tsConfig": "libs/frontend-core/tsconfig.lib.json",
         "packageJson": "libs/frontend-core/package.json",
         "main": "libs/frontend-core/src/index.ts",
-        "assets": ["libs/frontend-core/*.md"]
+        "assets": ["libs/frontend-core/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {
