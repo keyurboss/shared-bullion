@@ -15,5 +15,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/auth-server-e2e',
+  coverageDirectory: '../../../coverage/auth-e2e',
 };
