@@ -1,11 +1,11 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import {
-  BaseSymbolePriceInterface,
+  BaseSymbolPriceInterface,
   EnvInterface,
-  RateBaseSymboles,
-  SymboleWiseRate,
+  RateBaseSymbols,
+  SymbolWiseRate,
 } from '@rps/bullion-interfaces';
-import { Env, JsonToItrable } from '../core';
+import { Env, JsonToIterable } from '../core';
 import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';
@@ -26,7 +26,7 @@ export class DemoLiveRateService extends LiveRateService {
   }
 
   constructor(
-    @Optional() @Inject(InjectableRate) lastRate: SymboleWiseRate,
+    @Optional() @Inject(InjectableRate) lastRate: SymbolWiseRate,
     @Optional() @Inject(Env) envvariable: EnvInterface,
     @Optional()
     @Inject(InitialiseRemoteConnection)
@@ -53,11 +53,11 @@ export class DemoLiveRateService extends LiveRateService {
         top: 15,
         bottom: 0,
       },
-      this._LastRate.get(RateBaseSymboles.SILVER),
+      this._LastRate.get(RateBaseSymbols.SILVER),
     );
     this.setRate(
       new Map(
-        JsonToItrable({
+        JsonToIterable({
           SILVER,
           SILVER_MCX: SILVER,
         }),
@@ -78,11 +78,11 @@ export class DemoLiveRateService extends LiveRateService {
         top: 15,
         bottom: 0,
       },
-      this._LastRate.get(RateBaseSymboles.GOLD),
+      this._LastRate.get(RateBaseSymbols.GOLD),
     );
     this.setRate(
       new Map(
-        JsonToItrable({
+        JsonToIterable({
           GOLD,
           GOLD_MCX: GOLD,
         }),
@@ -105,11 +105,11 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 0,
         points: 0.01,
       },
-      this._LastRate.get(RateBaseSymboles.SILVER_SPOT),
+      this._LastRate.get(RateBaseSymbols.SILVER_SPOT),
     );
     this.setRate(
       new Map(
-        JsonToItrable({
+        JsonToIterable({
           SILVER_SPOT,
         }),
       ),
@@ -131,11 +131,11 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 1,
         points: 0.01,
       },
-      this._LastRate.get(RateBaseSymboles.GOLD_SPOT),
+      this._LastRate.get(RateBaseSymbols.GOLD_SPOT),
     );
     this.setRate(
       new Map(
-        JsonToItrable({
+        JsonToIterable({
           GOLD_SPOT,
         }),
       ),
@@ -157,11 +157,11 @@ export class DemoLiveRateService extends LiveRateService {
         bottom: 0,
         points: 0.0001,
       },
-      this._LastRate.get(RateBaseSymboles.INR),
+      this._LastRate.get(RateBaseSymbols.INR),
     );
     this.setRate(
       new Map(
-        JsonToItrable({
+        JsonToIterable({
           INR,
         }),
       ),
@@ -172,7 +172,7 @@ export class DemoLiveRateService extends LiveRateService {
   }
 
   async getLastRates(): Promise<
-    Record<RateBaseSymboles, BaseSymbolePriceInterface>
+    Record<RateBaseSymbols, BaseSymbolPriceInterface>
   > {
     return RatesFixture.GenerateForAllSymboles();
   }

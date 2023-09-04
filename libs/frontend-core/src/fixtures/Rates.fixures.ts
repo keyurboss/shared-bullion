@@ -1,9 +1,9 @@
 import {
-  BaseSymbolePriceInterface,
-  RateBaseSymboles,
+  BaseSymbolPriceInterface,
+  RateBaseSymbols,
   RateTypeKeys,
 } from '@rps/bullion-interfaces';
-import { JsonToItrable } from '../core';
+import { JsonToIterable } from '../core';
 import { randNumber } from '@ngneat/falso';
 export class RatesFixture {
   static Generate(
@@ -17,8 +17,8 @@ export class RatesFixture {
       top: number;
       bottom: number;
     },
-    previous: Partial<BaseSymbolePriceInterface> = {},
-  ): BaseSymbolePriceInterface {
+    previous: Partial<BaseSymbolPriceInterface> = {},
+  ): BaseSymbolPriceInterface {
     const ask = randNumber({
       max: range.top,
       min: range.bottom,
@@ -70,11 +70,11 @@ export class RatesFixture {
   }
 
   static GetDiffRate(
-    current: BaseSymbolePriceInterface,
-    previous: BaseSymbolePriceInterface,
-  ): Partial<BaseSymbolePriceInterface> {
-    const o: Partial<BaseSymbolePriceInterface> = {};
-    for (const [k, v] of JsonToItrable<number, RateTypeKeys>(current)) {
+    current: BaseSymbolPriceInterface,
+    previous: BaseSymbolPriceInterface,
+  ): Partial<BaseSymbolPriceInterface> {
+    const o: Partial<BaseSymbolPriceInterface> = {};
+    for (const [k, v] of JsonToIterable<number, RateTypeKeys>(current)) {
       if (previous[k] !== v) {
         o[k] = v;
       }
@@ -83,8 +83,8 @@ export class RatesFixture {
   }
 
   static GenerateForAllSymboles(): Record<
-    RateBaseSymboles,
-    BaseSymbolePriceInterface
+    RateBaseSymbols,
+    BaseSymbolPriceInterface
   > {
     const GOLD = RatesFixture.Generate(
       {

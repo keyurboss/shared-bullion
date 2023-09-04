@@ -1,18 +1,18 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, WritableSignal, signal } from '@angular/core';
 
 import {
-  BaseSymbolePriceInterface,
+  BaseSymbolPriceInterface,
   EnvInterface,
   HighLowColorType,
-  RateBaseSymboles,
-  RateBaseSymbolesArray,
+  RateBaseSymbols,
+  RateBaseSymbolsArray,
   RateTypeKeys,
   RateTypeKeysArray,
-  SymboleWiseRate,
+  SymbolWiseRate,
 } from '@rps/bullion-interfaces';
 
 import { BehaviorSubject } from 'rxjs';
-import { JsonToItrable } from '../core';
+import { JsonToIterable } from '../core';
 
 export type RateObserDataType = Record<
   RateTypeKeys,
@@ -23,23 +23,23 @@ export type RateObserDataType = Record<
     timeOutRef: null | any;
   }
 >;
-export const InjectableRate = new InjectionToken<SymboleWiseRate>(
+export const InjectableRate = new InjectionToken<SymbolWiseRate>(
   'Insert Current Price',
 );
 
 export abstract class LiveRateService {
-  RateObser$: Record<RateBaseSymboles, BehaviorSubject<RateObserDataType>> =
+  RateObser$: Record<RateBaseSymbols, WritableSignal<RateObserDataType>> =
     {} as never;
 
-  protected _LastRate: Map<RateBaseSymboles, BaseSymbolePriceInterface> =
+  protected _LastRate: Map<RateBaseSymbols, BaseSymbolPriceInterface> =
     new Map();
 
-  get LastRate(): Map<RateBaseSymboles, BaseSymbolePriceInterface> {
+  get LastRate(): Map<RateBaseSymbols, BaseSymbolPriceInterface> {
     return this._LastRate;
   }
 
   protected set LastRate(
-    value: Map<RateBaseSymboles, BaseSymbolePriceInterface>,
+    value: Map<RateBaseSymbols, BaseSymbolPriceInterface>,
   ) {
     this._LastRate = value;
     this.setRate(value);
@@ -59,13 +59,13 @@ export abstract class LiveRateService {
   }
 
   constructor(
-    lastRate: SymboleWiseRate,
+    lastRate: SymbolWiseRate,
     envvariable: EnvInterface,
     initialiseService = true,
   ) {
     this.CreatSubjects();
     if (lastRate !== null && typeof lastRate !== 'undefined') {
-      this.LastRate = new Map(JsonToItrable(lastRate));
+      this.LastRate = new Map(JsonToIterable(lastRate));
       this.RatesReady = true;
     }
     if (
@@ -83,24 +83,24 @@ export abstract class LiveRateService {
   private async init() {
     if (this.RatesReady === false) {
       await this.getLastRates().then((rate) => {
-        this.LastRate = new Map(JsonToItrable(rate));
+        this.LastRate = new Map(JsonToIterable(rate));
         this.RatesReady = true;
       });
     }
     this.InitRemoteConnection();
   }
 
-  setRate(Rate: Map<RateBaseSymboles, Partial<BaseSymbolePriceInterface>>) {
+  setRate(Rate: Map<RateBaseSymbols, Partial<BaseSymbolPriceInterface>>) {
     for (const [symb, currentRate] of Rate) {
       if (typeof this._LastRate.get(symb) === 'undefined') {
-        this._LastRate.set(symb, currentRate as BaseSymbolePriceInterface);
+        this._LastRate.set(symb, currentRate as BaseSymbolPriceInterface);
         continue;
       }
-      let old = this.RateObser$[symb]?.value;
+      let old = this.RateObser$[symb]();
       if (old === null || typeof old === 'undefined') {
         old = {} as never;
       }
-      for (const [rateType, newRate] of JsonToItrable<number, RateTypeKeys>(
+      for (const [rateType, newRate] of JsonToIterable<number, RateTypeKeys>(
         currentRate,
       )) {
         const oldRateObject = old[rateType];
@@ -129,16 +129,13 @@ export abstract class LiveRateService {
         oldRateObject.rate = newRate;
 
         oldRateObject.timeOutRef = setTimeout(() => {
-          const cro1 = this.RateObser$[symb]?.value;
-          // debugger
-          const rateTypeObject = Object.assign({}, cro1[rateType]);
-          rateTypeObject.color = HighLowColorType.Default;
-          rateTypeObject.timeOutRef = null;
-          cro1[rateType] = rateTypeObject;
-          this.RateObser$[symb]?.next(cro1);
+          this.RateObser$[symb].mutate((cro1) => {
+            cro1[rateType].color = HighLowColorType.Default;
+            cro1[rateType].timeOutRef = null;
+          });
         }, 900);
       }
-      this.RateObser$[symb]?.next(old);
+      this.RateObser$[symb].set(old);
       const obj = this._LastRate.get(symb);
       if (typeof obj !== 'undefined') {
         Object.assign(obj, currentRate);
@@ -147,7 +144,7 @@ export abstract class LiveRateService {
   }
 
   private CreatSubjects() {
-    for (const symb of RateBaseSymbolesArray) {
+    for (const symb of RateBaseSymbolsArray) {
       const a: RateObserDataType = {} as never;
       RateTypeKeysArray.forEach((k) => {
         a[k] = {
@@ -156,12 +153,12 @@ export abstract class LiveRateService {
           color: HighLowColorType.Default,
         };
       });
-      this.RateObser$[symb] = new BehaviorSubject(a);
+      this.RateObser$[symb] = signal(a);
     }
   }
 
   abstract getLastRates(): Promise<
-    Record<RateBaseSymboles, BaseSymbolePriceInterface>
+    Record<RateBaseSymbols, BaseSymbolPriceInterface>
   >;
 
   abstract InitRemoteConnection(): void;

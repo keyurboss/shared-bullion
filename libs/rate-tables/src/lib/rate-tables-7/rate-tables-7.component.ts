@@ -5,11 +5,11 @@ import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core';
-import { RateBaseSymboles } from '@rps/bullion-interfaces';
+import { RateBaseSymbols } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
 
 export interface IRateTable7Data {
-  symbole: RateBaseSymboles;
+  symbole: RateBaseSymbols;
   productname: { name: string }[];
 }
 
@@ -62,7 +62,7 @@ export class RateTables7Component {
     this._table = value;
   }
 
-  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
+  RateObser$: Record<RateBaseSymbols, Observable<RateObserDataType>> =
     {} as never;
 
   constructor(

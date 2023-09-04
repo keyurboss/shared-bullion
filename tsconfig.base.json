@@ -33,7 +33,7 @@
       "@rps/buillion-frontend-core/services": [
         "libs/frontend-core/src/services/index.ts"
       ],
-      "@bs/repo": ["libs/core/repository/src/index.ts"],
+      "@bs/repo": ["libs/server/repository/src/index.ts"],
       "@rps/bullion-functions": ["libs/functions/src/index.ts"],
       "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
       "@rps/bullion-interfaces": ["libs/core/interfaces/src/index.ts"],
