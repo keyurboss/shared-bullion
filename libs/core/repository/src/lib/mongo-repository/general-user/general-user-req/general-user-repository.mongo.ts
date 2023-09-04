@@ -1,10 +1,7 @@
 import { Inject, OnModuleInit, Optional } from '@nestjs/common';
 import { GeneralUserId, GeneralUserReqId } from '@rps/bullion-interfaces';
 import { FixtureMongoService, LoggerFactory, MongoDbService } from '@bs/core';
-import {
-  GeneralUserOptions,
-  GeneralUserReqRoot,
-} from '@rps/bullion-validator-roots';
+import { GeneralUserOptions, GeneralUserReqRoot } from '@bs/validator-roots';
 import {
   GeneralUserReqFilter,
   GeneralUserReqRepository,

@@ -5,7 +5,7 @@ import { LoggerFactory, MongoDbService } from '@bs/core';
 import {
   BullionSiteInfoFixtureFactory,
   BullionSiteInfoRoot,
-} from '@rps/bullion-validator-roots';
+} from '@bs/validator-roots';
 import { Collection } from 'mongodb';
 import {
   BullionSiteInfoFilter,

@@ -1,5 +1,5 @@
 import { GeneralUserId } from '@rps/bullion-interfaces';
-import { GeneralUserRoot } from '@rps/bullion-validator-roots';
+import { GeneralUserRoot } from '@bs/validator-roots';
 import { Filter } from 'mongodb';
 import { CommonRepository } from './common/common-repo.interface';
 

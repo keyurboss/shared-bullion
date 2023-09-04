@@ -13,7 +13,7 @@ import {
 import {
   GeneralUserReqFixtureFactory,
   GeneralUserReqRoot,
-} from '@rps/bullion-validator-roots';
+} from '@bs/validator-roots';
 import { Collection } from 'mongodb';
 import { GeneralUserReqRepository } from '../../../interface';
 import {

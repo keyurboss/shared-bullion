@@ -3,7 +3,7 @@ import {
   GeneralUserId,
   GeneralUserReqId,
 } from '@rps/bullion-interfaces';
-import { GeneralUserReqRoot } from '@rps/bullion-validator-roots';
+import { GeneralUserReqRoot } from '@bs/validator-roots';
 import { Filter } from 'mongodb';
 import { CommonRepository } from './common/common-repo.interface';
 

@@ -2,7 +2,7 @@ import { BullionId } from '@rps/bullion-interfaces';
 import {
   BullionSiteInfoOptions,
   BullionSiteInfoRoot,
-} from '@rps/bullion-validator-roots';
+} from '@bs/validator-roots';
 import { Filter } from 'mongodb';
 import { CommonRepository } from './common/common-repo.interface';
 

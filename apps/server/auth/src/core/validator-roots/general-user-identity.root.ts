@@ -1,9 +1,5 @@
 import { GeneralUserId } from '@rps/bullion-interfaces';
-import {
-  BaseEntity,
-  GeneralUserRoot,
-  TypeNameProp,
-} from '@rps/bullion-validator-roots';
+import { BaseEntity, GeneralUserRoot, TypeNameProp } from '@bs/validator-roots';
 import { plainToInstance } from 'class-transformer';
 
 export class GeneralUserIdentityRoot

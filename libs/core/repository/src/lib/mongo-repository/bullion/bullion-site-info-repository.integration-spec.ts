@@ -9,7 +9,7 @@ import {
 import {
   BullionSiteInfoFixtureFactory,
   BullionSiteInfoRoot,
-} from '@rps/bullion-validator-roots';
+} from '@bs/validator-roots';
 import { Collection } from 'mongodb';
 import { BullionSiteInfoRepository } from '../../interface';
 import {

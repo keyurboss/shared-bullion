@@ -9,7 +9,7 @@ import {
 import {
   GeneralUserFixtureFactory,
   GeneralUserRoot,
-} from '@rps/bullion-validator-roots';
+} from '@bs/validator-roots';
 import { Collection } from 'mongodb';
 import { GeneralUserRepository } from '../../interface';
 import {

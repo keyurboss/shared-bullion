@@ -78,7 +78,7 @@
         "libs/rate-tables/src/lib/rate-tables-9/rate-tables-9.component.ts"
       ],
       "@bs/core": ["libs/server/core/src/index.ts"],
-      "@rps/bullion-validator-roots": ["libs/core/validator-roots/src/index.ts"]
+      "@bs/validator-roots": ["libs/server/validator-roots/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

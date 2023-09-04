@@ -8,7 +8,7 @@ import { GeneralUserMongoRepository } from './general-user-repository.mongo';
 import {
   GeneralUserFixtureFactory,
   GeneralUserRoot,
-} from '@rps/bullion-validator-roots';
+} from '@bs/validator-roots';
 
 describe(GeneralUserRepository.name, () => {
   let collectionMock: Partial<Record<keyof Collection, jest.Mock>>;
