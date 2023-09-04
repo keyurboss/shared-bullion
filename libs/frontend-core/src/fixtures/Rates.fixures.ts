@@ -82,7 +82,7 @@ export class RatesFixture {
     return o;
   }
 
-  static GenerateForAllSymboles(): Record<
+  static GenerateForAllSymbols(): Record<
     RateBaseSymbols,
     BaseSymbolPriceInterface
   > {

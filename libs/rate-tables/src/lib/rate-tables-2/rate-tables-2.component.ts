@@ -5,15 +5,20 @@ import {
   NgFor,
   NgIf,
 } from '@angular/common';
-import { Observable } from 'rxjs';
-import { Component, ViewEncapsulation, Inject, Input } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Input,
+  Signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   LiveRateService,
   RateObserDataType,
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 export interface table2DataInterface {
-  symbole: RateBaseSymbols;
+  symbol: RateBaseSymbols;
   productName: string;
   BID: string;
   ASK: string;
@@ -38,15 +43,13 @@ export class RateTables2Component {
   }
 
   public set table(value: table2DataInterface[]) {
-    value.forEach(({ symbole }) => {
-      this.RateObser$[symbole] =
-        this.rateObservar.RateObser$[symbole].asObservable();
+    value.forEach(({ symbol: symbole }) => {
+      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole];
     });
     this._table = value;
   }
 
-  RateObser$: Record<RateBaseSymbols, Observable<RateObserDataType>> =
-    {} as never;
+  RateObser$: Record<RateBaseSymbols, Signal<RateObserDataType>> = {} as never;
 
   constructor(
     @Inject(LiveRateService) private readonly rateObservar: LiveRateService,

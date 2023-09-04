@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Env } from '@rps/buillion-frontend-core/core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
-import { RateBaseSymboles } from '@rps/bullion-interfaces';
+import { RateBaseSymbols } from '@rps/bullion-interfaces';
 import {
   RateTables11Component,
   RateTables2Component,
@@ -35,7 +35,7 @@ import {
 export class AppComponent {
   d = [
     {
-      symbole: RateBaseSymboles.GOLD,
+      symbol: RateBaseSymbols.GOLD,
       productName: 'GOLD',
       BID: 'BID',
       ASK: 'ASK',

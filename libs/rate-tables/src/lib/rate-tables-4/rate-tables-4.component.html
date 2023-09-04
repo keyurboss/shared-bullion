@@ -7,31 +7,31 @@
     <div class="product_group_name flex_center">Low</div>
   </div>
   <div class="footer" *ngFor="let item of table">
-    <div class="product" *ngIf="RateObser$[item.symbole] | async; let rate">
+    <div class="product" *ngIf="RateObser$[item.symbol]">
       <div class="product_name center right_border">{{ item.productName }}</div>
       <div class="product_price upper_margin right_border center">
         <div
           class="hii"
-          [class.rate_high]="rate['bid'].color === 'Green'"
-          [class.rate_low]="rate['bid'].color === 'Red'"
+          [class.rate_high]="RateObser$[item.symbol]()['bid'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['bid'].color === 'Red'"
         >
-          {{ rate['bid'].rate }}
+          {{ RateObser$[item.symbol]()['bid'].rate }}
         </div>
       </div>
       <div class="product_price upper_margin right_border center">
         <div
           class="hii"
-          [class.rate_high]="rate['ask'].color === 'Green'"
-          [class.rate_low]="rate['ask'].color === 'Red'"
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
         >
-          {{ rate['ask'].rate }}
+          {{ RateObser$[item.symbol]()['ask'].rate }}
         </div>
       </div>
       <div class="product_price upper_margin right_border center">
-        {{ rate['last-high'].rate }}
+        {{ RateObser$[item.symbol]()['last-high'].rate }}
       </div>
       <div class="product_price remove_border upper_margin center">
-        {{ rate['last-low'].rate }}
+        {{ RateObser$[item.symbol]()['last-low'].rate }}
       </div>
     </div>
   </div>

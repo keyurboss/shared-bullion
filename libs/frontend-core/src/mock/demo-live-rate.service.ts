@@ -174,6 +174,6 @@ export class DemoLiveRateService extends LiveRateService {
   async getLastRates(): Promise<
     Record<RateBaseSymbols, BaseSymbolPriceInterface>
   > {
-    return RatesFixture.GenerateForAllSymboles();
+    return RatesFixture.GenerateForAllSymbols();
   }
 }

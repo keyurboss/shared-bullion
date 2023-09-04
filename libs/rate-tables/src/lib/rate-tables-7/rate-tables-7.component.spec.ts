@@ -10,8 +10,8 @@ import {
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import {
-  BaseSymbolePriceInterface,
-  RateBaseSymboles,
+  BaseSymbolPriceInterface,
+  RateBaseSymbols,
 } from '@rps/bullion-interfaces';
 import { RateTables7Component } from './rate-tables-7.component';
 import { faker } from '@faker-js/faker';
@@ -49,7 +49,7 @@ describe('RateTablesComponent', () => {
     };
     component.table = [
       {
-        symbole: RateBaseSymboles.SILVER,
+        symbol: RateBaseSymbols.SILVER,
         productname: [
           {
             name: 'SILVER. BARTCS',
@@ -95,12 +95,12 @@ describe('RateTablesComponent', () => {
 
   describe('Rate Table 7 2nd TestCase For classes', () => {
     let liveRateServiceRef!: LiveRateService;
-    let rate: BaseSymbolePriceInterface;
+    let rate: BaseSymbolPriceInterface;
     beforeEach(() => {
       liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
       component.table = [
         {
-          symbole: RateBaseSymboles.SILVER,
+          symbol: RateBaseSymbols.SILVER,
           productname: [{ name: faker.lorem.word() }],
         },
       ];
@@ -115,8 +115,8 @@ describe('RateTablesComponent', () => {
           top: 15,
         },
       );
-      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.SILVER, rate]]));
-      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.SILVER, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymbols.SILVER, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymbols.SILVER, rate]]));
       fixture.detectChanges();
     });
     it('Rate Default No class', () => {
@@ -131,7 +131,7 @@ describe('RateTablesComponent', () => {
       liveRateServiceRef.setRate(
         new Map([
           [
-            RateBaseSymboles.SILVER,
+            RateBaseSymbols.SILVER,
             {
               ask: rate.ask + 10,
             },
@@ -151,7 +151,7 @@ describe('RateTablesComponent', () => {
       liveRateServiceRef.setRate(
         new Map([
           [
-            RateBaseSymboles.SILVER,
+            RateBaseSymbols.SILVER,
             {
               ask: rate.ask - 10,
             },

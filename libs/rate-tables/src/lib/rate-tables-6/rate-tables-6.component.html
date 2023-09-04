@@ -6,33 +6,36 @@
     <div class="w_20 header_right_name center">{{ headers.ask }}</div>
   </div>
   <div class="footer" *ngFor="let item of table">
-    <div class="footer_item" *ngIf="RateObser$[item.symbole] | async; let rate">
+    <div class="footer_item">
       <div class="w_40 footer_name">{{ item.ProductName }}</div>
       <div class="w_20 footer__price column center">
         <div
           class="footer_price_uper center"
-          [class.rate_high]="rate['bid'].color === 'Green'"
-          [class.rate_low]="rate['bid'].color === 'Red'"
+          [class.rate_high]="RateObser$[item.symbol]()['bid'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['bid'].color === 'Red'"
         >
-          {{ rate['bid'].rate }}
+          {{ RateObser$[item.symbol]()['bid'].rate }}
         </div>
         <div class="footer_price_lower center">
-          L - {{ rate['last-low'].rate }}
+          L - {{ RateObser$[item.symbol]()['last-low'].rate }}
         </div>
       </div>
       <div class="w_20 small center">
-        {{ rate['open'].rate - rate['ask'].rate }}
+        {{
+          RateObser$[item.symbol]()['open'].rate -
+            RateObser$[item.symbol]()['ask'].rate
+        }}
       </div>
       <div class="w_20 center column">
         <div
           class="footer_price_uper center"
-          [class.rate_high]="rate['ask'].color === 'Green'"
-          [class.rate_low]="rate['ask'].color === 'Red'"
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
         >
-          {{ rate['ask'].rate }}
+          {{ RateObser$[item.symbol]()['ask'].rate }}
         </div>
         <div class="footer_price_lower center">
-          H - {{ rate['last-high'].rate }}
+          H - {{ RateObser$[item.symbol]()['last-high'].rate }}
         </div>
       </div>
     </div>

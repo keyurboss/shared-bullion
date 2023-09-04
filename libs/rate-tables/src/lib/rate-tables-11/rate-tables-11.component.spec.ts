@@ -13,8 +13,8 @@ import {
 } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import {
-  BaseSymbolePriceInterface,
-  RateBaseSymboles,
+  BaseSymbolPriceInterface,
+  RateBaseSymbols,
 } from '@rps/bullion-interfaces';
 import { RateTables11Component } from './rate-tables-11.component';
 
@@ -49,7 +49,7 @@ describe('RateTablesComponent', () => {
 
     component.table = [
       {
-        symbole: RateBaseSymboles.GOLD,
+        symbol: RateBaseSymbols.GOLD,
         ProductName: [
           {
             name: 'GOLD 999 IMP WITH TDS',
@@ -94,14 +94,14 @@ describe('RateTablesComponent', () => {
 
   describe('Rate Table 11 2nd TestCase For classes', () => {
     let liveRateServiceRef!: LiveRateService;
-    let rate: BaseSymbolePriceInterface;
+    let rate: BaseSymbolPriceInterface;
     beforeEach(() => {
       liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
       component.Header = faker.lorem.word();
       component.sell = faker.lorem.word();
       component.table = [
         {
-          symbole: RateBaseSymboles.GOLD,
+          symbol: RateBaseSymbols.GOLD,
           ProductName: [{ name: faker.lorem.word() }],
         },
       ];
@@ -118,8 +118,8 @@ describe('RateTablesComponent', () => {
           // points: 0
         },
       );
-      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
-      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymbols.GOLD, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymbols.GOLD, rate]]));
       fixture.detectChanges();
     });
     it('Rate Default No class', () => {
@@ -131,7 +131,7 @@ describe('RateTablesComponent', () => {
       liveRateServiceRef.setRate(
         new Map([
           [
-            RateBaseSymboles.GOLD,
+            RateBaseSymbols.GOLD,
             {
               ask: rate.ask + 10,
             },
@@ -150,7 +150,7 @@ describe('RateTablesComponent', () => {
       liveRateServiceRef.setRate(
         new Map([
           [
-            RateBaseSymboles.GOLD,
+            RateBaseSymbols.GOLD,
             {
               ask: rate.ask - 10,
             },

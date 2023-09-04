@@ -7,14 +7,14 @@
   <section class="justify_content border child flex" *ngFor="let item of table">
     <section *ngFor="let para of item.productname">
       <h3 class="child_left">{{ para.name }}</h3>
+      <!-- *ngIf="RateObser$[item.symbole] | async; let rate" -->
       <p
         class="child_right"
-        *ngIf="RateObser$[item.symbole] | async; let rate"
         style="padding: 5px"
-        [class.rate_high]="rate['ask'].color === 'Green'"
-        [class.rate_low]="rate['ask'].color === 'Red'"
+        [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+        [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
       >
-        {{ rate['ask'].rate }}
+        {{ RateObser$[item.symbol]()['ask'].rate }}
       </p>
     </section>
   </section>

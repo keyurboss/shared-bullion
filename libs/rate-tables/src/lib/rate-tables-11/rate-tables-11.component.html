@@ -11,12 +11,15 @@
           <div class="product_price">
             <div
               class="rate_div"
-              *ngIf="RateObser$[items.symbole] | async; let rate"
               style="padding: 3px 10px"
-              [class.rate_high]="rate['ask'].color === 'Green'"
-              [class.rate_low]="rate['ask'].color === 'Red'"
+              [class.rate_high]="
+                RateObser$[items.symbol]()['ask'].color === 'Green'
+              "
+              [class.rate_low]="
+                RateObser$[items.symbol]()['ask'].color === 'Red'
+              "
             >
-              {{ rate['ask'].rate }}
+              {{ RateObser$[items.symbol]()['ask'].rate }}
             </div>
           </div>
         </div>

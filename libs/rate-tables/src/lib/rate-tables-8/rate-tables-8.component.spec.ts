@@ -10,8 +10,8 @@ import { faker } from '@faker-js/faker';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 import { LiveRateService } from '@rps/buillion-frontend-core';
 import {
-  BaseSymbolePriceInterface,
-  RateBaseSymboles,
+  BaseSymbolPriceInterface,
+  RateBaseSymbols,
 } from '@rps/bullion-interfaces';
 import { RateTables8Component } from './rate-tables-8.component';
 import {
@@ -49,7 +49,7 @@ describe('RateTablesComponent', () => {
       component.table = [
         {
           headerName: 'GOLD PRODUCT',
-          symbole: RateBaseSymboles.GOLD,
+          symbol: RateBaseSymbols.GOLD,
           details: [
             {
               Name: 'IMP 999 RTGS (TCS)',
@@ -61,7 +61,7 @@ describe('RateTablesComponent', () => {
         },
         {
           headerName: 'SILVER PRODUCT',
-          symbole: RateBaseSymboles.SILVER,
+          symbol: RateBaseSymbols.SILVER,
           details: [
             {
               Name: 'PETI 30KG RTGS (TCS)',
@@ -93,13 +93,13 @@ describe('RateTablesComponent', () => {
   });
   describe('Rate Table 8 2nd TestCase', () => {
     let liveRateServiceRef!: LiveRateService;
-    let rate: BaseSymbolePriceInterface;
+    let rate: BaseSymbolPriceInterface;
     beforeEach(() => {
       liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
       component.table = [
         {
           headerName: faker.lorem.word(),
-          symbole: RateBaseSymboles.GOLD,
+          symbol: RateBaseSymbols.GOLD,
           details: [{ Name: faker.lorem.word() }],
         },
       ];
@@ -115,8 +115,8 @@ describe('RateTablesComponent', () => {
           // points: 0
         },
       );
-      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
-      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymbols.GOLD, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymbols.GOLD, rate]]));
       fixture.detectChanges();
     });
     it('check table & class according rates', fakeAsync(() => {
@@ -145,7 +145,7 @@ describe('RateTablesComponent', () => {
       liveRateServiceRef.setRate(
         new Map([
           [
-            RateBaseSymboles.GOLD,
+            RateBaseSymbols.GOLD,
             {
               ask: rate.ask + 10,
             },
@@ -165,7 +165,7 @@ describe('RateTablesComponent', () => {
       liveRateServiceRef.setRate(
         new Map([
           [
-            RateBaseSymboles.GOLD,
+            RateBaseSymbols.GOLD,
             {
               ask: rate.ask - 10,
             },

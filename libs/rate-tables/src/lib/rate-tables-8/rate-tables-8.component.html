@@ -14,18 +14,18 @@
         >
           {{ info.Name }}
         </h2>
+        <!-- *ngIf=" | async; let rate" -->
         <h3
-          *ngIf="RateObser$[item.symbole] | async; let rate"
           style="
             font-size: var(--product-value-font-size);
             padding: 10px 0 0;
             margin: 0px;
             font-weight: 800;
           "
-          [class.rate_high]="rate['ask'].color === 'Green'"
-          [class.rate_low]="rate['ask'].color === 'Red'"
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
         >
-          {{ rate['ask'].rate }}
+          {{ RateObser$[item.symbol]()['ask'].rate }}
         </h3>
       </div>
     </div>
