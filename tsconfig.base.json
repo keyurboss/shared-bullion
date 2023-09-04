@@ -19,6 +19,7 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "@bs/guards": ["libs/server/guards/src/index.ts"],
       "@rps/buillion-frontend-core": ["libs/frontend-core/src/index.ts"],
       "@rps/buillion-frontend-core/core": [
         "libs/frontend-core/src/core/index.ts"
