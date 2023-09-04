@@ -8,14 +8,14 @@
     <section *ngFor="let para of item.productname">
       <h3 class="child_left">{{ para.name }}</h3>
       <p
-      class="child_right"
-      *ngIf="RateObser$[item.symbole] | async; let rate"
-      style="padding: 5px"
-      [class.rate_high]="rate['ask'].color === 'Green'"
-      [class.rate_low]="rate['ask'].color === 'Red'"
+        class="child_right"
+        *ngIf="RateObser$[item.symbole] | async; let rate"
+        style="padding: 5px"
+        [class.rate_high]="rate['ask'].color === 'Green'"
+        [class.rate_low]="rate['ask'].color === 'Red'"
       >
-      {{ rate['ask'].rate }}
-    </p>
-  </section>
+        {{ rate['ask'].rate }}
+      </p>
+    </section>
   </section>
 </section>

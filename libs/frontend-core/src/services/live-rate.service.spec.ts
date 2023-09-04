@@ -40,7 +40,7 @@ describe('ABS LiveRateService', () => {
               ask: newValue,
             },
           ],
-        ])
+        ]),
       );
 
       await Promise.all([
@@ -49,14 +49,14 @@ describe('ABS LiveRateService', () => {
             rate: newValue,
             color: HighLowColorType.Green,
             timeOutRef: expect.any(Number),
-          })
+          }),
         ),
         expect((await next2).ask).toStrictEqual(
           expect.objectContaining({
             rate: newValue,
             color: HighLowColorType.Default,
             timeOutRef: null,
-          })
+          }),
         ),
       ]);
     });
@@ -75,7 +75,7 @@ describe('ABS LiveRateService', () => {
               ask: newValue,
             },
           ],
-        ])
+        ]),
       );
       await Promise.all([
         expect((await next1).ask).toStrictEqual(
@@ -83,14 +83,14 @@ describe('ABS LiveRateService', () => {
             rate: newValue,
             color: HighLowColorType.Red,
             timeOutRef: expect.any(Number),
-          })
+          }),
         ),
         expect((await next2).ask).toStrictEqual(
           expect.objectContaining({
             rate: newValue,
             color: HighLowColorType.Default,
             timeOutRef: null,
-          })
+          }),
         ),
       ]);
     });
@@ -106,7 +106,7 @@ describe('ABS LiveRateService', () => {
       > {
         return mockMethods.getLastRates();
       }
-      
+
       InitRemoteConnection(): void {
         return mockMethods.InitRemoteConnection();
       }
@@ -130,13 +130,13 @@ describe('ABS LiveRateService', () => {
       const service = new MockLiveRateService(
         null as never,
         null as never,
-        true
+        true,
       );
       // service.RatesReady$.subscribe(console.log)
       expect(service.RatesReady).toStrictEqual(false);
       const initialValue = firstValueFrom(service.RatesReady$);
       const afterLastRate = firstValueFrom(
-        service.RatesReady$.pipe(skip(1), timeout(2000))
+        service.RatesReady$.pipe(skip(1), timeout(2000)),
       );
       expect(initialValue).resolves.toStrictEqual(false);
       expect(afterLastRate).resolves.toStrictEqual(true);

@@ -1,10 +1,13 @@
 import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
-import { LiveRateService, RateObserDataType } from '@rps/buillion-frontend-core';
+import {
+  LiveRateService,
+  RateObserDataType,
+} from '@rps/buillion-frontend-core';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
 import { Observable } from 'rxjs';
 export interface table11DataInterface {
-  symbole: RateBaseSymboles
+  symbole: RateBaseSymboles;
   ProductName: { name: string }[];
 }
 @Component({
@@ -37,6 +40,6 @@ export class RateTables11Component {
     {} as never;
 
   constructor(
-    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService,
   ) {}
 }

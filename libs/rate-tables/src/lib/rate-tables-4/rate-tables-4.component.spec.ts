@@ -1,10 +1,21 @@
-import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  flush,
+} from '@angular/core/testing';
 import { faker } from '@faker-js/faker';
 
 import { RateTables4Component } from './rate-tables-4.component';
 import { LiveRateService } from '@rps/buillion-frontend-core';
-import { DemoLiveRateService, InitialiseRemoteConnection } from '@rps/buillion-frontend-core/mock';
-import { BaseSymbolePriceInterface, RateBaseSymboles } from '@rps/bullion-interfaces';
+import {
+  DemoLiveRateService,
+  InitialiseRemoteConnection,
+} from '@rps/buillion-frontend-core/mock';
+import {
+  BaseSymbolePriceInterface,
+  RateBaseSymboles,
+} from '@rps/bullion-interfaces';
 import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 
 describe('RateTablesComponent', () => {
@@ -23,7 +34,7 @@ describe('RateTablesComponent', () => {
         {
           provide: InitialiseRemoteConnection,
           useValue: false,
-        }
+        },
       ],
     }).compileComponents();
 
@@ -42,24 +53,26 @@ describe('RateTablesComponent', () => {
       component.table = [
         {
           symbole: RateBaseSymboles.GOLD,
-          productName: 'GOLD PRODUCTS'
+          productName: 'GOLD PRODUCTS',
         },
         {
           symbole: RateBaseSymboles.SILVER,
-          productName: 'SILVER PRODUCTS'
-        }
+          productName: 'SILVER PRODUCTS',
+        },
       ];
       fixture.detectChanges();
       const productlength = componentHtml.querySelectorAll('.product').length;
       expect(productlength).toStrictEqual(component.table.length);
       for (let i = 0; i < productlength; i++) {
-        const productname = componentHtml.querySelectorAll('.product_name')[i]?.textContent?.trim();
-        expect(productname).toStrictEqual(component.table[i]?.productName)
+        const productname = componentHtml
+          .querySelectorAll('.product_name')
+          [i]?.textContent?.trim();
+        expect(productname).toStrictEqual(component.table[i]?.productName);
       }
-    }))
-  })
+    }));
+  });
   describe('Rate Table 3 2nd TestCase For classes', () => {
-    let liveRateServiceRef !: LiveRateService
+    let liveRateServiceRef!: LiveRateService;
     let rate: BaseSymbolePriceInterface;
     beforeEach(() => {
       liveRateServiceRef = fixture.debugElement.injector.get(LiveRateService);
@@ -67,66 +80,79 @@ describe('RateTablesComponent', () => {
         {
           symbole: RateBaseSymboles.GOLD,
           productName: faker.lorem.word(),
-        }
-      ]
-      rate = RatesFixture.Generate({
-        top: 1500,
-        bottom: 1000,
-        // points: 0
-      }, {
-        bottom: 1,
-        top: 15,
-        // points: 0
-      })
-      liveRateServiceRef.setRate(new Map([
-        [RateBaseSymboles.GOLD, rate]
-      ]))
-      liveRateServiceRef.setRate(new Map([
-        [RateBaseSymboles.GOLD, rate]
-      ]))
+        },
+      ];
+      rate = RatesFixture.Generate(
+        {
+          top: 1500,
+          bottom: 1000,
+          // points: 0
+        },
+        {
+          bottom: 1,
+          top: 15,
+          // points: 0
+        },
+      );
+      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
+      liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
       fixture.detectChanges();
-    })
+    });
     it('Rate Default No class', () => {
       for (let i = 0; i < 2; i++) {
-        const rateNode = componentHtml.querySelectorAll('.product_price')[i]?.querySelector('.hii');
-        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
-        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+        const rateNode = componentHtml
+          .querySelectorAll('.product_price')
+          [i]?.querySelector('.hii');
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false);
       }
       for (let i = 2; i < 4; i++) {
         const rateNode = componentHtml.querySelectorAll('.product_price')[i];
-        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
-        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false);
       }
-    })
+    });
     it('Rate Low color Red class contains rate_low not rate_high', fakeAsync(() => {
-      liveRateServiceRef.setRate(new Map([
-        [RateBaseSymboles.GOLD, {
-          ask: rate.ask + 10,
-          bid: rate.bid + 10,
-        }]
-      ]))
-      fixture.detectChanges()
-      flush()
+      liveRateServiceRef.setRate(
+        new Map([
+          [
+            RateBaseSymboles.GOLD,
+            {
+              ask: rate.ask + 10,
+              bid: rate.bid + 10,
+            },
+          ],
+        ]),
+      );
+      fixture.detectChanges();
+      flush();
       for (let i = 0; i < 2; i++) {
-        const rateNode = componentHtml.querySelectorAll('.product_price')[i]?.querySelector('div');
-        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true)
-        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false)
+        const rateNode = componentHtml
+          .querySelectorAll('.product_price')
+          [i]?.querySelector('div');
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(true);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(false);
       }
-    }))
+    }));
     it('Rate High color Green class contains rate_high not rate_low', fakeAsync(() => {
-      liveRateServiceRef.setRate(new Map([
-        [RateBaseSymboles.GOLD, {
-          ask: rate.ask - 10,
-          bid: rate.bid - 10,
-        }]
-      ]))
-      fixture.detectChanges()
-      flush()
+      liveRateServiceRef.setRate(
+        new Map([
+          [
+            RateBaseSymboles.GOLD,
+            {
+              ask: rate.ask - 10,
+              bid: rate.bid - 10,
+            },
+          ],
+        ]),
+      );
+      fixture.detectChanges();
+      flush();
       for (let i = 0; i < 2; i++) {
         const rateNode = componentHtml.querySelectorAll('.hii')[0];
-        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false)
-        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true)
+        expect(rateNode?.classList.contains('rate_high')).toStrictEqual(false);
+        expect(rateNode?.classList.contains('rate_low')).toStrictEqual(true);
       }
-    }))
+    }));
   });
 });

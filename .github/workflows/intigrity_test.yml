@@ -27,6 +27,9 @@ jobs:
       - name: Test All Projects
         run: yarn nx run-many --target=test --all=true
 
+      - name: Test Integration All Projects
+        run: yarn nx run-many --target=test-integration --all=true
+
       - name: Build All Projects
         run: yarn nx run-many --target=build --all=true
 

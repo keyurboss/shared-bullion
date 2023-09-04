@@ -12,7 +12,8 @@
         "tsConfig": "libs/core/validator-roots/tsconfig.lib.json",
         "packageJson": "libs/core/validator-roots/package.json",
         "main": "libs/core/validator-roots/src/index.ts",
-        "assets": ["libs/core/validator-roots/*.md"]
+        "assets": ["libs/core/validator-roots/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

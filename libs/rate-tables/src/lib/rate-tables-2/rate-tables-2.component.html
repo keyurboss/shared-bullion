@@ -1,34 +1,46 @@
 <div class="main-div" *ngFor="let item of table">
   <div class="header">
-    <div class="gold">{{ item.productName}}</div>
+    <div class="gold">{{ item.productName }}</div>
   </div>
   <div class="Data" *ngIf="RateObser$[item.symbole] | async; let rate">
     <div class="product_data">
       <div class="product_data_column">
-        <h3>{{ item.BID}}</h3>
-        <p [class.rate_high]="rate['bid'].color === 'Green'" [class.rate_low]="rate['bid'].color === 'Red'">
+        <h3>{{ item.BID }}</h3>
+        <p
+          [class.rate_high]="rate['bid'].color === 'Green'"
+          [class.rate_low]="rate['bid'].color === 'Red'"
+        >
           {{ rate['bid'].rate }}
         </p>
       </div>
       <div class="product_data_column">
-        <h3>{{ item.ASK}}</h3>
-        <p [class.rate_high]="rate['ask'].color === 'Green'" [class.rate_low]="rate['ask'].color === 'Red'">
+        <h3>{{ item.ASK }}</h3>
+        <p
+          [class.rate_high]="rate['ask'].color === 'Green'"
+          [class.rate_low]="rate['ask'].color === 'Red'"
+        >
           {{ rate['ask'].rate }}
         </p>
       </div>
     </div>
     <div class="product_data">
       <div class="product_data_column">
-        <h3 class="high">{{ item.HIGH}}</h3>
+        <h3 class="high">{{ item.HIGH }}</h3>
         <span class="none">/</span>
-        <p [class.rate_high]="rate['last-high'].color === 'Green'" [class.rate_low]="rate['last-high'].color === 'Red'">
+        <p
+          [class.rate_high]="rate['last-high'].color === 'Green'"
+          [class.rate_low]="rate['last-high'].color === 'Red'"
+        >
           {{ rate['last-high'].rate }}
         </p>
       </div>
       <div class="product_data_column">
-        <h3 class="low">{{ item.LOW}}</h3>
+        <h3 class="low">{{ item.LOW }}</h3>
         <span class="none">/</span>
-        <p [class.rate_high]="rate['last-low'].color === 'Green'" [class.rate_low]="rate['last-low'].color === 'Red'">
+        <p
+          [class.rate_high]="rate['last-low'].color === 'Green'"
+          [class.rate_low]="rate['last-low'].color === 'Red'"
+        >
           {{ rate['last-low'].rate }}
         </p>
       </div>

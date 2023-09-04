@@ -1,5 +1,11 @@
 import { beforeEach, describe } from '@jest/globals';
-import { rand, randNumber, randPastDate, randRecentDate, randUuid } from '@ngneat/falso';
+import {
+  rand,
+  randNumber,
+  randPastDate,
+  randRecentDate,
+  randUuid,
+} from '@ngneat/falso';
 import { CalculatedOnPriceof, CshID } from '@rps/bullion-interfaces';
 import { CalcEntity, CalcEntityOptions } from './calc.root';
 
@@ -8,7 +14,7 @@ describe(CalcEntity.name, () => {
   beforeEach(() => {
     options = {
       id: randUuid() as CshID,
-      createdAt:  randPastDate(),
+      createdAt: randPastDate(),
       modifiedAt: randRecentDate(),
       variableSnapshot: {
         buy: {
@@ -30,9 +36,7 @@ describe(CalcEntity.name, () => {
           }),
         },
       },
-      type: rand(
-        Object.values(CalculatedOnPriceof)
-      ),
+      type: rand(Object.values(CalculatedOnPriceof)),
     };
   });
   describe(CalcEntity.updateEntity.name, () => {

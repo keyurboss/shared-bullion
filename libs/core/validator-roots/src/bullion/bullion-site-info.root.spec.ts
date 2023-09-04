@@ -1,15 +1,14 @@
 import { describe } from '@jest/globals';
 import {
   randBoolean,
+  randFullName,
   randPastDate,
   randRecentDate,
   randUrl,
-  randUuid
+  randUuid,
 } from '@ngneat/falso';
 
-import {
-  BullionId
-} from '@rps/bullion-interfaces';
+import { BullionId } from '@rps/bullion-interfaces';
 import {
   BullionSiteInfoOptions,
   BullionSiteInfoRoot,
@@ -19,6 +18,7 @@ describe(BullionSiteInfoRoot.name, () => {
   let options: BullionSiteInfoOptions;
   beforeEach(() => {
     options = {
+      name: randFullName(),
       id: randUuid() as BullionId,
       domains: randUrl({
         length: 10,

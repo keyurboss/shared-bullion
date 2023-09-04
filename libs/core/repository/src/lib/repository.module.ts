@@ -1,14 +1,19 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import {
-  GeneralUserRepoProvider,
   BullionSiteInfoRepoProvider,
+  GeneralUserRepoProvider,
+  GeneralUserReqRepoProvider,
 } from './repository.index';
 
 const repositoryPorvider = [
   GeneralUserRepoProvider,
   BullionSiteInfoRepoProvider,
+  GeneralUserReqRepoProvider,
 ];
+
+@Global()
 @Module({
   providers: [...repositoryPorvider],
+  exports: [...repositoryPorvider],
 })
 export class RepositoryModule {}

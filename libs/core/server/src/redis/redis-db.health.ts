@@ -28,10 +28,10 @@ export class RedisDbHealthIndicator extends HealthIndicator {
                 timeoutInMs,
                 this.getStatus(key, false, {
                   message: `timeout of ${timeout}ms exceeded`,
-                })
-              )
+                }),
+              ),
           ),
-      })
+      }),
     );
 
     try {
@@ -46,7 +46,7 @@ export class RedisDbHealthIndicator extends HealthIndicator {
 
       throw new HealthCheckError(
         `${key} is not available`,
-        this.getStatus(key, false, { message })
+        this.getStatus(key, false, { message }),
       );
     }
   }

@@ -5,18 +5,17 @@ import {
   randCompanyName,
   randFullName,
   randNumber,
+  randPassword,
   randPastDate,
   randRecentDate,
   randSportsTeam,
   randUuid,
-  randWord
+  randWord,
 } from '@ngneat/falso';
 
 import {
-  BullionId,
   DeviceId,
   DeviceType,
-  GeneralUserAuthStatus,
   GeneralUserId,
   GstNumber,
 } from '@rps/bullion-interfaces';
@@ -29,10 +28,11 @@ describe(GeneralUserRoot.name, () => {
     options = {
       id: randUuid() as GeneralUserId,
       isAuto: randBoolean(),
+      randomPass: randPassword(),
       firmName: randFullName(),
       firstName: randFullName(),
-      bullionId: randUuid() as BullionId,
-      status: rand(Object.values(GeneralUserAuthStatus)),
+      // bullionId: randUuid() as BullionId,
+      // status: rand(Object.values(GeneralUserAuthStatus)),
       gstNumber: randCompanyName() as GstNumber,
       lastName: randFullName(),
       os: randSportsTeam(),

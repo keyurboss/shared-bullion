@@ -1,51 +1,53 @@
 <div class="middle_table">
   <div class="main_live_rate_component">
-      <div class="table">
-        <div class="header">
-          <div class="product_group_header">{{Header}} </div>
-          <div class="sell">{{sell}}</div>
-        </div>
-        <div *ngFor="let items of table" class="body">
-          <div *ngFor="let info of items.ProductName" class="product1">
-            <div class="product_name">{{info.name}} </div>
-            <div class="product_price">
-              <div class="rate_div"
+    <div class="table">
+      <div class="header">
+        <div class="product_group_header">{{ Header }}</div>
+        <div class="sell">{{ sell }}</div>
+      </div>
+      <div *ngFor="let items of table" class="body">
+        <div *ngFor="let info of items.ProductName" class="product1">
+          <div class="product_name">{{ info.name }}</div>
+          <div class="product_price">
+            <div
+              class="rate_div"
               *ngIf="RateObser$[items.symbole] | async; let rate"
               style="padding: 3px 10px"
               [class.rate_high]="rate['ask'].color === 'Green'"
               [class.rate_low]="rate['ask'].color === 'Red'"
-              >  {{ rate['ask'].rate }} </div>
+            >
+              {{ rate['ask'].rate }}
             </div>
           </div>
-          <!-- <div class="product">
+        </div>
+        <!-- <div class="product">
             <div class="product_name"> GOLD 999 IMP WITH TCS </div>
             <div class="product_price">
               <div class="rate_div"> 62062 </div> -->
-            </div>
-          </div>
-          <!-- <div class="products"></div> -->
-        </div>
       </div>
-    <!-- </div>
+    </div>
+    <!-- <div class="products"></div> -->
+  </div>
+</div>
+<!-- </div>
   </div> -->
 <!-- <div class="middle_table">
   <div class="main_live_rate_component">
-      <div class="table">
-        <div class="header">
-          <div class="product_group_header"> GOLD PRODUCTS </div>
-          <div class="sell">Sell</div>
+    <div class="table">
+      <div class="header">
+        <div class="product_group_header">GOLD PRODUCTS</div>
+        <div class="sell">Sell</div>
+      </div>
+      <div class="product1">
+        <div class="product_name">GOLD 999 IMP WITH TDS</div>
+        <div class="product_price">
+          <div class="rate_div">62000</div>
         </div>
-        <div class="product1">
-          <div class="product_name"> GOLD 999 IMP WITH TDS </div>
-          <div class="product_price">
-            <div class="rate_div"> 62000 </div>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product_name"> GOLD 999 IMP WITH TCS </div>
-          <div class="product_price">
-            <div class="rate_div"> 62062 </div>
-          </div>
+      </div>
+      <div class="product">
+        <div class="product_name">GOLD 999 IMP WITH TCS</div>
+        <div class="product_price">
+          <div class="rate_div">62062</div>
         </div>
       </div>
     </div>

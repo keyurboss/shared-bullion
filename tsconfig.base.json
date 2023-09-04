@@ -32,9 +32,6 @@
       "@rps/buillion-frontend-core/services": [
         "libs/frontend-core/src/services/index.ts"
       ],
-      "@rps/buillion-frontend-core/services/*": [
-        "libs/frontend-core/src/services/*"
-      ],
       "@rps/buillion-server-repository": ["libs/core/repository/src/index.ts"],
       "@rps/bullion-functions": ["libs/functions/src/index.ts"],
       "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
@@ -45,7 +42,6 @@
       "@rps/bullion-interfaces/core": [
         "libs/core/interfaces/src/core/index.ts"
       ],
-      "@rps/bullion-interfaces/core/*": ["libs/core/interfaces/src/core/*"],
       "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
       "@rps/bullion-rate-tables/table1": [
         "libs/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
@@ -80,10 +76,8 @@
       "@rps/bullion-rate-tables/table9": [
         "libs/rate-tables/src/lib/rate-tables-9/rate-tables-9.component.ts"
       ],
-      "@rps/bullion-validator-roots": [
-        "libs/core/validator-roots/src/index.ts"
-      ],
-      "@rps/bullion-server-core": ["libs/core/server/src/index.ts"]
+      "@rps/bullion-server-core": ["libs/core/server/src/index.ts"],
+      "@rps/bullion-validator-roots": ["libs/core/validator-roots/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

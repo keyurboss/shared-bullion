@@ -15,7 +15,7 @@ describe(MongoDbHealthIndicator.name, () => {
       const mongoDbServiceMock = { db: mongoDbMock };
 
       mongoDbHealthIndicator = new MongoDbHealthIndicator(
-        mongoDbServiceMock as never
+        mongoDbServiceMock as never,
       );
 
       key = randUserName();
@@ -28,7 +28,7 @@ describe(MongoDbHealthIndicator.name, () => {
       return expect(resultPromise).resolves.toStrictEqual(
         expect.objectContaining({
           [key]: expect.objectContaining({ ok: 1, status: 'up' }),
-        })
+        }),
       );
     });
   });
@@ -43,7 +43,7 @@ describe(MongoDbHealthIndicator.name, () => {
       const mongoDbServiceMock = { db: mongoDbMock };
 
       mongoDbHealthIndicator = new MongoDbHealthIndicator(
-        mongoDbServiceMock as never
+        mongoDbServiceMock as never,
       );
 
       key = randUserName();

@@ -9,10 +9,9 @@ import { MongoDbService } from '../mongo';
 import { FIXTURES_PATH, FixturesPath } from './fixtures-path.token';
 import { hasProp } from '@rps/bullion-interfaces';
 
-
 @Injectable()
 export class FixtureService {
-  private readonly db:Db;
+  private readonly db: Db;
   private readonly logger;
 
   constructor(
@@ -23,14 +22,15 @@ export class FixtureService {
     private readonly fixturesPath: FixturesPath = resolve(
       __dirname,
       'assets',
-      'fixtures'
-    )
+      'fixtures',
+    ),
   ) {
     this.db = db;
     this.logger = loggerFactory.create(this.constructor.name);
   }
 
   async loadJson<T>(path: string) {
+    // debugger;
     const fileBuffer = await readFile(resolve(this.fixturesPath, path));
 
     return JSON.parse(fileBuffer.toString()).data as Array<T>;
@@ -38,10 +38,16 @@ export class FixtureService {
 
   async seedFixtures<
     Fixture extends { id: string },
-    UuidDocument extends Fixture & { _id: string }
+    UuidDocument extends Fixture & { _id: string },
   >(collectionName: string, path: string, dropCollection = true) {
     const fixtures = await this.loadJson<Fixture>(path);
     const collection = this.db.collection<UuidDocument>(collectionName);
+    if (fixtures.length === 0) {
+      this.logger.verbose(
+        `seeding stopped for collection:${collectionName} because there are no fixtures`,
+      );
+      return;
+    }
     if (dropCollection) {
       this.logger.verbose(`dropping ${collectionName} collection`);
       try {
@@ -51,7 +57,7 @@ export class FixtureService {
       }
     }
     this.logger.verbose(
-      `Seeding ${fixtures.length} entities from ${path} into ${collectionName}`
+      `Seeding ${fixtures.length} entities from ${path} into ${collectionName}`,
     );
 
     const documents = fixtures.map(
@@ -59,7 +65,7 @@ export class FixtureService {
         ({
           ...data,
           _id: uuid.v4(),
-        } as OptionalUnlessRequiredId<UuidDocument>)
+        } as OptionalUnlessRequiredId<UuidDocument>),
     );
 
     try {
@@ -76,7 +82,7 @@ export class FixtureService {
         if (error.code === 11000) {
           const ids = documents.map(({ id }) => id);
           this.logger.debug(
-            `Documents (${ids.join(', ')}) already exist in ${collectionName}`
+            `Documents (${ids.join(', ')}) already exist in ${collectionName}`,
           );
           return;
         }

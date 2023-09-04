@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
-import { LiveRateService } from '@rps/buillion-frontend-core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import { RateTables10Component } from './rate-tables-10.component';
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 

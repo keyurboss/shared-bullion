@@ -7,8 +7,7 @@
     "**/.vscode": true,
     "**/dist": true
   },
-"eslint.validate": [
-    "json"
-],
-"angular.enable-strict-mode-prompt": false
+  "eslint.validate": ["json"],
+  "angular.enable-strict-mode-prompt": false,
+  "cSpell.words": ["DECRYPTER"]
 }

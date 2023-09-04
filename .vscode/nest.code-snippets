@@ -1,4 +1,16 @@
 {
+  "NestJSController": {
+    "scope": "typescript",
+    "prefix": "nestjs-controller",
+    "description": "Nestjs Controller",
+    "body": [
+      "import { Controller } from '@nestjs/common';",
+      "",
+      "@Controller('${0:Api}')",
+      "export class ${1:NameOf}Controller {",
+      "}"
+    ]
+  },
   "NestJSServices": {
     "scope": "typescript",
     "prefix": "nestjs-service",

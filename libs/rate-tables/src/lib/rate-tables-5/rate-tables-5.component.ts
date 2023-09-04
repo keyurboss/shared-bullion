@@ -28,20 +28,23 @@ export interface table5DataInterface {
 export class RateTables5Component {
   @Input()
   private _table: table5DataInterface[] = [];
-  
+
   public get table(): table5DataInterface[] {
     return this._table;
   }
-  
+
   public set table(value: table5DataInterface[]) {
     value.forEach(({ symbole }) => {
-      this.RateObser$[symbole] = this.rateObservar.RateObser$[symbole].asObservable()
-    })
+      this.RateObser$[symbole] =
+        this.rateObservar.RateObser$[symbole].asObservable();
+    });
     this._table = value;
   }
-  
-  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> = {} as never
-  
-  constructor(@Inject(LiveRateService) private readonly rateObservar: LiveRateService) {
-  }
+
+  RateObser$: Record<RateBaseSymboles, Observable<RateObserDataType>> =
+    {} as never;
+
+  constructor(
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService,
+  ) {}
 }

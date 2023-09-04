@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "id": "f34d6792-e2d5-4538-84cd-7bb125474c3f",
+      "name": "Akshat Gold",
+      "domains": ["https://akshatgold.com"],
+      "generalUserInfo": { "autoApprove": false, "autoLogin": false },
+      "createdAt": "2022-12-09T15:03:28.411Z",
+      "modifiedAt": "2023-06-05T07:28:30.642Z"
+    }
+  ]
+}

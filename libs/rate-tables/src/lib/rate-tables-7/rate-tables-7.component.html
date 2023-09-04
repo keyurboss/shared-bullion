@@ -106,7 +106,13 @@
     </div>
     <div class="product_2" *ngFor="let item of table">
       <div class="two_name">
-        <div class="name_2" text-align="left" *ngFor="let child of item.productname" >{{child.name}}</div>
+        <div
+          class="name_2"
+          text-align="left"
+          *ngFor="let child of item.productname"
+        >
+          {{ child.name }}
+        </div>
         <div class="time">Time-05:38:48 AM</div>
       </div>
 

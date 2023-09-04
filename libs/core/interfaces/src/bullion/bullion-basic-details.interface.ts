@@ -2,13 +2,16 @@ import { Opaque } from 'ts-essentials';
 
 export type BullionId = Opaque<string, 'BullionId'>;
 
-export type BullionGeneralUserConfig = {
+export type IBullionGeneralUserConfig = {
   autoApprove: boolean;
   autoLogin: boolean;
 };
 
-export type BullionSiteInfo = {
+export type IBullionSiteInfo = {
   id: BullionId;
+  name: string;
   domains: string[];
-  generalUserInfo: BullionGeneralUserConfig;
+  generalUserInfo: IBullionGeneralUserConfig;
+  createdAt: Date;
+  modifiedAt: Date;
 };

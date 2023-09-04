@@ -5,18 +5,18 @@ import {
   flush,
 } from '@angular/core/testing';
 
-import { RateTables11Component } from './rate-tables-11.component';
-import { LiveRateService } from '@rps/buillion-frontend-core';
+import { faker } from '@faker-js/faker';
+import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
 import {
   DemoLiveRateService,
   InitialiseRemoteConnection,
 } from '@rps/buillion-frontend-core/mock';
+import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import {
   BaseSymbolePriceInterface,
   RateBaseSymboles,
 } from '@rps/bullion-interfaces';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
-import { faker } from '@faker-js/faker';
+import { RateTables11Component } from './rate-tables-11.component';
 
 describe('RateTablesComponent', () => {
   let component: RateTables11Component;
@@ -86,7 +86,7 @@ describe('RateTablesComponent', () => {
           .querySelectorAll('.product_name')
           [i]?.textContent?.trim();
         expect(productsname).toStrictEqual(
-          component.table[0]?.ProductName[i]?.name.trim()
+          component.table[0]?.ProductName[i]?.name.trim(),
         );
       }
     });
@@ -116,7 +116,7 @@ describe('RateTablesComponent', () => {
           bottom: 1,
           top: 15,
           // points: 0
-        }
+        },
       );
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
@@ -136,7 +136,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask + 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();
@@ -155,7 +155,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask - 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();

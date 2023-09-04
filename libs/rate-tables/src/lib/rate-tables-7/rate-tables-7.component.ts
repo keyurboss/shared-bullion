@@ -66,7 +66,7 @@ export class RateTables7Component {
     {} as never;
 
   constructor(
-    @Inject(LiveRateService) private readonly rateObservar: LiveRateService
+    @Inject(LiveRateService) private readonly rateObservar: LiveRateService,
   ) {
     this.GOLD = rateObservar.RateObser$.GOLD_SPOT.asObservable();
   }

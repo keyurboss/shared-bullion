@@ -1,9 +1,9 @@
 import { Expose, Type, instanceToPlain } from 'class-transformer';
 import { IsUUID } from 'class-validator';
 import {
-    groupDbToPlain,
-    groupToPlain,
-    validateSyncOrFail,
+  groupDbToPlain,
+  groupToPlain,
+  validateSyncOrFail,
 } from '../core.interface';
 export class BaseEntity<T> {
   @Expose()
@@ -22,10 +22,11 @@ export class BaseEntity<T> {
     return instanceToPlain(this, {
       excludeExtraneousValues: true,
       exposeUnsetFields: false,
+      exposeDefaultValues: true,
       groups: [groupDbToPlain, groupToPlain],
     });
   }
-  
+
   validate() {
     validateSyncOrFail(this);
   }

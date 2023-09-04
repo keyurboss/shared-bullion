@@ -86,7 +86,7 @@ describe('RateTablesComponent', () => {
         for (let j = 0; j < PrObject.length; j++) {
           const productsname = comp.querySelectorAll('.productname');
           expect(productsname[j]?.textContent?.trim()).toStrictEqual(
-            PrObject[j]?.name
+            PrObject[j]?.name,
           );
         }
       }
@@ -113,7 +113,7 @@ describe('RateTablesComponent', () => {
         {
           bottom: 1,
           top: 15,
-        }
+        },
       );
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.SILVER, rate]]));
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.SILVER, rate]]));
@@ -136,7 +136,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask + 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();
@@ -156,7 +156,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask - 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();

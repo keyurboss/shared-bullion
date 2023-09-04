@@ -3,7 +3,7 @@ import {
   CaculationSymboleValue,
   CalculatedOnPriceType,
   CalculatedOnPriceof,
-  Product,
+  IProduct,
   ProductID,
   ProductShowLocation,
   SourceSymbole,
@@ -13,7 +13,7 @@ import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsString, Length } from 'class-validator';
 import { CshVariableSnapshotEntity } from '../calc/calc.root';
 import { v4 } from 'uuid';
-import { BaseEntity } from '../core/base.entity';
+import { BaseEntity } from '../core';
 
 export type ProductDocument = Pick<
   ProductRoot,
@@ -30,7 +30,7 @@ export type ProductDocument = Pick<
   | 'createdAt'
   | 'modifiedAt'
 >;
-export class ProductRoot extends BaseEntity<ProductID> implements Product {
+export class ProductRoot extends BaseEntity<ProductID> implements IProduct {
   @Expose()
   @IsString()
   @Length(1)
@@ -106,6 +106,7 @@ export class ProductRoot extends BaseEntity<ProductID> implements Product {
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(ProductRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     entity.validate();
     return entity;

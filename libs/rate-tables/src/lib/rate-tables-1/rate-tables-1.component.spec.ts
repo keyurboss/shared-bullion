@@ -72,21 +72,24 @@ describe('RateTablesComponent', () => {
       ];
       fixture.detectChanges();
       const headername = componentHtml
-      .querySelector('.parent h3')
-      ?.textContent?.trim();
+        .querySelector('.parent h3')
+        ?.textContent?.trim();
       expect(headername).toStrictEqual(component.header);
-      const Sellname = componentHtml.querySelector('.parent p')?.textContent?.trim();
-      expect(Sellname).toStrictEqual(component.sell)
+      const Sellname = componentHtml
+        .querySelector('.parent p')
+        ?.textContent?.trim();
+      expect(Sellname).toStrictEqual(component.sell);
       const lengthR = componentHtml.querySelectorAll('.child_left').length;
       for (let i = 0; i < lengthR; i++) {
-        const productsname = componentHtml.querySelectorAll('.child_left')[i]?.textContent?.trim();
-        expect(productsname).toStrictEqual(component.table[0]?.productname[i]?.name.trim())
+        const productsname = componentHtml
+          .querySelectorAll('.child_left')
+          [i]?.textContent?.trim();
+        expect(productsname).toStrictEqual(
+          component.table[0]?.productname[i]?.name.trim(),
+        );
       }
     }));
   });
-
-
-
 
   describe('Rate Table 1 2nd TestCase For classes', () => {
     let liveRateServiceRef!: LiveRateService;
@@ -110,7 +113,7 @@ describe('RateTablesComponent', () => {
           bottom: 1,
           top: 15,
           // points: 0
-        }
+        },
       );
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
@@ -133,7 +136,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask + 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();
@@ -153,7 +156,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask - 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();

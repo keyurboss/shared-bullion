@@ -9,7 +9,7 @@ export class RedisLocalClient extends RedisClient {
   async SET(key: string | number, value: any) {
     this.DATA[key] = value;
   }
-  
+
   async GET(key: string | number) {
     const value = this.DATA[key];
     if (typeof value === 'undefined') {
@@ -17,11 +17,11 @@ export class RedisLocalClient extends RedisClient {
     }
     return value;
   }
-  
+
   async HSET(
     key: string | number,
     field: string | number,
-    value: any
+    value: any,
   ): Promise<void> {
     let d = this.DATA[key];
     if (typeof d === 'undefined') {

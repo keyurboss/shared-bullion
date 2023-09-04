@@ -4,6 +4,7 @@ import {
   randFirstName,
   randLastName,
   randNumber,
+  randPassword,
   randPastDate,
   randRecentDate,
   randText,
@@ -11,10 +12,8 @@ import {
   randUuid,
 } from '@ngneat/falso';
 import {
-  BullionId,
   DeviceId,
   DeviceType,
-  GeneralUserAuthStatus,
   GeneralUserId,
   GstNumber,
 } from '@rps/bullion-interfaces';
@@ -23,7 +22,7 @@ import { GeneralUserOptions, GeneralUserRoot } from './general-user.root';
 
 export class GeneralUserFixtureFactory {
   static createMany(
-    partialsOrCount: Array<PartialGeneralUserOptions> | number
+    partialsOrCount: Array<PartialGeneralUserOptions> | number = 5,
   ): Array<GeneralUserRoot> {
     if (isNumber(partialsOrCount)) {
       return Array(partialsOrCount)
@@ -37,8 +36,9 @@ export class GeneralUserFixtureFactory {
   static create(partial?: PartialGeneralUserOptions): GeneralUserRoot {
     return GeneralUserRoot.from({
       contactNumber: randNumber(),
-      bullionId: randUuid() as BullionId,
-      status: rand(Object.values(GeneralUserAuthStatus)),
+      randomPass: randPassword(),
+      // bullionId: randUuid() as BullionId,
+      // status: rand(Object.values(GeneralUserAuthStatus)),
       createdAt: randPastDate(),
       deviceId: randUuid() as DeviceId,
       deviceType: rand(Object.values(DeviceType)),

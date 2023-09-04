@@ -1,12 +1,12 @@
-import { BullionGeneralUserConfig } from '@rps/bullion-interfaces';
-import { Expose, plainToInstance, instanceToPlain } from 'class-transformer';
+import { IBullionGeneralUserConfig } from '@rps/bullion-interfaces';
+import { Expose, instanceToPlain, plainToInstance } from 'class-transformer';
 import { IsBoolean } from 'class-validator';
+import { OmitProperties } from 'ts-essentials';
 import {
   groupDbToPlain,
   groupToPlain,
   validateSyncOrFail,
 } from '../core.interface';
-import { OmitProperties } from 'ts-essentials';
 
 export type BullionGeneralUserConfigOption = OmitProperties<
   BullionGeneralUserConfigRoot,
@@ -14,7 +14,7 @@ export type BullionGeneralUserConfigOption = OmitProperties<
   Function
 >;
 
-export class BullionGeneralUserConfigRoot implements BullionGeneralUserConfig {
+export class BullionGeneralUserConfigRoot implements IBullionGeneralUserConfig {
   @Expose()
   @IsBoolean()
   autoApprove!: boolean;
@@ -33,6 +33,7 @@ export class BullionGeneralUserConfigRoot implements BullionGeneralUserConfig {
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(BullionGeneralUserConfigRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     validateSyncOrFail(entity);
     return entity;

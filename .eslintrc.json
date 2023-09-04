@@ -22,7 +22,7 @@
               },
               {
                 "sourceTag": "shared:library",
-                "onlyDependOnLibsWithTags": ["core","shared:library"]
+                "onlyDependOnLibsWithTags": ["core", "shared:library"]
               },
               {
                 "sourceTag": "library",

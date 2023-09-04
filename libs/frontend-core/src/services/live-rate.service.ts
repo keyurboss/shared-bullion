@@ -24,7 +24,7 @@ export type RateObserDataType = Record<
   }
 >;
 export const InjectableRate = new InjectionToken<SymboleWiseRate>(
-  'Insert Current Price'
+  'Insert Current Price',
 );
 
 export abstract class LiveRateService {
@@ -39,7 +39,7 @@ export abstract class LiveRateService {
   }
 
   protected set LastRate(
-    value: Map<RateBaseSymboles, BaseSymbolePriceInterface>
+    value: Map<RateBaseSymboles, BaseSymbolePriceInterface>,
   ) {
     this._LastRate = value;
     this.setRate(value);
@@ -61,7 +61,7 @@ export abstract class LiveRateService {
   constructor(
     lastRate: SymboleWiseRate,
     envvariable: EnvInterface,
-    initialiseService = true
+    initialiseService = true,
   ) {
     this.CreatSubjects();
     if (lastRate !== null && typeof lastRate !== 'undefined') {
@@ -101,7 +101,7 @@ export abstract class LiveRateService {
         old = {} as never;
       }
       for (const [rateType, newRate] of JsonToItrable<number, RateTypeKeys>(
-        currentRate
+        currentRate,
       )) {
         const oldRateObject = old[rateType];
 

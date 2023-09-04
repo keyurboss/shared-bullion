@@ -80,12 +80,12 @@ describe('RateTablesComponent', () => {
         expect(headerElement).toStrictEqual(component.table[i]?.headerName);
         const detailsElements = ele.querySelectorAll('.details');
         expect(detailsElements).toHaveLength(
-          component.table[i]?.details.length ?? 0
+          component.table[i]?.details.length ?? 0,
         );
         detailsElements.forEach((detailsEle, detailsIndex) => {
           const nameElement = detailsEle.querySelector('h2')?.textContent;
           expect(nameElement?.trim()).toBe(
-            component.table[i]?.details[detailsIndex]?.Name
+            component.table[i]?.details[detailsIndex]?.Name,
           );
         });
       });
@@ -113,7 +113,7 @@ describe('RateTablesComponent', () => {
           bottom: 1,
           top: 15,
           // points: 0
-        }
+        },
       );
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
       liveRateServiceRef.setRate(new Map([[RateBaseSymboles.GOLD, rate]]));
@@ -127,7 +127,7 @@ describe('RateTablesComponent', () => {
       const tabelEle = tableElements[0];
       const detailsElements = tabelEle?.querySelectorAll('.details');
       expect(detailsElements).toHaveLength(
-        component.table[0]?.details.length ?? 0
+        component.table[0]?.details.length ?? 0,
       );
       const detaileEle = detailsElements ? detailsElements[0] : undefined;
       const ratenode = detaileEle?.childNodes[1];
@@ -150,7 +150,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask + 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();
@@ -170,7 +170,7 @@ describe('RateTablesComponent', () => {
               ask: rate.ask - 10,
             },
           ],
-        ])
+        ]),
       );
       fixture.detectChanges();
       flush();

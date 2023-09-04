@@ -1,5 +1,6 @@
 import {
   randBoolean,
+  randFullName,
   randPastDate,
   randRecentDate,
   randUrl,
@@ -15,7 +16,7 @@ import { BullionGeneralUserConfigRoot } from './bullion-general-user-config';
 
 export class BullionSiteInfoFixtureFactory {
   static createMany(
-    partialsOrCount: Array<PartialBullionSiteInfoOptions> | number
+    partialsOrCount: Array<PartialBullionSiteInfoOptions> | number = 5,
   ): Array<BullionSiteInfoRoot> {
     if (isNumber(partialsOrCount)) {
       return Array(partialsOrCount)
@@ -29,6 +30,7 @@ export class BullionSiteInfoFixtureFactory {
   static create(partial?: PartialBullionSiteInfoOptions): BullionSiteInfoRoot {
     return BullionSiteInfoRoot.from({
       id: randUuid() as BullionId,
+      name: randFullName(),
       domains: randUrl({
         length: 10,
       }),

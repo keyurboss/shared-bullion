@@ -118,7 +118,7 @@ describe(GeneralUserRepository.name, () => {
       expect(collectionMock.updateOne).toHaveBeenCalledWith(
         { id: user.id },
         { $set: user.toJson() },
-        { upsert: true }
+        { upsert: true },
       );
     });
   });

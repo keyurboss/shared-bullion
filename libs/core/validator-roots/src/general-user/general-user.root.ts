@@ -1,28 +1,30 @@
 import {
-  BullionId,
   DeviceId,
   DeviceType,
-  GeneralUserAuthStatus,
   GeneralUserId,
-  GeneralUserType,
+  IGeneralUserType,
   GstNumber,
 } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance } from 'class-transformer';
-import { IsBoolean, IsEnum, IsNumber, IsString, IsUUID } from 'class-validator';
+import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
 import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
-import { BaseEntity } from '../core/base.entity';
+import { BaseEntity } from '../core';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type GeneralUserOptions = OmitProperties<GeneralUserRoot, Function>;
 
 export class GeneralUserRoot
   extends BaseEntity<GeneralUserId>
-  implements GeneralUserType
+  implements IGeneralUserType
 {
   @Expose()
   @IsString()
   firstName!: string;
+
+  @Expose()
+  @IsString()
+  randomPass!: string;
 
   @Expose()
   @IsString()
@@ -35,10 +37,6 @@ export class GeneralUserRoot
   @Expose()
   @IsNumber()
   contactNumber!: number;
-
-  @Expose()
-  @IsUUID()
-  bullionId!: BullionId;
 
   @Expose()
   @IsString()
@@ -57,10 +55,6 @@ export class GeneralUserRoot
   deviceType!: DeviceType;
 
   @Expose()
-  @IsEnum(GeneralUserAuthStatus)
-  status!: GeneralUserAuthStatus;
-
-  @Expose()
   @IsBoolean()
   isAuto!: boolean;
 
@@ -75,9 +69,8 @@ export class GeneralUserRoot
     id = GeneralUserRoot.generateID(),
     isAuto,
     modifiedAt = new Date(),
-    bullionId,
-    status,
     contactNumber,
+    randomPass,
     firmName,
     firstName,
     gstNumber,
@@ -88,9 +81,8 @@ export class GeneralUserRoot
     entity.id = id;
     entity.os = os;
     entity.deviceId = deviceId;
-    entity.status = status;
     entity.deviceType = deviceType;
-    entity.bullionId = bullionId;
+    entity.randomPass = randomPass;
     entity.isAuto = isAuto;
     entity.modifiedAt = modifiedAt;
     entity.contactNumber = contactNumber;
@@ -105,6 +97,7 @@ export class GeneralUserRoot
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(GeneralUserRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     entity.validate();
     return entity;

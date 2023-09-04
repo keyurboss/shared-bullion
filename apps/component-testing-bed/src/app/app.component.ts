@@ -4,10 +4,20 @@ import { Env } from '@rps/buillion-frontend-core/core';
 import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
 import { LiveRateService } from '@rps/buillion-frontend-core/services';
 import { RateBaseSymboles } from '@rps/bullion-interfaces';
-import { RateTables6Component, RateTables7Component, RateTables11Component, RateTables2Component } from '@rps/bullion-rate-tables';
+import {
+  RateTables11Component,
+  RateTables2Component,
+  RateTables6Component,
+  RateTables7Component,
+} from '@rps/bullion-rate-tables';
 @Component({
   standalone: true,
-  imports: [RateTables7Component, RateTables6Component, RateTables11Component,RateTables2Component],
+  imports: [
+    RateTables7Component,
+    RateTables6Component,
+    RateTables11Component,
+    RateTables2Component,
+  ],
   selector: 'shared-bullion-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -23,7 +33,7 @@ import { RateTables6Component, RateTables7Component, RateTables11Component, Rate
   ],
 })
 export class AppComponent {
-  d=[
+  d = [
     {
       symbole: RateBaseSymboles.GOLD,
       productName: 'GOLD',
@@ -33,6 +43,6 @@ export class AppComponent {
       LOW: 'Low',
     },
   ];
-  
+
   title = 'component-testing-bed';
 }
