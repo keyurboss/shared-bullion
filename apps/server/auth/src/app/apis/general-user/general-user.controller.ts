@@ -1,4 +1,4 @@
-import { Controller, Get, Inject, Query } from '@nestjs/common';
+import { Controller, Get, Inject, Post, Query } from '@nestjs/common';
 import { InvalidTokenDataError } from '@rps/bullion-interfaces';
 import { JwtService } from '@rps/bullion-server-core';
 import { REFRESH_TOKEN_SERVICE } from '../../../config/service.token';
@@ -9,9 +9,14 @@ import { GeneralUserInteractor } from '../../interactor/general-user/general-use
 export class GeneralUserController {
   constructor(
     @Inject(GeneralUserInteractor)
-    private readonly generalUserRepo: GeneralUserInteractor,
+    private readonly generalUserInteractor: GeneralUserInteractor,
     @Inject(REFRESH_TOKEN_SERVICE) private readonly refreshToken: JwtService,
   ) {}
+
+  @Post('register')
+  async RegisterNewGeneralUser() {
+    // return this.generalUserInteractor.registerNewGeneralUser();
+  }
 
   @Get('my-details')
   async GetGeneralUserDetailsByToken(@Query('token') token: string) {
@@ -20,6 +25,6 @@ export class GeneralUserController {
     if (details.typeName !== GeneralUserIdentityRoot.name) {
       throw new InvalidTokenDataError(GeneralUserIdentityRoot.name);
     }
-    return this.generalUserRepo.findGeneralUserByid(details.id);
+    return this.generalUserInteractor.findGeneralUserById(details.id);
   }
 }

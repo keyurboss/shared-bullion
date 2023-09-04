@@ -97,6 +97,7 @@ export class GeneralUserRoot
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(GeneralUserRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     entity.validate();
     return entity;

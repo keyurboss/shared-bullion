@@ -11,7 +11,7 @@ export class GeneralUserInteractor {
     @Inject(REFRESH_TOKEN_SERVICE) private readonly refreshToken: JwtService,
   ) {}
 
-  async findGeneralUserByid(id: GeneralUserId) {
+  async findGeneralUserById(id: GeneralUserId) {
     return this.generalUserRepo.findOneOrFail(id);
   }
 }

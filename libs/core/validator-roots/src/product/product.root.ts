@@ -106,6 +106,7 @@ export class ProductRoot extends BaseEntity<ProductID> implements IProduct {
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(ProductRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     entity.validate();
     return entity;

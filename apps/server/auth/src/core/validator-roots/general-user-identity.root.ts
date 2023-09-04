@@ -26,6 +26,7 @@ export class GeneralUserIdentityRoot
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(GeneralUserIdentityRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     entity.validate();
     return entity;

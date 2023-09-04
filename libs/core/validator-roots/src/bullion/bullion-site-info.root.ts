@@ -63,6 +63,7 @@ export class BullionSiteInfoRoot
   static fromJson(data: Record<string, unknown>) {
     const entity = plainToInstance(BullionSiteInfoRoot, data, {
       excludeExtraneousValues: true,
+      exposeDefaultValues: true,
     });
     entity.validate();
     return entity;
