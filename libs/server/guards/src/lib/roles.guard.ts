@@ -1,4 +1,4 @@
-import { AdminRoles, isNotNullish, isNullish } from '@booz/interfaces';
+import { UserRoles, isNotNullish, isNullish } from '@rps/bullion-interfaces';
 import {
   CanActivate,
   ExecutionContext,
@@ -9,7 +9,7 @@ import {
 import { Reflector } from '@nestjs/core';
 import {
   Request,
-  RolesNotAuthorisedError,
+  RolesNotAuthorizedError,
   RolesNotExistsError,
 } from '@bs/core';
 
@@ -31,21 +31,25 @@ export class RolesBasedGuard implements CanActivate {
     ]);
     const request: Request = context.switchToHttp().getRequest();
     const user = request.decryptedToken;
-    if (user?.roles === AdminRoles.GOD) {
+    if (user?.role === UserRoles.GOD) {
       return true;
     }
+
     if (isNullish(roles) || roles.length === 0) {
       if (roles === null || !this.defaultProtected) {
         return true;
       }
       throw new RolesNotExistsError();
     }
+
     if (isNotNullish(request.tokenError)) {
       throw request.tokenError;
     }
-    if (isNullish(user) || !roles.includes(user.roles)) {
-      throw new RolesNotAuthorisedError();
+
+    if (isNullish(user) || !roles.includes(user.role)) {
+      throw new RolesNotAuthorizedError();
     }
+
     return true;
   }
 }

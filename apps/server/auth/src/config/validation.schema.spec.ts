@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { describe, it } from '@jest/globals';
-import { JwtKeyLenght } from '@rps/bullion-server-core';
 import Joi from 'joi';
-import { defaultValidationSchema } from './validation.schema';
+import { JwtKeyLength, defaultValidationSchema } from './validation.schema';
 
 const validationSchema = Joi.object(defaultValidationSchema);
 describe('Env Validation Schema', () => {
@@ -11,8 +10,8 @@ describe('Env Validation Schema', () => {
       max: 65535,
       min: 1,
     }),
-    ACCESS_TOKEN_KEY: faker.string.alphanumeric(JwtKeyLenght),
-    AUTH_REFRESH_TOKEN_KEY: faker.string.alphanumeric(JwtKeyLenght),
+    ACCESS_TOKEN_KEY: faker.string.alphanumeric(JwtKeyLength),
+    AUTH_REFRESH_TOKEN_KEY: faker.string.alphanumeric(JwtKeyLength),
     AUTH_DB_URL: faker.internet.url(),
     AUTH_REDIS_URL: faker.internet.url(),
     AUTH_DB_TLS_CA: faker.internet.userName(),
@@ -138,13 +137,13 @@ describe('Env Validation Schema', () => {
     const mockEnvs1 = {
       ...validEnvs,
       AUTH_REFRESH_TOKEN_KEY: faker.string.alphanumeric({
-        length: JwtKeyLenght - 1,
+        length: JwtKeyLength - 1,
       }),
     };
     const mockEnvs2 = {
       ...validEnvs,
       AUTH_REFRESH_TOKEN_KEY: faker.string.alphanumeric({
-        length: JwtKeyLenght + 1,
+        length: JwtKeyLength + 1,
       }),
     };
     const result = validationSchema.validate(mockEnvs);
@@ -186,13 +185,13 @@ describe('Env Validation Schema', () => {
     const mockEnvs1 = {
       ...validEnvs,
       ACCESS_TOKEN_KEY: faker.string.alphanumeric({
-        length: JwtKeyLenght - 1,
+        length: JwtKeyLength - 1,
       }),
     };
     const mockEnvs2 = {
       ...validEnvs,
       ACCESS_TOKEN_KEY: faker.string.alphanumeric({
-        length: JwtKeyLenght + 1,
+        length: JwtKeyLength + 1,
       }),
     };
     const result = validationSchema.validate(mockEnvs);

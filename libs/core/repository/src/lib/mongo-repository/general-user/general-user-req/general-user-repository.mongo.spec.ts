@@ -5,7 +5,7 @@ import {
   GeneralUserId,
   GeneralUserReqId,
 } from '@rps/bullion-interfaces';
-import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
+import { LoggerFactory, MongoDbService } from '@bs/core';
 import {
   GeneralUserReqFixtureFactory,
   GeneralUserReqRoot,

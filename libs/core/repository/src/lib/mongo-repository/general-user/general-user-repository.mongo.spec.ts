@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { randUuid } from '@ngneat/falso';
 import { DeviceId, GeneralUserId } from '@rps/bullion-interfaces';
-import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
+import { LoggerFactory, MongoDbService } from '@bs/core';
 import { Collection } from 'mongodb';
 import { GeneralUserFilter, GeneralUserRepository } from '../../interface';
 import { GeneralUserMongoRepository } from './general-user-repository.mongo';

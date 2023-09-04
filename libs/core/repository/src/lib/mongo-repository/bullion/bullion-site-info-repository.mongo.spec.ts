@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { randUuid } from '@ngneat/falso';
 import { BullionId, DeviceId } from '@rps/bullion-interfaces';
-import { LoggerFactory, MongoDbService } from '@rps/bullion-server-core';
+import { LoggerFactory, MongoDbService } from '@bs/core';
 import {
   BullionSiteInfoFixtureFactory,
   BullionSiteInfoRoot,

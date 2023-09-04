@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { GeneralUserRepository } from '@rps/buillion-server-repository';
-import { JwtService } from '@rps/bullion-server-core';
+import { GeneralUserRepository } from '@bs/repo';
+import { JwtService } from '@bs/core';
 import { REFRESH_TOKEN_SERVICE } from '../../../config/service.token';
 import { GeneralUserId } from '@rps/bullion-interfaces';
 

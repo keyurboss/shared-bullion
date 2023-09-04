@@ -1,17 +1,32 @@
 // import { SetMetadata } from '@nestjs/common';
-// import {
-//   AdminRoles,
-//   AdminRolesObject,
-//   ManagerRole,
-//   ManagerRoleObject,
-// } from '@booz/interfaces';
+import { UserRoles } from '@rps/bullion-interfaces';
 
-// export type AllRoles = ManagerRole | AdminRoles;
+import { SetMetadata } from '@nestjs/common';
 
-// export const Roles = (...roles: AllRoles[]) => SetMetadata('roles', roles);
+export type AllRoles = UserRoles;
 
-// export const ApiAllowAny = () => SetMetadata('roles', null);
+export const Roles = (...roles: AllRoles[]) => SetMetadata('roles', roles);
 
+export const ApiAllowAny = () => SetMetadata('roles', null);
+
+export const ApiAllowGeneralUser = () =>
+  SetMetadata('roles', [UserRoles.GENERAL_USER]);
+
+export const ApiAllowTradeUser = () =>
+  SetMetadata('roles', [UserRoles.TRADE_USER]);
+
+export const ApiAllowOnlySuperAdmin = () =>
+  SetMetadata('roles', [UserRoles.SUPER_ADMIN]);
+
+export const ApiAllowOnlyRateAdmin = () =>
+  SetMetadata('roles', [UserRoles.RATE_ADMIN]);
+
+export const ApiAllowOnlyAdmin = () =>
+  SetMetadata('roles', [
+    UserRoles.RATE_ADMIN,
+    UserRoles.SUPER_ADMIN,
+    UserRoles.ADMIN,
+  ]);
 // export const ApiAllowOnlyManagersRoles = () =>
 //   SetMetadata('roles', ManagerRoleObject);
 

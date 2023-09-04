@@ -1,9 +1,5 @@
 import { GeneralUserId } from '@rps/bullion-interfaces';
-import {
-  FixtureService,
-  LoggerFactory,
-  MongoDbService,
-} from '@rps/bullion-server-core';
+import { FixtureMongoService, LoggerFactory, MongoDbService } from '@bs/core';
 import {
   GeneralUserOptions,
   GeneralUserRoot,
@@ -28,9 +24,9 @@ export class GeneralUserMongoRepository
   constructor(
     @Inject(MongoDbService) { db }: MongoDbService,
     @Inject(LoggerFactory) loggerFactory: LoggerFactory,
-    @Inject(FixtureService)
+    @Inject(FixtureMongoService)
     @Optional()
-    private readonly fixtureService: FixtureService,
+    private readonly fixtureService: FixtureMongoService,
     @Inject(GeneralUserSeedFileName)
     @Optional()
     private readonly fileName = 'general-user.data.json',

@@ -1,10 +1,6 @@
 import { Inject, OnModuleInit, Optional } from '@nestjs/common';
 import { BullionId } from '@rps/bullion-interfaces';
-import {
-  FixtureService,
-  LoggerFactory,
-  MongoDbService,
-} from '@rps/bullion-server-core';
+import { FixtureMongoService, LoggerFactory, MongoDbService } from '@bs/core';
 import {
   BullionSiteInfoOptions,
   BullionSiteInfoRoot,
@@ -32,9 +28,9 @@ export class BullionSiteInfoMongoRepository
   constructor(
     @Inject(MongoDbService) { db }: MongoDbService,
     @Inject(LoggerFactory) loggerFactory: LoggerFactory,
-    @Inject(FixtureService)
+    @Inject(FixtureMongoService)
     @Optional()
-    private readonly fixtureService: FixtureService,
+    private readonly fixtureService: FixtureMongoService,
     @Inject(BullionSiteInfoCollectionSeedFileName)
     @Optional()
     private readonly fileName = 'bullion-site-info.data.json',

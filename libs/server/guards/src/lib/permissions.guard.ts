@@ -3,7 +3,7 @@
 //   AdminRoles,
 //   isNotNullish,
 //   isNullish,
-// } from '@booz/interfaces';
+// } from '@rps/bullion-interfaces';
 // import {
 //   PermissionNotAllowedError,
 //   Request,

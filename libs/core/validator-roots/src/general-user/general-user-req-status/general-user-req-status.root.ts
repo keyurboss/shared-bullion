@@ -11,10 +11,13 @@ import { OmitProperties } from 'ts-essentials';
 import { v4 } from 'uuid';
 import { BaseEntity } from '../../core';
 
-export type GeneralUserReqOptions = OmitProperties<
-  GeneralUserReqRoot,
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  Function
+export type GeneralUserReqOptions = Omit<
+  OmitProperties<
+    GeneralUserReqRoot,
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    Function
+  >,
+  'role'
 >;
 
 export class GeneralUserReqRoot

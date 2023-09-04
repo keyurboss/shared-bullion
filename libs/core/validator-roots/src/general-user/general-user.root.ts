@@ -2,8 +2,9 @@ import {
   DeviceId,
   DeviceType,
   GeneralUserId,
-  IGeneralUserType,
+  IGeneralUser,
   GstNumber,
+  UserRoles,
 } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance } from 'class-transformer';
 import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
@@ -12,12 +13,18 @@ import { v4 } from 'uuid';
 import { BaseEntity } from '../core';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export type GeneralUserOptions = OmitProperties<GeneralUserRoot, Function>;
+export type GeneralUserOptions = Omit<
+  OmitProperties<GeneralUserRoot, Function>,
+  'role'
+>;
 
 export class GeneralUserRoot
   extends BaseEntity<GeneralUserId>
-  implements IGeneralUserType
+  implements IGeneralUser
 {
+  @Expose()
+  role = UserRoles.GENERAL_USER;
+
   @Expose()
   @IsString()
   firstName!: string;

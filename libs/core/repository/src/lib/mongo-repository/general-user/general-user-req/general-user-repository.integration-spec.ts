@@ -9,7 +9,7 @@ import {
   LoggerFactory,
   MongoDbService,
   MongoRepositoryLocalModule,
-} from '@rps/bullion-server-core';
+} from '@bs/core';
 import {
   GeneralUserReqFixtureFactory,
   GeneralUserReqRoot,

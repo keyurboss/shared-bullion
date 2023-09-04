@@ -1,6 +1,9 @@
 import { Inject, Injectable, NestMiddleware, Optional } from '@nestjs/common';
 import { Response, NextFunction } from 'express';
-// import { DefaultReqTokenHeaderKey, isNotNullish } from '@booz/interfaces';
+import {
+  DefaultReqTokenHeaderKey,
+  isNotNullish,
+} from '@rps/bullion-interfaces';
 import {
   TokenExpiredError,
   NotBeforeError,
@@ -13,7 +16,6 @@ import {
   TokenExpiredError as TokenExpired,
   TokenNotBeforeError,
 } from '@bs/core';
-import { isNotNullish } from '@rps/bullion-interfaces';
 
 export const HEADER_KEY_FOR_TOKEN = Symbol('HeaderKeyForToken');
 export const MIDDLEWARE_TOKEN_DECRYPTER = Symbol('MiddlewareTokenDecrypter');
