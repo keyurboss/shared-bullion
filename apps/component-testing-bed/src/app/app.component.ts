@@ -7,16 +7,18 @@ import { RateBaseSymbols } from '@rps/bullion-interfaces';
 import {
   RateTables11Component,
   RateTables2Component,
+  RateTables1Component,
   RateTables6Component,
   RateTables7Component,
   table11DataInterface,
-} from '@rps/bullion-rate-tables';
+} from '@bf/rate-tables';
 
 @Component({
   standalone: true,
   imports: [
     RateTables7Component,
     RateTables6Component,
+    RateTables1Component,
     RateTables11Component,
     RateTables2Component,
   ],
@@ -52,7 +54,7 @@ export class AppComponent {
       // BID: "BID",
       // HIGH:"HIGH",
       // LOW:"LOW",
-      ProductName: [
+      productName: [
         {
           name: 'GOLD',
         },

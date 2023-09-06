@@ -1,0 +1,55 @@
+{
+  "name": "rate-tables",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/frontend/rate-tables/src",
+  "prefix": "rate-tables",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/frontend/rate-tables/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
+      },
+      "configurations": {
+        "production-npm": {
+          "tsConfig": "libs/frontend/rate-tables/tsconfig.lib.prod.json"
+        },
+        "production": {
+          "tsConfig": "libs/frontend/rate-tables/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/frontend/rate-tables/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/frontend/rate-tables/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      },
+      "defaultConfiguration": "ci"
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/frontend/rate-tables/**/*.ts",
+          "libs/frontend/rate-tables/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["library"]
+}

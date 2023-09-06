@@ -19,66 +19,65 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "@bf/rate-tables": ["libs/frontend/rate-tables/src/index.ts"],
+      "@bf/rate-tables/table1": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
+      ],
+      "@bf/rate-tables/table10": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-10/rate-tables-10.component.ts"
+      ],
+      "@bf/rate-tables/table11": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-11/rate-tables-11.component.ts"
+      ],
+      "@bf/rate-tables/table2": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-2/rate-tables-2.component.ts"
+      ],
+      "@bf/rate-tables/table3": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-3/rate-tables-3.component.ts"
+      ],
+      "@bf/rate-tables/table4": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-4/rate-tables-4.component.ts"
+      ],
+      "@bf/rate-tables/table5": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-5/rate-tables-5.component.ts"
+      ],
+      "@bf/rate-tables/table6": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-6/rate-tables-6.component.ts"
+      ],
+      "@bf/rate-tables/table7": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-7/rate-tables-7.component.ts"
+      ],
+      "@bf/rate-tables/table8": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-8/rate-tables-8.component.ts"
+      ],
+      "@bf/rate-tables/table9": [
+        "libs/frontend/rate-tables/src/lib/rate-tables-9/rate-tables-9.component.ts"
+      ],
+      "@bf/services": ["libs/frontend/services/src/index.ts"],
+      "@bs/core": ["libs/server/core/src/index.ts"],
       "@bs/guards": ["libs/server/guards/src/index.ts"],
-      "@rps/buillion-frontend-core": ["libs/frontend-core/src/index.ts"],
+      "@bs/repo": ["libs/server/repository/src/index.ts"],
+      "@bs/validator-roots": ["libs/server/validator-roots/src/index.ts"],
+      "@rps/buillion-frontend-core": ["libs/frontend/services/src/index.ts"],
       "@rps/buillion-frontend-core/core": [
-        "libs/frontend-core/src/core/index.ts"
+        "libs/frontend/services/src/core/index.ts"
       ],
       "@rps/buillion-frontend-core/fixtures": [
-        "libs/frontend-core/src/fixtures/index.ts"
+        "libs/frontend/services/src/fixtures/index.ts"
       ],
       "@rps/buillion-frontend-core/mock": [
-        "libs/frontend-core/src/mock/index.ts"
+        "libs/frontend/services/src/mock/index.ts"
       ],
       "@rps/buillion-frontend-core/services": [
-        "libs/frontend-core/src/services/index.ts"
+        "libs/frontend/services/src/services/index.ts"
       ],
-      "@bs/repo": ["libs/server/repository/src/index.ts"],
       "@rps/bullion-functions": ["libs/functions/src/index.ts"],
       "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
       "@rps/bullion-interfaces": ["libs/core/interfaces/src/index.ts"],
       "@rps/bullion-interfaces/calc": [
         "libs/core/interfaces/src/calc/index.ts"
       ],
-      "@rps/bullion-interfaces/core": [
-        "libs/core/interfaces/src/core/index.ts"
-      ],
-      "@rps/bullion-rate-tables": ["libs/rate-tables/src/index.ts"],
-      "@rps/bullion-rate-tables/table1": [
-        "libs/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table10": [
-        "libs/rate-tables/src/lib/rate-tables-10/rate-tables-10.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table11": [
-        "libs/rate-tables/src/lib/rate-tables-11/rate-tables-11.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table2": [
-        "libs/rate-tables/src/lib/rate-tables-2/rate-tables-2.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table3": [
-        "libs/rate-tables/src/lib/rate-tables-3/rate-tables-3.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table4": [
-        "libs/rate-tables/src/lib/rate-tables-4/rate-tables-4.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table5": [
-        "libs/rate-tables/src/lib/rate-tables-5/rate-tables-5.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table6": [
-        "libs/rate-tables/src/lib/rate-tables-6/rate-tables-6.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table7": [
-        "libs/rate-tables/src/lib/rate-tables-7/rate-tables-7.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table8": [
-        "libs/rate-tables/src/lib/rate-tables-8/rate-tables-8.component.ts"
-      ],
-      "@rps/bullion-rate-tables/table9": [
-        "libs/rate-tables/src/lib/rate-tables-9/rate-tables-9.component.ts"
-      ],
-      "@bs/core": ["libs/server/core/src/index.ts"],
-      "@bs/validator-roots": ["libs/server/validator-roots/src/index.ts"]
+      "@rps/bullion-interfaces/core": ["libs/core/interfaces/src/core/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
