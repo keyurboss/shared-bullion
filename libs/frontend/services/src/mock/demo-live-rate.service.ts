@@ -5,7 +5,7 @@ import {
   RateBaseSymbols,
   SymbolWiseRate,
 } from '@rps/bullion-interfaces';
-import { Env, JsonToIterable } from '../core';
+import { Env, JsonToIterable } from '@bf/core';
 import { RatesFixture } from '../fixtures';
 import { InjectableRate, LiveRateService } from '../services/live-rate.service';
 import { randNumber } from '@ngneat/falso';

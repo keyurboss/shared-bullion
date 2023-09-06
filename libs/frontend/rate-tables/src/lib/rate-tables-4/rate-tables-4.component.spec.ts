@@ -7,16 +7,16 @@ import {
 import { faker } from '@faker-js/faker';
 
 import { RateTables4Component } from './rate-tables-4.component';
-import { LiveRateService } from '@rps/buillion-frontend-core';
+import { LiveRateService } from '@bf/services';
 import {
   DemoLiveRateService,
   InitialiseRemoteConnection,
-} from '@rps/buillion-frontend-core/mock';
+} from '@bf/services/mock';
 import {
   BaseSymbolPriceInterface,
   RateBaseSymbols,
 } from '@rps/bullion-interfaces';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
+import { RatesFixture } from '@bf/services/fixtures';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 describe('RateTablesComponent', () => {

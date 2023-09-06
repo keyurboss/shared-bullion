@@ -7,8 +7,8 @@ import {
 } from '@angular/core/testing';
 
 import { faker } from '@faker-js/faker';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
-import { LiveRateService } from '@rps/buillion-frontend-core';
+import { RatesFixture } from '@bf/services/fixtures';
+import { LiveRateService } from '@bf/services';
 import {
   BaseSymbolPriceInterface,
   RateBaseSymbols,
@@ -17,7 +17,7 @@ import { RateTables8Component } from './rate-tables-8.component';
 import {
   DemoLiveRateService,
   InitialiseRemoteConnection,
-} from '@rps/buillion-frontend-core/mock';
+} from '@bf/services/mock';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 describe('RateTablesComponent', () => {

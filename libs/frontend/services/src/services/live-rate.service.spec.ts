@@ -8,7 +8,7 @@ import {
   RateBaseSymbols,
 } from '@rps/bullion-interfaces';
 import { firstValueFrom, skip, timeout } from 'rxjs';
-import { JsonToIterable } from '../core';
+import { JsonToIterable } from '@bf/core';
 import { RatesFixture } from '../fixtures';
 import { DemoLiveRateService, InitialiseRemoteConnection } from '../mock';
 import { InjectableRate, LiveRateService } from './live-rate.service';

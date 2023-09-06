@@ -11,7 +11,7 @@ import {
   SymbolWiseRate,
 } from '@rps/bullion-interfaces';
 
-import { JsonToIterable } from '../core';
+import { JsonToIterable } from '@bf/core';
 
 export type RateSignalDataType = Record<
   RateTypeKeys,

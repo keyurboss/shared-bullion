@@ -7,15 +7,15 @@ import {
   flush,
 } from '@angular/core/testing';
 
-import { LiveRateService } from '@rps/buillion-frontend-core';
-import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
+import { LiveRateService } from '@bf/services';
+import { DemoLiveRateService } from '@bf/services/mock';
 import {
   BaseSymbolPriceInterface,
   RateBaseSymbols,
 } from '@rps/bullion-interfaces';
 import { RateTables7Component } from './rate-tables-7.component';
 import { faker } from '@faker-js/faker';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
+import { RatesFixture } from '@bf/services/fixtures';
 import { ChangeDetectionStrategy } from '@angular/core';
 export const InitialiseRemoteConnection = 'initialiseRemoteConnection';
 

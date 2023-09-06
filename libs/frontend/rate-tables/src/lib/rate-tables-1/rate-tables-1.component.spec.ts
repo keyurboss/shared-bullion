@@ -6,12 +6,12 @@ import {
   tick,
 } from '@angular/core/testing';
 import { faker } from '@faker-js/faker';
-import { LiveRateService } from '@rps/buillion-frontend-core';
-import { RatesFixture } from '@rps/buillion-frontend-core/fixtures';
+import { LiveRateService } from '@bf/services';
+import { RatesFixture } from '@bf/services/fixtures';
 import {
   DemoLiveRateService,
   InitialiseRemoteConnection,
-} from '@rps/buillion-frontend-core/mock';
+} from '@bf/services/mock';
 import {
   BaseSymbolPriceInterface,
   RateBaseSymbols,

@@ -19,6 +19,7 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "@bf/core": ["libs/frontend/core/src/index.ts"],
       "@bf/rate-tables": ["libs/frontend/rate-tables/src/index.ts"],
       "@bf/rate-tables/table1": [
         "libs/frontend/rate-tables/src/lib/rate-tables-1/rate-tables-1.component.ts"
@@ -53,24 +54,15 @@
       "@bf/rate-tables/table9": [
         "libs/frontend/rate-tables/src/lib/rate-tables-9/rate-tables-9.component.ts"
       ],
-      "@bf/services": ["libs/frontend/services/src/index.ts"],
       "@bs/core": ["libs/server/core/src/index.ts"],
       "@bs/guards": ["libs/server/guards/src/index.ts"],
       "@bs/repo": ["libs/server/repository/src/index.ts"],
       "@bs/validator-roots": ["libs/server/validator-roots/src/index.ts"],
-      "@rps/buillion-frontend-core": ["libs/frontend/services/src/index.ts"],
-      "@rps/buillion-frontend-core/core": [
-        "libs/frontend/services/src/core/index.ts"
-      ],
-      "@rps/buillion-frontend-core/fixtures": [
-        "libs/frontend/services/src/fixtures/index.ts"
-      ],
-      "@rps/buillion-frontend-core/mock": [
-        "libs/frontend/services/src/mock/index.ts"
-      ],
-      "@rps/buillion-frontend-core/services": [
-        "libs/frontend/services/src/services/index.ts"
-      ],
+      "@bf/services": ["libs/frontend/services/src/index.ts"],
+      "@bf/services/core": ["libs/frontend/services/src/core/index.ts"],
+      "@bf/services/fixtures": ["libs/frontend/services/src/fixtures/index.ts"],
+      "@bf/services/mock": ["libs/frontend/services/src/mock/index.ts"],
+      "@bf/services/services": ["libs/frontend/services/src/services/index.ts"],
       "@rps/bullion-functions": ["libs/functions/src/index.ts"],
       "@rps/bullion-functions/core": ["libs/functions/src/core/index.ts"],
       "@rps/bullion-interfaces": ["libs/core/interfaces/src/index.ts"],

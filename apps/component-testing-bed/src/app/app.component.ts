@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Env } from '@rps/buillion-frontend-core/core';
-import { DemoLiveRateService } from '@rps/buillion-frontend-core/mock';
-import { LiveRateService } from '@rps/buillion-frontend-core/services';
+import { Env } from '@bf/core';
+import { DemoLiveRateService } from '@bf/services/mock';
+import { LiveRateService } from '@bf/services/services';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 import {
   RateTables11Component,

@@ -3,7 +3,7 @@ import {
   RateBaseSymbols,
   RateTypeKeys,
 } from '@rps/bullion-interfaces';
-import { JsonToIterable } from '../core';
+import { JsonToIterable } from '@bf/core';
 import { randNumber } from '@ngneat/falso';
 export class RatesFixture {
   static Generate(

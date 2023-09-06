@@ -14,10 +14,7 @@ import {
   Signal,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  LiveRateService,
-  RateSignalDataType,
-} from '@rps/buillion-frontend-core';
+import { LiveRateService, RateSignalDataType } from '@bf/services';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 export interface table8DataInterface {
   headerName: string;
