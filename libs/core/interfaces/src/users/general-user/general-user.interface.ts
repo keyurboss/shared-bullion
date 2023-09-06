@@ -1,4 +1,5 @@
 import { Opaque } from 'ts-essentials';
+import { IBaseUser } from '../base-user.interface';
 
 export type GeneralUserId = Opaque<string, 'GENERAL_USER_ID'>;
 export type DeviceId = Opaque<string, 'DEVICE_ID'>;
@@ -9,8 +10,7 @@ export enum DeviceType {
   BROWSER = 'BROWSER',
 }
 
-export interface IGeneralUserType {
-  id: GeneralUserId;
+export interface IGeneralUser extends IBaseUser<GeneralUserId> {
   randomPass: string;
   firstName: string;
   lastName: string;

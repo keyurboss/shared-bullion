@@ -10,10 +10,10 @@ export enum RateTypeKeys {
   open = 'open',
   close = 'close',
 }
-export type BaseSymbolePriceInterface = Record<RateTypeKeys, number>;
+export type BaseSymbolPriceInterface = Record<RateTypeKeys, number>;
 export const RateTypeKeysArray = Object.values(RateTypeKeys);
 
-export enum RateBaseSymboles {
+export enum RateBaseSymbols {
   GOLD = 'GOLD',
   GOLD_SPOT = 'GOLD_SPOT',
   GOLD_MCX = 'GOLD_MCX',
@@ -22,12 +22,9 @@ export enum RateBaseSymboles {
   SILVER_SPOT = 'SILVER_SPOT',
   INR = 'INR',
 }
-export const RateBaseSymbolesArray = Object.values(RateBaseSymboles);
+export const RateBaseSymbolsArray = Object.values(RateBaseSymbols);
 
-export type SymboleWiseRate = Record<
-  RateBaseSymboles,
-  BaseSymbolePriceInterface
->;
+export type SymbolWiseRate = Record<RateBaseSymbols, BaseSymbolPriceInterface>;
 
 export enum HighLowColorType {
   Red = 'Red',

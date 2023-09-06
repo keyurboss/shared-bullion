@@ -1,28 +1,28 @@
 import { Opaque } from 'ts-essentials';
 // import { JSONObjectKeyAndTypeValidator } from 'rps-jsonvalidator';
 // import { BooleanNumberCheckRegex } from '../core/Env.interface';
-import { RateBaseSymboles } from '../core/rates';
+import { RateBaseSymbols } from '../core/rates';
 import {
   CshVariableSnapshot,
   CalculatedOnPriceof,
 } from '../calc/calc.interface';
 
-export type SourceSymbole = RateBaseSymboles.GOLD | RateBaseSymboles.SILVER;
+export type SourceSymbole = RateBaseSymbols.GOLD | RateBaseSymbols.SILVER;
 export const SourceSymboleValues = [
-  RateBaseSymboles.GOLD,
-  RateBaseSymboles.SILVER,
+  RateBaseSymbols.GOLD,
+  RateBaseSymbols.SILVER,
 ];
 export type CaculationSymbole =
-  | RateBaseSymboles.GOLD
-  | RateBaseSymboles.SILVER
-  | RateBaseSymboles.GOLD_MCX
-  | RateBaseSymboles.SILVER_MCX;
+  | RateBaseSymbols.GOLD
+  | RateBaseSymbols.SILVER
+  | RateBaseSymbols.GOLD_MCX
+  | RateBaseSymbols.SILVER_MCX;
 
 export const CaculationSymboleValue = [
-  RateBaseSymboles.GOLD,
-  RateBaseSymboles.SILVER,
-  RateBaseSymboles.GOLD_MCX,
-  RateBaseSymboles.SILVER_MCX,
+  RateBaseSymbols.GOLD,
+  RateBaseSymbols.SILVER,
+  RateBaseSymbols.GOLD_MCX,
+  RateBaseSymbols.SILVER_MCX,
 ];
 
 export enum ProductShowLocation {

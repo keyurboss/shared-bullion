@@ -1,6 +1,6 @@
 import { Controller, Get, Inject, Post, Query } from '@nestjs/common';
 import { InvalidTokenDataError } from '@rps/bullion-interfaces';
-import { JwtService } from '@rps/bullion-server-core';
+import { JwtService } from '@bs/core';
 import { REFRESH_TOKEN_SERVICE } from '../../../config/service.token';
 import { GeneralUserIdentityRoot } from '../../../core/validator-roots/general-user-identity.root';
 import { GeneralUserInteractor } from '../../interactor/general-user/general-user.interactor';

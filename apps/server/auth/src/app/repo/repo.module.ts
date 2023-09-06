@@ -3,15 +3,15 @@ import {
   BullionSiteInfoRepoProvider,
   GeneralUserRepoProvider,
   GeneralUserReqRepoProvider,
-} from '@rps/buillion-server-repository';
+} from '@bs/repo';
 import { AuthServerAppModuleOptions } from '../../core/token.module';
 import {
-  FixturesModule,
+  FixturesMongoModule,
   MongoRepositoryLocalModule,
   MongoRepositoryProductionModule,
   RedisRepositoryLocalModule,
   RedisRepositoryProductionModule,
-} from '@rps/bullion-server-core';
+} from '@bs/core';
 import { resolve } from 'path';
 
 const repositoryPorvider = [
@@ -40,7 +40,7 @@ export class RepositoryModule {
           ...imports,
           MongoRepositoryLocalModule,
           RedisRepositoryLocalModule,
-          FixturesModule.forRoot(resolve(__dirname, 'assets', 'fixtures')),
+          FixturesMongoModule.forRoot(resolve(__dirname, 'assets', 'fixtures')),
         ];
         break;
       case 'production':

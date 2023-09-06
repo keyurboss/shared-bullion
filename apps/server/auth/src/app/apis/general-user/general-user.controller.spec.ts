@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { JwtService } from '@rps/bullion-server-core';
+import { JwtService } from '@bs/core';
 import { randomBytes } from 'crypto';
 import { REFRESH_TOKEN_SERVICE } from '../../../config/service.token';
 import { GeneralUserInteractor } from '../../interactor/general-user/general-user.interactor';
@@ -16,7 +16,7 @@ describe(GeneralUserController.name, () => {
   let controller: GeneralUserController;
   beforeAll(async () => {
     generalUserInteractorMock = {
-      findGeneralUserByid: jest.fn().mockResolvedValue(refreshTokenService),
+      findGeneralUserById: jest.fn().mockResolvedValue(refreshTokenService),
     };
 
     app = await Test.createTestingModule({

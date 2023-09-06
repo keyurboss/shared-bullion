@@ -1,7 +1,7 @@
 import { DynamicModule, Module, NestModule, Provider } from '@nestjs/common';
 
 import { AppEnvName } from '@rps/bullion-interfaces/core';
-import { LoggerModule } from '@rps/bullion-server-core';
+import { LoggerModule } from '@bs/core';
 import Joi from 'joi';
 import { EnvConfigModule } from '../config/env.config.module';
 import { defaultValidationSchema } from '../config/validation.schema';

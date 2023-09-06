@@ -1,0 +1,13 @@
+{
+  "name": "@bf/services",
+  "version": "0.0.1",
+  "dependencies": {},
+  "peerDependencies": {
+    "@bf/core": "*",
+    "@angular/core": "16.2.3",
+    "tslib": "^2.5.2",
+    "@ngneat/falso": "^6.4.0",
+    "@rps/bullion-interfaces": "*"
+  },
+  "devDependencies": {}
+}

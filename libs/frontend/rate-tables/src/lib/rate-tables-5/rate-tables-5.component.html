@@ -1,0 +1,77 @@
+<div class="body">
+  <div class="main_div" *ngFor="let item of table">
+    <div class="box">
+      <div class="box_header">
+        <h3 class="productname">{{ item.productName }}</h3>
+      </div>
+      <div class="box_footer">
+        <!-- *ngIf=" | async; let rate" -->
+        <div class="box_footer_uperitem">
+          <span
+            [class.rate_high]="
+              RateObser$[item.symbol]()['ask'].color === 'Green'
+            "
+            [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+            >{{
+              RateObser$[item.symbol]()['ask'].rate | number : '1.2-2'
+            }}</span
+          >
+        </div>
+        <div class="box_footer_loewritem">
+          {{ RateObser$[item.symbol]()['last-high'].rate | number : '1.2-2' }} /
+          {{ RateObser$[item.symbol]()['last-low'].rate | number : '1.2-2' }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="big rateTable" *ngFor="let item of table">
+    <div class="header">
+      <h3 class="productname">{{ item.productName }}</h3>
+    </div>
+    <div class="footer">
+      <div class="divi">
+        <div class="bidask">
+          <p class="para">BID</p>
+          <span
+            class="bidAskrate"
+            [class.rate_high]="
+              RateObser$[item.symbol]()['bid'].color === 'Green'
+            "
+            [class.rate_low]="RateObser$[item.symbol]()['bid'].color === 'Red'"
+          >
+            {{ RateObser$[item.symbol]()['bid'].rate | number : '1.2-2' }}</span
+          >
+        </div>
+      </div>
+      <div class="divi">
+        <div class="bidask">
+          <p class="para">ASK</p>
+          <span
+            class="bidAskrate"
+            [class.rate_high]="
+              RateObser$[item.symbol]()['ask'].color === 'Green'
+            "
+            [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+            >{{ RateObser$[item.symbol]()['ask'].rate | number : '1.2-2' }}
+          </span>
+        </div>
+      </div>
+      <div class="divi">
+        <div class="highlow">
+          <span class="highLowrate"
+            >H -
+            {{
+              RateObser$[item.symbol]()['last-high'].rate | number : '1.2-2'
+            }}</span
+          ><span class="highLowrate"
+            >L -
+            {{
+              RateObser$[item.symbol]()['last-low'].rate | number : '1.2-2'
+            }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

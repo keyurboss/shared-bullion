@@ -1,0 +1,35 @@
+<div class="main_container">
+  <div class="type_1" *ngFor="let item of table">
+    <div class="type_1_container flex_center">
+      <div class="product">
+        <h2>{{ item.productName }}</h2>
+      </div>
+      <div class="rate bid flex_center">
+        <h4
+          class="flex_center"
+          [class.rate_high]="RateObser$[item.symbol]()['bid'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['bid'].color === 'Red'"
+        >
+          {{ RateObser$[item.symbol]()['bid'].rate | number : '1.2-2' }}
+        </h4>
+        <h6 class="flex_center">
+          <span class="half"> HI&nbsp;&nbsp;:&nbsp;&nbsp; </span
+          >{{ RateObser$[item.symbol]()['last-high'].rate | number : '1.2-2' }}
+        </h6>
+      </div>
+      <div class="rate ask flex_center">
+        <h4
+          class="flex_center"
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+        >
+          {{ RateObser$[item.symbol]()['ask'].rate | number : '1.2-2' }}
+        </h4>
+        <h6 class="flex_center">
+          <span class="half"> LO&nbsp;&nbsp;:&nbsp;&nbsp; </span>
+          {{ RateObser$[item.symbol]()['last-low'].rate | number : '1.2-2' }}
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,153 @@
+<div class="main_div">
+  <div class="table">
+    <!-- header of table -->
+    <div
+      class="header_1"
+      style="
+        background-color: var(--header-back-color);
+        color: var(--header-font-color);
+        border: 1px solid #543e12;
+      "
+    >
+      <h1 class="product_group_header_1">{{ Table_title.Header }}</h1>
+      >
+      <div class="product_group_left_header_1">{{ Table_title.sell }}</div>
+    </div>
+    <!-- body -->
+    <div class="product_1">
+      <div class="two_name">
+        <div class="name_01" text-align="left">{{ Table_title.gold }}</div>
+
+        <div class="time">Time-05:38:48 AM</div>
+      </div>
+      <div class="price">
+        <span
+          class="rate"
+          [class.rate_high]="GOLD()['ask'].color === 'Green'"
+          [class.rate_low]="GOLD()['ask'].color === 'Red'"
+        >
+          {{ GOLD()['ask'].rate }}
+        </span>
+      </div>
+    </div>
+    <div class="product_1 Table" *ngFor="let item of table">
+      <div class="two_name">
+        <div
+          class="productname"
+          text-align="left"
+          *ngFor="let child of item.productname"
+        >
+          {{ child.name }}
+        </div>
+
+        <div class="time">Time-05:38:48 AM</div>
+      </div>
+
+      <div class="price">
+        <span
+          class="rate"
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+        >
+          <!-- *ngIf=" | async; let rate" -->
+          {{ RateObser$[item.symbol]()['ask'].rate }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="table">
+    <!-- header of tabel -->
+    <div
+      class="header_2"
+      style="
+        background-color: var(--header-back-color);
+        color: var(--header-font-color);
+        border: 1px solid #543e12;
+      "
+    >
+      <div class="product_group_header_2">{{ Table_title.Header }}</div>
+      <div class="product_group_middle_header_2">{{ Table_title.buy }}</div>
+      <div class="product_group_left_header_2">{{ Table_title.sell }}</div>
+    </div>
+    <!-- body -->
+    <div class="product_2">
+      <div class="two_name">
+        <div class="name_02" text-align="left">{{ Table_title.gold }}</div>
+        <div class="time">Time-05:38:48 AM</div>
+      </div>
+
+      <div class="buy_name">
+        <div class="price">
+          <span
+            class="rate"
+            [class.rate_high]="GOLD()['ask'].color === 'Green'"
+            [class.rate_low]="GOLD()['ask'].color === 'Red'"
+          >
+            {{ GOLD()['ask'].rate }}
+          </span>
+        </div>
+        <div class="high_low_price_buy">H-{{ GOLD()['last-high'].rate }}</div>
+      </div>
+
+      <div class="buy_name">
+        <div class="price">
+          <span
+            class="rate"
+            [class.rate_high]="GOLD()['bid'].color === 'Green'"
+            [class.rate_low]="GOLD()['bid'].color === 'Red'"
+          >
+            {{ GOLD()['bid'].rate }}
+          </span>
+        </div>
+        <div class="high_low_price_sell">H-{{ GOLD()['last-high'].rate }}</div>
+      </div>
+    </div>
+    <div class="product_2" *ngFor="let item of table">
+      <div class="two_name">
+        <div
+          class="name_2"
+          text-align="left"
+          *ngFor="let child of item.productname"
+        >
+          {{ child.name }}
+        </div>
+        <div class="time">Time-05:38:48 AM</div>
+      </div>
+
+      <div class="buy_name">
+        <div class="price">
+          <span
+            class="rate price_buy"
+            [class.rate_high]="
+              RateObser$[item.symbol]()['ask'].color === 'Green'
+            "
+            [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+          >
+            {{ RateObser$[item.symbol]()['ask'].rate }}
+          </span>
+        </div>
+        <div class="high_low_price_buy">
+          H-{{ RateObser$[item.symbol]()['last-high'].rate }}
+        </div>
+      </div>
+
+      <div class="two_name">
+        <div class="price">
+          <span
+            class="rate price_sell"
+            [class.rate_high]="
+              RateObser$[item.symbol]()['bid'].color === 'Green'
+            "
+            [class.rate_low]="RateObser$[item.symbol]()['bid'].color === 'Red'"
+          >
+            {{ RateObser$[item.symbol]()['bid'].rate }}
+          </span>
+        </div>
+        <div class="high_low_price_sell">
+          H-{{ RateObser$[item.symbol]()['last-high'].rate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

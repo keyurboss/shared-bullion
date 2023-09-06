@@ -1,0 +1,11 @@
+{
+  "name": "@bf/core",
+  "version": "0.0.1",
+  "dependencies": {
+    "@rps/bullion-interfaces": "*"
+  },
+  "peerDependencies": {
+    "@angular/core": "16.2.3",
+    "tslib": "^2.5.2"
+  }
+}

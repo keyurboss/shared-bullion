@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="table" *ngFor="let item of table">
+    <div class="header">
+      <span class="name">{{ item.headerName }}</span>
+    </div>
+    <div class="body">
+      <div class="details" *ngFor="let info of item.details">
+        <h2
+          style="
+            font-size: var(--product-name-font-size);
+            padding: 5px;
+            margin: 0px;
+          "
+        >
+          {{ info.Name }}
+        </h2>
+        <!-- *ngIf=" | async; let rate" -->
+        <h3
+          style="
+            font-size: var(--product-value-font-size);
+            padding: 10px 0 0;
+            margin: 0px;
+            font-weight: 800;
+          "
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+        >
+          {{ RateObser$[item.symbol]()['ask'].rate }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

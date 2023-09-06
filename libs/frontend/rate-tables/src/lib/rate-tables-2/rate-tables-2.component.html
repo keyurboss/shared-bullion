@@ -1,0 +1,57 @@
+<div class="main-div" *ngFor="let item of table">
+  <div class="header">
+    <div class="gold">{{ item.productName }}</div>
+  </div>
+  <div class="Data">
+    <div class="product_data">
+      <div class="product_data_column">
+        <h3>{{ item.BID }}</h3>
+        <p
+          [class.rate_high]="RateObser$[item.symbol]()['bid'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['bid'].color === 'Red'"
+        >
+          {{ RateObser$[item.symbol]()['bid'].rate }}
+        </p>
+      </div>
+      <div class="product_data_column">
+        <h3>{{ item.ASK }}</h3>
+        <p
+          [class.rate_high]="RateObser$[item.symbol]()['ask'].color === 'Green'"
+          [class.rate_low]="RateObser$[item.symbol]()['ask'].color === 'Red'"
+        >
+          {{ RateObser$[item.symbol]()['ask'].rate }}
+        </p>
+      </div>
+    </div>
+    <div class="product_data">
+      <div class="product_data_column">
+        <h3 class="high">{{ item.HIGH }}</h3>
+        <span class="none">/</span>
+        <p
+          [class.rate_high]="
+            RateObser$[item.symbol]()['last-high'].color === 'Green'
+          "
+          [class.rate_low]="
+            RateObser$[item.symbol]()['last-high'].color === 'Red'
+          "
+        >
+          {{ RateObser$[item.symbol]()['last-high'].rate }}
+        </p>
+      </div>
+      <div class="product_data_column">
+        <h3 class="low">{{ item.LOW }}</h3>
+        <span class="none">/</span>
+        <p
+          [class.rate_high]="
+            RateObser$[item.symbol]()['last-low'].color === 'Green'
+          "
+          [class.rate_low]="
+            RateObser$[item.symbol]()['last-low'].color === 'Red'
+          "
+        >
+          {{ RateObser$[item.symbol]()['last-low'].rate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

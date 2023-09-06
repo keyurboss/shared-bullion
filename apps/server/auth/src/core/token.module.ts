@@ -1,7 +1,7 @@
 import { Global, Module, Provider } from '@nestjs/common';
 
 import { AppEnvName } from '@rps/bullion-interfaces/core';
-import { JwtService } from '@rps/bullion-server-core';
+import { JwtService } from '@bs/core';
 import { AppConfig } from '../config/app.config';
 import {
   ACCESS_TOKEN_SERVICE,
