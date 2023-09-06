@@ -18,7 +18,7 @@ export class DemoLiveRateService extends LiveRateService {
   get timeout() {
     return (
       randNumber({
-        max: 2,
+        max: 1,
         min: 0.2,
         precision: 0.01,
       }) * 1000

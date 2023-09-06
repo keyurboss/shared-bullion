@@ -1,5 +1,9 @@
 import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 interface table10 {
   name: string;
   rate: string;
@@ -9,6 +13,7 @@ interface table10 {
 @Component({
   selector: 'rps-bull-rate-tables-10',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, NgFor, AsyncPipe, NgIf, JsonPipe],
   encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-10.component.html',

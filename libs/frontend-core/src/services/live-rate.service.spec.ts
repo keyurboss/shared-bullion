@@ -57,12 +57,12 @@ describe('ABS LiveRateService', () => {
           randNumber<RandomNumberOptions>({ length: 1 }) + (GOLD?.ask ?? 0);
         // toObservable(service.RateObser$.GOLD).subscribe(console.log);
         const next1 = firstValueFrom(
-          toObservable(service.RateObser$.GOLD, {
+          toObservable(service.RateSignal$.GOLD, {
             injector: TestBed.inject(Injector),
           }).pipe(skip(1)),
         );
         const next2 = firstValueFrom(
-          toObservable(service.RateObser$.GOLD, {
+          toObservable(service.RateSignal$.GOLD, {
             injector: TestBed.inject(Injector),
           }).pipe(skip(2)),
         );
@@ -102,12 +102,12 @@ describe('ABS LiveRateService', () => {
           (GOLD?.ask ?? 0) - randNumber<RandomNumberOptions>({ length: 1 });
         // toObservable(service.RateObser$.GOLD).subscribe(console.log);
         const next1 = firstValueFrom(
-          toObservable(service.RateObser$.GOLD, {
+          toObservable(service.RateSignal$.GOLD, {
             injector: TestBed.inject(Injector),
           }).pipe(skip(1)),
         );
         const next2 = firstValueFrom(
-          toObservable(service.RateObser$.GOLD, {
+          toObservable(service.RateSignal$.GOLD, {
             injector: TestBed.inject(Injector),
           }).pipe(skip(2)),
         );

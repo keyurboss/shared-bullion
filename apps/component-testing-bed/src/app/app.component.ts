@@ -9,7 +9,9 @@ import {
   RateTables2Component,
   RateTables6Component,
   RateTables7Component,
+  table11DataInterface,
 } from '@rps/bullion-rate-tables';
+
 @Component({
   standalone: true,
   imports: [
@@ -41,6 +43,22 @@ export class AppComponent {
       ASK: 'ASK',
       HIGH: 'High',
       LOW: 'Low',
+    },
+  ];
+
+  table11: table11DataInterface[] = [
+    {
+      //  ASK:"ASK",
+      // BID: "BID",
+      // HIGH:"HIGH",
+      // LOW:"LOW",
+      ProductName: [
+        {
+          name: 'GOLD',
+        },
+      ],
+      // productName:"GOLD",
+      symbol: RateBaseSymbols.GOLD,
     },
   ];
 

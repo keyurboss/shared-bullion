@@ -4,12 +4,13 @@ import {
   Component,
   Inject,
   Input,
+  ChangeDetectionStrategy,
   Signal,
   ViewEncapsulation,
 } from '@angular/core';
 import {
   LiveRateService,
-  RateObserDataType,
+  RateSignalDataType,
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 
@@ -21,13 +22,15 @@ export interface IRateTable7Data {
 @Component({
   selector: 'rps-bull-rate-tables-7',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
   imports: [AsyncPipe, JsonPipe, NgFor, NgIf],
   encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-7.component.html',
   styleUrls: ['./rate-tables-7.component.scss'],
 })
 export class RateTables7Component {
-  GOLD: Signal<RateObserDataType>;
+  GOLD: Signal<RateSignalDataType>;
   // SILVER: Observable<RateObserDataType>;
 
   // silverData = [
@@ -61,16 +64,16 @@ export class RateTables7Component {
 
   public set table(value: IRateTable7Data[]) {
     value.forEach(({ symbol }) => {
-      this.RateObser$[symbol] = this.rateObservar.RateObser$[symbol];
+      this.RateObser$[symbol] = this.rateObservar.RateSignal$[symbol];
     });
     this._table = value;
   }
 
-  RateObser$: Record<RateBaseSymbols, Signal<RateObserDataType>> = {} as never;
+  RateObser$: Record<RateBaseSymbols, Signal<RateSignalDataType>> = {} as never;
 
   constructor(
     @Inject(LiveRateService) private readonly rateObservar: LiveRateService,
   ) {
-    this.GOLD = rateObservar.RateObser$.GOLD_SPOT;
+    this.GOLD = rateObservar.RateSignal$.GOLD_SPOT;
   }
 }

@@ -1,38 +1,38 @@
-.middle {
-  margin-top: 15px;
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
-.middle_table {
-  padding: 5px;
-}
-.warning {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-.warning_header {
-  bottom: 5%;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  text-align: center;
+:host {
+  // header
+  --header-back-color: #bc9039;
+  --header-font-color: #ffffff;
+  --header-border-color: #bc9039;
+  --header-font-size: 22px;
+  // product
+  --product-name-font-size: 16px;
+  --product-value-font-size: 20px;
+  // data
+  --data-back-color: #ffffff;
+  --data-font-color: #ffffff;
+  --data-border-color: #000;
+  // rate
+  --rate-high-back-color: #00ff40;
+  --rate-low-back-color: #ff0000;
+  --rate-high-font-color: #ffffff;
+  --rate-low-font-color: #ffffff;
 
-  h4 {
-    margin: 0;
-    width: 100%;
-    font-weight: 600;
-    color: #41241c;
+  --primary-light: #fce975;
+  --font-family: Roboto, Helvetica Neue, sans-serif;
+  --background: transparent;
+}
+
+.middle {
+  &_table {
+    background: var(--background);
+    color: var(--header-font-color);
+    font-family: var(--font-family);
+    font-size: var(--product-name-font-size);
+    padding: 5px;
   }
 }
 .table {
+  border: 1px;
   border-bottom: 1px solid #41241c;
   border-left: 1px solid #41241c;
   border-right: 1px solid #41241c;
@@ -52,16 +52,7 @@
   background: #41241c;
   color: #fff;
 }
-.product_group_header {
-  flex: 70;
-  padding: 0 0 0 8px;
-  border-right: 1px solid #41241c;
-}
-.sell {
-  text-align: center;
-  flex: 30;
-}
-.product1 {
+.product {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -69,28 +60,39 @@
   font-size: 13px;
   color: #41241c;
   font-weight: 700;
+  &_group_header {
+    flex: 70;
+    padding: 0 0 0 8px;
+    border-right: 1px solid #41241c;
+  }
+  &_name {
+    flex: 70;
+    padding: 8px;
+    border-right: 1px solid #41241c;
+  }
+  &_price {
+    text-align: center;
+    flex: 30;
+    display: flex;
+    justify-content: center;
+  }
 }
-.product {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 13px;
-  color: #41241c;
-  font-weight: 700;
-}
-.product_name {
-  flex: 70;
-  padding: 8px;
-  border-right: 1px solid #41241c;
-}
-.product_price {
+.sell {
   text-align: center;
   flex: 30;
-  display: flex;
-  justify-content: center;
 }
 .rate_div {
   min-width: 70px;
   border-radius: 8px;
   padding: 5px;
+}
+.rate_high {
+  color: var(--rate-high-font-color) !important;
+  background-color: var(--rate-high-back-color) !important;
+  border-radius: 5px;
+}
+.rate_low {
+  color: var(--rate-low-font-color) !important;
+  background-color: var(--rate-low-back-color) !important;
+  border-radius: 5px;
 }

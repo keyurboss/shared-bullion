@@ -9,12 +9,13 @@ import {
   Component,
   Inject,
   Input,
+  ChangeDetectionStrategy,
   Signal,
   ViewEncapsulation,
 } from '@angular/core';
 import {
   LiveRateService,
-  RateObserDataType,
+  RateSignalDataType,
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 export interface table5DataInterface {
@@ -25,6 +26,8 @@ export interface table5DataInterface {
 @Component({
   selector: 'rps-bull-rate-tables-5',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
   imports: [AsyncPipe, JsonPipe, NgFor, NgIf, CommonModule],
   encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-5.component.html',
@@ -40,12 +43,12 @@ export class RateTables5Component {
 
   public set table(value: table5DataInterface[]) {
     value.forEach(({ symbol }) => {
-      this.RateObser$[symbol] = this.rateObservar.RateObser$[symbol];
+      this.RateObser$[symbol] = this.rateObservar.RateSignal$[symbol];
     });
     this._table = value;
   }
 
-  RateObser$: Record<RateBaseSymbols, Signal<RateObserDataType>> = {} as never;
+  RateObser$: Record<RateBaseSymbols, Signal<RateSignalDataType>> = {} as never;
 
   constructor(
     @Inject(LiveRateService) private readonly rateObservar: LiveRateService,

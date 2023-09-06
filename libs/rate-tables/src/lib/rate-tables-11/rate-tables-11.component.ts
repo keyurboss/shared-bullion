@@ -1,5 +1,6 @@
 import { AsyncPipe, JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   Inject,
   Input,
@@ -8,7 +9,7 @@ import {
 } from '@angular/core';
 import {
   LiveRateService,
-  RateObserDataType,
+  RateSignalDataType,
 } from '@rps/buillion-frontend-core';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 export interface table11DataInterface {
@@ -18,6 +19,7 @@ export interface table11DataInterface {
 @Component({
   selector: 'rps-bull-rate-tables-11',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, NgFor, AsyncPipe, NgIf, JsonPipe],
   encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './rate-tables-11.component.html',
@@ -26,21 +28,22 @@ export interface table11DataInterface {
 export class RateTables11Component {
   @Input() Header = '';
   @Input() sell = '';
-  @Input()
+
   public _table: table11DataInterface[] = [];
 
+  @Input()
   public get table(): table11DataInterface[] {
     return this._table;
   }
 
   public set table(value: table11DataInterface[]) {
     value.forEach(({ symbol }) => {
-      this.RateObser$[symbol] = this.rateObservar.RateObser$[symbol];
+      this.RateObser$[symbol] = this.rateObservar.RateSignal$[symbol];
     });
     this._table = value;
   }
 
-  RateObser$: Record<RateBaseSymbols, Signal<RateObserDataType>> = {} as never;
+  RateObser$: Record<RateBaseSymbols, Signal<RateSignalDataType>> = {} as never;
 
   constructor(
     @Inject(LiveRateService) private readonly rateObservar: LiveRateService,
