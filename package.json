@@ -95,5 +95,10 @@
     "uuid": "^9.0.0",
     "zone.js": "~0.13.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn nx affected:lint --fix && pretty-quick --staged"
+    }
+  },
   "packageManager": "yarn@3.6.1"
 }
