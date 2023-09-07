@@ -7,7 +7,8 @@
     "postinstall": "husky install",
     "test:local": "yarn nx affected --target=lint,test,build,test-integration --base=origin/main --parallel=6",
     "run:all": "yarn nx run-many --target=lint,test,build,test-integration --parallel=6",
-    "test": "nx test"
+    "test": "nx test",
+    "wba": "webpack-bundle-analyzer"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "16.2.1",
@@ -58,7 +59,8 @@
     "ts-essentials": "^9.3.2",
     "ts-jest": "29.1.0",
     "ts-node": "10.9.1",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "webpack-bundle-analyzer": "^4.9.1"
   },
   "dependencies": {
     "@angular/animations": "16.2.3",

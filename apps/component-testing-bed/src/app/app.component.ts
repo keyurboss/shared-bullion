@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Env } from '@bf/core';
-import { DemoLiveRateService } from '@bf/services/mock';
-import { LiveRateService } from '@bf/services/services';
+// import { DemoLiveRateService } from '@bf/services/mock';
+import { LiveRateService } from '@bf/services';
 import { RateBaseSymbols } from '@rps/bullion-interfaces';
 import {
   RateTables11Component,
@@ -28,7 +28,7 @@ import {
   providers: [
     {
       provide: LiveRateService,
-      useClass: DemoLiveRateService,
+      useValue: {},
     },
     {
       provide: Env,
