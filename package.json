@@ -80,20 +80,20 @@
     "@ngneat/falso": "^6.4.0",
     "@nx/angular": "16.8.0",
     "@rps/angular-nav-bars": "^1.0.3",
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
-    "mongodb": "^5.6.0",
-    "mongodb-memory-server": "^8.13.0",
-    "redis": "^4.6.7",
+    "mongodb": "^6.0.0",
+    "mongodb-memory-server": "^8.15.1",
+    "redis": "^4.6.8",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.1",
     "tslib": "^2.5.2",
     "uuid": "^9.0.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.13.1"
   },
   "packageManager": "yarn@3.6.1"
 }
