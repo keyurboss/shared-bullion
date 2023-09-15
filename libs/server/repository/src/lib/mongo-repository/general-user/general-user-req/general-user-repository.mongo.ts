@@ -1,5 +1,9 @@
 import { Inject, OnModuleInit, Optional } from '@nestjs/common';
-import { GeneralUserId, GeneralUserReqId } from '@rps/bullion-interfaces';
+import {
+  BullionId,
+  GeneralUserId,
+  GeneralUserReqId,
+} from '@rps/bullion-interfaces';
 import { FixtureMongoService, LoggerFactory, MongoDbService } from '@bs/core';
 import { GeneralUserOptions, GeneralUserReqRoot } from '@bs/validator-roots';
 import {
@@ -50,9 +54,11 @@ export class GeneralUserReqMongoRepository
 
   override async findOneByGeneralUserId(
     id: GeneralUserId,
+    bullionId: BullionId,
   ): Promise<GeneralUserReqRoot | undefined> {
     const entity = await this.collection.findOne({
       generalUserId: id,
+      bullionId,
     });
     return typeof entity !== 'undefined' && entity !== null
       ? GeneralUserReqRoot.fromJson(entity)

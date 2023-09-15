@@ -24,7 +24,6 @@ import {
   DeviceType,
   GeneralUserAuthStatus,
   GeneralUserId,
-  GeneralUserReqId,
   GstNumber,
 } from '@rps/bullion-interfaces';
 import { v4 } from 'uuid';
@@ -70,16 +69,21 @@ export class GeneralUserInteractor {
     await this.generalUserRepo.save(user);
     const userReq = GeneralUserReqRoot.from({
       bullionId: bullion.id,
-      createdAt: new Date(),
       generalUserId: user.id,
-      id: user.id.toString() as GeneralUserReqId,
-      modifiedAt: new Date(),
+      id: GeneralUserReqRoot.generateID(),
       status: bullion.generalUserInfo.autoApprove
         ? GeneralUserAuthStatus.Authorized
         : GeneralUserAuthStatus.Requested,
+      createdAt: new Date(),
+      modifiedAt: new Date(),
     });
     await this.generalUserReqRepository.save(userReq);
   }
 
-  // getApprovalStatus(generalUserId) {}
+  getApprovalStatus(generalUserId: GeneralUserId, bullionId: BullionId) {
+    return this.generalUserReqRepository.findOneByGeneralUserIdOrFail(
+      generalUserId,
+      bullionId,
+    );
+  }
 }

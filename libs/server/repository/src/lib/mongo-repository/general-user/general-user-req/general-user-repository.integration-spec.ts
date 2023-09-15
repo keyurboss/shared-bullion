@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { randUuid } from '@ngneat/falso';
 import {
+  BullionId,
   EntityNotFoundError,
   GeneralUserId,
   GeneralUserReqId,
@@ -93,6 +94,7 @@ describe(GeneralUserReqRepository.name, () => {
         it('returns undefined', async () => {
           const result = await generalUserReqRepository.findOneByGeneralUserId(
             randUuid() as GeneralUserId,
+            randUuid() as BullionId,
           );
           return expect(result).toBe(undefined);
         });
@@ -101,10 +103,11 @@ describe(GeneralUserReqRepository.name, () => {
     describe(
       GeneralUserReqMongoRepository.prototype.findOneByGeneralUserIdOrFail.name,
       () => {
-        it('returns undefined', async () => {
+        it('returns error', async () => {
           const resultPromise =
             generalUserReqRepository.findOneByGeneralUserIdOrFail(
               randUuid() as GeneralUserId,
+              randUuid() as BullionId,
             );
           return expect(resultPromise).rejects.toBeInstanceOf(
             EntityNotFoundError,
@@ -127,15 +130,17 @@ describe(GeneralUserReqRepository.name, () => {
   describe('given prior state of GeneralUsers', () => {
     let entities: Array<GeneralUserReqRoot>;
     let id: GeneralUserReqId;
+    let bullionId: BullionId;
     let generalUserId: GeneralUserId;
 
     beforeEach(async () => {
       id = randUuid() as GeneralUserReqId;
+      bullionId = randUuid() as BullionId;
       generalUserId = randUuid() as GeneralUserId;
 
       entities = GeneralUserReqFixtureFactory.createMany([
-        { id },
-        { generalUserId },
+        { id, bullionId },
+        { generalUserId, bullionId },
       ]);
       await collection.insertMany(
         entities.map(
@@ -148,7 +153,7 @@ describe(GeneralUserReqRepository.name, () => {
     });
 
     describe(GeneralUserReqMongoRepository.prototype.find.name, () => {
-      it('returns with GeneralUser Intance', async () => {
+      it('returns with GeneralUser Instance', async () => {
         const result = await generalUserReqRepository.find({
           id,
         });
@@ -182,10 +187,11 @@ describe(GeneralUserReqRepository.name, () => {
         it('returns General User Req Instance,With GeneralUSerID', async () => {
           const result = await generalUserReqRepository.findOneByGeneralUserId(
             generalUserId,
+            bullionId,
           );
           expect(result).toBeInstanceOf(GeneralUserReqRoot);
           expect(result).toStrictEqual(
-            expect.objectContaining({ generalUserId }),
+            expect.objectContaining({ generalUserId, bullionId }),
           );
         });
       },
@@ -197,10 +203,11 @@ describe(GeneralUserReqRepository.name, () => {
           const result =
             await generalUserReqRepository.findOneByGeneralUserIdOrFail(
               generalUserId,
+              bullionId,
             );
           expect(result).toBeInstanceOf(GeneralUserReqRoot);
           expect(result).toStrictEqual(
-            expect.objectContaining({ generalUserId }),
+            expect.objectContaining({ generalUserId, bullionId }),
           );
         });
       },
