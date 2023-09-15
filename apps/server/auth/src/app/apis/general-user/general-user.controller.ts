@@ -1,6 +1,14 @@
-import { Controller, Get, Inject, Post, Query } from '@nestjs/common';
-import { InvalidTokenDataError } from '@rps/bullion-interfaces';
 import { JwtService } from '@bs/core';
+import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
+import {
+  CreateGeneralUserRequestBody,
+  CreateGeneralUserRequestResponse,
+  GetGeneralUserApprovalStatusBody,
+  GetGeneralUserApprovalStatusResponse,
+  InvalidTokenDataError,
+  RegisterNewGeneralUserBody,
+  RegisterNewGeneralUserResponse,
+} from '@rps/bullion-interfaces';
 import { REFRESH_TOKEN_SERVICE } from '../../../config/service.token';
 import { GeneralUserIdentityRoot } from '../../../core/validator-roots/general-user-identity.root';
 import { GeneralUserInteractor } from '../../interactor/general-user/general-user.interactor';
@@ -14,8 +22,35 @@ export class GeneralUserController {
   ) {}
 
   @Post('register')
-  async RegisterNewGeneralUser() {
-    // return this.generalUserInteractor.registerNewGeneralUser();
+  async RegisterNewGeneralUser(
+    @Body() body: RegisterNewGeneralUserBody,
+  ): Promise<RegisterNewGeneralUserResponse> {
+    return this.generalUserInteractor.registerNewUser(
+      body.bullionId,
+      body.user,
+    );
+  }
+
+  @Post('create-new-request')
+  async CreateGeneralUserRequest(
+    @Body() body: CreateGeneralUserRequestBody,
+  ): Promise<CreateGeneralUserRequestResponse> {
+    const user = await this.GetGeneralUserDetailsByToken(body.token);
+    return this.generalUserInteractor.sendRequestForApproval(
+      body.bullionId,
+      user,
+    );
+  }
+
+  @Post('get-approval-status')
+  async GetGeneralUserApprovalStatus(
+    @Body() body: GetGeneralUserApprovalStatusBody,
+  ): Promise<GetGeneralUserApprovalStatusResponse> {
+    const user = await this.GetGeneralUserDetailsByToken(body.token);
+    return this.generalUserInteractor.getApprovalStatusAndTokens(
+      user.id,
+      body.bullionId,
+    );
   }
 
   @Get('my-details')
