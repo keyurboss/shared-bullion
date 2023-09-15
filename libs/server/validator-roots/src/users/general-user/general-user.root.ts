@@ -2,8 +2,8 @@ import {
   DeviceId,
   DeviceType,
   GeneralUserId,
-  IGeneralUser,
   GstNumber,
+  IGeneralUser,
   UserRoles,
 } from '@rps/bullion-interfaces';
 import { Expose, plainToInstance } from 'class-transformer';
@@ -16,6 +16,11 @@ export type GeneralUserOptions = Omit<
   // eslint-disable-next-line @typescript-eslint/ban-types
   OmitProperties<GeneralUserRoot, Function>,
   'role'
+>;
+
+export type NewGeneralUserOptions = Omit<
+  Omit<Omit<GeneralUserOptions, 'id'>, 'createdAt'>,
+  'modifiedAt'
 >;
 
 export class GeneralUserRoot
@@ -108,5 +113,17 @@ export class GeneralUserRoot
     });
     entity.validate();
     return entity;
+  }
+
+  static newFrom(
+    options: NewGeneralUserOptions,
+    id = GeneralUserRoot.generateID(),
+  ) {
+    return GeneralUserRoot.from({
+      ...options,
+      id,
+      createdAt: new Date(),
+      modifiedAt: new Date(),
+    });
   }
 }

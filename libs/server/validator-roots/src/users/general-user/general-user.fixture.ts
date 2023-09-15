@@ -37,8 +37,6 @@ export class GeneralUserFixtureFactory {
     return GeneralUserRoot.from({
       contactNumber: randNumber(),
       randomPass: randPassword(),
-      // bullionId: randUuid() as BullionId,
-      // status: rand(Object.values(GeneralUserAuthStatus)),
       createdAt: randPastDate(),
       deviceId: randUuid() as DeviceId,
       deviceType: rand(Object.values(DeviceType)),
