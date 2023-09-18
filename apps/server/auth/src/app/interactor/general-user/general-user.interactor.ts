@@ -120,7 +120,7 @@ export class GeneralUserInteractor {
           id: user.id,
           createdAt: user.createdAt,
           modifiedAt: user.modifiedAt,
-        }),
+        }).toJson(),
       ),
     };
   }

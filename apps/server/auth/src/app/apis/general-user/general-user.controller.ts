@@ -1,4 +1,4 @@
-import { JwtService } from '@bs/core';
+import { InvalidBodyError, JwtService } from '@bs/core';
 import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
 import {
   CreateGeneralUserRequestBody,
@@ -8,6 +8,7 @@ import {
   InvalidTokenDataError,
   RegisterNewGeneralUserBody,
   RegisterNewGeneralUserResponse,
+  isNullish,
 } from '@rps/bullion-interfaces';
 import { REFRESH_TOKEN_SERVICE } from '../../../config/service.token';
 import { GeneralUserIdentityRoot } from '../../../core/validator-roots/general-user-identity.root';
@@ -55,6 +56,9 @@ export class GeneralUserController {
 
   @Get('my-details')
   async GetGeneralUserDetailsByToken(@Query('token') token: string) {
+    if (isNullish(token)) {
+      throw new InvalidBodyError('Please Pass Valid Token');
+    }
     const details =
       this.refreshToken.VerifyToken<GeneralUserIdentityRoot>(token);
     if (details.typeName !== GeneralUserIdentityRoot.name) {

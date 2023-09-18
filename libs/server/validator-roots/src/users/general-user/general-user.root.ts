@@ -119,7 +119,7 @@ export class GeneralUserRoot
     options: NewGeneralUserOptions,
     id = GeneralUserRoot.generateID(),
   ) {
-    return GeneralUserRoot.from({
+    return GeneralUserRoot.fromJson({
       ...options,
       id,
       createdAt: new Date(),

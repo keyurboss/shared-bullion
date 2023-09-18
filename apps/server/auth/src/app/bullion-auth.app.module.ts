@@ -1,7 +1,13 @@
-import { DynamicModule, Module, NestModule, Provider } from '@nestjs/common';
+import {
+  DynamicModule,
+  HttpStatus,
+  Module,
+  NestModule,
+  Provider,
+} from '@nestjs/common';
 
-import { AppEnvName } from '@rps/bullion-interfaces/core';
 import { LoggerModule } from '@bs/core';
+import { AppEnvName } from '@rps/bullion-interfaces/core';
 import Joi from 'joi';
 import { EnvConfigModule } from '../config/env.config.module';
 import { defaultValidationSchema } from '../config/validation.schema';
@@ -63,5 +69,38 @@ export class AuthServerAppModule implements NestModule {
     //   .apply(AuthMiddleware)
     //   .exclude('/graphql', '/health', '/build-info')
     //   .forRoutes('*');
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-duplicate-imports
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  HttpException,
+} from '@nestjs/common';
+import { Request, Response } from 'express';
+
+@Catch()
+export class HttpExceptionFilter implements ExceptionFilter {
+  catch(exception: HttpException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
+    let status = HttpStatus.INTERNAL_SERVER_ERROR;
+    let responseBody: unknown = {
+      statusCode: status,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+    };
+    if (exception instanceof HttpException) {
+      status = exception.getStatus();
+      responseBody = exception.getResponse();
+    }
+    response.status(status).json(responseBody);
+    // exception instanceof HttpException
+    // ? exception.getStatus()
+    // debugger;
+    // response.status(status).json();
   }
 }
