@@ -1,4 +1,5 @@
 import {
+  BullionId,
   EntityNotFoundError,
   GeneralUserId,
   GeneralUserReqId,
@@ -17,11 +18,13 @@ export abstract class GeneralUserReqRepository extends CommonRepository<
   override rootName: string = GeneralUserReqRoot.name;
   abstract findOneByGeneralUserId(
     id: GeneralUserId,
+    bullionId: BullionId,
   ): Promise<GeneralUserReqRoot | undefined>;
   async findOneByGeneralUserIdOrFail(
     id: GeneralUserId,
+    bullionId: BullionId,
   ): Promise<GeneralUserReqRoot> {
-    const entity = await this.findOneByGeneralUserId(id);
+    const entity = await this.findOneByGeneralUserId(id, bullionId);
 
     if (!entity) {
       throw new EntityNotFoundError({

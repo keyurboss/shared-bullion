@@ -3,5 +3,5 @@ export * from './calc';
 export * from './product';
 export * from './users';
 export * from './bullion';
-
+export * from './apis';
 export * from './utilities';

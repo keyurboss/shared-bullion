@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { randUuid } from '@ngneat/falso';
 import {
+  BullionId,
   DeviceId,
   GeneralUserId,
   GeneralUserReqId,
@@ -118,14 +119,17 @@ describe(GeneralUserReqRepository.name, () => {
     GeneralUserReqMongoRepository.prototype.findOneByGeneralUserId.name,
     () => {
       let id: GeneralUserId;
+      let bullionId: BullionId;
       beforeEach(() => {
         id = randUuid() as GeneralUserId;
-        generalUserReqRepository.findOneByGeneralUserId(id);
+        bullionId = randUuid() as BullionId;
+        generalUserReqRepository.findOneByGeneralUserId(id, bullionId);
       });
       it(`calls collection's findOne with id`, () => {
         expect(collectionMock.findOne).toBeCalledTimes(1);
         expect(collectionMock.findOne).toHaveBeenCalledWith({
           generalUserId: id,
+          bullionId,
         });
       });
     },

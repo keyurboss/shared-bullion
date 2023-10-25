@@ -7,7 +7,10 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { appEnvNameKey } from '@rps/bullion-interfaces';
 import { AppEnvName } from '@rps/bullion-interfaces/core';
-import { AuthServerAppModule } from './app/bullion-auth.app.module';
+import {
+  AuthServerAppModule,
+  HttpExceptionFilter,
+} from './app/bullion-auth.app.module';
 import { AppConfig } from './config/app.config';
 
 // async function bootstrap() {
@@ -32,6 +35,7 @@ async function bootstrap() {
   );
 
   const config = app.get(AppConfig);
+  app.useGlobalFilters(new HttpExceptionFilter());
   await app
     // .useGlobalPipes(
     //   new ValidationPipe({ transform: true, forbidUnknownValues: false })
