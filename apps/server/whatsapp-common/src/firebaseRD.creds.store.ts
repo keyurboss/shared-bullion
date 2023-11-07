@@ -8,48 +8,35 @@ import {
   initAuthCreds,
   proto,
 } from '@whiskeysockets/baileys';
-import { fireStore } from './firebase.app';
-export const useFireStoreAuthState = async (
+import { firebaseDb } from './firebase.app';
+export const useFireBaseRealTimeDatabaseStoreAuthState = async (
   collectionName: string,
   serverName: string,
 ): Promise<{ state: AuthenticationState; saveCreds: () => Promise<void> }> => {
-  const collection = fireStore.collection(collectionName);
-  //   collection.doc(serverName).set({})
-  setTimeout(() => {
-    writeData({ aasdsad: 'ASDASDasd' }, 'kkkkk.sasdasd');
-  });
+  const collection = firebaseDb.ref(collectionName).child(serverName);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const writeData = async (data: any, file: string) => {
     data = JSON.stringify(data, BufferJSON.replacer);
-    collection.doc(serverName).update(
-      {
-        [file]: data,
-      },
-      {
-        // exists:true
-        // merge:true
-      },
-    );
+    console.log('Writing data type ', typeof data);
+    console.log('Writing data  ', data);
+    collection.child(file).set(data);
     return;
   };
 
   const readData = async (file: string) => {
     try {
       console.log('Reading ', file);
-      const data = await collection.doc(serverName).get();
-      if (!data.exists) {
+      const data = await collection.child(file).get();
+      if (!data.exists()) {
         return null;
       }
-      const cc = data.data();
-      let finalRead = cc?.[file]
-        ? JSON.parse(cc?.[file], BufferJSON.reviver)
-        : null;
+      const cc = data.val();
+      let finalRead = JSON.parse(cc, BufferJSON.reviver);
       if (typeof finalRead === 'string') {
         finalRead = JSON.parse(finalRead, BufferJSON.reviver);
       }
-      // debugger
-      // console.log('final REad ', finalRead);
-      // console.log(typeof finalRead)
+      console.log('final REad ', finalRead);
+      console.log(typeof finalRead);
       return finalRead;
     } catch (error) {
       return null;
@@ -58,14 +45,7 @@ export const useFireStoreAuthState = async (
 
   const removeData = async (file: string) => {
     try {
-      await collection.doc(serverName).update(
-        {
-          [file]: null,
-        },
-        {
-          exists: true,
-        },
-      );
+      await collection.child(file).set(null);
     } catch {
       //
     }
