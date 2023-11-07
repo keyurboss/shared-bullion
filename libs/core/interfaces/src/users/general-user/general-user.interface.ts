@@ -11,9 +11,9 @@ export enum DeviceType {
 }
 
 export interface IGeneralUser extends IBaseUser<GeneralUserId> {
-  randomPass: string;
   firstName: string;
   lastName: string;
+  randomPass: string;
   firmName: string;
   contactNumber: number;
   gstNumber: GstNumber;

@@ -8,6 +8,7 @@ dist
 tmp
 /out-tsc
 install-state.gz
+firebase.config.json
 
 # dependencies
 node_modules

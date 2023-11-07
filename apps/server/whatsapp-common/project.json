@@ -1,0 +1,66 @@
+{
+  "name": "whatsapp-common-server",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/server/whatsapp-common/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/server/whatsapp-common",
+        "main": "apps/server/whatsapp-common/src/main.ts",
+        "tsConfig": "apps/server/whatsapp-common/tsconfig.app.json",
+        "assets": ["apps/server/whatsapp-common/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/server/whatsapp-common/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "externalDependencies": "none"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "whatsapp-common-server:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "whatsapp-common-server:build:development"
+        },
+        "production": {
+          "buildTarget": "whatsapp-common-server:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/server/whatsapp-common/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/server/whatsapp-common/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
