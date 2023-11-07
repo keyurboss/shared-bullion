@@ -1,24 +1,22 @@
-import firebaseConfig from './assets/firebase.config.json';
-import makeWASocket, {
-  DisconnectReason,
-  useMultiFileAuthState,
-} from '@whiskeysockets/baileys';
+/* eslint-disable no-console */
+// eslint-disable-next-line unused-imports/no-unused-imports
 import { Boom } from '@hapi/boom';
-import * as admin from 'firebase-admin';
+import makeWASocket, { DisconnectReason } from '@whiskeysockets/baileys';
+import _generalConfig from './assets/general.config.json';
+import { useFireStoreAuthState } from './firestore.creds.store';
 
-const firebaseApp = admin.initializeApp({
-  credential: admin.credential.cert({
-    clientEmail: firebaseConfig.client_email,
-    privateKey: firebaseConfig.private_key,
-    projectId: firebaseConfig.project_id,
-  }),
-  databaseURL: firebaseConfig.database_url,
-});
+const ServerConfig = {
+  whatsappLoggedIn: false,
+  dbReadStarted: false,
+};
 
-const firebaseDb = firebaseApp.database();
+console.log(ServerConfig);
 
 async function connectToWhatsApp() {
-  const { state, saveCreds } = await useMultiFileAuthState('auth');
+  const { state, saveCreds } = await useFireStoreAuthState(
+    _generalConfig.storeCredCollectionName,
+    _generalConfig.serverName,
+  );
   const sock = makeWASocket({
     auth: state,
     // logger: pin({ level: 'debug' }),
@@ -30,11 +28,11 @@ async function connectToWhatsApp() {
     const { connection, lastDisconnect } = update;
     if (connection === 'close') {
       const shouldReconnect =
-        (lastDisconnect.error as Boom)?.output?.statusCode !==
+        (lastDisconnect?.error as Boom)?.output?.statusCode !==
         DisconnectReason.loggedOut;
       console.log(
         'connection closed due to ',
-        lastDisconnect.error,
+        lastDisconnect?.error,
         ', reconnecting ',
         shouldReconnect,
       );
@@ -44,16 +42,11 @@ async function connectToWhatsApp() {
       }
     } else if (connection === 'open') {
       console.log('opened connection');
+    } else {
+      console.log(connection);
     }
   });
-  sock.ev.on('messages.upsert', (m) => {
-    console.log(JSON.stringify(m, undefined, 2));
-
-    console.log('replying to', m.messages[0].key.remoteJid);
-    await sock.sendMessage(m.messages[0].key.remoteJid!, {
-      text: 'Hello there!',
-    });
-  });
+  // sock.ev.on('co')
 }
 // run in main file
 connectToWhatsApp();

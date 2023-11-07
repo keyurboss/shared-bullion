@@ -90,6 +90,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^6.0.0",
     "mongodb-memory-server": "^8.15.1",
+    "qrcode-terminal": "^0.12.0",
     "redis": "^4.6.8",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.1",
