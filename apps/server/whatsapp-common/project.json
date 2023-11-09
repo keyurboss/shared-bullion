@@ -20,9 +20,7 @@
       },
       "configurations": {
         "development": {},
-        "production": {
-          "externalDependencies": "none"
-        }
+        "production": {}
       }
     },
     "serve": {
@@ -59,6 +57,17 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "pack": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/apps/server/whatsapp-common"],
+      "options": {
+        "commands": [
+          "npx nx run whatsapp-common-server:build:production",
+          "node pack.js --project=server/whatsapp-common"
+        ],
+        "parallel": false
       }
     }
   },

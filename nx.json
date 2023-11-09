@@ -12,6 +12,7 @@
           "lint",
           "test",
           "e2e",
+          "pack",
           "test-integration"
         ],
         "accessToken": "M2QxNmM3NGQtOTRhMi00YjIwLWI2N2ItMTcwMjYyZDU3OTcwfHJlYWQtd3JpdGU="

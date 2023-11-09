@@ -6494,6 +6494,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/ncc@npm:^0.38.1":
+  version: 0.38.1
+  resolution: "@vercel/ncc@npm:0.38.1"
+  dependencies:
+    node-gyp: "npm:latest"
+  bin:
+    ncc: dist/ncc/cli.js
+  checksum: 2ed9dff34ba2e7c2ba7113ed075effd023549d5041d355a367f5bf749b20916f68d2adad6737f7a2d03f0d92237f948ce8dfbc9429bdf3febc18d4fa5159d9b4
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-basic-ssl@npm:1.0.1":
   version: 1.0.1
   resolution: "@vitejs/plugin-basic-ssl@npm:1.0.1"
@@ -16943,6 +16954,7 @@ __metadata:
     "@types/uuid": "npm:^9.0.1"
     "@typescript-eslint/eslint-plugin": "npm:5.62.0"
     "@typescript-eslint/parser": "npm:5.62.0"
+    "@vercel/ncc": "npm:^0.38.1"
     "@whiskeysockets/baileys": "npm:^6.5.0"
     axios: "npm:^1.5.0"
     class-transformer: "npm:^0.5.1"
