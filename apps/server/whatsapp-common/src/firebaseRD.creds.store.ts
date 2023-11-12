@@ -21,8 +21,6 @@ export const useFireBaseRealTimeDatabaseStoreAuthState = async (
 
   const writeData = async (data: any, file: string) => {
     data = JSON.stringify(data, BufferJSON.replacer);
-    console.log('Writing data type ', typeof data);
-    console.log('Writing data  ', data);
     collection.child(processFileName(file)).set(data);
     return;
   };
@@ -39,8 +37,6 @@ export const useFireBaseRealTimeDatabaseStoreAuthState = async (
       if (typeof finalRead === 'string') {
         finalRead = JSON.parse(finalRead, BufferJSON.reviver);
       }
-      console.log('final REad ', finalRead);
-      console.log(typeof finalRead);
       return finalRead;
     } catch (error) {
       return null;

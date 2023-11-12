@@ -32,7 +32,7 @@ async function connectToWhatsApp() {
     // logger: pin({ level: 'debug' }),
     // can provide additional config here
     printQRInTerminal: true,
-    shouldSyncHistoryMessage: () => false,
+    // shouldSyncHistoryMessage: () => false,
     browser: Browsers.ubuntu('Desktop'),
     syncFullHistory: false,
   });
@@ -60,17 +60,17 @@ async function connectToWhatsApp() {
       if (!ServerConfigBehavior.value.dbReadStarted) {
         ReadMessagesFromFirebase();
       }
-    } else {
-      console.log(connection);
     }
   });
-  sock.ev.on('presence.update', (update) => {
-    console.log(update.id, 'Is Online', update.presences);
-  });
-
   messageSubject.subscribe((a) => {
     if (ServerConfigBehavior.value.whatsappLoggedIn) {
+      if (typeof a.message.replaceAll === 'function') {
+        a.message = a.message.replaceAll('@n@', '\n');
+        a.message = a.message.replaceAll('\\n', '\n');
+      }
+      console.log(a.message);
       sock.sendMessage(`${a.number}@s.whatsapp.net`, {
+        footer: 'Confidential',
         text: a.message,
       });
     }
@@ -86,6 +86,7 @@ setInterval(() => {
   });
 }, 5000);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ReadMessagesFromFirebase() {
   const ref = firebaseDb.ref(_generalConfig.readPath);
   const CB: (a: DataSnapshot, b?: string | null) => void = (a) => {
