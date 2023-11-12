@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line unused-imports/no-unused-imports
+import 'qrcode-terminal';
 import { Boom } from '@hapi/boom';
 import makeWASocket, {
   Browsers,
