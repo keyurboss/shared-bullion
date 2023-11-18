@@ -41,6 +41,8 @@ async function connectToWhatsApp() {
   sock.ev.on('connection.update', (update) => {
     const { connection, lastDisconnect } = update;
     if (connection === 'close') {
+      ServerConfigBehavior.value.whatsappLoggedIn = false;
+      ServerConfigBehavior.next(ServerConfigBehavior.value);
       const shouldReconnect =
         (lastDisconnect?.error as Boom)?.output?.statusCode !==
         DisconnectReason.loggedOut;
@@ -95,6 +97,8 @@ function ReadMessagesFromFirebase() {
     messageSubject.next(a.val());
     ref.child(a.key ?? '').remove();
   };
+  ServerConfigBehavior.value.dbReadStarted = true;
+  ServerConfigBehavior.next(ServerConfigBehavior.value);
   ref.on('child_added', CB);
   const subscription = ServerConfigBehavior.subscribe(
     ({ whatsappLoggedIn }) => {
