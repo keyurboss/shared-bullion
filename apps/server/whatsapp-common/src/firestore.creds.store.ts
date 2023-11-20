@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import generalConfig from "./assets/general.config.json"
 import {
   AuthenticationCreds,
   AuthenticationState,

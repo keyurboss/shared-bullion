@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import generalConfig from "./assets/general.config.json"
 import {
   AuthenticationCreds,
   AuthenticationState,
@@ -10,7 +9,14 @@ import {
 } from '@whiskeysockets/baileys';
 import { firebaseDb } from './firebase.app';
 function processFileName(name: string): string {
-  return name.replaceAll('.', '@');
+  try {
+    name = name.replaceAll('.', '@');
+    return name;
+  } catch (error) {
+    console.log("File Name Is",name)
+    console.error(error)
+    throw error
+  }
 }
 export const useFireBaseRealTimeDatabaseStoreAuthState = async (
   collectionName: string,

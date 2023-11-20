@@ -1,5 +1,5 @@
 {
-  "readPath": "whatsappMessage/common",
+  "readPath": "ag/whatsappmsg",
   "statusPath": "serverStatus/commonWhatsapp",
   "storeCredCollectionName": "whatsappCred",
   "serverName": "commonWhatsapp"

@@ -14,7 +14,7 @@ import _generalConfig from './assets/general.config.json';
 import { firebaseDb } from './firebase.app';
 import { useFireBaseRealTimeDatabaseStoreAuthState } from './firebaseRD.creds.store';
 
-// const ServerConfig = ;
+console.log('General Config', _generalConfig);
 
 const ServerConfigBehavior = new BehaviorSubject({
   whatsappLoggedIn: false,
