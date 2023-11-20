@@ -21,7 +21,8 @@ const ServerConfigBehavior = new BehaviorSubject({
   dbReadStarted: false,
 });
 
-const messageSubject = new Subject<{ number: string; message: string }>();
+let counter = 0;
+const messageSubject = new Subject<{ number: string; msg: string }>();
 async function connectToWhatsApp() {
   const { state, saveCreds } = await useFireBaseRealTimeDatabaseStoreAuthState(
     _generalConfig.storeCredCollectionName,
@@ -67,14 +68,16 @@ async function connectToWhatsApp() {
   });
   messageSubject.subscribe((a) => {
     if (ServerConfigBehavior.value.whatsappLoggedIn) {
-      if (typeof a.message.replaceAll === 'function') {
-        a.message = a.message.replaceAll('@n@', '\n');
-        a.message = a.message.replaceAll('\\n', '\n');
+      if (typeof a.msg.replaceAll === 'function') {
+        a.msg = a.msg.replaceAll('@n@', '\n');
+        a.msg = a.msg.replaceAll('\\\\', '\\');
+        a.msg = a.msg.replaceAll('\\n', '\n');
       }
-      console.log(a.message);
+      console.log(a.msg);
+      counter--;
       sock.sendMessage(`${a.number}@s.whatsapp.net`, {
         footer: 'Confidential',
-        text: a.message,
+        text: a.msg,
       });
     }
   });
@@ -93,9 +96,13 @@ setInterval(() => {
 function ReadMessagesFromFirebase() {
   const ref = firebaseDb.ref(_generalConfig.readPath);
   const CB: (a: DataSnapshot, b?: string | null) => void = (a) => {
-    // if(a.exists()){}
-    messageSubject.next(a.val());
-    ref.child(a.key ?? '').remove();
+    if (a.exists()) {
+      counter++;
+      setTimeout(() => {
+        messageSubject.next(a.val());
+        ref.child(a.key ?? '').remove();
+      }, counter * 600);
+    }
   };
   ServerConfigBehavior.value.dbReadStarted = true;
   ServerConfigBehavior.next(ServerConfigBehavior.value);
