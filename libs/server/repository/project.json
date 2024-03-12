@@ -12,29 +12,18 @@
         "tsConfig": "libs/server/repository/tsconfig.lib.json",
         "packageJson": "libs/server/repository/package.json",
         "main": "libs/server/repository/src/index.ts",
-        "assets": ["libs/server/repository/*.md"],
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["libs/server/repository/*.md"]
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/server/repository/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/server/repository/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "libs/server/repository/jest.config.ts"
       }
     },
     "test-integration": {
