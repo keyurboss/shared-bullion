@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/frontend/services/src",
   "projectType": "library",
+  "tags": ["shared:library"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -12,35 +13,18 @@
         "tsConfig": "libs/frontend/services/tsconfig.lib.json",
         "packageJson": "libs/frontend/services/package.json",
         "main": "libs/frontend/services/src/index.ts",
-        "assets": ["libs/frontend/services/*.md"],
-        "buildableProjectDepsInPackageJsonType": "dependencies",
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["libs/frontend/services/*.md"]
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/frontend/services/**/*.ts",
-          "libs/frontend/services/package.json"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/frontend/services/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "libs/frontend/services/jest.config.ts"
       }
     }
-  },
-  "tags": ["shared:library"]
+  }
 }

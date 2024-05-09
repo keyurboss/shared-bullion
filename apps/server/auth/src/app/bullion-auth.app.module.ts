@@ -4,6 +4,10 @@ import {
   Module,
   NestModule,
   Provider,
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  HttpException,
 } from '@nestjs/common';
 
 import { LoggerModule } from '@bs/core';
@@ -72,13 +76,6 @@ export class AuthServerAppModule implements NestModule {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-duplicate-imports
-import {
-  ArgumentsHost,
-  Catch,
-  ExceptionFilter,
-  HttpException,
-} from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Catch()
