@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/server/core/src",
   "projectType": "library",
+  "tags": ["shared:library"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -23,8 +24,7 @@
       "dependsOn": ["build"]
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -34,6 +34,5 @@
       },
       "defaultConfiguration": "ci"
     }
-  },
-  "tags": ["shared:library"]
+  }
 }

@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/frontend/rate-tables/src",
   "prefix": "rate-tables",
+  "tags": ["library"],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -33,9 +34,7 @@
       "defaultConfiguration": "ci"
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["library"]
+  }
 }
