@@ -72,7 +72,6 @@ export class AuthServerAppModule implements NestModule {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-duplicate-imports
 import {
   ArgumentsHost,
   Catch,

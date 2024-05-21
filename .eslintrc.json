@@ -69,7 +69,6 @@
           }
         ],
         "no-duplicate-imports": "off",
-        "@typescript-eslint/no-duplicate-imports": "error",
         "lodash-fp/prefer-constant": "off"
       }
     },

@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-// eslint-disable-next-line unused-imports/no-unused-imports
 import 'qrcode-terminal';
 import { Boom } from '@hapi/boom';
 import makeWASocket, {
@@ -13,9 +12,21 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import _generalConfig from './assets/general.config.json';
 import { firebaseDb } from './firebase.app';
 import { useFireBaseRealTimeDatabaseStoreAuthState } from './firebaseRD.creds.store';
+import { join } from 'path';
+import { existsSync, readFileSync } from 'fs';
 
+try {
+  const generalConfigPath = join(__dirname, 'general.config.json');
+  if (existsSync(generalConfigPath)) {
+    const d = JSON.parse(readFileSync(generalConfigPath).toString());
+    if (typeof d === 'object') {
+      Object.assign(_generalConfig, d);
+    }
+  }
+} catch (error) {
+  //
+}
 console.log('General Config', _generalConfig);
-
 const ServerConfigBehavior = new BehaviorSubject({
   whatsappLoggedIn: false,
   dbReadStarted: false,
@@ -31,10 +42,11 @@ async function connectToWhatsApp() {
   const sock = makeWASocket({
     auth: state,
     logger: pin({ level: 'info' }),
+    markOnlineOnConnect: false,
     // logger: pin({ level: 'debug' }),
     // can provide additional config here
     printQRInTerminal: true,
-    // shouldSyncHistoryMessage: () => false,
+    shouldSyncHistoryMessage: () => false,
     browser: Browsers.ubuntu('Desktop'),
     syncFullHistory: false,
   });

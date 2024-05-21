@@ -5,6 +5,6 @@
     "@rps/bullion-interfaces": "*"
   },
   "peerDependencies": {
-    "@angular/core": "16.2.3"
+    "@angular/core": "17.1.3"
   }
 }
