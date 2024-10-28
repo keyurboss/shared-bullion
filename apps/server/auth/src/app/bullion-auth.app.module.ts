@@ -1,13 +1,13 @@
 import {
+  ArgumentsHost,
+  Catch,
   DynamicModule,
+  ExceptionFilter,
+  HttpException,
   HttpStatus,
   Module,
   NestModule,
   Provider,
-  ArgumentsHost,
-  Catch,
-  ExceptionFilter,
-  HttpException,
 } from '@nestjs/common';
 
 import { LoggerModule } from '@bs/core';

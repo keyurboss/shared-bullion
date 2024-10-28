@@ -1,20 +1,31 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line unused-imports/no-unused-imports
+import { DataSnapshot } from '@firebase/database-types/index.d';
 import { Boom } from '@hapi/boom';
 import makeWASocket, {
   Browsers,
   DisconnectReason,
 } from '@whiskeysockets/baileys';
+import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
 import 'qrcode-terminal';
-
-import { DataSnapshot } from '@firebase/database-types/index.d';
 import { BehaviorSubject, Subject } from 'rxjs';
 import _generalConfig from './assets/general.config.json';
 import { firebaseDb } from './firebase.app';
 import { useFireBaseRealTimeDatabaseStoreAuthState } from './firebaseRD.creds.store';
 
+try {
+  const generalConfigPath = join(__dirname, 'general.config.json');
+  if (existsSync(generalConfigPath)) {
+    const d = JSON.parse(readFileSync(generalConfigPath).toString());
+    if (typeof d === 'object') {
+      Object.assign(_generalConfig, d);
+    }
+  }
+} catch (error) {
+  //
+}
 console.log('General Config', _generalConfig);
-
 const ServerConfigBehavior = new BehaviorSubject({
   whatsappLoggedIn: false,
   dbReadStarted: false,
@@ -30,11 +41,11 @@ async function connectToWhatsApp() {
   const sock = makeWASocket({
     auth: state,
     // logger: pin({ level: 'info' }),
-    // logger: pin({ level: 'info' }),
+    markOnlineOnConnect: false,
     // logger: pin({ level: 'debug' }),
     // can provide additional config here
     printQRInTerminal: true,
-    // shouldSyncHistoryMessage: () => false,
+    shouldSyncHistoryMessage: () => false,
     browser: Browsers.ubuntu('Desktop'),
     syncFullHistory: false,
   });
