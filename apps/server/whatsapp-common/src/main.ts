@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line unused-imports/no-unused-imports
-import 'qrcode-terminal';
 import { Boom } from '@hapi/boom';
 import makeWASocket, {
   Browsers,
   DisconnectReason,
 } from '@whiskeysockets/baileys';
-import pin from 'pino';
+import 'qrcode-terminal';
 
 import { DataSnapshot } from '@firebase/database-types/index.d';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -30,7 +29,8 @@ async function connectToWhatsApp() {
   );
   const sock = makeWASocket({
     auth: state,
-    logger: pin({ level: 'info' }),
+    // logger: pin({ level: 'info' }),
+    // logger: pin({ level: 'info' }),
     // logger: pin({ level: 'debug' }),
     // can provide additional config here
     printQRInTerminal: true,
@@ -39,7 +39,8 @@ async function connectToWhatsApp() {
     syncFullHistory: false,
   });
   sock.ev.on('creds.update', saveCreds);
-  sock.ev.on('connection.update', (update) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sock.ev.on('connection.update', (update: any) => {
     const { connection, lastDisconnect } = update;
     if (connection === 'close') {
       ServerConfigBehavior.value.whatsappLoggedIn = false;

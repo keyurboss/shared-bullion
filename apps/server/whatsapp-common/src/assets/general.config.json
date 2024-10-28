@@ -1,6 +1,6 @@
 {
-  "readPath": "ag/whatsappmsg",
-  "statusPath": "serverStatus/ag",
+  "readPath": "radhe_enterprise/whatsappmsg",
+  "statusPath": "serverStatus/radhe_enterprise",
   "storeCredCollectionName": "whatsappCred",
-  "serverName": "ag"
+  "serverName": "radhe_enterprise"
 }

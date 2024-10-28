@@ -9,7 +9,7 @@ tmp
 /out-tsc
 install-state.gz
 firebase.config.json
-
+.yarn/cache
 # dependencies
 node_modules
 
